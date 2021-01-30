@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{811B07F3-5724-45E2-A20E-CBC60F709AF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ePM.Dal</RootNamespace>
+    <AssemblyName>ePM.Dal</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper">
+      <HintPath>..\LMS.DAL\bin\Debug\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\..\..\Source\Repos\LMS_SNC10\LMS_Solution\LMS.DAL\bin\Debug\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader">
+      <HintPath>..\..\..\..\Source\Repos\LMS_SNC10\LMS_Solution\LMS.DAL\bin\Debug\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet">
+      <HintPath>..\..\..\..\Source\Repos\LMS_SNC10\LMS_Solution\LMS.DAL\bin\Debug\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\Source\Repos\LMS_SNC10\LMS_Solution\LMS.DAL\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting">
+      <HintPath>..\..\..\..\Source\Repos\LMS_SNC10\LMS_Solution\LMS.DAL\bin\Debug\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\EnumerationManager.cs" />
+    <Compile Include="Enums\PublicEnums.cs" />
+    <Compile Include="ePMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ePMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ePMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ePMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ePMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_ExceptionLog.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_Pages.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_Roles.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_RolesRights.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_User.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\ExceptionsManager.cs" />
+    <Compile Include="Logic\PersonnelManager.cs" />
+    <Compile Include="Logic\SecurityManager.cs" />
+    <Compile Include="Logic\UserManager.cs" />
+    <Compile Include="Logic\UserProfile.cs" />
+    <Compile Include="Logic\UsersBulkManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_lmsModulePagesByRole_Result.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_lms_GetPagesByRole_Result.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\BootstrapAlert.cs" />
+    <Compile Include="Utilities\Calc.cs" />
+    <Compile Include="Utilities\EmailManager.cs" />
+    <Compile Include="Utilities\ExcelImportManager.cs" />
+    <Compile Include="Utilities\SqlBulkCopyHelper.cs" />
+    <Compile Include="Utilities\SweetAlert.cs" />
+    <Compile Include="Utilities\ValidateSession.cs" />
+    <Compile Include="u_HRGroup.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_HRPersonnel.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_HRRoles.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_PERSBase.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_TRRoom.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ExcelValidationResult.cs" />
+    <Compile Include="ViewModels\GroupList.cs" />
+    <Compile Include="ViewModels\GroupsDTO.cs" />
+    <Compile Include="ViewModels\HR_RolesDTO.cs" />
+    <Compile Include="ViewModels\MyEvent.cs" />
+    <Compile Include="ViewModels\PersonelDTO.cs" />
+    <Compile Include="ViewModels\RolesDto.cs" />
+    <Compile Include="ViewModels\TraineeDTO.cs" />
+    <Compile Include="vPersonnel.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_GroupsPersonnel.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_lms_ModulePages.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_lms_RolesCount.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_RoleGroups.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_userRoles.cs">
+      <DependentUpon>ePMModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ePMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ePMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ePMModel.edmx.diagram">
+      <DependentUpon>ePMModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ePMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ePMModel.Context.cs</LastGenOutput>
+      <DependentUpon>ePMModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="ePMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ePMModel.edmx</DependentUpon>
+      <LastGenOutput>ePMModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,1588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ePMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LMS_ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueGUID" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ExceptionMsg" Type="varchar" MaxLength="250" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="250" />
+          <Property Name="ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExceptionURL" Type="varchar" MaxLength="150" />
+          <Property Name="Logdate" Type="datetime" />
+          <Property Name="Environment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LMS_Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="SearchUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="HelpUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="UniqueName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssClass" Type="nvarchar" MaxLength="150" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LMS_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LMS_RolesRights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuItemId" Type="bigint" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="LastUpdatedBy" Type="bigint" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LMS_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="ReportingTo" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="200" />
+          <Property Name="Major" Type="nvarchar" MaxLength="200" />
+          <Property Name="University" Type="nvarchar" MaxLength="200" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="ProfilePicPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="u_HRGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="HeadingOrder" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Root" Type="bit" />
+          <Property Name="SubGroup" Type="nvarchar" MaxLength="150" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="u_HRPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BaseID" Type="int" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="JobAppID" Type="int" />
+          <Property Name="Project" Type="nvarchar" MaxLength="100" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailWork" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNoWork" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileWork" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShiftType" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployClass" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployType" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Mobilised" Type="datetime" />
+          <Property Name="PlanDemob" Type="datetime" />
+          <Property Name="IsSupervisor" Type="bit" Nullable="false" />
+          <Property Name="IsSuperInt" Type="bit" Nullable="false" />
+          <Property Name="IsManager" Type="bit" Nullable="false" />
+          <Property Name="SupervisorID" Type="int" />
+          <Property Name="SuperintID" Type="int" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoadID" Type="int" />
+          <Property Name="FunctionCategory" Type="nvarchar" MaxLength="255" />
+          <Property Name="Function" Type="nvarchar" MaxLength="255" />
+          <Property Name="SubProject" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="WorkLocation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discipline" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrentRoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="u_HRRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PositionCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadingOrder" Type="int" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="u_PERSBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BaseID" Type="int" />
+          <Property Name="CID" Type="nvarchar" MaxLength="100" />
+          <Property Name="FName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="BirthCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Indigenous" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxFileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="HealthInsNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Allergies" Type="nvarchar" MaxLength="255" />
+          <Property Name="USINo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomePort" Type="nvarchar" MaxLength="100" />
+          <Property Name="PointofHire" Type="nvarchar" MaxLength="100" />
+          <Property Name="PointofHireAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="AirportDistance" Type="nvarchar" MaxLength="100" />
+          <Property Name="MainLanguage" Type="nvarchar" MaxLength="100" />
+          <Property Name="OtherLanguage" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Suburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="POSuburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="POState" Type="nvarchar" MaxLength="50" />
+          <Property Name="POPostcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="POCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Company" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="u_TRRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.v_GroupsPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_GroupsPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ParentGroup" Type="nvarchar" MaxLength="100" />
+          <Property Name="HeadingOrder" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="255" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="FName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.v_lms_ModulePages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_lms_ModulePages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssClass" Type="nvarchar" MaxLength="150" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.v_lms_RolesCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_lms_RolesCount">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="CountUsers" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.v_RoleGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_RoleGroups">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountPersonnel" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.v_userRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_userRoles">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="EmailWork" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="BaseID" Type="int" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vPersonnel">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BaseID" Type="int" />
+          <Property Name="CID" Type="nvarchar" MaxLength="100" />
+          <Property Name="FName" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="BirthCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Addr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Suburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="POSuburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="POState" Type="nvarchar" MaxLength="50" />
+          <Property Name="POPostcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="POCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="PerBaseStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Company" Type="nvarchar" MaxLength="100" />
+          <Property Name="PerBaseNotes" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="PerBaseLastUpdated" Type="datetime" />
+          <Property Name="PerBaseUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="JobAppID" Type="int" />
+          <Property Name="Project" Type="nvarchar" MaxLength="100" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailWork" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNoWork" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileWork" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonnelStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShiftType" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployClass" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployType" Type="nvarchar" MaxLength="50" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Mobilised" Type="datetime" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="PersonnelNotes" Type="nvarchar(max)" />
+          <Property Name="PersonnelLastUpdated" Type="datetime" />
+          <Property Name="SubProject" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="WorkLocation" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discipline" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProfilePicPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <Association Name="FK_CurrentRoleId">
+          <End Role="u_HRRoles" Type="Self.u_HRRoles" Multiplicity="1" />
+          <End Role="u_HRPersonnel" Type="Self.u_HRPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_HRRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="u_HRPersonnel">
+              <PropertyRef Name="CurrentRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupIdId">
+          <End Role="u_HRGroup" Type="Self.u_HRGroup" Multiplicity="0..1" />
+          <End Role="u_HRRoles" Type="Self.u_HRRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_HRGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="u_HRRoles">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LMS_User_LMS_Roles">
+          <End Role="LMS_Roles" Type="Self.LMS_Roles" Multiplicity="0..1" />
+          <End Role="LMS_User" Type="Self.LMS_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="LMS_User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRights_LMSPages">
+          <End Role="LMS_Pages" Type="Self.LMS_Pages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LMS_RolesRights" Type="Self.LMS_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Pages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LMS_RolesRights">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRights_Roles">
+          <End Role="LMS_Roles" Type="Self.LMS_Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LMS_RolesRights" Type="Self.LMS_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="LMS_RolesRights">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_lms_addNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="EmpNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="HRRoleId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_lms_GetPagesByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="Level" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_lmsModulePagesByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_updatePositionByPersonnelId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonelId" Type="int" Mode="In" />
+          <Parameter Name="Position" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ePMModelStoreContainer">
+          <EntitySet Name="LMS_ExceptionLog" EntityType="Self.LMS_ExceptionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LMS_Pages" EntityType="Self.LMS_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LMS_Roles" EntityType="Self.LMS_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LMS_RolesRights" EntityType="Self.LMS_RolesRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LMS_User" EntityType="Self.LMS_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_HRGroup" EntityType="Self.u_HRGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_HRPersonnel" EntityType="Self.u_HRPersonnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_HRRoles" EntityType="Self.u_HRRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_PERSBase" EntityType="Self.u_PERSBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_TRRoom" EntityType="Self.u_TRRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_GroupsPersonnel" EntityType="Self.v_GroupsPersonnel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_GroupsPersonnel].[ID] AS [ID], 
+    [v_GroupsPersonnel].[Group] AS [Group], 
+    [v_GroupsPersonnel].[UserId] AS [UserId], 
+    [v_GroupsPersonnel].[ParentGroup] AS [ParentGroup], 
+    [v_GroupsPersonnel].[HeadingOrder] AS [HeadingOrder], 
+    [v_GroupsPersonnel].[ParentID] AS [ParentID], 
+    [v_GroupsPersonnel].[RoleID] AS [RoleID], 
+    [v_GroupsPersonnel].[Position] AS [Position], 
+    [v_GroupsPersonnel].[Department] AS [Department], 
+    [v_GroupsPersonnel].[PersonnelID] AS [PersonnelID], 
+    [v_GroupsPersonnel].[StartDate] AS [StartDate], 
+    [v_GroupsPersonnel].[Status] AS [Status], 
+    [v_GroupsPersonnel].[FName] AS [FName]
+    FROM [dbo].[v_GroupsPersonnel] AS [v_GroupsPersonnel]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_lms_ModulePages" EntityType="Self.v_lms_ModulePages" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_lms_ModulePages].[Id] AS [Id], 
+    [v_lms_ModulePages].[ModuleName] AS [ModuleName], 
+    [v_lms_ModulePages].[Title] AS [Title], 
+    [v_lms_ModulePages].[Url] AS [Url], 
+    [v_lms_ModulePages].[CssClass] AS [CssClass], 
+    [v_lms_ModulePages].[IconUrl] AS [IconUrl], 
+    [v_lms_ModulePages].[CssIcon] AS [CssIcon], 
+    [v_lms_ModulePages].[ParentId] AS [ParentId], 
+    [v_lms_ModulePages].[IsVisible] AS [IsVisible], 
+    [v_lms_ModulePages].[Sort] AS [Sort], 
+    [v_lms_ModulePages].[ModuleId] AS [ModuleId], 
+    [v_lms_ModulePages].[RoleId] AS [RoleId], 
+    [v_lms_ModulePages].[RoleName] AS [RoleName]
+    FROM [dbo].[v_lms_ModulePages] AS [v_lms_ModulePages]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_lms_RolesCount" EntityType="Self.v_lms_RolesCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_lms_RolesCount].[RoleId] AS [RoleId], 
+    [v_lms_RolesCount].[RoleName] AS [RoleName], 
+    [v_lms_RolesCount].[Notes] AS [Notes], 
+    [v_lms_RolesCount].[DateAdded] AS [DateAdded], 
+    [v_lms_RolesCount].[CountUsers] AS [CountUsers]
+    FROM [dbo].[v_lms_RolesCount] AS [v_lms_RolesCount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_RoleGroups" EntityType="Self.v_RoleGroups" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_RoleGroups].[RoleID] AS [RoleID], 
+    [v_RoleGroups].[Group] AS [Group], 
+    [v_RoleGroups].[Name] AS [Name], 
+    [v_RoleGroups].[CountPersonnel] AS [CountPersonnel]
+    FROM [dbo].[v_RoleGroups] AS [v_RoleGroups]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_userRoles" EntityType="Self.v_userRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_userRoles].[FName] AS [FName], 
+    [v_userRoles].[PersonnelID] AS [PersonnelID], 
+    [v_userRoles].[EmailWork] AS [EmailWork], 
+    [v_userRoles].[RoleId] AS [RoleId], 
+    [v_userRoles].[RoleName] AS [RoleName], 
+    [v_userRoles].[Department] AS [Department], 
+    [v_userRoles].[Notes] AS [Notes], 
+    [v_userRoles].[BaseID] AS [BaseID], 
+    [v_userRoles].[Position] AS [Position], 
+    [v_userRoles].[ID] AS [ID], 
+    [v_userRoles].[Active] AS [Active], 
+    [v_userRoles].[EmployeeNo] AS [EmployeeNo]
+    FROM [dbo].[v_userRoles] AS [v_userRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vPersonnel].[BaseID] AS [BaseID], 
+    [vPersonnel].[CID] AS [CID], 
+    [vPersonnel].[FName] AS [FName], 
+    [vPersonnel].[FirstName] AS [FirstName], 
+    [vPersonnel].[LastName] AS [LastName], 
+    [vPersonnel].[MiddleName] AS [MiddleName], 
+    [vPersonnel].[NickName] AS [NickName], 
+    [vPersonnel].[Title] AS [Title], 
+    [vPersonnel].[DOB] AS [DOB], 
+    [vPersonnel].[BirthCountry] AS [BirthCountry], 
+    [vPersonnel].[Gender] AS [Gender], 
+    [vPersonnel].[Citizenship] AS [Citizenship], 
+    [vPersonnel].[Nationality] AS [Nationality], 
+    [vPersonnel].[MaritalStatus] AS [MaritalStatus], 
+    [vPersonnel].[Experience] AS [Experience], 
+    [vPersonnel].[EmployeeType] AS [EmployeeType], 
+    [vPersonnel].[Addr1] AS [Addr1], 
+    [vPersonnel].[Addr2] AS [Addr2], 
+    [vPersonnel].[Suburb] AS [Suburb], 
+    [vPersonnel].[State] AS [State], 
+    [vPersonnel].[Postcode] AS [Postcode], 
+    [vPersonnel].[Country] AS [Country], 
+    [vPersonnel].[POAddr1] AS [POAddr1], 
+    [vPersonnel].[POAddr2] AS [POAddr2], 
+    [vPersonnel].[POSuburb] AS [POSuburb], 
+    [vPersonnel].[POState] AS [POState], 
+    [vPersonnel].[POPostcode] AS [POPostcode], 
+    [vPersonnel].[POCountry] AS [POCountry], 
+    [vPersonnel].[Email] AS [Email], 
+    [vPersonnel].[PhoneNo] AS [PhoneNo], 
+    [vPersonnel].[Mobile] AS [Mobile], 
+    [vPersonnel].[PerBaseStatus] AS [PerBaseStatus], 
+    [vPersonnel].[EmployeeNo] AS [EmployeeNo], 
+    [vPersonnel].[Company] AS [Company], 
+    [vPersonnel].[PerBaseNotes] AS [PerBaseNotes], 
+    [vPersonnel].[Photo] AS [Photo], 
+    [vPersonnel].[PerBaseLastUpdated] AS [PerBaseLastUpdated], 
+    [vPersonnel].[PerBaseUpdatedBy] AS [PerBaseUpdatedBy], 
+    [vPersonnel].[PersonnelID] AS [PersonnelID], 
+    [vPersonnel].[JobAppID] AS [JobAppID], 
+    [vPersonnel].[Project] AS [Project], 
+    [vPersonnel].[username] AS [username], 
+    [vPersonnel].[EmailWork] AS [EmailWork], 
+    [vPersonnel].[PhoneNoWork] AS [PhoneNoWork], 
+    [vPersonnel].[MobileWork] AS [MobileWork], 
+    [vPersonnel].[PersonnelStatus] AS [PersonnelStatus], 
+    [vPersonnel].[Position] AS [Position], 
+    [vPersonnel].[Department] AS [Department], 
+    [vPersonnel].[ShiftType] AS [ShiftType], 
+    [vPersonnel].[EmployClass] AS [EmployClass], 
+    [vPersonnel].[EmployType] AS [EmployType], 
+    [vPersonnel].[StartDate] AS [StartDate], 
+    [vPersonnel].[EndDate] AS [EndDate], 
+    [vPersonnel].[Mobilised] AS [Mobilised], 
+    [vPersonnel].[CompanyID] AS [CompanyID], 
+    [vPersonnel].[PersonnelNotes] AS [PersonnelNotes], 
+    [vPersonnel].[PersonnelLastUpdated] AS [PersonnelLastUpdated], 
+    [vPersonnel].[SubProject] AS [SubProject], 
+    [vPersonnel].[Location] AS [Location], 
+    [vPersonnel].[WorkLocation] AS [WorkLocation], 
+    [vPersonnel].[Discipline] AS [Discipline], 
+    [vPersonnel].[ProfilePicPath] AS [ProfilePicPath], 
+    [vPersonnel].[RoleId] AS [RoleId], 
+    [vPersonnel].[RoleName] AS [RoleName], 
+    [vPersonnel].[ID] AS [ID], 
+    [vPersonnel].[Active] AS [Active]
+    FROM [dbo].[vPersonnel] AS [vPersonnel]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CurrentRoleId" Association="Self.FK_CurrentRoleId">
+            <End Role="u_HRRoles" EntitySet="u_HRRoles" />
+            <End Role="u_HRPersonnel" EntitySet="u_HRPersonnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupIdId" Association="Self.FK_GroupIdId">
+            <End Role="u_HRGroup" EntitySet="u_HRGroup" />
+            <End Role="u_HRRoles" EntitySet="u_HRRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LMS_User_LMS_Roles" Association="Self.FK_LMS_User_LMS_Roles">
+            <End Role="LMS_Roles" EntitySet="LMS_Roles" />
+            <End Role="LMS_User" EntitySet="LMS_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRights_LMSPages" Association="Self.FK_RoleRights_LMSPages">
+            <End Role="LMS_Pages" EntitySet="LMS_Pages" />
+            <End Role="LMS_RolesRights" EntitySet="LMS_RolesRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRights_Roles" Association="Self.FK_RoleRights_Roles">
+            <End Role="LMS_Roles" EntitySet="LMS_Roles" />
+            <End Role="LMS_RolesRights" EntitySet="LMS_RolesRights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ePMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LMS_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LMS_User" Relationship="Self.FK_LMS_User_LMS_Roles" FromRole="LMS_Roles" ToRole="LMS_User" />
+          <NavigationProperty Name="LMS_RolesRights" Relationship="ePMModel.FK_RoleRights_Roles" FromRole="LMS_Roles" ToRole="LMS_RolesRights" />
+        </EntityType>
+        <EntityType Name="LMS_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingTo" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Major" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="University" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="ProfilePicPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="LMS_Roles" Relationship="Self.FK_LMS_User_LMS_Roles" FromRole="LMS_User" ToRole="LMS_Roles" />
+        </EntityType>
+        <Association Name="FK_LMS_User_LMS_Roles">
+          <End Role="LMS_Roles" Type="Self.LMS_Roles" Multiplicity="0..1" />
+          <End Role="LMS_User" Type="Self.LMS_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="LMS_User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ePMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LMS_Roles" EntityType="Self.LMS_Roles" />
+          <EntitySet Name="LMS_User" EntityType="Self.LMS_User" />
+          <AssociationSet Name="FK_LMS_User_LMS_Roles" Association="Self.FK_LMS_User_LMS_Roles">
+            <End Role="LMS_Roles" EntitySet="LMS_Roles" />
+            <End Role="LMS_User" EntitySet="LMS_User" />
+          </AssociationSet>
+          <EntitySet Name="vPersonnels" EntityType="ePMModel.vPersonnel" />
+          <EntitySet Name="u_HRGroup" EntityType="ePMModel.u_HRGroup" />
+          <FunctionImport Name="sp_lms_addNewUser">
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="EmpNo" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="HRRoleId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="u_PERSBase" EntityType="ePMModel.u_PERSBase" />
+          <EntitySet Name="v_userRoles" EntityType="ePMModel.v_userRoles" />
+          <EntitySet Name="v_GroupsPersonnel" EntityType="ePMModel.v_GroupsPersonnel" />
+          <FunctionImport Name="sp_updatePositionByPersonnelId">
+            <Parameter Name="PersonelId" Mode="In" Type="Int32" />
+            <Parameter Name="Position" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="u_HRPersonnel" EntityType="ePMModel.u_HRPersonnel" />
+          <EntitySet Name="u_HRRoles" EntityType="ePMModel.u_HRRoles" />
+          <AssociationSet Name="FK_GroupIdId" Association="ePMModel.FK_GroupIdId">
+            <End Role="u_HRGroup" EntitySet="u_HRGroup" />
+            <End Role="u_HRRoles" EntitySet="u_HRRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CurrentRoleId" Association="ePMModel.FK_CurrentRoleId">
+            <End Role="u_HRRoles" EntitySet="u_HRRoles" />
+            <End Role="u_HRPersonnel" EntitySet="u_HRPersonnel" />
+          </AssociationSet>
+          <EntitySet Name="LMS_RolesRights" EntityType="ePMModel.LMS_RolesRights" />
+          <AssociationSet Name="FK_RoleRights_Roles" Association="ePMModel.FK_RoleRights_Roles">
+            <End Role="LMS_Roles" EntitySet="LMS_Roles" />
+            <End Role="LMS_RolesRights" EntitySet="LMS_RolesRights" />
+          </AssociationSet>
+          <FunctionImport Name="sp_lms_GetPagesByRole" ReturnType="Collection(ePMModel.sp_lms_GetPagesByRole_Result)">
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="Level" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_lmsModulePagesByRole" ReturnType="Collection(ePMModel.sp_lmsModulePagesByRole_Result)">
+          <Parameter Name="RoleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="v_lms_ModulePages" EntityType="ePMModel.v_lms_ModulePages" />
+          <EntitySet Name="LMS_ExceptionLog" EntityType="ePMModel.LMS_ExceptionLog" />
+          <EntitySet Name="v_RoleGroups" EntityType="ePMModel.v_RoleGroups" />
+          <EntitySet Name="v_lms_RolesCount" EntityType="ePMModel.v_lms_RolesCount" />
+          <EntitySet Name="LMS_Pages" EntityType="ePMModel.LMS_Pages" />
+          <AssociationSet Name="FK_RoleRights_LMSPages" Association="ePMModel.FK_RoleRights_LMSPages">
+            <End Role="LMS_Pages" EntitySet="LMS_Pages" />
+            <End Role="LMS_RolesRights" EntitySet="LMS_RolesRights" />
+          </AssociationSet>
+          <EntitySet Name="u_TRRoom" EntityType="ePMModel.u_TRRoom" />
+        </EntityContainer>
+        <EntityType Name="vPersonnel">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BaseID" Type="Int32" />
+          <Property Name="CID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="BirthCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Addr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POSuburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POPostcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseLastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="PerBaseUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="JobAppID" Type="Int32" />
+          <Property Name="Project" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNoWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployClass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Mobilised" Type="DateTime" Precision="3" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="PersonnelNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelLastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="SubProject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WorkLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Discipline" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="u_HRGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingOrder" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Root" Type="Boolean" />
+          <Property Name="SubGroup" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SectionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="u_HRRoles" Relationship="ePMModel.FK_GroupIdId" FromRole="u_HRGroup" ToRole="u_HRRoles" />
+        </EntityType>
+        <EntityType Name="u_PERSBase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BaseID" Type="Int32" />
+          <Property Name="CID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="BirthCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Indigenous" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxFileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HealthInsNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Allergies" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="USINo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HomePort" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PointofHire" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PointofHireAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AirportDistance" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainLanguage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OtherLanguage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POSuburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="POPostcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_userRoles">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="EmailWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="BaseID" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_GroupsPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ParentGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingOrder" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="u_HRPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BaseID" Type="Int32" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="JobAppID" Type="Int32" />
+          <Property Name="Project" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNoWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileWork" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployClass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Mobilised" Type="DateTime" Precision="3" />
+          <Property Name="PlanDemob" Type="DateTime" Precision="3" />
+          <Property Name="IsSupervisor" Type="Boolean" Nullable="false" />
+          <Property Name="IsSuperInt" Type="Boolean" Nullable="false" />
+          <Property Name="IsManager" Type="Boolean" Nullable="false" />
+          <Property Name="SupervisorID" Type="Int32" />
+          <Property Name="SuperintID" Type="Int32" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoadID" Type="Int32" />
+          <Property Name="FunctionCategory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Function" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SubProject" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WorkLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Discipline" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentRoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="u_HRRoles" Relationship="ePMModel.FK_CurrentRoleId" FromRole="u_HRPersonnel" ToRole="u_HRRoles" />
+        </EntityType>
+        <EntityType Name="u_HRRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PositionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingOrder" Type="Int32" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+          <NavigationProperty Name="u_HRGroup" Relationship="ePMModel.FK_GroupIdId" FromRole="u_HRRoles" ToRole="u_HRGroup" />
+          <NavigationProperty Name="u_HRPersonnel" Relationship="ePMModel.FK_CurrentRoleId" FromRole="u_HRRoles" ToRole="u_HRPersonnel" />
+        </EntityType>
+        <Association Name="FK_GroupIdId">
+          <End Type="ePMModel.u_HRGroup" Role="u_HRGroup" Multiplicity="0..1" />
+          <End Type="ePMModel.u_HRRoles" Role="u_HRRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_HRGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="u_HRRoles">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CurrentRoleId">
+          <End Type="ePMModel.u_HRRoles" Role="u_HRRoles" Multiplicity="1" />
+          <End Type="ePMModel.u_HRPersonnel" Role="u_HRPersonnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="u_HRRoles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="u_HRPersonnel">
+              <PropertyRef Name="CurrentRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LMS_RolesRights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuItemId" Type="Int64" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="LastUpdatedBy" Type="Int64" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LMS_Roles" Relationship="ePMModel.FK_RoleRights_Roles" FromRole="LMS_RolesRights" ToRole="LMS_Roles" />
+          <NavigationProperty Name="LMS_Pages" Relationship="ePMModel.FK_RoleRights_LMSPages" FromRole="LMS_RolesRights" ToRole="LMS_Pages" />
+        </EntityType>
+        <Association Name="FK_RoleRights_Roles">
+          <End Type="ePMModel.LMS_Roles" Role="LMS_Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ePMModel.LMS_RolesRights" Role="LMS_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="LMS_RolesRights">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_lms_GetPagesByRole_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SortM" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CssClass" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="IconUrl" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CssIcon" Nullable="true" MaxLength="150" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="true" />
+          <Property Type="Int32" Name="Sort" Nullable="true" />
+          <Property Type="Int32" Name="ModuleId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_lmsModulePagesByRole_Result">
+          <Property Type="Int64" Name="ModuleId" Nullable="true" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="true" />
+          <Property Type="Int32" Name="Sort" Nullable="true" />
+          <Property Type="Int32" Name="RoleId" Nullable="true" />
+          <Property Type="Int64" Name="RoleRightId" Nullable="true" />
+          <Property Type="Int64" Name="HasAccess" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="v_lms_ModulePages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssClass" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LMS_ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueGUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ExceptionMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionURL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Logdate" Type="DateTime" Precision="3" />
+          <Property Name="Environment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_RoleGroups">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountPersonnel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_lms_RolesCount">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CountUsers" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LMS_Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SearchUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HelpUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssClass" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="CssIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LMS_RolesRights" Relationship="ePMModel.FK_RoleRights_LMSPages" FromRole="LMS_Pages" ToRole="LMS_RolesRights" />
+        </EntityType>
+        <Association Name="FK_RoleRights_LMSPages">
+          <End Type="ePMModel.LMS_Pages" Role="LMS_Pages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ePMModel.LMS_RolesRights" Role="LMS_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_Pages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LMS_RolesRights">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="u_TRRoom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ePMModelStoreContainer" CdmEntityContainer="ePMEntities">
+          <EntitySetMapping Name="LMS_Roles">
+            <EntityTypeMapping TypeName="ePMModel.LMS_Roles">
+              <MappingFragment StoreEntitySet="LMS_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LMS_User">
+            <EntityTypeMapping TypeName="ePMModel.LMS_User">
+              <MappingFragment StoreEntitySet="LMS_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ReportingTo" ColumnName="ReportingTo" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="ProfilePicPath" ColumnName="ProfilePicPath" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vPersonnels">
+            <EntityTypeMapping TypeName="ePMModel.vPersonnel">
+              <MappingFragment StoreEntitySet="vPersonnel">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ProfilePicPath" ColumnName="ProfilePicPath" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+                <ScalarProperty Name="WorkLocation" ColumnName="WorkLocation" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="SubProject" ColumnName="SubProject" />
+                <ScalarProperty Name="PersonnelLastUpdated" ColumnName="PersonnelLastUpdated" />
+                <ScalarProperty Name="PersonnelNotes" ColumnName="PersonnelNotes" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Mobilised" ColumnName="Mobilised" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EmployType" ColumnName="EmployType" />
+                <ScalarProperty Name="EmployClass" ColumnName="EmployClass" />
+                <ScalarProperty Name="ShiftType" ColumnName="ShiftType" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PersonnelStatus" ColumnName="PersonnelStatus" />
+                <ScalarProperty Name="MobileWork" ColumnName="MobileWork" />
+                <ScalarProperty Name="PhoneNoWork" ColumnName="PhoneNoWork" />
+                <ScalarProperty Name="EmailWork" ColumnName="EmailWork" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="JobAppID" ColumnName="JobAppID" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="PerBaseUpdatedBy" ColumnName="PerBaseUpdatedBy" />
+                <ScalarProperty Name="PerBaseLastUpdated" ColumnName="PerBaseLastUpdated" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PerBaseNotes" ColumnName="PerBaseNotes" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="PerBaseStatus" ColumnName="PerBaseStatus" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="POCountry" ColumnName="POCountry" />
+                <ScalarProperty Name="POPostcode" ColumnName="POPostcode" />
+                <ScalarProperty Name="POState" ColumnName="POState" />
+                <ScalarProperty Name="POSuburb" ColumnName="POSuburb" />
+                <ScalarProperty Name="POAddr2" ColumnName="POAddr2" />
+                <ScalarProperty Name="POAddr1" ColumnName="POAddr1" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="BaseID" ColumnName="BaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_HRGroup">
+            <EntityTypeMapping TypeName="ePMModel.u_HRGroup">
+              <MappingFragment StoreEntitySet="u_HRGroup">
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SubGroup" ColumnName="SubGroup" />
+                <ScalarProperty Name="Root" ColumnName="Root" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="HeadingOrder" ColumnName="HeadingOrder" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_lms_addNewUser" FunctionName="ePMModel.Store.sp_lms_addNewUser" />
+          <EntitySetMapping Name="u_PERSBase">
+            <EntityTypeMapping TypeName="ePMModel.u_PERSBase">
+              <MappingFragment StoreEntitySet="u_PERSBase">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="POCountry" ColumnName="POCountry" />
+                <ScalarProperty Name="POPostcode" ColumnName="POPostcode" />
+                <ScalarProperty Name="POState" ColumnName="POState" />
+                <ScalarProperty Name="POSuburb" ColumnName="POSuburb" />
+                <ScalarProperty Name="POAddr2" ColumnName="POAddr2" />
+                <ScalarProperty Name="POAddr1" ColumnName="POAddr1" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="OtherLanguage" ColumnName="OtherLanguage" />
+                <ScalarProperty Name="MainLanguage" ColumnName="MainLanguage" />
+                <ScalarProperty Name="AirportDistance" ColumnName="AirportDistance" />
+                <ScalarProperty Name="PointofHireAlt" ColumnName="PointofHireAlt" />
+                <ScalarProperty Name="PointofHire" ColumnName="PointofHire" />
+                <ScalarProperty Name="HomePort" ColumnName="HomePort" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="USINo" ColumnName="USINo" />
+                <ScalarProperty Name="Allergies" ColumnName="Allergies" />
+                <ScalarProperty Name="HealthInsNo" ColumnName="HealthInsNo" />
+                <ScalarProperty Name="TaxCountry" ColumnName="TaxCountry" />
+                <ScalarProperty Name="TaxFileNo" ColumnName="TaxFileNo" />
+                <ScalarProperty Name="Indigenous" ColumnName="Indigenous" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="BaseID" ColumnName="BaseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_userRoles">
+            <EntityTypeMapping TypeName="ePMModel.v_userRoles">
+              <MappingFragment StoreEntitySet="v_userRoles">
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="BaseID" ColumnName="BaseID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="EmailWork" ColumnName="EmailWork" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_GroupsPersonnel">
+            <EntityTypeMapping TypeName="ePMModel.v_GroupsPersonnel">
+              <MappingFragment StoreEntitySet="v_GroupsPersonnel">
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="HeadingOrder" ColumnName="HeadingOrder" />
+                <ScalarProperty Name="ParentGroup" ColumnName="ParentGroup" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_updatePositionByPersonnelId" FunctionName="ePMModel.Store.sp_updatePositionByPersonnelId" />
+          <EntitySetMapping Name="u_HRPersonnel">
+            <EntityTypeMapping TypeName="ePMModel.u_HRPersonnel">
+              <MappingFragment StoreEntitySet="u_HRPersonnel">
+                <ScalarProperty Name="CurrentRoleId" ColumnName="CurrentRoleId" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+                <ScalarProperty Name="WorkLocation" ColumnName="WorkLocation" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="SubProject" ColumnName="SubProject" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="FunctionCategory" ColumnName="FunctionCategory" />
+                <ScalarProperty Name="LoadID" ColumnName="LoadID" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="SuperintID" ColumnName="SuperintID" />
+                <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+                <ScalarProperty Name="IsManager" ColumnName="IsManager" />
+                <ScalarProperty Name="IsSuperInt" ColumnName="IsSuperInt" />
+                <ScalarProperty Name="IsSupervisor" ColumnName="IsSupervisor" />
+                <ScalarProperty Name="PlanDemob" ColumnName="PlanDemob" />
+                <ScalarProperty Name="Mobilised" ColumnName="Mobilised" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EmployType" ColumnName="EmployType" />
+                <ScalarProperty Name="EmployClass" ColumnName="EmployClass" />
+                <ScalarProperty Name="ShiftType" ColumnName="ShiftType" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MobileWork" ColumnName="MobileWork" />
+                <ScalarProperty Name="PhoneNoWork" ColumnName="PhoneNoWork" />
+                <ScalarProperty Name="EmailWork" ColumnName="EmailWork" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="Project" ColumnName="Project" />
+                <ScalarProperty Name="JobAppID" ColumnName="JobAppID" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="BaseID" ColumnName="BaseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_HRRoles">
+            <EntityTypeMapping TypeName="ePMModel.u_HRRoles">
+              <MappingFragment StoreEntitySet="u_HRRoles">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="HeadingOrder" ColumnName="HeadingOrder" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LMS_RolesRights">
+            <EntityTypeMapping TypeName="ePMModel.LMS_RolesRights">
+              <MappingFragment StoreEntitySet="LMS_RolesRights">
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_lms_GetPagesByRole" FunctionName="ePMModel.Store.sp_lms_GetPagesByRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ePMModel.sp_lms_GetPagesByRole_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="SortM" ColumnName="SortM" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_lmsModulePagesByRole" FunctionName="ePMModel.Store.sp_lmsModulePagesByRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ePMModel.sp_lmsModulePagesByRole_Result">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleRightId" ColumnName="RoleRightId" />
+                <ScalarProperty Name="HasAccess" ColumnName="HasAccess" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_lms_ModulePages">
+            <EntityTypeMapping TypeName="ePMModel.v_lms_ModulePages">
+              <MappingFragment StoreEntitySet="v_lms_ModulePages">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LMS_ExceptionLog">
+            <EntityTypeMapping TypeName="ePMModel.LMS_ExceptionLog">
+              <MappingFragment StoreEntitySet="LMS_ExceptionLog">
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="Logdate" ColumnName="Logdate" />
+                <ScalarProperty Name="ExceptionURL" ColumnName="ExceptionURL" />
+                <ScalarProperty Name="ExceptionSource" ColumnName="ExceptionSource" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UniqueGUID" ColumnName="UniqueGUID" />
+                <ScalarProperty Name="Logid" ColumnName="Logid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_RoleGroups">
+            <EntityTypeMapping TypeName="ePMModel.v_RoleGroups">
+              <MappingFragment StoreEntitySet="v_RoleGroups">
+                <ScalarProperty Name="CountPersonnel" ColumnName="CountPersonnel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_lms_RolesCount">
+            <EntityTypeMapping TypeName="ePMModel.v_lms_RolesCount">
+              <MappingFragment StoreEntitySet="v_lms_RolesCount">
+                <ScalarProperty Name="CountUsers" ColumnName="CountUsers" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LMS_Pages">
+            <EntityTypeMapping TypeName="ePMModel.LMS_Pages">
+              <MappingFragment StoreEntitySet="LMS_Pages">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UniqueName" ColumnName="UniqueName" />
+                <ScalarProperty Name="HelpUrl" ColumnName="HelpUrl" />
+                <ScalarProperty Name="SearchUrl" ColumnName="SearchUrl" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="u_TRRoom">
+            <EntityTypeMapping TypeName="ePMModel.u_TRRoom">
+              <MappingFragment StoreEntitySet="u_TRRoom">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
