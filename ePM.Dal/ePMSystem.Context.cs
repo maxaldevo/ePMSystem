@@ -27,22 +27,47 @@ namespace ePM.Dal
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<LMS_ExceptionLog> LMS_ExceptionLog { get; set; }
+        public virtual DbSet<LMS_Modules> LMS_Modules { get; set; }
+        public virtual DbSet<LMS_Pages> LMS_Pages { get; set; }
         public virtual DbSet<LMS_Roles> LMS_Roles { get; set; }
+        public virtual DbSet<LMS_RolesRights> LMS_RolesRights { get; set; }
         public virtual DbSet<LMS_User> LMS_User { get; set; }
-        public virtual DbSet<vPersonnel> vPersonnels { get; set; }
         public virtual DbSet<u_HRGroup> u_HRGroup { get; set; }
-        public virtual DbSet<u_PERSBase> u_PERSBase { get; set; }
-        public virtual DbSet<v_userRoles> v_userRoles { get; set; }
-        public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
         public virtual DbSet<u_HRPersonnel> u_HRPersonnel { get; set; }
         public virtual DbSet<u_HRRoles> u_HRRoles { get; set; }
-        public virtual DbSet<LMS_RolesRights> LMS_RolesRights { get; set; }
-        public virtual DbSet<v_lms_ModulePages> v_lms_ModulePages { get; set; }
-        public virtual DbSet<LMS_ExceptionLog> LMS_ExceptionLog { get; set; }
-        public virtual DbSet<v_RoleGroups> v_RoleGroups { get; set; }
-        public virtual DbSet<v_lms_RolesCount> v_lms_RolesCount { get; set; }
-        public virtual DbSet<LMS_Pages> LMS_Pages { get; set; }
+        public virtual DbSet<u_HRRolesList> u_HRRolesList { get; set; }
+        public virtual DbSet<u_PERSBase> u_PERSBase { get; set; }
+        public virtual DbSet<u_PERSContacts> u_PERSContacts { get; set; }
+        public virtual DbSet<u_TRGroups> u_TRGroups { get; set; }
         public virtual DbSet<u_TRRoom> u_TRRoom { get; set; }
+        public virtual DbSet<v_lms_RolesCount> v_lms_RolesCount { get; set; }
+        public virtual DbSet<v_userRoles> v_userRoles { get; set; }
+        public virtual DbSet<vPersonnel> vPersonnels { get; set; }
+        public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
+        public virtual DbSet<v_lms_ModulePages> v_lms_ModulePages { get; set; }
+    
+        public virtual ObjectResult<sp_lms_GetPagesByRole_Result> sp_lms_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
+        {
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var levelParameter = level.HasValue ?
+                new ObjectParameter("Level", level) :
+                new ObjectParameter("Level", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lms_GetPagesByRole_Result>("sp_lms_GetPagesByRole", roleIdParameter, levelParameter);
+        }
+    
+        public virtual ObjectResult<sp_lmsModulePagesByRole_Result> sp_lmsModulePagesByRole(Nullable<int> roleId)
+        {
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lmsModulePagesByRole_Result>("sp_lmsModulePagesByRole", roleIdParameter);
+        }
     
         public virtual int sp_lms_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, Nullable<int> hRRoleId, ObjectParameter msg)
         {
@@ -92,28 +117,6 @@ namespace ePM.Dal
                 new ObjectParameter("Position", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updatePositionByPersonnelId", personelIdParameter, positionParameter);
-        }
-    
-        public virtual ObjectResult<sp_lms_GetPagesByRole_Result> sp_lms_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
-        {
-            var roleIdParameter = roleId.HasValue ?
-                new ObjectParameter("RoleId", roleId) :
-                new ObjectParameter("RoleId", typeof(int));
-    
-            var levelParameter = level.HasValue ?
-                new ObjectParameter("Level", level) :
-                new ObjectParameter("Level", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lms_GetPagesByRole_Result>("sp_lms_GetPagesByRole", roleIdParameter, levelParameter);
-        }
-    
-        public virtual ObjectResult<sp_lmsModulePagesByRole_Result> sp_lmsModulePagesByRole(Nullable<int> roleId)
-        {
-            var roleIdParameter = roleId.HasValue ?
-                new ObjectParameter("RoleId", roleId) :
-                new ObjectParameter("RoleId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lmsModulePagesByRole_Result>("sp_lmsModulePagesByRole", roleIdParameter);
         }
     }
 }

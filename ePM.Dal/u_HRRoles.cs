@@ -18,6 +18,7 @@ namespace ePM.Dal
         public u_HRRoles()
         {
             this.u_HRPersonnel = new HashSet<u_HRPersonnel>();
+            this.u_HRRolesList = new HashSet<u_HRRolesList>();
         }
     
         public int RoleID { get; set; }
@@ -32,8 +33,9 @@ namespace ePM.Dal
         public string Grade { get; set; }
         public Nullable<int> GroupId { get; set; }
     
-        public virtual u_HRGroup u_HRGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<u_HRPersonnel> u_HRPersonnel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<u_HRRolesList> u_HRRolesList { get; set; }
     }
 }

@@ -73,35 +73,38 @@
   <ItemGroup>
     <Compile Include="Enums\EnumerationManager.cs" />
     <Compile Include="Enums\PublicEnums.cs" />
-    <Compile Include="ePMModel.Context.cs">
+    <Compile Include="ePMSystem.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ePMModel.Context.tt</DependentUpon>
+      <DependentUpon>ePMSystem.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ePMModel.cs">
+    <Compile Include="ePMSystem.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
-    <Compile Include="ePMModel.Designer.cs">
+    <Compile Include="ePMSystem.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ePMModel.edmx</DependentUpon>
+      <DependentUpon>ePMSystem.edmx</DependentUpon>
     </Compile>
     <Compile Include="LMS_ExceptionLog.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LMS_Modules.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="LMS_Pages.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="LMS_Roles.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="LMS_RolesRights.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="LMS_User.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Logic\ExceptionsManager.cs" />
     <Compile Include="Logic\PersonnelManager.cs" />
@@ -111,10 +114,10 @@
     <Compile Include="Logic\UsersBulkManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sp_lmsModulePagesByRole_Result.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_lms_GetPagesByRole_Result.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\BootstrapAlert.cs" />
     <Compile Include="Utilities\Calc.cs" />
@@ -124,19 +127,28 @@
     <Compile Include="Utilities\SweetAlert.cs" />
     <Compile Include="Utilities\ValidateSession.cs" />
     <Compile Include="u_HRGroup.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="u_HRPersonnel.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="u_HRRoles.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_HRRolesList.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="u_PERSBase.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_PERSContacts.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="u_TRGroups.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="u_TRRoom.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ExcelValidationResult.cs" />
     <Compile Include="ViewModels\GroupList.cs" />
@@ -147,52 +159,46 @@
     <Compile Include="ViewModels\RolesDto.cs" />
     <Compile Include="ViewModels\TraineeDTO.cs" />
     <Compile Include="vPersonnel.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="v_GroupsPersonnel.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="v_lms_ModulePages.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="v_lms_RolesCount.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="v_RoleGroups.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
     <Compile Include="v_userRoles.cs">
-      <DependentUpon>ePMModel.tt</DependentUpon>
+      <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ePMModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ePMModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ePMModel.edmx.diagram">
-      <DependentUpon>ePMModel.edmx</DependentUpon>
+    <EntityDeploy Include="ePMSystem.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ePMSystem.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ePMSystem.edmx.diagram">
+      <DependentUpon>ePMSystem.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ePMModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ePMModel.Context.cs</LastGenOutput>
-      <DependentUpon>ePMModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="ePMModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ePMModel.edmx</DependentUpon>
-      <LastGenOutput>ePMModel.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ePMSystem.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ePMSystem.edmx</DependentUpon>
+      <LastGenOutput>ePMSystem.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ePMSystem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ePMSystem.edmx</DependentUpon>
+      <LastGenOutput>ePMSystem.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

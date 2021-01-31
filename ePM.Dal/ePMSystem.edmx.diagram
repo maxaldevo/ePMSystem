@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c7f6d2fea76c49eeb91995a583cd2f59" Name="Diagram1">
+        <EntityTypeShape EntityType="ePMModel.LMS_ExceptionLog" Width="1.5" PointX="10.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.LMS_Modules" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.LMS_Pages" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.LMS_Roles" Width="1.5" PointX="5.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.LMS_RolesRights" Width="1.5" PointX="8" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.LMS_User" Width="1.5" PointX="8" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_HRGroup" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_HRPersonnel" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_HRRoles" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_HRRolesList" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_PERSBase" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_PERSContacts" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_TRGroups" Width="1.5" PointX="12.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ePMModel.u_TRRoom" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="ePMModel.FK_RoleRights_LMSPages" ManuallyRouted="false" />
+        <AssociationConnector Association="ePMModel.FK_LMS_User_LMS_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ePMModel.FK_RoleRights_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ePMModel.FK_CurrentRoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="ePMModel.FK_RoleId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ePMModel.v_lms_RolesCount" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ePMModel.v_userRoles" Width="1.5" PointX="13.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ePMModel.vPersonnel" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ePMModel.v_GroupsPersonnel" Width="1.5" PointX="13.375" PointY="15.75" />
+        <EntityTypeShape EntityType="ePMModel.v_lms_ModulePages" Width="1.5" PointX="15.375" PointY="15.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

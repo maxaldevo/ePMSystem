@@ -12,14 +12,14 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class u_HRGroup
+    public partial class u_TRGroups
     {
         public int ID { get; set; }
-        public string Group { get; set; }
-        public Nullable<int> HeadingOrder { get; set; }
-        public Nullable<int> ParentID { get; set; }
-        public Nullable<bool> Root { get; set; }
-        public string SubGroup { get; set; }
-        public string SectionName { get; set; }
+        public string GroupName { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
+        public string UpdatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

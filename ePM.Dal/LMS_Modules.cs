@@ -12,11 +12,12 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class v_RoleGroups
+    public partial class LMS_Modules
     {
-        public int RoleID { get; set; }
-        public string Group { get; set; }
+        public long Id { get; set; }
+        public string Key { get; set; }
         public string Name { get; set; }
-        public Nullable<int> CountPersonnel { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> Sort { get; set; }
     }
 }

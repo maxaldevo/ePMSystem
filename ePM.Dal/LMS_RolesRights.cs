@@ -22,7 +22,7 @@ namespace ePM.Dal
         public Nullable<long> LastUpdatedBy { get; set; }
         public Nullable<System.DateTime> LastUpdateDate { get; set; }
     
-        public virtual LMS_Roles LMS_Roles { get; set; }
         public virtual LMS_Pages LMS_Pages { get; set; }
+        public virtual LMS_Roles LMS_Roles { get; set; }
     }
 }
