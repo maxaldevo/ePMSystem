@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ePM.Dal.Logic
+{
+    public class ContractManager
+    {
+        public static List<Contracttype> getTypesList()
+        {
+            using (var db = new ePMEntities())
+            {
+                return db.Contracttypes.Where(x => x.Active == true).ToList();
+            }
+        }
+    }
+}

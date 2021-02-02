@@ -71,6 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracttype.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\EnumerationManager.cs" />
     <Compile Include="Enums\PublicEnums.cs" />
     <Compile Include="ePMSystem.Context.cs">
@@ -106,6 +109,7 @@
     <Compile Include="LMS_User.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic\ContractManager.cs" />
     <Compile Include="Logic\ExceptionsManager.cs" />
     <Compile Include="Logic\PersonnelManager.cs" />
     <Compile Include="Logic\SecurityManager.cs" />

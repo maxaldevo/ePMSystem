@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ePMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contracttype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Contname" Type="nvarchar" MaxLength="200" />
+          <Property Name="ContType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lang" Type="nvarchar" MaxLength="50" />
+          <Property Name="QualityCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RevDate" Type="date" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Revno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
         <EntityType Name="LMS_ExceptionLog">
           <Key>
             <PropertyRef Name="Logid" />
@@ -511,6 +525,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Parameter Name="Position" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ePMModelStoreContainer">
+          <EntitySet Name="Contracttype" EntityType="Self.Contracttype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_ExceptionLog" EntityType="Self.LMS_ExceptionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_Modules" EntityType="Self.LMS_Modules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_Pages" EntityType="Self.LMS_Pages" Schema="dbo" store:Type="Tables" />
@@ -1085,6 +1100,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             <Parameter Name="PersonelId" Mode="In" Type="Int32" />
             <Parameter Name="Position" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Contracttypes" EntityType="ePMModel.Contracttype" />
         </EntityContainer>
         <EntityType Name="v_lms_RolesCount">
           <Key>
@@ -1251,6 +1267,20 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="ModuleId" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
           <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contracttype">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Contname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ContType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QualityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RevDate" Type="DateTime" Precision="0" />
+          <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Revno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1718,6 +1748,21 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_lms_addNewUser" FunctionName="ePMModel.Store.sp_lms_addNewUser" />
           <FunctionImportMapping FunctionImportName="sp_updatePositionByPersonnelId" FunctionName="ePMModel.Store.sp_updatePositionByPersonnelId" />
+          <EntitySetMapping Name="Contracttypes">
+            <EntityTypeMapping TypeName="ePMModel.Contracttype">
+              <MappingFragment StoreEntitySet="Contracttype">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Revno" ColumnName="Revno" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RevDate" ColumnName="RevDate" />
+                <ScalarProperty Name="QualityCode" ColumnName="QualityCode" />
+                <ScalarProperty Name="Lang" ColumnName="Lang" />
+                <ScalarProperty Name="ContType" ColumnName="ContType" />
+                <ScalarProperty Name="Contname" ColumnName="Contname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

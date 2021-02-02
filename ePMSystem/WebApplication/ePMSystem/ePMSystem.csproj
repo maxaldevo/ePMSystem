@@ -7253,6 +7253,7 @@
     <Content Include="Profile.aspx" />
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
+    <Content Include="AddNewContract.aspx" />
     <Content Include="UserRoles.aspx" />
     <Content Include="UsersList.aspx" />
     <Content Include="Web.config" />
@@ -7370,6 +7371,13 @@
     </Compile>
     <Compile Include="SecurityGrouprights.aspx.designer.cs">
       <DependentUpon>SecurityGrouprights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewContract.aspx.cs">
+      <DependentUpon>AddNewContract.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewContract.aspx.designer.cs">
+      <DependentUpon>AddNewContract.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserRoles.aspx.cs">
       <DependentUpon>UserRoles.aspx</DependentUpon>

@@ -46,6 +46,7 @@ namespace ePM.Dal
         public virtual DbSet<vPersonnel> vPersonnels { get; set; }
         public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
         public virtual DbSet<v_lms_ModulePages> v_lms_ModulePages { get; set; }
+        public virtual DbSet<Contracttype> Contracttypes { get; set; }
     
         public virtual ObjectResult<sp_lms_GetPagesByRole_Result> sp_lms_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
         {

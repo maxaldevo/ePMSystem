@@ -1,5 +1,4 @@
 ﻿using ePM.Dal;
-using ePM_Dal;
 using ePM_Dal.Logic;
 using ePM_Dal.Utilities;
 using ePM_Dal.ViewModels;
