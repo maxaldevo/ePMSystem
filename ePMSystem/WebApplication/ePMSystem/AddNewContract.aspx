@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="AddNewContract.aspx.cs" Inherits="WebApplication1.AddNewContract" %>
 
+<%@ Register Src="~/Controls/UsrContrlTest.ascx" TagPrefix="uc1" TagName="UsrContrlTest" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .tr.group,
@@ -97,65 +98,56 @@
             </ProgressTemplate>
         </asp:UpdateProgress>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <div class="row">
-                    <div class="col-12 col-md-12">
+			<ContentTemplate>
+				<div class="row">
+					<div class="col-12 col-md-12">
 
-                        <div class="progress" style='height: 30px; margin-top: -15px;'>
-                            <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                                <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Manage Courses Schedule/Sessions</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <span>Please select Contract Type :</span>
-                            <asp:DropDownList ID="dropdownContractType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdownStatus_SelectedIndexChanged">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <span>Show Data:</span><br />
-                            <asp:Button ID="btnShowData" runat="server" Text="Show Session Details" CssClass="btn btn-info btn-md" OnClick="btnShowData_Click" />
-                        </div>
-                    </div>
-           
-                </div>
-                <div class="row justify-content-left">
-                    <div class="col-md-6">
-                        <asp:Label ID="lblResult" runat="server" Font-Bold="true" Font-Size="Larger" Text=""></asp:Label>
-                    </div>
-                </div>
-                       <div class="row">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                            <span>Add New Course Session:</span><br />
-                            <asp:LinkButton ID="linBAddSession" OnClick="linBAddSession_Click" CssClass="btn btn-success btn-md" runat="server"><i class="fa fa-plus"></i>Add New Course Session</asp:LinkButton>
-                        </div>   
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <asp:Panel ID="Panel1" runat="server" Visible="false">
-                            <div class="box">
-                                <div class="box-body col-12">
-                                    <div class="table-responsive table-bordered">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </asp:Panel>
-                    </div>
-                </div>
-            </ContentTemplate>
+						<div class="progress" style='height: 30px; margin-top: -15px;'>
+							<div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
+								<h3 style="text-align: center; font-size: larger; margin-top: 10px;">Manage Courses Schedule/Sessions</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<span>Please select Contract Type :</span>
+							<asp:DropDownList ID="dropdownContractType" runat="server" AutoPostBack="true">
+							</asp:DropDownList>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<span>Show Form:</span><br />
+							<asp:Button ID="btnfillform" runat="server" Text="Filling Form" CssClass="btn btn-info btn-md" OnClick="btnfillform_Click" />
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="col-md-6">
+						<asp:Label ID="lblResult" runat="server" Font-Bold="true" Font-Size="Larger" Text=""></asp:Label>
+					</div>
+				</div>
+                <br />
+				<div class="row">
+					<div class="col-12">
+						<asp:Panel ID="Panel1" runat="server" Visible="true">
+							<div class="box">
+								<div class="box-body col-12">
+									<%--Forms Area--%>
+                                    <uc1:UsrContrlTest runat="server" id="UsrContrlTest" Visible="false" />
+									<%--Forms Area--%>
+								</div>
+								</div>
+						</asp:Panel>
+					</div>
+				</div>
+			</ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="dropdownStatus" EventName="SelectedIndexChanged" />
+                <asp:AsyncPostBackTrigger ControlID="dropdownContractType" EventName="SelectedIndexChanged" />
                 
-                <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="btnfillform" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
     </section>
@@ -189,12 +181,8 @@
     <script>
 
         $(function () {
-            bindDataTable();
             bindselect();
-            fixDropWidth();
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindselect);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
 
         });
         function bindselect() {
@@ -202,25 +190,6 @@
                 var oTable = $('#' + '<%=dropdownContractType.ClientID%>').select2({
                     placeholder: "Select an option",
                     allowClear: true
-                });
-            });
-        };
-
-        function fixDropWidth() {
-            $("select").width("100%");
-        };
-
-        function bindDataTable() {
-            $(document).ready(function () {
-
-                var oTable = $('#table_id').dataTable({
-                    dom: 'Blfrtip',
-                    "bInfo": true,
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ],
-                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
-
                 });
             });
         };

@@ -42,13 +42,13 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.DropDownList dropdownContractType;
 
         /// <summary>
-        /// btnShowData control.
+        /// btnfillform control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowData;
+        protected global::System.Web.UI.WebControls.Button btnfillform;
 
         /// <summary>
         /// lblResult control.
@@ -60,15 +60,6 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Label lblResult;
 
         /// <summary>
-        /// linBAddSession control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linBAddSession;
-
-        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -76,5 +67,14 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
+        /// UsrContrlTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.UsrContrlTest UsrContrlTest;
     }
 }

@@ -12,7 +12,8 @@ namespace ePM.Dal.Logic
         {
             using (var db = new ePMEntities())
             {
-                return db.Contracttypes.Where(x => x.Active == true).ToList();
+                List<Contracttype> jumperVar  = db.Contracttypes.Where(x => x.Active == true).ToList();
+                return jumperVar;
             }
         }
     }

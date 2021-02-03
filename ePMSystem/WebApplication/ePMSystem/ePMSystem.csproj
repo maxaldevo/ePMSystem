@@ -6235,6 +6235,30 @@
     <Content Include="Controls\FullHeaderNew.ascx" />
     <Content Include="Controls\FullUIHeader.ascx" />
     <Content Include="Controls\LimitedHeader.ascx" />
+    <Content Include="Controls\01-09.ascx" />
+    <Content Include="Controls\01-10.ascx" />
+    <Content Include="Controls\01-11.ascx" />
+    <Content Include="Controls\01-L15.ascx" />
+    <Content Include="Controls\01L15.ascx" />
+    <Content Include="Controls\01-L12.ascx" />
+    <Content Include="Controls\01-L09.ascx" />
+    <Content Include="Controls\01-12.ascx" />
+    <Content Include="Controls\01-L10.ascx" />
+    <Content Include="Controls\01-E15.ascx" />
+    <Content Include="Controls\L02A.ascx" />
+    <Content Include="Controls\L02B.ascx" />
+    <Content Include="Controls\01-L01C.ascx" />
+    <Content Include="Controls\01-L03B.ascx" />
+    <Content Include="Controls\L01A.ascx" />
+    <Content Include="Controls\01-L03A.ascx" />
+    <Content Include="Controls\L01D.ascx" />
+    <Content Include="Controls\QDP510-QF11.ascx" />
+    <Content Include="Controls\03-15.ascx" />
+    <Content Include="Controls\03-16.ascx" />
+    <Content Include="Controls\04-05.ascx" />
+    <Content Include="Controls\L01B.ascx" />
+    <Content Include="Controls\QDP510-QF17.ascx" />
+    <Content Include="Controls\UsrContrlTest.ascx" />
     <Content Include="Controls\WebUserControl1.ascx" />
     <Content Include="css\bootstrap-extend.css" />
     <Content Include="css\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
@@ -7251,6 +7275,117 @@
     <Content Include="Login\vendor\select2\select2.min.css" />
     <Content Include="Login\vendor\select2\select2.min.js" />
     <Content Include="Profile.aspx" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\calendarscript2.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\tether.js" />
+    <Content Include="Scripts\tether.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
     <Content Include="AddNewContract.aspx" />
@@ -7318,6 +7453,174 @@
     </Compile>
     <Compile Include="Controls\LimitedHeader.ascx.designer.cs">
       <DependentUpon>LimitedHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-09.ascx.cs">
+      <DependentUpon>01-09.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-09.ascx.designer.cs">
+      <DependentUpon>01-09.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-10.ascx.cs">
+      <DependentUpon>01-10.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-10.ascx.designer.cs">
+      <DependentUpon>01-10.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-11.ascx.cs">
+      <DependentUpon>01-11.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-11.ascx.designer.cs">
+      <DependentUpon>01-11.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L15.ascx.cs">
+      <DependentUpon>01-L15.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L15.ascx.designer.cs">
+      <DependentUpon>01-L15.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01L15.ascx.cs">
+      <DependentUpon>01L15.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01L15.ascx.designer.cs">
+      <DependentUpon>01L15.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L12.ascx.cs">
+      <DependentUpon>01-L12.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L12.ascx.designer.cs">
+      <DependentUpon>01-L12.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L09.ascx.cs">
+      <DependentUpon>01-L09.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L09.ascx.designer.cs">
+      <DependentUpon>01-L09.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-12.ascx.cs">
+      <DependentUpon>01-12.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-12.ascx.designer.cs">
+      <DependentUpon>01-12.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L10.ascx.cs">
+      <DependentUpon>01-L10.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L10.ascx.designer.cs">
+      <DependentUpon>01-L10.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-E15.ascx.cs">
+      <DependentUpon>01-E15.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-E15.ascx.designer.cs">
+      <DependentUpon>01-E15.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\L02A.ascx.cs">
+      <DependentUpon>L02A.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\L02A.ascx.designer.cs">
+      <DependentUpon>L02A.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\L02B.ascx.cs">
+      <DependentUpon>L02B.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\L02B.ascx.designer.cs">
+      <DependentUpon>L02B.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L01C.ascx.cs">
+      <DependentUpon>01-L01C.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L01C.ascx.designer.cs">
+      <DependentUpon>01-L01C.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L03B.ascx.cs">
+      <DependentUpon>01-L03B.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L03B.ascx.designer.cs">
+      <DependentUpon>01-L03B.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\L01A.ascx.cs">
+      <DependentUpon>L01A.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\L01A.ascx.designer.cs">
+      <DependentUpon>L01A.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\01-L03A.ascx.cs">
+      <DependentUpon>01-L03A.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\01-L03A.ascx.designer.cs">
+      <DependentUpon>01-L03A.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\L01D.ascx.cs">
+      <DependentUpon>L01D.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\L01D.ascx.designer.cs">
+      <DependentUpon>L01D.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QDP510-QF11.ascx.cs">
+      <DependentUpon>QDP510-QF11.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QDP510-QF11.ascx.designer.cs">
+      <DependentUpon>QDP510-QF11.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\03-15.ascx.cs">
+      <DependentUpon>03-15.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\03-15.ascx.designer.cs">
+      <DependentUpon>03-15.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\03-16.ascx.cs">
+      <DependentUpon>03-16.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\03-16.ascx.designer.cs">
+      <DependentUpon>03-16.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\04-05.ascx.cs">
+      <DependentUpon>04-05.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\04-05.ascx.designer.cs">
+      <DependentUpon>04-05.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\L01B.ascx.cs">
+      <DependentUpon>L01B.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\L01B.ascx.designer.cs">
+      <DependentUpon>L01B.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QDP510-QF17.ascx.cs">
+      <DependentUpon>QDP510-QF17.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\QDP510-QF17.ascx.designer.cs">
+      <DependentUpon>QDP510-QF17.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UsrContrlTest.ascx.cs">
+      <DependentUpon>UsrContrlTest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UsrContrlTest.ascx.designer.cs">
+      <DependentUpon>UsrContrlTest.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\WebUserControl1.ascx.cs">
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
@@ -8582,6 +8885,27 @@
     <Content Include="Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -8597,6 +8921,7 @@
     <TypeScriptCompile Include="assets\vendor_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="assets\vendor_components\perfect-scrollbar-master\types\perfect-scrollbar.d.ts" />
     <TypeScriptCompile Include="assets\vendor_components\popper\packages\popper\index.d.ts" />
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

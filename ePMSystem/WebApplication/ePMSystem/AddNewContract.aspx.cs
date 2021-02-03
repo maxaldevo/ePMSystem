@@ -49,13 +49,13 @@ namespace WebApplication1
                     }
                 }
                 #endregion
-                Panel1.Visible = false;
+                Panel1.Visible = true;
                 //  lblResult.Visible = false;
                 this.BindDropContractType();
 
             }
         }
-        protected void btnShowData_Click(object sender, EventArgs e)
+        protected void btnfillform_Click(object sender, EventArgs e)
         {
             if (dropdownContractType.Items.Count > 0)
             {
@@ -63,9 +63,52 @@ namespace WebApplication1
 
                 switch (_selectedContractType)
                 {
-                    case 0:
-                        break;
                     case 1:
+                        break;
+                        UsrContrlTest.Visible = true;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    case 13:
+                        break;
+                    case 14:
+                        break;
+                    case 15:
+                        break;
+                    case 16:
+                        break;
+                    case 17:
+                        break;
+                    case 18:
+                        break;
+                    case 19:
+                        break;
+                    case 20:
+                        break;
+                    case 21:
+                        break;
+                    case 22:
+                        break;
+                    case 23:
                         break;
                 }
             }
@@ -76,14 +119,6 @@ namespace WebApplication1
             }
         }
 
-
-        protected void dropdownStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //_selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
-            //this.BindDropTrainers(_selectedContractType);
-            //Panel1.Visible = false;
-            //lblResult.Visible = false;
-        }
         private void BindDropContractType()
         {
             dropdownContractType.DataSource = null;
@@ -91,6 +126,8 @@ namespace WebApplication1
             List<Contracttype> groups = ContractManager.getTypesList();
             dropdownContractType.DataSource = groups;
 
+            dropdownContractType.DataValueField = "ID";
+            dropdownContractType.DataTextField = "Contname";
             dropdownContractType.DataBind();
             dropdownContractType.Items[0].Selected = true;
             _selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
