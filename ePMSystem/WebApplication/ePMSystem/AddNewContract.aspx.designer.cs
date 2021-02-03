@@ -69,12 +69,210 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
-        /// UsrContrlTest control.
+        /// QF72201L01A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::ePMSystem.Controls.UsrContrlTest UsrContrlTest;
+        protected global::ePMSystem.Controls.QF72201L01A QF72201L01A;
+
+        /// <summary>
+        /// QF72201L01B control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L01B QF72201L01B;
+
+        /// <summary>
+        /// QF72201L02A control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L02A QF72201L02A;
+
+        /// <summary>
+        /// QF72201L02B control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L02B QF72201L02B;
+
+        /// <summary>
+        /// QF72201L01D control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L01D QF72201L01D;
+
+        /// <summary>
+        /// QF710315 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF710315 QF710315;
+
+        /// <summary>
+        /// QF710316 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF710316 QF710316;
+
+        /// <summary>
+        /// QF710405 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF710405 QF710405;
+
+        /// <summary>
+        /// QF7220109 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF7220109 QF7220109;
+
+        /// <summary>
+        /// QF7220110 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF7220110 QF7220110;
+
+        /// <summary>
+        /// QF7220111 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF7220111 QF7220111;
+
+        /// <summary>
+        /// QF7220112 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF7220112 QF7220112;
+
+        /// <summary>
+        /// QF72201L12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L12 QF72201L12;
+
+        /// <summary>
+        /// QF72201L01C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L01C QF72201L01C;
+
+        /// <summary>
+        /// QDP510QF11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QDP510QF11 QDP510QF11;
+
+        /// <summary>
+        /// QDP510QF17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QDP510QF17 QDP510QF17;
+
+        /// <summary>
+        /// QF72201L09 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L09 QF72201L09;
+
+        /// <summary>
+        /// QF72201E15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201E15 QF72201E15;
+
+        /// <summary>
+        /// QF72201L03A control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L03A QF72201L03A;
+
+        /// <summary>
+        /// QF72201L03B control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L03B QF72201L03B;
+
+        /// <summary>
+        /// QF72201L10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L10 QF72201L10;
+
+        /// <summary>
+        /// QF72201L15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L15 QF72201L15;
+
+        /// <summary>
+        /// QF72201L1511 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201L1511 QF72201L1511;
     }
 }

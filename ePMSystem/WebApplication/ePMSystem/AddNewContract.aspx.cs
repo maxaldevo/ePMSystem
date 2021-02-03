@@ -65,7 +65,7 @@ namespace WebApplication1
                 {
                     case 1:
                         break;
-                        UsrContrlTest.Visible = true;
+                        //UsrContrlTest.Visible = true;
                     case 2:
                         break;
                     case 3:
