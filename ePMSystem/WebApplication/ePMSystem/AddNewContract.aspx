@@ -126,7 +126,7 @@
 
 						<div class="progress" style='height: 30px; margin-top: -15px;'>
 							<div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-								<h3 style="text-align: center; font-size: larger; margin-top: 10px;">Manage Courses Schedule/Sessions</h3>
+								<h3 style="text-align: center; font-size: larger; margin-top: 10px;">Fill New Contract</h3>
 							</div>
 						</div>
 					</div>
@@ -135,14 +135,14 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<span>Please select Contract Type :</span>
-							<asp:DropDownList ID="dropdownContractType" runat="server" AutoPostBack="true">
+							<asp:DropDownList ID="dropdownContractType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdownContractType_SelectedIndexChanged">
 							</asp:DropDownList>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
-							<span>Show Form:</span><br />
-							<asp:Button ID="btnfillform" runat="server" Text="Filling Form" CssClass="btn btn-info btn-md" OnClick="btnfillform_Click" />
+							<%--<span>Show Form:</span><br />
+							<asp:Button ID="btnfillform" runat="server" Text="Filling Form" CssClass="btn btn-info btn-md" OnClick="btnfillform_Click" />--%>
 						</div>
 					</div>
 				</div>
@@ -154,17 +154,13 @@
                 <br />
 				<div class="row">
 					<div class="col-12">
-						<asp:Panel ID="Panel1" runat="server" Visible="true">
-							<div class="box">
-								<div class="box-body col-12">
-									<%--Forms Area--%>
                                     <uc1:QF72201L01A runat="server" id="QF72201L01A" Visible="false" />
                                     <uc1:QF72201L01B runat="server" id="QF72201L01B" Visible="false" />
                                     <uc1:QF72201L02A runat="server" id="QF72201L02A" Visible="false" />
                                     <uc1:QF72201L02B runat="server" id="QF72201L02B" Visible="false" />
                                     <uc1:QF72201L01D runat="server" id="QF72201L01D" Visible="false" />
                                     <uc1:QF710315 runat="server" id="QF710315" Visible="false" />
-                                    <uc1:QF710316 runat="server" id="QF710316" Visible="false" />
+                                    <uc1:QF710316 runat="server" id="QF710316" Visible="true" />
                                     <uc1:QF710405 runat="server" id="QF710405" Visible="false" />
                                     <uc1:QF7220109 runat="server" id="QF7220109" Visible="false" />
                                     <uc1:QF7220110 runat="server" id="QF7220110" Visible="false" />
@@ -181,17 +177,14 @@
                                     <uc1:QF72201L10 runat="server" id="QF72201L10" Visible="false" />
                                     <uc1:QF72201L15 runat="server" id="QF72201L15" Visible="false" />
                                     <uc1:QF72201L1511 runat="server" id="QF72201L1511" Visible="false" />
-									<%--Forms Area--%>
-								</div>
-								</div>
-						</asp:Panel>
+
 					</div>
 				</div>
 			</ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="dropdownContractType" EventName="SelectedIndexChanged" />
                 
-                <asp:AsyncPostBackTrigger ControlID="btnfillform" EventName="Click" />
+                <%--<asp:AsyncPostBackTrigger ControlID="btnfillform" EventName="Click" />--%>
             </Triggers>
         </asp:UpdatePanel>
     </section>

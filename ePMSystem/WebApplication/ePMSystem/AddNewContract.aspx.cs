@@ -18,7 +18,7 @@ namespace WebApplication1
         {
             if (string.IsNullOrEmpty(Page.Title))
             {
-                Page.Title = "Courses Sessions";
+                Page.Title = "Contract";
             }
             if (!Page.IsPostBack)
             {
@@ -49,76 +49,43 @@ namespace WebApplication1
                     }
                 }
                 #endregion
-                Panel1.Visible = true;
+                //Panel1.Visible = true;
                 //  lblResult.Visible = false;
+                //shutDownAllForms();
                 this.BindDropContractType();
 
             }
         }
         protected void btnfillform_Click(object sender, EventArgs e)
         {
-            if (dropdownContractType.Items.Count > 0)
-            {
-                _selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
 
-                switch (_selectedContractType)
-                {
-                    case 1:
-                        break;
-                        //UsrContrlTest.Visible = true;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
-                    case 12:
-                        break;
-                    case 13:
-                        break;
-                    case 14:
-                        break;
-                    case 15:
-                        break;
-                    case 16:
-                        break;
-                    case 17:
-                        break;
-                    case 18:
-                        break;
-                    case 19:
-                        break;
-                    case 20:
-                        break;
-                    case 21:
-                        break;
-                    case 22:
-                        break;
-                    case 23:
-                        break;
-                }
-            }
-            else
-            {
-                Panel1.Visible = false;
-                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Warning, "Unable to load data", "problem loading data ", SweetAlert.ToasterPostion.TopCenter, false);
-            }
         }
-
+        void shutDownAllForms()
+        {
+            QDP510QF11.Visible = false;
+            QDP510QF17.Visible = false;
+            QF710315.Visible = false;
+            QF710316.Visible = false;
+            QF710405.Visible = false;
+            QF7220109.Visible = false;
+            QF7220110.Visible = false;
+            QF7220111.Visible = false;
+            QF7220112.Visible = false;
+            QF72201E15.Visible = false;
+            QF72201L01A.Visible = false;
+            QF72201L01B.Visible = false;
+            QF72201L01C.Visible = false;
+            QF72201L01D.Visible = false;
+            QF72201L02A.Visible = false;
+            QF72201L02B.Visible = false;
+            QF72201L03A.Visible = false;
+            QF72201L03B.Visible = false;
+            QF72201L09.Visible = false;
+            QF72201L10.Visible = false;
+            QF72201L12.Visible = false;
+            QF72201L15.Visible = false;
+            QF72201L1511.Visible = false;
+        }
         private void BindDropContractType()
         {
             dropdownContractType.DataSource = null;
@@ -145,6 +112,93 @@ namespace WebApplication1
         protected void linBAddSession_Click(object sender, EventArgs e)
         {
             Response.Redirect($"~/TrainingSessionDetails.aspx", true);
+        }
+
+        protected void dropdownContractType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //shutDownAllForms();
+            if (dropdownContractType.Items.Count > 0)
+            {
+                _selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
+
+                //switch (_selectedContractType)
+                //{
+                //    case 1:
+                //        QF72201L01A.Visible = true;
+                //        break;
+                //    case 2:
+                //        QF72201L01B.Visible = true;
+                //        break;
+                //    case 3:
+                //        QF72201L02A.Visible = true;
+                //        break;
+                //    case 4:
+                //        QF72201L02B.Visible = true;
+                //        break;
+                //    case 5:
+                //        QF72201L01D.Visible = true;
+                //        break;
+                //    case 6:
+                //        QF710315.Visible = true;
+                //        break;
+                //    case 7:
+                //        QF710316.Visible = true;
+                //        break;
+                //    case 8:
+                //        QF710405.Visible = true;
+                //        break;
+                //    case 9:
+                //        QF7220109.Visible = true;
+                //        break;
+                //    case 10:
+                //        QF7220110.Visible = true;
+                //        break;
+                //    case 11:
+                //        QF7220111.Visible = true;
+                //        break;
+                //    case 12:
+                //        QF7220112.Visible = true;
+                //        break;
+                //    case 13:
+                //        QF72201L12.Visible = true;
+                //        break;
+                //    case 14:
+                //        QF72201L01C.Visible = true;
+                //        break;
+                //    case 15:
+                //        QDP510QF11.Visible = true;
+                //        break;
+                //    case 16:
+                //        QDP510QF17.Visible = true;
+                //        break;
+                //    case 17:
+                //        QF72201L09.Visible = true;
+                //        break;
+                //    case 18:
+                //        QF72201E15.Visible = true;
+                //        break;
+                //    case 19:
+                //        QF72201L03A.Visible = true;
+                //        break;
+                //    case 20:
+                //        QF72201L03B.Visible = true;
+                //        break;
+                //    case 21:
+                //        QF72201L10.Visible = true;
+                //        break;
+                //    case 22:
+                //        QF72201L15.Visible = true;
+                //        break;
+                //    case 23:
+                //        QF72201L1511.Visible = true;
+                //        break;
+                //}
+            }
+            else
+            {
+                //Panel1.Visible = false;
+                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Warning, "Unable to load data", "problem loading data ", SweetAlert.ToasterPostion.TopCenter, false);
+            }
         }
     }
 }
