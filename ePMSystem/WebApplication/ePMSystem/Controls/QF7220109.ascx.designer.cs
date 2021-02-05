@@ -465,6 +465,15 @@ namespace ePMSystem.Controls
         protected global::System.Web.UI.WebControls.TextBox txt_BalancePercentage;
 
         /// <summary>
+        /// txt_BalancePercentagetext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_BalancePercentagetext;
+
+        /// <summary>
         /// RequiredFieldValidator15 control.
         /// </summary>
         /// <remarks>

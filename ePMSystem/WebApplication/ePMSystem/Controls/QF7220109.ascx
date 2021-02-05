@@ -161,6 +161,7 @@
 							<asp:Label ID="lbl_BalancePercentage" runat="server" Text="BalancePercentage"></asp:Label>
 							:</span>
 						<asp:TextBox ID="txt_BalancePercentage" runat="server" class="form-control" placeholder="BalancePercentage"></asp:TextBox>
+						<asp:TextBox ID="txt_BalancePercentagetext" runat="server" class="form-control" placeholder="BalancePercentagetext"></asp:TextBox>
 						<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_BalancePercentage"></asp:RequiredFieldValidator>
 					</div>
 				</div>
