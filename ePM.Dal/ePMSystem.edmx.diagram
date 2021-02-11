@@ -27,9 +27,32 @@
         <EntityTypeShape EntityType="ePMModel.v_lms_RolesCount" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.v_userRoles" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.vPersonnel" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.v_GroupsPersonnel" Width="1.5" PointX="13.375" PointY="15.75" />
-        <EntityTypeShape EntityType="ePMModel.v_lms_ModulePages" Width="1.5" PointX="15.375" PointY="15.75" />
+        <EntityTypeShape EntityType="ePMModel.v_GroupsPersonnel" Width="1.5" PointX="13.375" PointY="15.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.v_lms_ModulePages" Width="1.5" PointX="15.375" PointY="15.75" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.Contracttype" Width="1.5" PointX="3.375" PointY="7.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_09" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_10" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_11" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_12" Width="1.5" PointX="4.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_E15" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L01C" Width="1.5" PointX="16.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L03A" Width="1.5" PointX="17.75" PointY="11.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L03B" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L09" Width="1.5" PointX="19.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L10" Width="1.5" PointX="19.75" PointY="18.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L12" Width="1.5" PointX="8.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01L15" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_01_L15" Width="1.5" PointX="10.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_03_15" Width="1.5" PointX="12.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_03_16" Width="1.5" PointX="14.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_04_05" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_L01A" Width="1.5" PointX="2.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_L01B" Width="1.5" PointX="21.75" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_L01D" Width="1.5" PointX="21.75" PointY="16.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_L02A" Width="1.5" PointX="16.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_L02B" Width="1.5" PointX="22.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="ePMModel.Contract_QDP510_QF11" Width="1.5" PointX="4.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ePMModel.Contract_QDP510_QF17" Width="1.5" PointX="23.75" PointY="8.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

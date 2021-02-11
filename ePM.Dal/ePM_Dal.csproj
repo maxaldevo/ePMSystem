@@ -74,6 +74,75 @@
     <Compile Include="Contracttype.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="Contract_01L15.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_09.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_10.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_11.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_12.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_E15.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L01C.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L03A.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L03B.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L09.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L10.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L12.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_01_L15.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_03_15.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_03_16.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_04_05.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_L01A.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_L01B.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_L01D.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_L02A.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_L02B.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_QDP510_QF11.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contract_QDP510_QF17.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\EnumerationManager.cs" />
     <Compile Include="Enums\PublicEnums.cs" />
     <Compile Include="ePMSystem.Context.cs">
