@@ -128,10 +128,6 @@
 			</div>
 			<br />
 			<div class="row">
-				
-			</div>
-			<br />
-			<div class="row">
 				<div class="col-md-3">
 					<div class="controls">
 						<span>

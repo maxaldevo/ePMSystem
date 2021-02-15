@@ -190,7 +190,7 @@
 						<asp:Label ID="Label1" runat="server" Text="Save & Print"></asp:Label></h3>
 				</div>
 			</div>--%>
-                        <asp:Button ID="btnShowData" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                        <asp:Button ID="btnShowData" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" OnClick="btnShowData_Click"/>
 			
 			<%--Save & Print Buttons Area--%>
 		</div>

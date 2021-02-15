@@ -20,10 +20,10 @@ namespace ePM.Dal
         public Nullable<System.DateTime> Revdate { get; set; }
         public string QualityCode { get; set; }
         public Nullable<System.DateTime> ContractDate { get; set; }
-        public Nullable<System.DateTime> ContractDay { get; set; }
+        public string ContractDay { get; set; }
         public Nullable<int> UserID { get; set; }
-        public Nullable<System.DateTime> ContractValuenumber { get; set; }
-        public Nullable<System.DateTime> ContractValueText { get; set; }
+        public string ContractValuenumber { get; set; }
+        public string ContractValueText { get; set; }
         public string ProjectName { get; set; }
         public string LoadMaterialFactory { get; set; }
         public string LoadMaterialFactoryArea { get; set; }
@@ -40,9 +40,9 @@ namespace ePM.Dal
         public string Secondparty_Fax { get; set; }
         public string ProjectName_En { get; set; }
         public Nullable<System.DateTime> ContractDate_En { get; set; }
-        public Nullable<System.DateTime> ContractDay_En { get; set; }
-        public Nullable<System.DateTime> ContractValuenumber_En { get; set; }
-        public Nullable<System.DateTime> ContractValueText_En { get; set; }
+        public string ContractDay_En { get; set; }
+        public string ContractValuenumber_En { get; set; }
+        public string ContractValueText_En { get; set; }
         public string LoadMaterialFactory_En { get; set; }
         public string LoadMaterialFactoryArea_En { get; set; }
         public string LoadMaterialFactoryCountry_En { get; set; }
@@ -57,5 +57,8 @@ namespace ePM.Dal
         public string Secondparty_Email_En { get; set; }
         public string Secondparty_Fax_En { get; set; }
         public Nullable<int> ContractTypeID { get; set; }
+    
+        public virtual Contracttype Contracttype { get; set; }
+        public virtual LMS_User LMS_User { get; set; }
     }
 }

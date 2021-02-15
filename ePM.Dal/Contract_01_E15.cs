@@ -19,31 +19,34 @@ namespace ePM.Dal
         public string Rev { get; set; }
         public Nullable<System.DateTime> Revdate { get; set; }
         public string QualityCode { get; set; }
-        public Nullable<System.DateTime> Secondparty_Compname_En { get; set; }
+        public string Secondparty_Compname_En { get; set; }
         public Nullable<int> UserID { get; set; }
-        public Nullable<System.DateTime> ContractDay_En { get; set; }
+        public string ContractDay_En { get; set; }
         public Nullable<System.DateTime> ContractDate_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_Address_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_Tele_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_Fax_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_Email_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_AuthpersSign_En { get; set; }
-        public Nullable<System.DateTime> Secondparty_Representative_En { get; set; }
-        public Nullable<System.DateTime> MainClient_En { get; set; }
-        public Nullable<System.DateTime> Scopeofworks_En { get; set; }
-        public Nullable<System.DateTime> StateNameSecondPartyCompany { get; set; }
-        public Nullable<System.DateTime> SERVICEOFPREBIDAGREEMENT { get; set; }
-        public Nullable<System.DateTime> TenderNo { get; set; }
-        public Nullable<System.DateTime> TenderName { get; set; }
-        public Nullable<System.DateTime> TypeofAgreement { get; set; }
-        public Nullable<System.DateTime> NameofAgreement { get; set; }
-        public Nullable<System.DateTime> ServicesName { get; set; }
-        public Nullable<System.DateTime> DocumentReferenceNumber { get; set; }
-        public Nullable<System.DateTime> degreeofaccuracy { get; set; }
-        public Nullable<System.DateTime> specifiedTenderDocuments { get; set; }
-        public Nullable<System.DateTime> accuracyofquantities { get; set; }
-        public Nullable<System.DateTime> Subcontractorliabilities { get; set; }
-        public Nullable<System.DateTime> FeesDetails { get; set; }
+        public string Secondparty_Address_En { get; set; }
+        public string Secondparty_Tele_En { get; set; }
+        public string Secondparty_Fax_En { get; set; }
+        public string Secondparty_Email_En { get; set; }
+        public string Secondparty_AuthpersSign_En { get; set; }
+        public string Secondparty_Representative_En { get; set; }
+        public string MainClient_En { get; set; }
+        public string Scopeofworks_En { get; set; }
+        public string StateNameSecondPartyCompany { get; set; }
+        public string SERVICEOFPREBIDAGREEMENT { get; set; }
+        public string TenderNo { get; set; }
+        public string TenderName { get; set; }
+        public string TypeofAgreement { get; set; }
+        public string NameofAgreement { get; set; }
+        public string ServicesName { get; set; }
+        public string DocumentReferenceNumber { get; set; }
+        public string degreeofaccuracy { get; set; }
+        public string specifiedTenderDocuments { get; set; }
+        public string accuracyofquantities { get; set; }
+        public string Subcontractorliabilities { get; set; }
+        public string FeesDetails { get; set; }
         public Nullable<int> ContractTypeID { get; set; }
+    
+        public virtual Contracttype Contracttype { get; set; }
+        public virtual LMS_User LMS_User { get; set; }
     }
 }
