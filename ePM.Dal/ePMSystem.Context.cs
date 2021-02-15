@@ -47,6 +47,35 @@ namespace ePM.Dal
         public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
         public virtual DbSet<v_lms_ModulePages> v_lms_ModulePages { get; set; }
         public virtual DbSet<Contracttype> Contracttypes { get; set; }
+        public virtual DbSet<AppendixA> AppendixAs { get; set; }
+        public virtual DbSet<AppendixB> AppendixBs { get; set; }
+        public virtual DbSet<AppendixC> AppendixCs { get; set; }
+        public virtual DbSet<AppendixD> AppendixDs { get; set; }
+        public virtual DbSet<AppendixE> AppendixEs { get; set; }
+        public virtual DbSet<AppendixF> AppendixFs { get; set; }
+        public virtual DbSet<Contract_01_09> Contract_01_09 { get; set; }
+        public virtual DbSet<Contract_01_10> Contract_01_10 { get; set; }
+        public virtual DbSet<Contract_01_11> Contract_01_11 { get; set; }
+        public virtual DbSet<Contract_01_12> Contract_01_12 { get; set; }
+        public virtual DbSet<Contract_01_E15> Contract_01_E15 { get; set; }
+        public virtual DbSet<Contract_01_L01C> Contract_01_L01C { get; set; }
+        public virtual DbSet<Contract_01_L03A> Contract_01_L03A { get; set; }
+        public virtual DbSet<Contract_01_L03B> Contract_01_L03B { get; set; }
+        public virtual DbSet<Contract_01_L09> Contract_01_L09 { get; set; }
+        public virtual DbSet<Contract_01_L10> Contract_01_L10 { get; set; }
+        public virtual DbSet<Contract_01_L12> Contract_01_L12 { get; set; }
+        public virtual DbSet<Contract_01L15> Contract_01L15 { get; set; }
+        public virtual DbSet<Contract_01_L15> Contract_01_L15 { get; set; }
+        public virtual DbSet<Contract_03_15> Contract_03_15 { get; set; }
+        public virtual DbSet<Contract_03_16> Contract_03_16 { get; set; }
+        public virtual DbSet<Contract_04_05> Contract_04_05 { get; set; }
+        public virtual DbSet<Contract_L01A> Contract_L01A { get; set; }
+        public virtual DbSet<Contract_L01B> Contract_L01B { get; set; }
+        public virtual DbSet<Contract_L01D> Contract_L01D { get; set; }
+        public virtual DbSet<Contract_L02A> Contract_L02A { get; set; }
+        public virtual DbSet<Contract_L02B> Contract_L02B { get; set; }
+        public virtual DbSet<Contract_QDP510_QF11> Contract_QDP510_QF11 { get; set; }
+        public virtual DbSet<Contract_QDP510_QF17> Contract_QDP510_QF17 { get; set; }
     
         public virtual ObjectResult<sp_lms_GetPagesByRole_Result> sp_lms_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
         {
