@@ -21,8 +21,8 @@ namespace ePM.Dal
         public string QualityCode { get; set; }
         public Nullable<System.DateTime> ContractDate { get; set; }
         public Nullable<int> UserID { get; set; }
-        public string CivilID { get; set; }
-        public string ContractDay { get; set; }
+        public Nullable<int> CivilID { get; set; }
+        public Nullable<System.DateTime> ContractDay { get; set; }
         public string ContractValuenumber { get; set; }
         public string ContractValueText { get; set; }
         public string CurrencyCode { get; set; }
@@ -53,8 +53,5 @@ namespace ePM.Dal
         public string Secondparty_Email { get; set; }
         public string Secondparty_Fax { get; set; }
         public Nullable<int> ContractTypeID { get; set; }
-    
-        public virtual Contracttype Contracttype { get; set; }
-        public virtual LMS_User LMS_User { get; set; }
     }
 }

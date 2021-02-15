@@ -20,10 +20,10 @@ namespace ePM.Dal
         public Nullable<System.DateTime> Revdate { get; set; }
         public string QualityCode { get; set; }
         public Nullable<System.DateTime> ContractDate { get; set; }
-        public string ContractDay { get; set; }
+        public Nullable<System.DateTime> ContractDay { get; set; }
         public Nullable<int> UserID { get; set; }
-        public string ContractValuenumber { get; set; }
-        public string ContractValueText { get; set; }
+        public Nullable<System.DateTime> ContractValuenumber { get; set; }
+        public Nullable<System.DateTime> ContractValueText { get; set; }
         public string MainClient { get; set; }
         public string ProjectNo { get; set; }
         public string Scopeofworks { get; set; }
@@ -46,8 +46,5 @@ namespace ePM.Dal
         public string Asphaltworkspace { get; set; }
         public string ContractDuration { get; set; }
         public Nullable<int> ContractTypeID { get; set; }
-    
-        public virtual Contracttype Contracttype { get; set; }
-        public virtual LMS_User LMS_User { get; set; }
     }
 }

@@ -16,6 +16,5 @@ namespace ePM.Dal.Logic
                 return jumperVar;
             }
         }
-
     }
 }

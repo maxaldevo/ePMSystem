@@ -47,12 +47,6 @@ namespace ePM.Dal
         public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
         public virtual DbSet<v_lms_ModulePages> v_lms_ModulePages { get; set; }
         public virtual DbSet<Contracttype> Contracttypes { get; set; }
-        public virtual DbSet<AppendixA> AppendixAs { get; set; }
-        public virtual DbSet<AppendixB> AppendixBs { get; set; }
-        public virtual DbSet<AppendixC> AppendixCs { get; set; }
-        public virtual DbSet<AppendixD> AppendixDs { get; set; }
-        public virtual DbSet<AppendixE> AppendixEs { get; set; }
-        public virtual DbSet<AppendixF> AppendixFs { get; set; }
         public virtual DbSet<Contract_01_09> Contract_01_09 { get; set; }
         public virtual DbSet<Contract_01_10> Contract_01_10 { get; set; }
         public virtual DbSet<Contract_01_11> Contract_01_11 { get; set; }

@@ -4,20 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ePM.Dal;
 
 namespace ePMSystem.Controls
 {
     public partial class QDP510QF11 : System.Web.UI.UserControl
     {
-        #region"Definitions"
-        Contract_QDP510_QF11 contract_QF11 = new Contract_QDP510_QF11();
-
-        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+<<<<<<< HEAD
 
         protected void btnShowData_Click(object sender, EventArgs e)
         {
@@ -35,7 +31,7 @@ namespace ePMSystem.Controls
                 contract_QF11.ContractDay = pp.DayOfWeek.ToString();
                 contract_QF11.ContractValuenumber = txt_contractvaluenum.Text;
                 contract_QF11.AuthpersSignCivilID = txt_civilId.Text;
-                contract_QF11.ContractTypeID = ContractTypeID;
+                //contract_QF11.ContractTypeID = ContractTypeID;
                 contract_QF11.AuthpersSignCivilID = txt_civilId.Text;
                 contract_QF11.materialtype = txt_materialtype.Text;
                 contract_QF11.materialserial = txt_materialserial.Text;
@@ -53,5 +49,7 @@ namespace ePMSystem.Controls
             DateTime ss = new DateTime(dt.Year, dt.Month, dt.Day);
             return ss;
         }
+=======
+>>>>>>> parent of dbbe6d5 (edited database tables)
     }
 }
