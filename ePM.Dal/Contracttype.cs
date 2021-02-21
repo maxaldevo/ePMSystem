@@ -40,6 +40,7 @@ namespace ePM.Dal
             this.Contract_L02B = new HashSet<Contract_L02B>();
             this.Contract_QDP510_QF11 = new HashSet<Contract_QDP510_QF11>();
             this.Contract_QDP510_QF17 = new HashSet<Contract_QDP510_QF17>();
+            this.Contract_RA257_L01A = new HashSet<Contract_RA257_L01A>();
         }
     
         public int ID { get; set; }
@@ -98,5 +99,7 @@ namespace ePM.Dal
         public virtual ICollection<Contract_QDP510_QF11> Contract_QDP510_QF11 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract_QDP510_QF17> Contract_QDP510_QF17 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contract_RA257_L01A> Contract_RA257_L01A { get; set; }
     }
 }

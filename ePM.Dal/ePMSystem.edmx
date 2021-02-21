@@ -64,7 +64,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -104,7 +104,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -137,7 +137,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -170,7 +170,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -198,7 +198,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -234,7 +234,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -276,7 +276,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -320,7 +320,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -364,7 +364,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -397,7 +397,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -431,7 +431,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -479,7 +479,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -514,7 +514,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -549,7 +549,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -583,7 +583,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -620,7 +620,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -648,7 +648,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -683,7 +683,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -718,7 +718,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -780,7 +780,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -817,7 +817,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -854,7 +854,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -880,7 +880,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Language" Type="nvarchar" MaxLength="500" />
           <Property Name="Rev" Type="nvarchar" MaxLength="500" />
           <Property Name="Revdate" Type="datetime" />
@@ -901,6 +901,41 @@
           <Property Name="RequiredMachinetotransfer" Type="nvarchar" MaxLength="500" />
           <Property Name="Requiredtotransferoutofkuwait" Type="nvarchar" MaxLength="500" />
           <Property Name="ContractTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Contract_RA257_L01A">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language" Type="nvarchar" MaxLength="500" />
+          <Property Name="Rev" Type="nvarchar" MaxLength="500" />
+          <Property Name="Revdate" Type="datetime" />
+          <Property Name="QualityCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContractDate" Type="datetime" />
+          <Property Name="ContractDay" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Secondparty_Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_AuthpersSign" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_Compname" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_Representative" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_Tele" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_Fax" Type="nvarchar" MaxLength="500" />
+          <Property Name="Secondparty_Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Scopeofworks" Type="nvarchar" MaxLength="500" />
+          <Property Name="DelayPenaltyValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="DelayPenalty" Type="nvarchar" MaxLength="500" />
+          <Property Name="AbsentPenalty" Type="nvarchar" MaxLength="500" />
+          <Property Name="Insurance" Type="nvarchar" MaxLength="500" />
+          <Property Name="InsuranceValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="PerformanceBond" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContractValuenumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContractValueText" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContractTypeID" Type="int" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="500" />
+          <Property Name="MainClient" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProjectNo" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Contracttype">
           <Key>
@@ -1887,6 +1922,30 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Contract_RA257_L01A_Contracttype">
+          <End Role="Contracttype" Type="Self.Contracttype" Multiplicity="0..1" />
+          <End Role="Contract_RA257_L01A" Type="Self.Contract_RA257_L01A" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracttype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contract_RA257_L01A">
+              <PropertyRef Name="ContractTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contract_RA257_L01A_LMS_User">
+          <End Role="LMS_User" Type="Self.LMS_User" Multiplicity="0..1" />
+          <End Role="Contract_RA257_L01A" Type="Self.Contract_RA257_L01A" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contract_RA257_L01A">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CurrentRoleId">
           <End Role="u_HRRoles" Type="Self.u_HRRoles" Multiplicity="1" />
           <End Role="u_HRPersonnel" Type="Self.u_HRPersonnel" Multiplicity="*" />
@@ -2003,6 +2062,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySet Name="Contract_L02B" EntityType="Self.Contract_L02B" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_QDP510-QF11" EntityType="Self.Contract_QDP510-QF11" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_QDP510-QF17" EntityType="Self.Contract_QDP510-QF17" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contract_RA257_L01A" EntityType="Self.Contract_RA257_L01A" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contracttype" EntityType="Self.Contracttype" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_ExceptionLog" EntityType="Self.LMS_ExceptionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_Modules" EntityType="Self.LMS_Modules" Schema="dbo" store:Type="Tables" />
@@ -2331,6 +2391,14 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             <End Role="LMS_User" EntitySet="LMS_User" />
             <End Role="Contract_QDP510-QF17" EntitySet="Contract_QDP510-QF17" />
           </AssociationSet>
+          <AssociationSet Name="FK_Contract_RA257_L01A_Contracttype" Association="Self.FK_Contract_RA257_L01A_Contracttype">
+            <End Role="Contracttype" EntitySet="Contracttype" />
+            <End Role="Contract_RA257_L01A" EntitySet="Contract_RA257_L01A" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contract_RA257_L01A_LMS_User" Association="Self.FK_Contract_RA257_L01A_LMS_User">
+            <End Role="LMS_User" EntitySet="LMS_User" />
+            <End Role="Contract_RA257_L01A" EntitySet="Contract_RA257_L01A" />
+          </AssociationSet>
           <AssociationSet Name="FK_CurrentRoleId" Association="Self.FK_CurrentRoleId">
             <End Role="u_HRRoles" EntitySet="u_HRRoles" />
             <End Role="u_HRPersonnel" EntitySet="u_HRPersonnel" />
@@ -2465,6 +2533,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <NavigationProperty Name="Contract_L02B" Relationship="ePMModel.FK_Contract_L02B_LMS_User" FromRole="LMS_User" ToRole="Contract_L02B" />
           <NavigationProperty Name="Contract_QDP510_QF11" Relationship="ePMModel.FK_Contract_QDP510_QF11_LMS_User" FromRole="LMS_User" ToRole="Contract_QDP510_QF11" />
           <NavigationProperty Name="Contract_QDP510_QF17" Relationship="ePMModel.FK_Contract_QDP510_QF17_LMS_User" FromRole="LMS_User" ToRole="Contract_QDP510_QF17" />
+          <NavigationProperty Name="Contract_RA257_L01A" Relationship="ePMModel.FK_Contract_RA257_L01A_LMS_User" FromRole="LMS_User" ToRole="Contract_RA257_L01A" />
         </EntityType>
         <EntityType Name="u_HRGroup">
           <Key>
@@ -2999,6 +3068,15 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             <End Role="LMS_User" EntitySet="LMS_User" />
             <End Role="Contract_QDP510_QF17" EntitySet="Contract_QDP510_QF17" />
           </AssociationSet>
+          <EntitySet Name="Contract_RA257_L01A" EntityType="ePMModel.Contract_RA257_L01A" />
+          <AssociationSet Name="FK_Contract_RA257_L01A_Contracttype" Association="ePMModel.FK_Contract_RA257_L01A_Contracttype">
+            <End Role="Contracttype" EntitySet="Contracttypes" />
+            <End Role="Contract_RA257_L01A" EntitySet="Contract_RA257_L01A" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contract_RA257_L01A_LMS_User" Association="ePMModel.FK_Contract_RA257_L01A_LMS_User">
+            <End Role="LMS_User" EntitySet="LMS_User" />
+            <End Role="Contract_RA257_L01A" EntitySet="Contract_RA257_L01A" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="v_lms_RolesCount">
           <Key>
@@ -3202,6 +3280,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <NavigationProperty Name="Contract_L02B" Relationship="ePMModel.FK_Contract_L02B_Contracttype" FromRole="Contracttype" ToRole="Contract_L02B" />
           <NavigationProperty Name="Contract_QDP510_QF11" Relationship="ePMModel.FK_Contract_QDP510_QF11_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF11" />
           <NavigationProperty Name="Contract_QDP510_QF17" Relationship="ePMModel.FK_Contract_QDP510_QF17_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF17" />
+          <NavigationProperty Name="Contract_RA257_L01A" Relationship="ePMModel.FK_Contract_RA257_L01A_Contracttype" FromRole="Contracttype" ToRole="Contract_RA257_L01A" />
         </EntityType>
         <EntityType Name="AppendixA">
           <Key>
@@ -4698,6 +4777,67 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Contract_RA257_L01A">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Rev" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Revdate" Type="DateTime" Precision="3" />
+          <Property Name="QualityCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContractDate" Type="DateTime" Precision="3" />
+          <Property Name="ContractDay" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Secondparty_Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_AuthpersSign" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_Compname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_Representative" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_Tele" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_Fax" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Secondparty_Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Scopeofworks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DelayPenaltyValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DelayPenalty" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AbsentPenalty" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Insurance" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InsuranceValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PerformanceBond" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContractValuenumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContractValueText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContractTypeID" Type="Int32" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MainClient" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contracttype" Relationship="ePMModel.FK_Contract_RA257_L01A_Contracttype" FromRole="Contract_RA257_L01A" ToRole="Contracttype" />
+          <NavigationProperty Name="LMS_User" Relationship="ePMModel.FK_Contract_RA257_L01A_LMS_User" FromRole="Contract_RA257_L01A" ToRole="LMS_User" />
+        </EntityType>
+        <Association Name="FK_Contract_RA257_L01A_Contracttype">
+          <End Type="ePMModel.Contracttype" Role="Contracttype" Multiplicity="0..1" />
+          <End Type="ePMModel.Contract_RA257_L01A" Role="Contract_RA257_L01A" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contracttype">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contract_RA257_L01A">
+              <PropertyRef Name="ContractTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contract_RA257_L01A_LMS_User">
+          <End Type="ePMModel.LMS_User" Role="LMS_User" Multiplicity="0..1" />
+          <End Type="ePMModel.Contract_RA257_L01A" Role="Contract_RA257_L01A" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LMS_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Contract_RA257_L01A">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6094,6 +6234,42 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
                 <ScalarProperty Name="Secondparty_AuthpersSign" ColumnName="Secondparty_AuthpersSign" />
                 <ScalarProperty Name="Secondparty_Address" ColumnName="Secondparty_Address" />
                 <ScalarProperty Name="ContractValuenumber" ColumnName="ContractValuenumber" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ContractDay" ColumnName="ContractDay" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="QualityCode" ColumnName="QualityCode" />
+                <ScalarProperty Name="Revdate" ColumnName="Revdate" />
+                <ScalarProperty Name="Rev" ColumnName="Rev" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contract_RA257_L01A">
+            <EntityTypeMapping TypeName="ePMModel.Contract_RA257_L01A">
+              <MappingFragment StoreEntitySet="Contract_RA257_L01A">
+                <ScalarProperty Name="ProjectNo" ColumnName="ProjectNo" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="MainClient" ColumnName="MainClient" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="ContractTypeID" ColumnName="ContractTypeID" />
+                <ScalarProperty Name="ContractValueText" ColumnName="ContractValueText" />
+                <ScalarProperty Name="ContractValuenumber" ColumnName="ContractValuenumber" />
+                <ScalarProperty Name="PerformanceBond" ColumnName="PerformanceBond" />
+                <ScalarProperty Name="InsuranceValue" ColumnName="InsuranceValue" />
+                <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+                <ScalarProperty Name="AbsentPenalty" ColumnName="AbsentPenalty" />
+                <ScalarProperty Name="DelayPenalty" ColumnName="DelayPenalty" />
+                <ScalarProperty Name="DelayPenaltyValue" ColumnName="DelayPenaltyValue" />
+                <ScalarProperty Name="Scopeofworks" ColumnName="Scopeofworks" />
+                <ScalarProperty Name="Secondparty_Email" ColumnName="Secondparty_Email" />
+                <ScalarProperty Name="Secondparty_Fax" ColumnName="Secondparty_Fax" />
+                <ScalarProperty Name="Secondparty_Tele" ColumnName="Secondparty_Tele" />
+                <ScalarProperty Name="Secondparty_Representative" ColumnName="Secondparty_Representative" />
+                <ScalarProperty Name="Secondparty_Compname" ColumnName="Secondparty_Compname" />
+                <ScalarProperty Name="Secondparty_AuthpersSign" ColumnName="Secondparty_AuthpersSign" />
+                <ScalarProperty Name="Secondparty_Address" ColumnName="Secondparty_Address" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ContractDay" ColumnName="ContractDay" />
                 <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />

@@ -192,7 +192,7 @@ namespace ePMSystem.Controls
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_contrractdate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_contrractdate;
 
         /// <summary>
         /// RequiredFieldValidator26 control.

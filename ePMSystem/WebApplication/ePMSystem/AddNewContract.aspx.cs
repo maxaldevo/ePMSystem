@@ -13,7 +13,7 @@ namespace WebApplication1
 {
     public partial class AddNewContract : System.Web.UI.Page
     {
-        public static int _selectedContractType = 0;
+        public int _selectedContractType = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Page.Title))
@@ -119,7 +119,7 @@ namespace WebApplication1
             //shutDownAllForms();
             if (dropdownContractType.Items.Count > 0)
             {
-                _selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
+                Session["selectedContractType"] = int.Parse(dropdownContractType.SelectedItem.Value);
 
                 //switch (_selectedContractType)
                 //{

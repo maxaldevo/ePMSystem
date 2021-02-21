@@ -103,7 +103,7 @@
 						<span>
 							<asp:Label ID="lbl_contrractdate" runat="server" Text="contrractdate"></asp:Label>
 							:</span>
-						<asp:TextBox ID="txt_contrractdate" runat="server" class="form-control" placeholder="contrractdate"></asp:TextBox>
+						<input type="date" name="bday" id="txt_contrractdate" runat="server" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" />
 						<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_contrractdate"></asp:RequiredFieldValidator>
 					</div>
 				</div>
@@ -187,7 +187,7 @@
 <asp:Panel ID="Panel3" runat="server">
 	<div class="box">
 		<div class="box-body col-12">
-                        <asp:Button ID="btnShowData" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                        <asp:Button ID="btnShowData" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" OnClick="btnShowData_Click"/>
 			
 		</div>
 	</div>

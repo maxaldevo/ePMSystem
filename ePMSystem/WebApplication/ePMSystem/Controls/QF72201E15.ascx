@@ -82,7 +82,7 @@
 						<span>
 							<asp:Label ID="lbl_contrractdate" runat="server" Text="contrractdate"></asp:Label>
 							:</span>
-						<asp:TextBox ID="txt_contrractdate" runat="server" class="form-control" placeholder="contrractdate"></asp:TextBox>
+						<input type="date" name="bday" id="txt_contrractdate" runat="server" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" />
 						<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_contrractdate"></asp:RequiredFieldValidator>
 					</div>
 				</div>

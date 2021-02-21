@@ -105,6 +105,9 @@
         <AssociationConnector Association="ePMModel.FK_Contract_QDP510_QF11_LMS_User" />
         <AssociationConnector Association="ePMModel.FK_Contract_QDP510_QF17_Contracttype" />
         <AssociationConnector Association="ePMModel.FK_Contract_QDP510_QF17_LMS_User" />
+        <EntityTypeShape EntityType="ePMModel.Contract_RA257_L01A" Width="1.5" PointX="6.875" PointY="2.875" IsExpanded="false" />
+        <AssociationConnector Association="ePMModel.FK_Contract_RA257_L01A_Contracttype" />
+        <AssociationConnector Association="ePMModel.FK_Contract_RA257_L01A_LMS_User" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

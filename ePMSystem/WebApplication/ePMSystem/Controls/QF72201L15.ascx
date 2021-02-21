@@ -62,7 +62,7 @@
 						<span>
 							<asp:Label ID="lbl_contrractdate" runat="server" Text="contractday"></asp:Label>
 							:</span>
-						<asp:TextBox ID="txt_contrractdate" runat="server" CssClass="form-control" placeholder="contractdate"></asp:TextBox>
+						<input type="date" name="bday" id="txt_contrractdate" runat="server" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" />
 						<asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_contractdate"></asp:RequiredFieldValidator>
 					</div>
 				</div>
