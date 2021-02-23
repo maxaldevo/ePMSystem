@@ -5,13 +5,24 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ePM.Dal;
+using ePM.Dal.Logic;
 
 namespace ePMSystem.Controls
 {
     public partial class QF710315 : System.Web.UI.UserControl
     {
-        Contract_03_15 contract_315 = new Contract_03_15();
 
+        #region"Definitions"
+        Contract_03_15 contract_315 = new Contract_03_15();
+        AppendixA ObjAppendixA = new AppendixA();
+        AppendixB ObjAppendixB = new AppendixB();
+        AppendixC ObjAppendixC = new AppendixC();
+        AppendixD ObjAppendixD = new AppendixD();
+        AppendixE ObjAppendixE = new AppendixE();
+        AppendixF ObjAppendixF = new AppendixF();
+        ContractManager ContractM = new ContractManager();
+        const int ContractTypeID = 6;
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
 
