@@ -71,6 +71,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppendixA.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppendixB.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppendixC.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppendixD.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppendixE.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppendixF.cs">
+      <DependentUpon>ePMSystem.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contracttype.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>

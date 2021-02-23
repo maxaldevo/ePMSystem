@@ -71,6 +71,12 @@ namespace ePM.Dal
         public virtual DbSet<Contract_QDP510_QF11> Contract_QDP510_QF11 { get; set; }
         public virtual DbSet<Contract_QDP510_QF17> Contract_QDP510_QF17 { get; set; }
         public virtual DbSet<Contract_RA257_L01A> Contract_RA257_L01A { get; set; }
+        public virtual DbSet<AppendixA> AppendixAs { get; set; }
+        public virtual DbSet<AppendixB> AppendixBs { get; set; }
+        public virtual DbSet<AppendixC> AppendixCs { get; set; }
+        public virtual DbSet<AppendixD> AppendixDs { get; set; }
+        public virtual DbSet<AppendixE> AppendixEs { get; set; }
+        public virtual DbSet<AppendixF> AppendixFs { get; set; }
     
         public virtual ObjectResult<sp_lms_GetPagesByRole_Result> sp_lms_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
         {

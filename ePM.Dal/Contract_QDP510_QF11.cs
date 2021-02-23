@@ -41,6 +41,7 @@ namespace ePM.Dal
         public Nullable<bool> Appendix_D { get; set; }
         public Nullable<bool> Appendix_E { get; set; }
         public Nullable<bool> Appendix_F { get; set; }
+        public Nullable<int> UniqueID { get; set; }
     
         public virtual Contracttype Contracttype { get; set; }
         public virtual LMS_User LMS_User { get; set; }

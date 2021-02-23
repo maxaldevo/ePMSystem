@@ -5,6 +5,61 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ePMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppendixA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" Nullable="false" />
+          <Property Name="AppendixA_Attachment" Type="ntext" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AppendixB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" />
+          <Property Name="AppendixB_Attachment" Type="varbinary(max)" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Path" Type="nvarchar" MaxLength="550" />
+        </EntityType>
+        <EntityType Name="AppendixC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" />
+          <Property Name="AppendixC_Attachment" Type="varbinary(max)" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AppendixD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" />
+          <Property Name="AppendixD_Attachment" Type="varbinary(max)" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AppendixE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" />
+          <Property Name="AppendixE_Attachment" Type="varbinary(max)" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AppendixF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="int" />
+          <Property Name="AppendixF_Attachment" Type="varbinary(max)" />
+          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Contract_01-09">
           <Key>
             <PropertyRef Name="ID" />
@@ -50,6 +105,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-10">
           <Key>
@@ -89,6 +145,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-11">
           <Key>
@@ -128,6 +185,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-12">
           <Key>
@@ -162,6 +220,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-E15">
           <Key>
@@ -204,6 +263,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L01C">
           <Key>
@@ -252,6 +312,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L03A">
           <Key>
@@ -302,6 +363,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L03B">
           <Key>
@@ -352,6 +414,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L09">
           <Key>
@@ -391,6 +454,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L10">
           <Key>
@@ -431,6 +495,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L12">
           <Key>
@@ -485,6 +550,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01L15">
           <Key>
@@ -526,6 +592,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_01-L15">
           <Key>
@@ -567,6 +634,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_03-15">
           <Key>
@@ -607,6 +675,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_03-16">
           <Key>
@@ -650,6 +719,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_04-05">
           <Key>
@@ -684,6 +754,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_L01A">
           <Key>
@@ -725,6 +796,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_L01B">
           <Key>
@@ -766,6 +838,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_L01D">
           <Key>
@@ -834,6 +907,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_L02A">
           <Key>
@@ -877,6 +951,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_L02B">
           <Key>
@@ -920,6 +995,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_QDP510-QF11">
           <Key>
@@ -952,6 +1028,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_QDP510-QF17">
           <Key>
@@ -984,6 +1061,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contract_RA257_L01A">
           <Key>
@@ -1025,6 +1103,7 @@
           <Property Name="Appendix_D" Type="bit" />
           <Property Name="Appendix_E" Type="bit" />
           <Property Name="Appendix_F" Type="bit" />
+          <Property Name="UniqueID" Type="int" />
         </EntityType>
         <EntityType Name="Contracttype">
           <Key>
@@ -2122,6 +2201,12 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Parameter Name="Position" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ePMModelStoreContainer">
+          <EntitySet Name="AppendixA" EntityType="Self.AppendixA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppendixB" EntityType="Self.AppendixB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppendixC" EntityType="Self.AppendixC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppendixD" EntityType="Self.AppendixD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppendixE" EntityType="Self.AppendixE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AppendixF" EntityType="Self.AppendixF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-09" EntityType="Self.Contract_01-09" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-10" EntityType="Self.Contract_01-10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-11" EntityType="Self.Contract_01-11" Schema="dbo" store:Type="Tables" />
@@ -3154,6 +3239,12 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             <End Role="LMS_User" EntitySet="LMS_User" />
             <End Role="Contract_RA257_L01A" EntitySet="Contract_RA257_L01A" />
           </AssociationSet>
+          <EntitySet Name="AppendixAs" EntityType="ePMModel.AppendixA" />
+          <EntitySet Name="AppendixBs" EntityType="ePMModel.AppendixB" />
+          <EntitySet Name="AppendixCs" EntityType="ePMModel.AppendixC" />
+          <EntitySet Name="AppendixDs" EntityType="ePMModel.AppendixD" />
+          <EntitySet Name="AppendixEs" EntityType="ePMModel.AppendixE" />
+          <EntitySet Name="AppendixFs" EntityType="ePMModel.AppendixF" />
           </EntityContainer>
         <EntityType Name="v_lms_RolesCount">
           <Key>
@@ -3406,6 +3497,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_10">
           <Key>
@@ -3447,6 +3539,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_11">
           <Key>
@@ -3488,6 +3581,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_12">
           <Key>
@@ -3524,6 +3618,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_E15">
           <Key>
@@ -3568,6 +3663,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L01C">
           <Key>
@@ -3618,6 +3714,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L03A">
           <Key>
@@ -3670,6 +3767,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L03B">
           <Key>
@@ -3722,6 +3820,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L09">
           <Key>
@@ -3763,6 +3862,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L10">
           <Key>
@@ -3805,6 +3905,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L12">
           <Key>
@@ -3861,6 +3962,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01L15">
           <Key>
@@ -3904,6 +4006,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_L15">
           <Key>
@@ -3947,6 +4050,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_03_15">
           <Key>
@@ -3989,6 +4093,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_03_16">
           <Key>
@@ -4034,6 +4139,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_04_05">
           <Key>
@@ -4070,6 +4176,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_L01A">
           <Key>
@@ -4113,6 +4220,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_L01B">
           <Key>
@@ -4156,6 +4264,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_L01D">
           <Key>
@@ -4226,6 +4335,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_L02A">
           <Key>
@@ -4271,6 +4381,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_L02B">
           <Key>
@@ -4316,6 +4427,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_QDP510_QF11">
           <Key>
@@ -4350,6 +4462,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_QDP510_QF17">
           <Key>
@@ -4384,6 +4497,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <Association Name="FK_Contract_01_09_Contracttype">
           <End Type="ePMModel.Contracttype" Role="Contracttype" Multiplicity="0..1" />
@@ -4979,6 +5093,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Property Name="Appendix_D" Type="Boolean" />
           <Property Name="Appendix_E" Type="Boolean" />
           <Property Name="Appendix_F" Type="Boolean" />
+          <Property Name="UniqueID" Type="Int32" />
         </EntityType>
         <Association Name="FK_Contract_RA257_L01A_Contracttype">
           <End Type="ePMModel.Contracttype" Role="Contracttype" Multiplicity="0..1" />
@@ -5004,6 +5119,61 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AppendixA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ContractUniqueID" Type="Int32" Nullable="false" />
+          <Property Name="AppendixA_Attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppendixB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractUniqueID" Type="Int32" />
+          <Property Name="AppendixB_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppendixC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractUniqueID" Type="Int32" />
+          <Property Name="AppendixC_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppendixD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractUniqueID" Type="Int32" />
+          <Property Name="AppendixD_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppendixE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractUniqueID" Type="Int32" />
+          <Property Name="AppendixE_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AppendixF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractUniqueID" Type="Int32" />
+          <Property Name="AppendixF_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5488,6 +5658,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_09">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_09">
               <MappingFragment StoreEntitySet="Contract_01-09">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5535,6 +5706,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_10">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_10">
               <MappingFragment StoreEntitySet="Contract_01-10">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5575,6 +5747,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_11">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_11">
               <MappingFragment StoreEntitySet="Contract_01-11">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5615,6 +5788,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_12">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_12">
               <MappingFragment StoreEntitySet="Contract_01-12">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5650,6 +5824,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_E15">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_E15">
               <MappingFragment StoreEntitySet="Contract_01-E15">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5693,6 +5868,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L01C">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L01C">
               <MappingFragment StoreEntitySet="Contract_01-L01C">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5742,6 +5918,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L03A">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L03A">
               <MappingFragment StoreEntitySet="Contract_01-L03A">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5793,6 +5970,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L03B">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L03B">
               <MappingFragment StoreEntitySet="Contract_01-L03B">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5844,6 +6022,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L09">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L09">
               <MappingFragment StoreEntitySet="Contract_01-L09">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5884,6 +6063,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L10">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L10">
               <MappingFragment StoreEntitySet="Contract_01-L10">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5925,6 +6105,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L12">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L12">
               <MappingFragment StoreEntitySet="Contract_01-L12">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -5980,6 +6161,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01L15">
             <EntityTypeMapping TypeName="ePMModel.Contract_01L15">
               <MappingFragment StoreEntitySet="Contract_01L15">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6022,6 +6204,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_01_L15">
             <EntityTypeMapping TypeName="ePMModel.Contract_01_L15">
               <MappingFragment StoreEntitySet="Contract_01-L15">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6064,6 +6247,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_03_15">
             <EntityTypeMapping TypeName="ePMModel.Contract_03_15">
               <MappingFragment StoreEntitySet="Contract_03-15">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6105,6 +6289,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_03_16">
             <EntityTypeMapping TypeName="ePMModel.Contract_03_16">
               <MappingFragment StoreEntitySet="Contract_03-16">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6149,6 +6334,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_04_05">
             <EntityTypeMapping TypeName="ePMModel.Contract_04_05">
               <MappingFragment StoreEntitySet="Contract_04-05">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6184,6 +6370,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_L01A">
             <EntityTypeMapping TypeName="ePMModel.Contract_L01A">
               <MappingFragment StoreEntitySet="Contract_L01A">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6226,6 +6413,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_L01B">
             <EntityTypeMapping TypeName="ePMModel.Contract_L01B">
               <MappingFragment StoreEntitySet="Contract_L01B">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6268,6 +6456,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_L01D">
             <EntityTypeMapping TypeName="ePMModel.Contract_L01D">
               <MappingFragment StoreEntitySet="Contract_L01D">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6337,6 +6526,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_L02A">
             <EntityTypeMapping TypeName="ePMModel.Contract_L02A">
               <MappingFragment StoreEntitySet="Contract_L02A">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6381,6 +6571,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_L02B">
             <EntityTypeMapping TypeName="ePMModel.Contract_L02B">
               <MappingFragment StoreEntitySet="Contract_L02B">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6425,6 +6616,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_QDP510_QF11">
             <EntityTypeMapping TypeName="ePMModel.Contract_QDP510_QF11">
               <MappingFragment StoreEntitySet="Contract_QDP510-QF11">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6458,6 +6650,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_QDP510_QF17">
             <EntityTypeMapping TypeName="ePMModel.Contract_QDP510_QF17">
               <MappingFragment StoreEntitySet="Contract_QDP510-QF17">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6491,6 +6684,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contract_RA257_L01A">
             <EntityTypeMapping TypeName="ePMModel.Contract_RA257_L01A">
               <MappingFragment StoreEntitySet="Contract_RA257_L01A">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
                 <ScalarProperty Name="Appendix_F" ColumnName="Appendix_F" />
                 <ScalarProperty Name="Appendix_E" ColumnName="Appendix_E" />
                 <ScalarProperty Name="Appendix_D" ColumnName="Appendix_D" />
@@ -6526,6 +6720,67 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
                 <ScalarProperty Name="Revdate" ColumnName="Revdate" />
                 <ScalarProperty Name="Rev" ColumnName="Rev" />
                 <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixAs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixA">
+              <MappingFragment StoreEntitySet="AppendixA">
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixA_Attachment" ColumnName="AppendixA_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixBs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixB">
+              <MappingFragment StoreEntitySet="AppendixB">
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixB_Attachment" ColumnName="AppendixB_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixCs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixC">
+              <MappingFragment StoreEntitySet="AppendixC">
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixC_Attachment" ColumnName="AppendixC_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixDs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixD">
+              <MappingFragment StoreEntitySet="AppendixD">
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixD_Attachment" ColumnName="AppendixD_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixEs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixE">
+              <MappingFragment StoreEntitySet="AppendixE">
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixE_Attachment" ColumnName="AppendixE_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppendixFs">
+            <EntityTypeMapping TypeName="ePMModel.AppendixF">
+              <MappingFragment StoreEntitySet="AppendixF">
+                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
+                <ScalarProperty Name="AppendixF_Attachment" ColumnName="AppendixF_Attachment" />
+                <ScalarProperty Name="ContractUniqueID" ColumnName="ContractUniqueID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
