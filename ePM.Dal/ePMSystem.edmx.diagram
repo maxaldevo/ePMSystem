@@ -30,12 +30,6 @@
         <EntityTypeShape EntityType="ePMModel.v_GroupsPersonnel" Width="1.5" PointX="2.625" PointY="4.875" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.v_lms_ModulePages" Width="1.5" PointX="2.625" PointY="4.25" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.Contracttype" Width="1.5" PointX="2.5" PointY="2" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixA" Width="1.5" PointX="4.625" PointY="5.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixB" Width="1.5" PointX="4.625" PointY="3.25" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixC" Width="1.5" PointX="4.625" PointY="3.875" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixD" Width="1.5" PointX="4.625" PointY="4.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixE" Width="1.5" PointX="4.625" PointY="5.125" IsExpanded="false" />
-        <EntityTypeShape EntityType="ePMModel.AppendixF" Width="1.5" PointX="4.625" PointY="6.375" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.Contract_01_09" Width="1.5" PointX="10.25" PointY="5.5" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.Contract_01_10" Width="1.5" PointX="12" PointY="1.5" IsExpanded="false" />
         <EntityTypeShape EntityType="ePMModel.Contract_01_11" Width="1.5" PointX="10.25" PointY="4.625" IsExpanded="false" />

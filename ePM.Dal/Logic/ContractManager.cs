@@ -16,5 +16,13 @@ namespace ePM.Dal.Logic
                 return jumperVar;
             }
         }
+        //private static int getMaxContractUniqueID()
+        //{
+        //    using (var db = new ePMEntities())
+        //    {
+        //        int maxID = db.Contracttypes.Where(x => x.Active == true).ToList();
+        //        return maxID;
+        //    }
+        //}
     }
 }

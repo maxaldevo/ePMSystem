@@ -5,61 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ePMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AppendixA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixA_Attachment" Type="ntext" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="AppendixB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixB_Attachment" Type="varbinary(max)" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-          <Property Name="Path" Type="nvarchar" MaxLength="550" />
-        </EntityType>
-        <EntityType Name="AppendixC">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixC_Attachment" Type="varbinary(max)" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="AppendixD">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixD_Attachment" Type="varbinary(max)" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="AppendixE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixE_Attachment" Type="varbinary(max)" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="AppendixF">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractID" Type="int" />
-          <Property Name="AppendixF_Attachment" Type="varbinary(max)" />
-          <Property Name="Conttype" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Contract_01-09">
           <Key>
             <PropertyRef Name="ID" />
@@ -2177,12 +2122,6 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <Parameter Name="Position" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ePMModelStoreContainer">
-          <EntitySet Name="AppendixA" EntityType="Self.AppendixA" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AppendixB" EntityType="Self.AppendixB" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AppendixC" EntityType="Self.AppendixC" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AppendixD" EntityType="Self.AppendixD" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AppendixE" EntityType="Self.AppendixE" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AppendixF" EntityType="Self.AppendixF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-09" EntityType="Self.Contract_01-09" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-10" EntityType="Self.Contract_01-10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract_01-11" EntityType="Self.Contract_01-11" Schema="dbo" store:Type="Tables" />
@@ -2999,12 +2938,6 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
             <Parameter Name="Position" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Contracttypes" EntityType="ePMModel.Contracttype" />
-          <EntitySet Name="AppendixAs" EntityType="ePMModel.AppendixA" />
-          <EntitySet Name="AppendixBs" EntityType="ePMModel.AppendixB" />
-          <EntitySet Name="AppendixCs" EntityType="ePMModel.AppendixC" />
-          <EntitySet Name="AppendixDs" EntityType="ePMModel.AppendixD" />
-          <EntitySet Name="AppendixEs" EntityType="ePMModel.AppendixE" />
-          <EntitySet Name="AppendixFs" EntityType="ePMModel.AppendixF" />
           <EntitySet Name="Contract_01_09" EntityType="ePMModel.Contract_01_09" />
           <EntitySet Name="Contract_01_10" EntityType="ePMModel.Contract_01_10" />
           <EntitySet Name="Contract_01_11" EntityType="ePMModel.Contract_01_11" />
@@ -3425,61 +3358,6 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <NavigationProperty Name="Contract_QDP510_QF11" Relationship="ePMModel.FK_Contract_QDP510_QF11_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF11" />
           <NavigationProperty Name="Contract_QDP510_QF17" Relationship="ePMModel.FK_Contract_QDP510_QF17_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF17" />
           <NavigationProperty Name="Contract_RA257_L01A" Relationship="ePMModel.FK_Contract_RA257_L01A_Contracttype" FromRole="Contracttype" ToRole="Contract_RA257_L01A" />
-        </EntityType>
-        <EntityType Name="AppendixA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixA_Attachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AppendixB">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixB_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Path" Type="String" MaxLength="550" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AppendixC">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixC_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AppendixD">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixD_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AppendixE">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixE_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="AppendixF">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ContractID" Type="Int32" />
-          <Property Name="AppendixF_Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Conttype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contract_01_09">
           <Key>
@@ -5603,67 +5481,6 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
                 <ScalarProperty Name="Lang" ColumnName="Lang" />
                 <ScalarProperty Name="ContType" ColumnName="ContType" />
                 <ScalarProperty Name="Contname" ColumnName="Contname" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixAs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixA">
-              <MappingFragment StoreEntitySet="AppendixA">
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixA_Attachment" ColumnName="AppendixA_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixBs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixB">
-              <MappingFragment StoreEntitySet="AppendixB">
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixB_Attachment" ColumnName="AppendixB_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixCs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixC">
-              <MappingFragment StoreEntitySet="AppendixC">
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixC_Attachment" ColumnName="AppendixC_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixDs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixD">
-              <MappingFragment StoreEntitySet="AppendixD">
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixD_Attachment" ColumnName="AppendixD_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixEs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixE">
-              <MappingFragment StoreEntitySet="AppendixE">
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixE_Attachment" ColumnName="AppendixE_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AppendixFs">
-            <EntityTypeMapping TypeName="ePMModel.AppendixF">
-              <MappingFragment StoreEntitySet="AppendixF">
-                <ScalarProperty Name="Conttype" ColumnName="Conttype" />
-                <ScalarProperty Name="AppendixF_Attachment" ColumnName="AppendixF_Attachment" />
-                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ePM.Dal;
+using ePM.Dal.Logic;
 
 namespace ePMSystem.Controls
 {
     public partial class QF72201_RA257_L01A : System.Web.UI.UserControl
     {
+        #region"Definitions"
         Contract_RA257_L01A contract_RA257L01A = new Contract_RA257_L01A();
+        AppendixA ObjAppendixA = new AppendixA();
+        AppendixB ObjAppendixB = new AppendixB();
+        AppendixC ObjAppendixC = new AppendixC();
+        AppendixD ObjAppendixD = new AppendixD();
+        AppendixE ObjAppendixE = new AppendixE();
+        AppendixF ObjAppendixF = new AppendixF();
+        ContractManager ClassM = new ContractManager();
+        string ContractTypeID = "1";
+        int ContID = 0;
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -39,18 +52,219 @@ namespace ePMSystem.Controls
                 contract_RA257L01A.CurrencyCode = txt_currencycode.Text;
                 contract_RA257L01A.CurrencyName = txt_currencyname.Text;
                 contract_RA257L01A.AbsentPenalty = txt_absentpenality.Text;
-                //contract_RA257L01A.PerformanceBond = txt_per.Text;
+                contract_RA257L01A.PerformanceBond = ddl_performanbond.SelectedItem.Text;
+                contract_RA257L01A.DelayPenalty = ddl_delaypenalty.SelectedItem.Text;
+                contract_RA257L01A.DelayPenaltyValue = txt_delaypenaltyvalue.Text;
+                contract_RA257L01A.Insurance = ddl_insurance.SelectedItem.Text;
+                string Str_InsuranceValue = "";
+                if (ddl_insurance.Text == "0%") Str_InsuranceValue = "صفر بالمائة";
+                if (ddl_insurance.Text == "1%") Str_InsuranceValue = "واحد بالمائة";
+                if (ddl_insurance.Text == "2%") Str_InsuranceValue = "إثنان بالمائة";
+                contract_RA257L01A.InsuranceValue = Str_InsuranceValue;
                 contract_RA257L01A.ProjectName = txt_projname.Text;
                 contract_RA257L01A.ContractTypeID = int.Parse(Session["selectedContractType"].ToString()); ;
-                //if (chkb_AppendixB.Checked) subconremeature.Appendix_B = true; else subconremeature.Appendix_B = false;
-                //if (chkb_AppendixC.Checked) subconremeature.Appendix_C = true; else subconremeature.Appendix_C = false;
-                //if (chkb_AppendixD.Checked) subconremeature.Appendix_D = true; else subconremeature.Appendix_D = false;
-                //if (chkb_AppendixE.Checked) subconremeature.Appendix_E = true; else subconremeature.Appendix_E = false;
-                //if (chkb_AppendixF.Checked) subconremeature.Appendix_F = true; else subconremeature.Appendix_F = false;
+                if (chkb_AppendixA.Checked) contract_RA257L01A.Appendix_A = true; else contract_RA257L01A.Appendix_A = false;
+                if (chkb_AppendixB.Checked) contract_RA257L01A.Appendix_B = true; else contract_RA257L01A.Appendix_B = false;
+                if (chkb_AppendixC.Checked) contract_RA257L01A.Appendix_C = true; else contract_RA257L01A.Appendix_C = false;
+                if (chkb_AppendixD.Checked) contract_RA257L01A.Appendix_D = true; else contract_RA257L01A.Appendix_D = false;
+                if (chkb_AppendixE.Checked) contract_RA257L01A.Appendix_E = true; else contract_RA257L01A.Appendix_E = false;
+                if (chkb_AppendixF.Checked) contract_RA257L01A.Appendix_F = true; else contract_RA257L01A.Appendix_F = false;
                 db.Contract_RA257_L01A.Add(contract_RA257L01A);
                 db.SaveChanges();
-                //ContContent_Appendix = GEtContractID(int.Parse(Session["UserID_Login"].ToString()));
             }
         }
+
+        //protected void btn_AppA_Click(object sender, EventArgs e)
+        //{
+        //    //string inputContent;
+        //    //using (StreamReader inputStreamReader = new StreamReader(FU_AppendixA.PostedFile.InputStream))
+        //    //{
+        //    //inputContent = inputStreamReader.ReadToEnd();
+        //    //TextBox1.Text = inputContent;
+
+        //    using (ePMEntities db = new ePMEntities())
+        //    {
+        //        ObjAppendixA.ContractID = ClassM.gettopContractID(ContContent.UserID);
+        //        ObjAppendixA.Conttype = lbl_ContType.Text;
+        //        ObjAppendixA.AppendixA_Attachment = TextBox1.Text;
+        //        db.AppendixAs.Add(ObjAppendixA);
+        //        db.SaveChanges();
+        //    }
+        //    //}
+        //}
+        //protected void btn_AppB_Click(object sender, EventArgs e)
+        //{
+        //    using (ePMEntities db = new ePMEntities())
+        //    {
+        //        foreach (HttpPostedFile postedFile in FU_AppendixB.PostedFiles)
+        //        {
+        //            string filename = Path.GetFileName(postedFile.FileName);
+        //            string fileextension = Path.GetExtension(filename);
+        //            string EditedPath = Server.MapPath("~/Uploads/") + Session["UserID_Login"].ToString() + "_AppendixB_ContractID" + HC.gettopContractID(ContContent.UserID).ToString() + Path.GetExtension(filename);
+        //            FU_AppendixB.PostedFile.SaveAs(EditedPath);
+        //            using (Stream fs = postedFile.InputStream)
+        //            {
+        //                if (fileextension == ".jpg")
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixB.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixB.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixB.AppendixB_Attachment = bytes;
+        //                        ObjAppendixB.Path = EditedPath;
+        //                        db.AppendixBs.Add(ObjAppendixB);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //                else if (fileextension == ".png")
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixB.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixB.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixB.AppendixB_Attachment = bytes;
+        //                        ObjAppendixB.Path = EditedPath;
+        //                        db.AppendixBs.Add(ObjAppendixB);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //                //    else if (fileextension == ".docx")
+        //                //    {
+        //                //        ObjAppendixB.ContractID  = HC.gettopContractID(subconremeature.UserID);
+        //                //        ObjAppendixB.Conttype = lbl_ContType.Text;
+        //                //        ObjAppendixB.Path = EditedPath;
+        //                //        db.AppendixBs.Add(ObjAppendixB);
+        //                //        db.SaveChanges();
+
+        //                //        lnkbtn_appendixB.PostBackUrl = "Contract.aspx?file=" + EditedPath;
+        //                //    }
+        //                //}
+
+
+        //                /////////////////////////////////////////
+        //                //string filename = Path.GetFileName(postedFile.FileName);
+        //                //using (Stream fs = postedFile.InputStream)
+        //                //{
+        //                //    using (BinaryReader br = new BinaryReader(fs))
+        //                //    {
+        //                //        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                //        ObjAppendixB.ContractID  = HC.gettopContractID(subconremeature.UserID);
+        //                //        ObjAppendixB.Conttype = lbl_ContType.Text;
+        //                //        ObjAppendixB.AppendixB_Attachment = bytes;
+        //                //        db.AppendixBs.Add(ObjAppendixB);
+        //                //        db.SaveChanges();
+        //                //    }
+        //                //}
+        //            }
+        //            //Response.Redirect(Request.Url.AbsoluteUri);
+        //        }
+        //    }
+        //}
+        //protected void btn_AppC_Click(object sender, EventArgs e)
+        //{
+        //    if (chkb_AppendixC.Checked)
+        //    {
+        //        using (ePMEntities db = new ePMEntities())
+        //        {
+        //            foreach (HttpPostedFile postedFile in FU_AppendixC.PostedFiles)
+        //            {
+        //                string filename = Path.GetFileName(postedFile.FileName);
+        //                using (Stream fs = postedFile.InputStream)
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixC.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixC.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixC.AppendixC_Attachment = bytes;
+        //                        db.AppendixCs.Add(ObjAppendixC);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //            }
+        //            //Response.Redirect(Request.Url.AbsoluteUri);
+        //        }
+        //    }
+        //}
+        //protected void btn_AppD_Click(object sender, EventArgs e)
+        //{
+        //    if (chkb_AppendixD.Checked)
+        //    {
+        //        using (ePMEntities db = new ePMEntities())
+        //        {
+        //            foreach (HttpPostedFile postedFile in FU_AppendixD.PostedFiles)
+        //            {
+        //                string filename = Path.GetFileName(postedFile.FileName);
+        //                using (Stream fs = postedFile.InputStream)
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixD.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixD.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixD.AppendixD_Attachment = bytes;
+        //                        db.AppendixDs.Add(ObjAppendixD);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //            }
+        //            //Response.Redirect(Request.Url.AbsoluteUri);
+        //        }
+        //    }
+        //}
+        //protected void btn_AppE_Click(object sender, EventArgs e)
+        //{
+        //    if (chkb_AppendixE.Checked)
+        //    {
+        //        using (ePMEntities db = new ePMEntities())
+        //        {
+        //            foreach (HttpPostedFile postedFile in FU_AppendixE.PostedFiles)
+        //            {
+        //                string filename = Path.GetFileName(postedFile.FileName);
+        //                using (Stream fs = postedFile.InputStream)
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixE.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixE.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixE.AppendixE_Attachment = bytes;
+        //                        db.AppendixEs.Add(ObjAppendixE);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //            }
+        //            //Response.Redirect(Request.Url.AbsoluteUri);
+        //        }
+        //    }
+        //}
+        //protected void btn_AppF_Click(object sender, EventArgs e)
+        //{
+        //    if (chkb_AppendixF.Checked)
+        //    {
+        //        using (ePMEntities db = new ePMEntities())
+        //        {
+        //            foreach (HttpPostedFile postedFile in FU_AppendixF.PostedFiles)
+        //            {
+        //                string filename = Path.GetFileName(postedFile.FileName);
+        //                using (Stream fs = postedFile.InputStream)
+        //                {
+        //                    using (BinaryReader br = new BinaryReader(fs))
+        //                    {
+        //                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
+        //                        ObjAppendixF.ContractID = HC.gettopContractID(ContContent.UserID);
+        //                        ObjAppendixF.Conttype = lbl_ContType.Text;
+        //                        ObjAppendixF.AppendixF_Attachment = bytes;
+        //                        db.AppendixFs.Add(ObjAppendixF);
+        //                        db.SaveChanges();
+        //                    }
+        //                }
+        //            }
+        //            //Response.Redirect(Request.Url.AbsoluteUri);
+        //        }
+        //    }
+        //}
     }
 }
