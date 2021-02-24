@@ -26,5 +26,25 @@ namespace ePMSystem.Controls
         {
 
         }
+        protected void btn_AppA_Click(object sender, EventArgs e)
+        {
+            //string inputContent;
+            //using (StreamReader inputStreamReader = new StreamReader(FU_AppendixA.PostedFile.InputStream))
+            //{
+            //inputContent = inputStreamReader.ReadToEnd();
+            //TextBox1.Text = inputContent;
+
+            using (ePMEntities db = new ePMEntities())
+            {
+                int MaxId = ContractM.getMaxContractUniqueID(int.Parse(Session["selectedContractType"].ToString()));
+                ObjAppendixA.ContractUniqueID = MaxId++;
+
+                ObjAppendixA.Conttype = ContractM.getContractNameByTypeID(int.Parse(Session["selectedContractType"].ToString()));
+                ObjAppendixA.AppendixA_Attachment = TextBox1.Text;
+                db.AppendixAs.Add(ObjAppendixA);
+                db.SaveChanges();
+            }
+            //}
+        }
     }
 }
