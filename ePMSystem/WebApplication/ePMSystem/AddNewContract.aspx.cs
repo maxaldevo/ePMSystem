@@ -85,6 +85,7 @@ namespace WebApplication1
             QF72201L12.Visible = false;
             QF72201L15.Visible = false;
             QF72201L1511.Visible = false;
+            QF72201RA257L01A.Visible = false;
         }
         private void BindDropContractType()
         {
@@ -97,7 +98,7 @@ namespace WebApplication1
             dropdownContractType.DataTextField = "Contname";
             dropdownContractType.DataBind();
             dropdownContractType.Items[0].Selected = true;
-            _selectedContractType = int.Parse(dropdownContractType.SelectedItem.Value);
+            Session["selectedContractType"] = int.Parse(dropdownContractType.SelectedItem.Value);
         }
 
 
@@ -116,83 +117,86 @@ namespace WebApplication1
 
         protected void dropdownContractType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //shutDownAllForms();
+            shutDownAllForms();
             if (dropdownContractType.Items.Count > 0)
             {
                 Session["selectedContractType"] = int.Parse(dropdownContractType.SelectedItem.Value);
 
-                //switch (_selectedContractType)
-                //{
-                //    case 1:
-                //        QF72201L01A.Visible = true;
-                //        break;
-                //    case 2:
-                //        QF72201L01B.Visible = true;
-                //        break;
-                //    case 3:
-                //        QF72201L02A.Visible = true;
-                //        break;
-                //    case 4:
-                //        QF72201L02B.Visible = true;
-                //        break;
-                //    case 5:
-                //        QF72201L01D.Visible = true;
-                //        break;
-                //    case 6:
-                //        QF710315.Visible = true;
-                //        break;
-                //    case 7:
-                //        QF710316.Visible = true;
-                //        break;
-                //    case 8:
-                //        QF710405.Visible = true;
-                //        break;
-                //    case 9:
-                //        QF7220109.Visible = true;
-                //        break;
-                //    case 10:
-                //        QF7220110.Visible = true;
-                //        break;
-                //    case 11:
-                //        QF7220111.Visible = true;
-                //        break;
-                //    case 12:
-                //        QF7220112.Visible = true;
-                //        break;
-                //    case 13:
-                //        QF72201L12.Visible = true;
-                //        break;
-                //    case 14:
-                //        QF72201L01C.Visible = true;
-                //        break;
-                //    case 15:
-                //        QDP510QF11.Visible = true;
-                //        break;
-                //    case 16:
-                //        QDP510QF17.Visible = true;
-                //        break;
-                //    case 17:
-                //        QF72201L09.Visible = true;
-                //        break;
-                //    case 18:
-                //        QF72201E15.Visible = true;
-                //        break;
-                //    case 19:
-                //        QF72201L03A.Visible = true;
-                //        break;
-                //    case 20:
-                //        QF72201L03B.Visible = true;
-                //        break;
-                //    case 21:
-                //        QF72201L10.Visible = true;
-                //        break;
-                //    case 22:
-                //        QF72201L15.Visible = true;
-                //        break;
-                //    case 23:
-                //        QF72201L1511.Visible = true;
-                //        break;
-                //}
+                switch (int.Parse(Session["selectedContractType"].ToString()))
+                {
+                    case 1:
+                        QF72201L01A.Visible = true;
+                        break;
+                    case 2:
+                        QF72201L01B.Visible = true;
+                        break;
+                    case 3:
+                        QF72201L02A.Visible = true;
+                        break;
+                    case 4:
+                        QF72201L02B.Visible = true;
+                        break;
+                    case 5:
+                        QF72201L01D.Visible = true;
+                        break;
+                    case 6:
+                        QF710315.Visible = true;
+                        break;
+                    case 7:
+                        QF710316.Visible = true;
+                        break;
+                    case 8:
+                        QF710405.Visible = true;
+                        break;
+                    case 9:
+                        QF7220109.Visible = true;
+                        break;
+                    case 10:
+                        QF7220110.Visible = true;
+                        break;
+                    case 11:
+                        QF7220111.Visible = true;
+                        break;
+                    case 12:
+                        QF7220112.Visible = true;
+                        break;
+                    case 13:
+                        QF72201L12.Visible = true;
+                        break;
+                    case 14:
+                        QF72201L01C.Visible = true;
+                        break;
+                    case 15:
+                        QDP510QF11.Visible = true;
+                        break;
+                    case 16:
+                        QDP510QF17.Visible = true;
+                        break;
+                    case 17:
+                        QF72201L09.Visible = true;
+                        break;
+                    case 18:
+                        QF72201E15.Visible = true;
+                        break;
+                    case 19:
+                        QF72201L03A.Visible = true;
+                        break;
+                    case 20:
+                        QF72201L03B.Visible = true;
+                        break;
+                    case 21:
+                        QF72201L10.Visible = true;
+                        break;
+                    case 22:
+                        QF72201L15.Visible = true;
+                        break;
+                    case 23:
+                        QF72201L1511.Visible = true;
+                        break;
+                    case 24:
+                        QF72201RA257L01A.Visible = true;
+                        break;
+                }
             }
             else
             {

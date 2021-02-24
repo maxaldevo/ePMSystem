@@ -11,7 +11,7 @@ namespace ePMSystem.Controls
 {
 
 
-    public partial class QF72201_RA257_L01A
+    public partial class QF72201RA257L01A
     {
 
         /// <summary>
@@ -195,13 +195,13 @@ namespace ePMSystem.Controls
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txt_contrractdate;
 
         /// <summary>
-        /// RequiredFieldValidator26 control.
+        /// RequiredFieldValidator20 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator26;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator20;
 
         /// <summary>
         /// lbl_contractday control.

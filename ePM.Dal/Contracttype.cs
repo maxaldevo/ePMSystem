@@ -52,6 +52,7 @@ namespace ePM.Dal
         public string Notes { get; set; }
         public string Revno { get; set; }
         public Nullable<bool> Active { get; set; }
+        public Nullable<int> OrderNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract_01_09> Contract_01_09 { get; set; }

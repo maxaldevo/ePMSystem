@@ -1118,6 +1118,7 @@
           <Property Name="Notes" Type="nvarchar" MaxLength="2000" />
           <Property Name="Revno" Type="nvarchar" MaxLength="50" />
           <Property Name="Active" Type="bit" />
+          <Property Name="OrderNumber" Type="int" />
         </EntityType>
         <EntityType Name="LMS_ExceptionLog">
           <Key>
@@ -3449,6 +3450,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <NavigationProperty Name="Contract_QDP510_QF11" Relationship="ePMModel.FK_Contract_QDP510_QF11_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF11" />
           <NavigationProperty Name="Contract_QDP510_QF17" Relationship="ePMModel.FK_Contract_QDP510_QF17_Contracttype" FromRole="Contracttype" ToRole="Contract_QDP510_QF17" />
           <NavigationProperty Name="Contract_RA257_L01A" Relationship="ePMModel.FK_Contract_RA257_L01A_Contracttype" FromRole="Contracttype" ToRole="Contract_RA257_L01A" />
+          <Property Name="OrderNumber" Type="Int32" />
         </EntityType>
         <EntityType Name="Contract_01_09">
           <Key>
@@ -5643,6 +5645,7 @@ warning 6002: The table/view 'ePM.dbo.vPersonnel' does not have a primary key de
           <EntitySetMapping Name="Contracttypes">
             <EntityTypeMapping TypeName="ePMModel.Contracttype">
               <MappingFragment StoreEntitySet="Contracttype">
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Revno" ColumnName="Revno" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />

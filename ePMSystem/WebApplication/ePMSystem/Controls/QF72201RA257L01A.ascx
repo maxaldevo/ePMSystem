@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QF72201_RA257_L01A.ascx.cs" Inherits="ePMSystem.Controls.QF72201_RA257_L01A" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QF72201RA257L01A.ascx.cs" Inherits="ePMSystem.Controls.QF72201RA257L01A" %>
 									
 <asp:Panel ID="Panel1" runat="server">
 	<div class="box">
@@ -7,7 +7,7 @@
 			<div class="progress" style='height: 30px; margin-top: -15px;'>
 				<div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
 					<h3 style="text-align: center; font-size: larger; margin-top: 10px;">Contract Name:
-						<asp:Label ID="lbl_ContractName" runat="server" Text="QF72201_RA257_L01A"></asp:Label></h3>
+						<asp:Label ID="lbl_ContractName" runat="server" Text="QF72201RA257L01A - RA257 - Subcontract Remeasured works"></asp:Label></h3>
 				</div>
 			</div>
 			<div class="row">
@@ -60,10 +60,9 @@
 				<div class="col-md-3">
 					<div class="controls">
 						<span>
-							<asp:Label ID="lbl_contrractdate" runat="server" Text="contractday"></asp:Label>
-							:</span>
+							<asp:Label ID="lbl_contrractdate" runat="server" Text="contrractdate"></asp:Label>:</span>
 						<input type="date" name="bday" id="txt_contrractdate" runat="server" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" />
-						<asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_contractdate"></asp:RequiredFieldValidator>
+						<asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_contrractdate"></asp:RequiredFieldValidator>
 					</div>
 				</div>
 				<div class="col-md-3">

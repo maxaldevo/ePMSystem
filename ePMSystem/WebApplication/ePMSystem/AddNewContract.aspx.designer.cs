@@ -256,5 +256,14 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::ePMSystem.Controls.QF72201L1511 QF72201L1511;
+
+        /// <summary>
+        /// QF72201RA257L01A control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ePMSystem.Controls.QF72201RA257L01A QF72201RA257L01A;
     }
 }

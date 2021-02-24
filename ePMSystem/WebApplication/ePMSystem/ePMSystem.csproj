@@ -6235,7 +6235,7 @@
     <Content Include="Controls\FullHeaderNew.ascx" />
     <Content Include="Controls\FullUIHeader.ascx" />
     <Content Include="Controls\LimitedHeader.ascx" />
-    <Content Include="Controls\QF72201_RA257_L01A.ascx" />
+    <Content Include="Controls\QF72201RA257L01A.ascx" />
     <Content Include="Controls\QF72201L01B.ascx" />
     <Content Include="Controls\QF72201L02A.ascx" />
     <Content Include="Controls\QF72201L02B.ascx" />
@@ -7454,12 +7454,12 @@
     <Compile Include="Controls\LimitedHeader.ascx.designer.cs">
       <DependentUpon>LimitedHeader.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\QF72201_RA257_L01A.ascx.cs">
-      <DependentUpon>QF72201_RA257_L01A.ascx</DependentUpon>
+    <Compile Include="Controls\QF72201RA257L01A.ascx.cs">
+      <DependentUpon>QF72201RA257L01A.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\QF72201_RA257_L01A.ascx.designer.cs">
-      <DependentUpon>QF72201_RA257_L01A.ascx</DependentUpon>
+    <Compile Include="Controls\QF72201RA257L01A.ascx.designer.cs">
+      <DependentUpon>QF72201RA257L01A.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\QF72201L01B.ascx.cs">
       <DependentUpon>QF72201L01B.ascx</DependentUpon>

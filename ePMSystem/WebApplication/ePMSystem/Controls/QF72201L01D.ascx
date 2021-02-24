@@ -8,7 +8,7 @@
 			<div class="progress" style='height: 30px; margin-top: -15px;'>
 				<div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
 					<h3 style="text-align: center; font-size: larger; margin-top: 10px;">Contract Name:
-						<asp:Label ID="lbl_ContractName" runat="server" Text="QDP510QF11"></asp:Label></h3>
+						<asp:Label ID="lbl_ContractName" runat="server" Text="QF72201L01D - Subcontract  works contract Remeasured "></asp:Label></h3>
 				</div>
 			</div>
 			<div class="row">

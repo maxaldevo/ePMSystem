@@ -10,7 +10,7 @@ using ePM.Dal.Logic;
 
 namespace ePMSystem.Controls
 {
-    public partial class QF72201_RA257_L01A : System.Web.UI.UserControl
+    public partial class QF72201RA257L01A : System.Web.UI.UserControl
     {
         #region"Definitions"
         Contract_RA257_L01A contract_RA257L01A = new Contract_RA257_L01A();

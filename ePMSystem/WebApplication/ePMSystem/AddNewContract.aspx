@@ -23,6 +23,8 @@
 <%@ Register Src="~/Controls/QF72201L12.ascx" TagPrefix="uc1" TagName="QF72201L12" %>
 <%@ Register Src="~/Controls/QF72201L15.ascx" TagPrefix="uc1" TagName="QF72201L15" %>
 <%@ Register Src="~/Controls/QF72201L1511.ascx" TagPrefix="uc1" TagName="QF72201L1511" %>
+<%@ Register Src="~/Controls/QF72201RA257L01A.ascx" TagPrefix="uc1" TagName="QF72201RA257L01A" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         .tr.group,
@@ -160,7 +162,7 @@
                                     <uc1:QF72201L02B runat="server" id="QF72201L02B" Visible="false" />
                                     <uc1:QF72201L01D runat="server" id="QF72201L01D" Visible="false" />
                                     <uc1:QF710315 runat="server" id="QF710315" Visible="false" />
-                                    <uc1:QF710316 runat="server" id="QF710316" Visible="true" />
+                                    <uc1:QF710316 runat="server" id="QF710316" Visible="false" />
                                     <uc1:QF710405 runat="server" id="QF710405" Visible="false" />
                                     <uc1:QF7220109 runat="server" id="QF7220109" Visible="false" />
                                     <uc1:QF7220110 runat="server" id="QF7220110" Visible="false" />
@@ -177,6 +179,7 @@
                                     <uc1:QF72201L10 runat="server" id="QF72201L10" Visible="false" />
                                     <uc1:QF72201L15 runat="server" id="QF72201L15" Visible="false" />
                                     <uc1:QF72201L1511 runat="server" id="QF72201L1511" Visible="false" />
+                                    <uc1:QF72201RA257L01A runat="server" id="QF72201RA257L01A" Visible="false" />
 
 					</div>
 				</div>
