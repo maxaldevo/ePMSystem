@@ -1,29 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="AddNewContract.aspx.cs" Inherits="WebApplication1.AddNewContract" %>
 
-<%@ Register Src="~/Controls/QDP510QF11.ascx" TagPrefix="uc1" TagName="QDP510QF11" %>
-<%@ Register Src="~/Controls/QDP510QF17.ascx" TagPrefix="uc1" TagName="QDP510QF17" %>
-<%@ Register Src="~/Controls/QF710315.ascx" TagPrefix="uc1" TagName="QF710315" %>
-<%@ Register Src="~/Controls/QF710316.ascx" TagPrefix="uc1" TagName="QF710316" %>
-<%@ Register Src="~/Controls/QF710405.ascx" TagPrefix="uc1" TagName="QF710405" %>
-<%@ Register Src="~/Controls/QF7220109.ascx" TagPrefix="uc1" TagName="QF7220109" %>
-<%@ Register Src="~/Controls/QF7220110.ascx" TagPrefix="uc1" TagName="QF7220110" %>
-<%@ Register Src="~/Controls/QF7220111.ascx" TagPrefix="uc1" TagName="QF7220111" %>
-<%@ Register Src="~/Controls/QF7220112.ascx" TagPrefix="uc1" TagName="QF7220112" %>
-<%@ Register Src="~/Controls/QF72201E15.ascx" TagPrefix="uc1" TagName="QF72201E15" %>
-<%@ Register Src="~/Controls/QF72201L01A.ascx" TagPrefix="uc1" TagName="QF72201L01A" %>
-<%@ Register Src="~/Controls/QF72201L01B.ascx" TagPrefix="uc1" TagName="QF72201L01B" %>
-<%@ Register Src="~/Controls/QF72201L01C.ascx" TagPrefix="uc1" TagName="QF72201L01C" %>
-<%@ Register Src="~/Controls/QF72201L01D.ascx" TagPrefix="uc1" TagName="QF72201L01D" %>
-<%@ Register Src="~/Controls/QF72201L02A.ascx" TagPrefix="uc1" TagName="QF72201L02A" %>
-<%@ Register Src="~/Controls/QF72201L02B.ascx" TagPrefix="uc1" TagName="QF72201L02B" %>
-<%@ Register Src="~/Controls/QF72201L03A.ascx" TagPrefix="uc1" TagName="QF72201L03A" %>
-<%@ Register Src="~/Controls/QF72201L03B.ascx" TagPrefix="uc1" TagName="QF72201L03B" %>
-<%@ Register Src="~/Controls/QF72201L09.ascx" TagPrefix="uc1" TagName="QF72201L09" %>
-<%@ Register Src="~/Controls/QF72201L10.ascx" TagPrefix="uc1" TagName="QF72201L10" %>
-<%@ Register Src="~/Controls/QF72201L12.ascx" TagPrefix="uc1" TagName="QF72201L12" %>
-<%@ Register Src="~/Controls/QF72201L15.ascx" TagPrefix="uc1" TagName="QF72201L15" %>
-<%@ Register Src="~/Controls/QF72201L1511.ascx" TagPrefix="uc1" TagName="QF72201L1511" %>
-<%@ Register Src="~/Controls/QF72201RA257L01A.ascx" TagPrefix="uc1" TagName="QF72201RA257L01A" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -156,30 +133,7 @@
                 <br />
 				<div class="row">
 					<div class="col-12">
-                                    <uc1:QF72201L01A runat="server" id="QF72201L01A" Visible="false" />
-                                    <uc1:QF72201L01B runat="server" id="QF72201L01B" Visible="false" />
-                                    <uc1:QF72201L02A runat="server" id="QF72201L02A" Visible="false" />
-                                    <uc1:QF72201L02B runat="server" id="QF72201L02B" Visible="false" />
-                                    <uc1:QF72201L01D runat="server" id="QF72201L01D" Visible="false" />
-                                    <uc1:QF710315 runat="server" id="QF710315" Visible="false" />
-                                    <uc1:QF710316 runat="server" id="QF710316" Visible="false" />
-                                    <uc1:QF710405 runat="server" id="QF710405" Visible="false" />
-                                    <uc1:QF7220109 runat="server" id="QF7220109" Visible="false" />
-                                    <uc1:QF7220110 runat="server" id="QF7220110" Visible="false" />
-                                    <uc1:QF7220111 runat="server" id="QF7220111" Visible="false" />
-                                    <uc1:QF7220112 runat="server" id="QF7220112" Visible="false" />
-                                    <uc1:QF72201L12 runat="server" id="QF72201L12" Visible="false" />
-                                    <uc1:QF72201L01C runat="server" id="QF72201L01C" Visible="false" />
-                                    <uc1:QDP510QF11 runat="server" id="QDP510QF11" Visible="false" />
-                                    <uc1:QDP510QF17 runat="server" id="QDP510QF17" Visible="false" />
-                                    <uc1:QF72201L09 runat="server" id="QF72201L09" Visible="false" />
-                                    <uc1:QF72201E15 runat="server" id="QF72201E15" Visible="false" />
-                                    <uc1:QF72201L03A runat="server" id="QF72201L03A" Visible="false" />
-                                    <uc1:QF72201L03B runat="server" id="QF72201L03B" Visible="false" />
-                                    <uc1:QF72201L10 runat="server" id="QF72201L10" Visible="false" />
-                                    <uc1:QF72201L15 runat="server" id="QF72201L15" Visible="false" />
-                                    <uc1:QF72201L1511 runat="server" id="QF72201L1511" Visible="false" />
-                                    <uc1:QF72201RA257L01A runat="server" id="QF72201RA257L01A" Visible="false" />
+                                    
 
 					</div>
 				</div>
