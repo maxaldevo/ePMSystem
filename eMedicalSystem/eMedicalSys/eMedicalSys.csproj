@@ -6219,30 +6219,6 @@
     <Content Include="Controls\FullHeaderNew.ascx" />
     <Content Include="Controls\FullUIHeader.ascx" />
     <Content Include="Controls\LimitedHeader.ascx" />
-    <Content Include="Controls\QDP510QF11.ascx" />
-    <Content Include="Controls\QDP510QF17.ascx" />
-    <Content Include="Controls\QF710315.ascx" />
-    <Content Include="Controls\QF710316.ascx" />
-    <Content Include="Controls\QF710405.ascx" />
-    <Content Include="Controls\QF7220109.ascx" />
-    <Content Include="Controls\QF7220110.ascx" />
-    <Content Include="Controls\QF7220111.ascx" />
-    <Content Include="Controls\QF7220112.ascx" />
-    <Content Include="Controls\QF72201E15.ascx" />
-    <Content Include="Controls\QF72201L01A.ascx" />
-    <Content Include="Controls\QF72201L01B.ascx" />
-    <Content Include="Controls\QF72201L01C.ascx" />
-    <Content Include="Controls\QF72201L01D.ascx" />
-    <Content Include="Controls\QF72201L02A.ascx" />
-    <Content Include="Controls\QF72201L02B.ascx" />
-    <Content Include="Controls\QF72201L03A.ascx" />
-    <Content Include="Controls\QF72201L03B.ascx" />
-    <Content Include="Controls\QF72201L09.ascx" />
-    <Content Include="Controls\QF72201L10.ascx" />
-    <Content Include="Controls\QF72201L12.ascx" />
-    <Content Include="Controls\QF72201L15.ascx" />
-    <Content Include="Controls\QF72201L1511.ascx" />
-    <Content Include="Controls\QF72201RA257L01A.ascx" />
     <Content Include="Controls\WebUserControl1.ascx" />
     <Content Include="css\bootstrap-extend.css" />
     <Content Include="css\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
@@ -7388,174 +7364,6 @@
     </Compile>
     <Compile Include="Controls\LimitedHeader.ascx.designer.cs">
       <DependentUpon>LimitedHeader.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QDP510QF11.ascx.cs">
-      <DependentUpon>QDP510QF11.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QDP510QF11.ascx.designer.cs">
-      <DependentUpon>QDP510QF11.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QDP510QF17.ascx.cs">
-      <DependentUpon>QDP510QF17.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QDP510QF17.ascx.designer.cs">
-      <DependentUpon>QDP510QF17.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF710315.ascx.cs">
-      <DependentUpon>QF710315.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF710315.ascx.designer.cs">
-      <DependentUpon>QF710315.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF710316.ascx.cs">
-      <DependentUpon>QF710316.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF710316.ascx.designer.cs">
-      <DependentUpon>QF710316.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF710405.ascx.cs">
-      <DependentUpon>QF710405.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF710405.ascx.designer.cs">
-      <DependentUpon>QF710405.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF7220109.ascx.cs">
-      <DependentUpon>QF7220109.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF7220109.ascx.designer.cs">
-      <DependentUpon>QF7220109.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF7220110.ascx.cs">
-      <DependentUpon>QF7220110.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF7220110.ascx.designer.cs">
-      <DependentUpon>QF7220110.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF7220111.ascx.cs">
-      <DependentUpon>QF7220111.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF7220111.ascx.designer.cs">
-      <DependentUpon>QF7220111.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF7220112.ascx.cs">
-      <DependentUpon>QF7220112.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF7220112.ascx.designer.cs">
-      <DependentUpon>QF7220112.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201E15.ascx.cs">
-      <DependentUpon>QF72201E15.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201E15.ascx.designer.cs">
-      <DependentUpon>QF72201E15.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L01A.ascx.cs">
-      <DependentUpon>QF72201L01A.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L01A.ascx.designer.cs">
-      <DependentUpon>QF72201L01A.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L01B.ascx.cs">
-      <DependentUpon>QF72201L01B.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L01B.ascx.designer.cs">
-      <DependentUpon>QF72201L01B.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L01C.ascx.cs">
-      <DependentUpon>QF72201L01C.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L01C.ascx.designer.cs">
-      <DependentUpon>QF72201L01C.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L01D.ascx.cs">
-      <DependentUpon>QF72201L01D.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L01D.ascx.designer.cs">
-      <DependentUpon>QF72201L01D.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L02A.ascx.cs">
-      <DependentUpon>QF72201L02A.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L02A.ascx.designer.cs">
-      <DependentUpon>QF72201L02A.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L02B.ascx.cs">
-      <DependentUpon>QF72201L02B.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L02B.ascx.designer.cs">
-      <DependentUpon>QF72201L02B.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L03A.ascx.cs">
-      <DependentUpon>QF72201L03A.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L03A.ascx.designer.cs">
-      <DependentUpon>QF72201L03A.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L03B.ascx.cs">
-      <DependentUpon>QF72201L03B.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L03B.ascx.designer.cs">
-      <DependentUpon>QF72201L03B.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L09.ascx.cs">
-      <DependentUpon>QF72201L09.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L09.ascx.designer.cs">
-      <DependentUpon>QF72201L09.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L10.ascx.cs">
-      <DependentUpon>QF72201L10.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L10.ascx.designer.cs">
-      <DependentUpon>QF72201L10.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L12.ascx.cs">
-      <DependentUpon>QF72201L12.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L12.ascx.designer.cs">
-      <DependentUpon>QF72201L12.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L15.ascx.cs">
-      <DependentUpon>QF72201L15.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L15.ascx.designer.cs">
-      <DependentUpon>QF72201L15.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201L1511.ascx.cs">
-      <DependentUpon>QF72201L1511.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201L1511.ascx.designer.cs">
-      <DependentUpon>QF72201L1511.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\QF72201RA257L01A.ascx.cs">
-      <DependentUpon>QF72201RA257L01A.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\QF72201RA257L01A.ascx.designer.cs">
-      <DependentUpon>QF72201RA257L01A.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\WebUserControl1.ascx.cs">
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
@@ -8803,6 +8611,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ePM.Dal\ePM_Dal.csproj">
+      <Project>{811b07f3-5724-45e2-a20e-cbc60f709af8}</Project>
+      <Name>ePM_Dal</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
