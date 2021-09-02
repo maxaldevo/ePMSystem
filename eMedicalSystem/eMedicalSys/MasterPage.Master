@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="ePMSystem.MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="eMedicalSystem.MasterPage" %>
 
 
 <%--<%@ Register Src="~/Controls/FullUIHeader.ascx" TagPrefix="uc1" TagName="FullUIHeader" %>--%>

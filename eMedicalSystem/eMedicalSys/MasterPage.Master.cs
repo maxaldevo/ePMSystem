@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ePM_Dal.Logic;
 
-namespace ePMSystem
+namespace eMedicalSystem
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {

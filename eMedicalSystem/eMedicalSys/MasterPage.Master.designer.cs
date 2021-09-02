@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ePMSystem
+namespace eMedicalSystem
 {
 
 
