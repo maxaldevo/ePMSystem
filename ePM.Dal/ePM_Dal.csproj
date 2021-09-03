@@ -234,6 +234,8 @@
     </Compile>
     <Compile Include="Logic\ContractManager.cs" />
     <Compile Include="Logic\ExceptionsManager.cs" />
+    <Compile Include="Logic\ClinicManager.cs" />
+    <Compile Include="Logic\HospitalManager.cs" />
     <Compile Include="Logic\PersonnelManager.cs" />
     <Compile Include="Logic\SecurityManager.cs" />
     <Compile Include="Logic\UserManager.cs" />

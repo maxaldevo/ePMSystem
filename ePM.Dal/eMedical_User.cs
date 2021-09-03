@@ -73,7 +73,11 @@ namespace ePM.Dal
         public string Photo { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public string UpdatedBy { get; set; }
+        public Nullable<int> HospitalID { get; set; }
+        public Nullable<int> ClinicID { get; set; }
     
         public virtual eMedical_Roles eMedical_Roles { get; set; }
+        public virtual eMedical_Clinic eMedical_Clinic { get; set; }
+        public virtual eMedical_Hospital eMedical_Hospital { get; set; }
     }
 }

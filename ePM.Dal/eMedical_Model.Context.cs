@@ -67,5 +67,80 @@ namespace ePM.Dal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewUser", fNameParameter, firstNameParameter, lastNameParameter, emailParameter, mobileParameter, empNoParameter, roleIdParameter, msg);
         }
+    
+        public virtual int sp_eMedical_addNewHospital(string hospitalName, string description, Nullable<int> userID, ObjectParameter msg)
+        {
+            var hospitalNameParameter = hospitalName != null ?
+                new ObjectParameter("hospitalName", hospitalName) :
+                new ObjectParameter("hospitalName", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewHospital", hospitalNameParameter, descriptionParameter, userIDParameter, msg);
+        }
+    
+        public virtual int sp_eMedical_addNewClinic(string clinicName, Nullable<int> hospitalID, Nullable<int> userID, ObjectParameter msg)
+        {
+            var clinicNameParameter = clinicName != null ?
+                new ObjectParameter("clinicName", clinicName) :
+                new ObjectParameter("clinicName", typeof(string));
+    
+            var hospitalIDParameter = hospitalID.HasValue ?
+                new ObjectParameter("hospitalID", hospitalID) :
+                new ObjectParameter("hospitalID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewClinic", clinicNameParameter, hospitalIDParameter, userIDParameter, msg);
+        }
+    
+        public virtual int sp_eMedical_addNewUser_ByHospitalID_ClinicID(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, Nullable<int> hospitalId, Nullable<int> clinicId, ObjectParameter msg)
+        {
+            var fNameParameter = fName != null ?
+                new ObjectParameter("FName", fName) :
+                new ObjectParameter("FName", typeof(string));
+    
+            var firstNameParameter = firstName != null ?
+                new ObjectParameter("FirstName", firstName) :
+                new ObjectParameter("FirstName", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("LastName", lastName) :
+                new ObjectParameter("LastName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("Mobile", mobile) :
+                new ObjectParameter("Mobile", typeof(string));
+    
+            var empNoParameter = empNo != null ?
+                new ObjectParameter("EmpNo", empNo) :
+                new ObjectParameter("EmpNo", typeof(string));
+    
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var hospitalIdParameter = hospitalId.HasValue ?
+                new ObjectParameter("HospitalId", hospitalId) :
+                new ObjectParameter("HospitalId", typeof(int));
+    
+            var clinicIdParameter = clinicId.HasValue ?
+                new ObjectParameter("ClinicId", clinicId) :
+                new ObjectParameter("ClinicId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewUser_ByHospitalID_ClinicID", fNameParameter, firstNameParameter, lastNameParameter, emailParameter, mobileParameter, empNoParameter, roleIdParameter, hospitalIdParameter, clinicIdParameter, msg);
+        }
     }
 }

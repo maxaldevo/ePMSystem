@@ -89,6 +89,64 @@ namespace ePM_Dal.Logic
            
             return friendlyMsg;
         }
+        public static string AddNewUser_By_HospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile,
+            string empNo, int roleId, int hospitalID, int clinicID)
+        {
+            string friendlyMsg = "";
+            try
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
+                    db.sp_eMedical_addNewUser_ByHospitalID_ClinicID(fname, firstName, lastName, email, mobile, empNo, roleId, hospitalID, clinicID, outputMsgParameter);
+                    friendlyMsg = outputMsgParameter.Value.ToString();
+                    //make default password 111111
+                }
+            }
+            catch (Exception ex)
+            {
+
+                friendlyMsg = "Please contact your admin!. unexpected error";
+                ExceptionsManager.AddException(ex);
+                if (ex.InnerException != null)
+                {
+                    ExceptionsManager.AddException(ex.InnerException);
+                }
+            }
+
+
+            return friendlyMsg;
+        }
+        //public static string AddNewUser_byHospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile,
+        //   string empNo, int roleId)
+        //{
+        //    string friendlyMsg = "";
+        //    try
+        //    {
+        //        using (var db = new eMedicalEntities())
+        //        {
+        //            var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+        //            // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
+        //            db.sp_eMedical_addNewUser(fname, firstName, lastName, email, mobile, empNo, roleId, outputMsgParameter);
+        //            friendlyMsg = outputMsgParameter.Value.ToString();
+        //            //make default password 111111
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        friendlyMsg = "Please contact your admin!. unexpected error";
+        //        ExceptionsManager.AddException(ex);
+        //        if (ex.InnerException != null)
+        //        {
+        //            ExceptionsManager.AddException(ex.InnerException);
+        //        }
+        //    }
+
+
+        //    return friendlyMsg;
+        //}
 
         public static bool checkUserEmail(string email)
         {

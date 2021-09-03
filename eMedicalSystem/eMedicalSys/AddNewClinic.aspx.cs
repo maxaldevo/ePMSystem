@@ -11,10 +11,10 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class AddNewUser : System.Web.UI.Page
+    public partial class AddNewClinic : System.Web.UI.Page
     {
-        public static string _selectedDept , _fname, _firstName,_lastName,_empno,_email,_mobile = "";
-        public static int _selectedRole, _selectedHospital, _selectedClinic = 0;
+        public static string _clinicname;
+        public static int _selectedHospital;
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,9 +49,9 @@ namespace WebApplication1
                 }
 
                 #endregion Page Validation
-                BindHospitals();
+               // BindDepartments();
                 BindRoles();
-                BindClinics();
+                //BindHRRoles();
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -61,21 +61,16 @@ namespace WebApplication1
                 try
                 {
                     //Validate user name and emp No
-                  
-                    _fname = txtFName.Text;
-                    _firstName = txtFirstName.Text;
-                    _lastName = txtLastName.Text;
-                    _email = txtEmail.Text;
 
-                    _empno = txtEmpNo.Text;
-                    _mobile = !string.IsNullOrWhiteSpace(txtMobile.Text) ? txtMobile.Text : null;
-                    bool emailExist = UserManager.checkUserEmail(_email);
-                    bool empoExist = UserManager.checkUserEmpNo(_empno);
-                    if (!emailExist && !empoExist)
+                    _clinicname = txtClinicName.Text;
+
+                    bool clinicExist =ClinicManager.checkUserClinicName(_clinicname);
+                    if (!clinicExist)
                     {
-                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_fname, _firstName, _lastName, _email, _mobile, _empno, _selectedRole, _selectedHospital, _selectedClinic);
+                        string result = ClinicManager.AddNewClinic(_clinicname, _selectedHospital, int.Parse(Session["UserId"].ToString()));
                         if (result != "inserted")
                         {
+
                             lblResult.Visible = true;
                             lblResult.ForeColor = System.Drawing.Color.Red;
                             lblResult.Text = result;
@@ -87,7 +82,8 @@ namespace WebApplication1
                             lblResult.ForeColor = System.Drawing.Color.Green;
                             lblResult.Text = result;
                             clearControls();
-                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
+
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "Clinic added successfully!" + "')</script>", false);
                         }
                     }
                     else
@@ -95,7 +91,7 @@ namespace WebApplication1
                         lblResult.Visible = true;
                         lblResult.ForeColor = System.Drawing.Color.Red;
                         lblResult.Text = "User email or Employee No exists";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Warning", "<script>showpopwarning('" + "User email or Employee No exists!" + "')</script>", false);
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Warning", "<script>showpopwarning('" + "Clinic No exists!" + "')</script>", false);
                     } 
                    
                 }
@@ -110,69 +106,28 @@ namespace WebApplication1
         }
         private void clearControls()
         {
-            txtEmail.Text = "";
-            txtFName.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
-            txtEmpNo.Text = "";
-            txtMobile.Text = "";
+            txtClinicName.Text = "";
            // lblResult.Visible = false;
         }
-        //protected void DropDownHRRoles_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _selectedHRRole = int.Parse(DropDownHRRoles.SelectedItem.Value);
-        //}
+
 
         private void BindRoles()
         {
-            DropDownRoles.DataSource = null;
-            DropDownRoles.ClearSelection();
-            List<eMedical_Roles> groups = UserManager.GetRolesList();
-            DropDownRoles.DataSource = groups;
-            DropDownRoles.DataValueField = "RoleId";
-            DropDownRoles.DataTextField = "RoleName";
-            DropDownRoles.DataBind();
-            DropDownRoles.Items[0].Selected = true;
-            _selectedRole = int.Parse(DropDownRoles.SelectedItem.Value);
-        }
-        private void BindHospitals()
-        {
             DropDownHospitals.DataSource = null;
             DropDownHospitals.ClearSelection();
-            List<eMedical_Hospital> Hospitals = ClinicManager.GetHospitalsList();
-            DropDownHospitals.DataSource = Hospitals;
+            List<eMedical_Hospital> groups = ClinicManager.GetHospitalsList();
+            DropDownHospitals.DataSource = groups;
             DropDownHospitals.DataValueField = "ID";
             DropDownHospitals.DataTextField = "HospitalName";
             DropDownHospitals.DataBind();
-            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
             DropDownHospitals.Items[0].Selected = true;
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
         }
-        private void BindClinics()
-        {
-            DropDownClinics.DataSource = null;
-            DropDownClinics.ClearSelection();
-            List<eMedical_Clinic> Clinics = ClinicManager.GetClinicsList(_selectedHospital);
-            DropDownClinics.DataSource = Clinics;
-            DropDownClinics.DataValueField = "ID";
-            DropDownClinics.DataTextField = "ClinicName";
-            DropDownClinics.DataBind();
-            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
-            DropDownClinics.Items[0].Selected = true;
-            _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
-        }
+
 
         protected void DropDownHospitals_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
-        }
-        protected void DropDownRoles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedRole = int.Parse(DropDownRoles.SelectedItem.Value);
-        }
-        protected void DropDownClinics_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
 
     }

@@ -84,7 +84,8 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
-    <Content Include="AddNewContract.aspx" />
+    <Content Include="AddNewClinic.aspx" />
+    <Content Include="AddNewHospital.aspx" />
     <Content Include="AddNewUser.aspx" />
     <Content Include="AddUsersBulk.aspx" />
     <Content Include="assets\vendor_components\animate\animate.css" />
@@ -7400,12 +7401,19 @@
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddNewContract.aspx.cs">
-      <DependentUpon>AddNewContract.aspx</DependentUpon>
+    <Compile Include="AddNewClinic.aspx.cs">
+      <DependentUpon>AddNewClinic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddNewContract.aspx.designer.cs">
-      <DependentUpon>AddNewContract.aspx</DependentUpon>
+    <Compile Include="AddNewClinic.aspx.designer.cs">
+      <DependentUpon>AddNewClinic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewHospital.aspx.cs">
+      <DependentUpon>AddNewHospital.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewHospital.aspx.designer.cs">
+      <DependentUpon>AddNewHospital.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewUser.aspx.cs">
       <DependentUpon>AddNewUser.aspx</DependentUpon>

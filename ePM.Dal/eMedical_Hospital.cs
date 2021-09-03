@@ -18,6 +18,7 @@ namespace ePM.Dal
         public eMedical_Hospital()
         {
             this.eMedical_Clinic = new HashSet<eMedical_Clinic>();
+            this.eMedical_User = new HashSet<eMedical_User>();
         }
     
         public int ID { get; set; }
@@ -29,5 +30,7 @@ namespace ePM.Dal
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_Clinic> eMedical_Clinic { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eMedical_User> eMedical_User { get; set; }
     }
 }

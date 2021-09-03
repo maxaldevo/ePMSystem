@@ -130,6 +130,8 @@
           <Property Name="Photo" Type="nvarchar" MaxLength="255" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="ClinicID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -193,6 +195,30 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_eMedical_User_eMedical_Clinic">
+          <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="0..1" />
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_User_eMedical_Hospital">
+          <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Role="eMedical_Roles" Type="Self.eMedical_Roles" Multiplicity="0..1" />
           <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="*" />
@@ -233,6 +259,18 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_eMedical_addNewClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clinicName" Type="nvarchar" Mode="In" />
+          <Parameter Name="hospitalID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_eMedical_addNewHospital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hospitalName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_addNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FName" Type="nvarchar" Mode="In" />
           <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
@@ -241,6 +279,18 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Parameter Name="Mobile" Type="varchar" Mode="In" />
           <Parameter Name="EmpNo" Type="nvarchar" Mode="In" />
           <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_eMedical_addNewUser_ByHospitalID_ClinicID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="EmpNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="HospitalId" Type="int" Mode="In" />
+          <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
         <EntityContainer Name="eMedicalModelStoreContainer">
@@ -299,6 +349,14 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_User_eMedical_Clinic" Association="Self.FK_eMedical_User_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_User_eMedical_Hospital" Association="Self.FK_eMedical_User_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
           </AssociationSet>
           <AssociationSet Name="FK_LMS_User_LMS_Roles" Association="Self.FK_LMS_User_LMS_Roles">
             <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
@@ -424,6 +482,38 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             <End Role="eMedical_User" EntitySet="eMedical_User" />
           </AssociationSet>
           <EntitySet Name="vPersonnels" EntityType="eMedicalModel.vPersonnel" />
+          <AssociationSet Name="FK_eMedical_User_eMedical_Clinic" Association="eMedicalModel.FK_eMedical_User_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_User_eMedical_Hospital" Association="eMedicalModel.FK_eMedical_User_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+          </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewHospital">
+            <Parameter Name="hospitalName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_eMedical_addNewClinic">
+            <Parameter Name="clinicName" Mode="In" Type="String" />
+            <Parameter Name="hospitalID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_eMedical_addNewUser_ByHospitalID_ClinicID">
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="EmpNo" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="HospitalId" Mode="In" Type="Int32" />
+            <Parameter Name="ClinicId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -436,6 +526,7 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Clinic" ToRole="eMedical_Hospital" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_User" />
         </EntityType>
         <EntityType Name="eMedical_Hospital">
           <Key>
@@ -448,6 +539,7 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Clinic" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_User" />
         </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
@@ -525,6 +617,10 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="eMedical_Roles" Relationship="eMedicalModel.FK_LMS_User_LMS_Roles" FromRole="eMedical_User" ToRole="eMedical_Roles" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="ClinicID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_User" ToRole="eMedical_Clinic" />
+          <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_User" ToRole="eMedical_Hospital" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -586,6 +682,30 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="Active" Type="Boolean" />
           <Property Name="PersonnelID" Type="Int32" />
         </EntityType>
+        <Association Name="FK_eMedical_User_eMedical_Clinic">
+          <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_User_eMedical_Hospital">
+          <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -663,6 +783,8 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <EntitySetMapping Name="eMedical_User">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_User">
               <MappingFragment StoreEntitySet="eMedical_User">
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
@@ -773,6 +895,9 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewHospital" FunctionName="eMedicalModel.Store.sp_eMedical_addNewHospital" />
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewClinic" FunctionName="eMedicalModel.Store.sp_eMedical_addNewClinic" />
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewUser_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewUser_ByHospitalID_ClinicID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

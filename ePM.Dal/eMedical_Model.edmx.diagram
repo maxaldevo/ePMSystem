@@ -16,6 +16,8 @@
         <EntityTypeShape EntityType="eMedicalModel.eMedical_User" Width="1.5" PointX="3.375" PointY="7.625" />
         <AssociationConnector Association="eMedicalModel.FK_LMS_User_LMS_Roles" />
         <EntityTypeShape EntityType="eMedicalModel.vPersonnel" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_User_eMedical_Clinic" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_User_eMedical_Hospital" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
