@@ -73,7 +73,7 @@ namespace WebApplication1
         {
             DropDownRoles.DataSource = null;
             DropDownRoles.ClearSelection();
-            List<LMS_Roles> groups = UserManager.GetRolesList();
+            List<eMedical_Roles> groups = UserManager.GetRolesList();
             DropDownRoles.DataSource = groups;
             DropDownRoles.DataValueField = "RoleId";
             DropDownRoles.DataTextField = "RoleName";
@@ -115,7 +115,7 @@ namespace WebApplication1
                     bool empoExist = UserManager.checkUserEmpNo(_empno);
                     if (!emailExist && !empoExist)
                     {
-                        string result = UserManager.AddNewUser(_fname, _firstName, _lastName, _email, _mobile, _empno,   _selectedRole,_selectedHRRole);
+                        string result = UserManager.AddNewUser(_fname, _firstName, _lastName, _email, _mobile, _empno,   _selectedRole);
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;

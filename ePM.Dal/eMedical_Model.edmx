@@ -1,0 +1,799 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eMedicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="eMedical_Clinic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clinicname" Type="nvarchar" MaxLength="500" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
+        <EntityType Name="eMedical_Hospital">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
+        <EntityType Name="eMedical_Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="SearchUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="HelpUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="UniqueName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssClass" Type="nvarchar" MaxLength="150" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="eMedical_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="eMedical_RolesRights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="MenuItemId" Type="bigint" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="LastUpdatedBy" Type="bigint" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="eMedical_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="ReportingTo" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="200" />
+          <Property Name="Major" Type="nvarchar" MaxLength="200" />
+          <Property Name="University" Type="nvarchar" MaxLength="200" />
+          <Property Name="ManagerID" Type="int" />
+          <Property Name="ProfilePicPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="BirthCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="100" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="100" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="TaxFileNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="TaxCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="HealthInsNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Allergies" Type="nvarchar" MaxLength="1000" />
+          <Property Name="USINo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeType" Type="nvarchar" MaxLength="100" />
+          <Property Name="HomePort" Type="nvarchar" MaxLength="100" />
+          <Property Name="PointofHire" Type="nvarchar" MaxLength="100" />
+          <Property Name="PointofHireAlt" Type="nvarchar" MaxLength="100" />
+          <Property Name="AirportDistance" Type="nvarchar" MaxLength="100" />
+          <Property Name="MainLanguage" Type="nvarchar" MaxLength="100" />
+          <Property Name="OtherLanguage" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Suburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="POSuburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="POState" Type="nvarchar" MaxLength="100" />
+          <Property Name="POPostcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="POCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Company" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vPersonnel">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="BirthCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="100" />
+          <Property Name="Citizenship" Type="nvarchar" MaxLength="100" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="Addr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="Suburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr1" Type="nvarchar" MaxLength="100" />
+          <Property Name="POAddr2" Type="nvarchar" MaxLength="100" />
+          <Property Name="POSuburb" Type="nvarchar" MaxLength="100" />
+          <Property Name="POState" Type="nvarchar" MaxLength="100" />
+          <Property Name="POPostcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="POCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="PerBaseStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Company" Type="nvarchar" MaxLength="100" />
+          <Property Name="PerBaseNotes" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="255" />
+          <Property Name="PerBaseLastUpdated" Type="datetime" />
+          <Property Name="PerBaseUpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfilePicPath" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="PersonnelID" Type="int" />
+        </EntityType>
+        <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
+          <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
+          <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Clinic">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LMS_User_LMS_Roles">
+          <End Role="eMedical_Roles" Type="Self.eMedical_Roles" Multiplicity="0..1" />
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRights_LMSPages">
+          <End Role="eMedical_Pages" Type="Self.eMedical_Pages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eMedical_RolesRights" Type="Self.eMedical_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Pages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="eMedical_RolesRights">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRights_Roles">
+          <End Role="eMedical_Roles" Type="Self.eMedical_Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eMedical_RolesRights" Type="Self.eMedical_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="eMedical_RolesRights">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_eMedical_addNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="EmpNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="eMedicalModelStoreContainer">
+          <EntitySet Name="eMedical_Clinic" EntityType="Self.eMedical_Clinic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Hospital" EntityType="Self.eMedical_Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vPersonnel].[FName] AS [FName], 
+    [vPersonnel].[FirstName] AS [FirstName], 
+    [vPersonnel].[LastName] AS [LastName], 
+    [vPersonnel].[MiddleName] AS [MiddleName], 
+    [vPersonnel].[NickName] AS [NickName], 
+    [vPersonnel].[Title] AS [Title], 
+    [vPersonnel].[DOB] AS [DOB], 
+    [vPersonnel].[BirthCountry] AS [BirthCountry], 
+    [vPersonnel].[Gender] AS [Gender], 
+    [vPersonnel].[Citizenship] AS [Citizenship], 
+    [vPersonnel].[Nationality] AS [Nationality], 
+    [vPersonnel].[MaritalStatus] AS [MaritalStatus], 
+    [vPersonnel].[Experience] AS [Experience], 
+    [vPersonnel].[EmployeeType] AS [EmployeeType], 
+    [vPersonnel].[Addr1] AS [Addr1], 
+    [vPersonnel].[Addr2] AS [Addr2], 
+    [vPersonnel].[Suburb] AS [Suburb], 
+    [vPersonnel].[State] AS [State], 
+    [vPersonnel].[Postcode] AS [Postcode], 
+    [vPersonnel].[Country] AS [Country], 
+    [vPersonnel].[POAddr1] AS [POAddr1], 
+    [vPersonnel].[POAddr2] AS [POAddr2], 
+    [vPersonnel].[POSuburb] AS [POSuburb], 
+    [vPersonnel].[POState] AS [POState], 
+    [vPersonnel].[POPostcode] AS [POPostcode], 
+    [vPersonnel].[POCountry] AS [POCountry], 
+    [vPersonnel].[Email] AS [Email], 
+    [vPersonnel].[PhoneNo] AS [PhoneNo], 
+    [vPersonnel].[Mobile] AS [Mobile], 
+    [vPersonnel].[PerBaseStatus] AS [PerBaseStatus], 
+    [vPersonnel].[EmployeeNo] AS [EmployeeNo], 
+    [vPersonnel].[Company] AS [Company], 
+    [vPersonnel].[PerBaseNotes] AS [PerBaseNotes], 
+    [vPersonnel].[Photo] AS [Photo], 
+    [vPersonnel].[PerBaseLastUpdated] AS [PerBaseLastUpdated], 
+    [vPersonnel].[PerBaseUpdatedBy] AS [PerBaseUpdatedBy], 
+    [vPersonnel].[ProfilePicPath] AS [ProfilePicPath], 
+    [vPersonnel].[RoleId] AS [RoleId], 
+    [vPersonnel].[RoleName] AS [RoleName], 
+    [vPersonnel].[ID] AS [ID], 
+    [vPersonnel].[Active] AS [Active], 
+    [vPersonnel].[PersonnelID] AS [PersonnelID]
+    FROM [dbo].[vPersonnel] AS [vPersonnel]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LMS_User_LMS_Roles" Association="Self.FK_LMS_User_LMS_Roles">
+            <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRights_LMSPages" Association="Self.FK_RoleRights_LMSPages">
+            <End Role="eMedical_Pages" EntitySet="eMedical_Pages" />
+            <End Role="eMedical_RolesRights" EntitySet="eMedical_RolesRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRights_Roles" Association="Self.FK_RoleRights_Roles">
+            <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
+            <End Role="eMedical_RolesRights" EntitySet="eMedical_RolesRights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eMedicalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="eMedical_Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SearchUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HelpUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssClass" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="CssIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="eMedical_RolesRights" Relationship="Self.FK_RoleRights_LMSPages" FromRole="eMedical_Pages" ToRole="eMedical_RolesRights" />
+        </EntityType>
+        <EntityType Name="eMedical_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="eMedical_RolesRights" Relationship="Self.FK_RoleRights_Roles" FromRole="eMedical_Roles" ToRole="eMedical_RolesRights" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_LMS_User_LMS_Roles" FromRole="eMedical_Roles" ToRole="eMedical_User" />
+        </EntityType>
+        <EntityType Name="eMedical_RolesRights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="MenuItemId" Type="Int64" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="LastUpdatedBy" Type="Int64" />
+          <Property Name="LastUpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="eMedical_Pages" Relationship="Self.FK_RoleRights_LMSPages" FromRole="eMedical_RolesRights" ToRole="eMedical_Pages" />
+          <NavigationProperty Name="eMedical_Roles" Relationship="Self.FK_RoleRights_Roles" FromRole="eMedical_RolesRights" ToRole="eMedical_Roles" />
+        </EntityType>
+        <Association Name="FK_RoleRights_LMSPages">
+          <End Role="eMedical_Pages" Type="Self.eMedical_Pages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eMedical_RolesRights" Type="Self.eMedical_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Pages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="eMedical_RolesRights">
+              <PropertyRef Name="MenuItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleRights_Roles">
+          <End Role="eMedical_Roles" Type="Self.eMedical_Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="eMedical_RolesRights" Type="Self.eMedical_RolesRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="eMedical_RolesRights">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eMedicalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" />
+          <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" />
+          <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" />
+          <AssociationSet Name="FK_RoleRights_LMSPages" Association="Self.FK_RoleRights_LMSPages">
+            <End Role="eMedical_Pages" EntitySet="eMedical_Pages" />
+            <End Role="eMedical_RolesRights" EntitySet="eMedical_RolesRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleRights_Roles" Association="Self.FK_RoleRights_Roles">
+            <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
+            <End Role="eMedical_RolesRights" EntitySet="eMedical_RolesRights" />
+          </AssociationSet>
+          <EntitySet Name="eMedical_Clinic" EntityType="eMedicalModel.eMedical_Clinic" />
+          <EntitySet Name="eMedical_Hospital" EntityType="eMedicalModel.eMedical_Hospital" />
+          <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+          </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewUser">
+            <Parameter Name="FName" Mode="In" Type="String" />
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="EmpNo" Mode="In" Type="String" />
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="eMedical_User" EntityType="eMedicalModel.eMedical_User" />
+          <AssociationSet Name="FK_LMS_User_LMS_Roles" Association="eMedicalModel.FK_LMS_User_LMS_Roles">
+            <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+          </AssociationSet>
+          <EntitySet Name="vPersonnels" EntityType="eMedicalModel.vPersonnel" />
+        </EntityContainer>
+        <EntityType Name="eMedical_Clinic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clinicname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Clinic" ToRole="eMedical_Hospital" />
+        </EntityType>
+        <EntityType Name="eMedical_Hospital">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Clinic" />
+        </EntityType>
+        <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
+          <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Clinic">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="eMedical_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingTo" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Major" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="University" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerID" Type="Int32" />
+          <Property Name="ProfilePicPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="BirthCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TaxFileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TaxCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HealthInsNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Allergies" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="USINo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HomePort" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PointofHire" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PointofHireAlt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AirportDistance" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MainLanguage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OtherLanguage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POSuburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POState" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POPostcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="eMedical_Roles" Relationship="eMedicalModel.FK_LMS_User_LMS_Roles" FromRole="eMedical_User" ToRole="eMedical_Roles" />
+        </EntityType>
+        <Association Name="FK_LMS_User_LMS_Roles">
+          <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="eMedical_User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vPersonnel">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="BirthCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Citizenship" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Suburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POAddr2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POSuburb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POState" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POPostcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="POCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PerBaseLastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="PerBaseUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePicPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="PersonnelID" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eMedicalModelStoreContainer" CdmEntityContainer="eMedicalEntities">
+          <EntitySetMapping Name="eMedical_Pages">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Pages">
+              <MappingFragment StoreEntitySet="eMedical_Pages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="SearchUrl" ColumnName="SearchUrl" />
+                <ScalarProperty Name="HelpUrl" ColumnName="HelpUrl" />
+                <ScalarProperty Name="UniqueName" ColumnName="UniqueName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_Roles">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Roles">
+              <MappingFragment StoreEntitySet="eMedical_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_RolesRights">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_RolesRights">
+              <MappingFragment StoreEntitySet="eMedical_RolesRights">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_Clinic">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Clinic">
+              <MappingFragment StoreEntitySet="eMedical_Clinic">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="Clinicname" ColumnName="Clinicname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_Hospital">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Hospital">
+              <MappingFragment StoreEntitySet="eMedical_Hospital">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewUser" FunctionName="eMedicalModel.Store.sp_eMedical_addNewUser" />
+          <EntitySetMapping Name="eMedical_User">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_User">
+              <MappingFragment StoreEntitySet="eMedical_User">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="POCountry" ColumnName="POCountry" />
+                <ScalarProperty Name="POPostcode" ColumnName="POPostcode" />
+                <ScalarProperty Name="POState" ColumnName="POState" />
+                <ScalarProperty Name="POSuburb" ColumnName="POSuburb" />
+                <ScalarProperty Name="POAddr2" ColumnName="POAddr2" />
+                <ScalarProperty Name="POAddr1" ColumnName="POAddr1" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="OtherLanguage" ColumnName="OtherLanguage" />
+                <ScalarProperty Name="MainLanguage" ColumnName="MainLanguage" />
+                <ScalarProperty Name="AirportDistance" ColumnName="AirportDistance" />
+                <ScalarProperty Name="PointofHireAlt" ColumnName="PointofHireAlt" />
+                <ScalarProperty Name="PointofHire" ColumnName="PointofHire" />
+                <ScalarProperty Name="HomePort" ColumnName="HomePort" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="USINo" ColumnName="USINo" />
+                <ScalarProperty Name="Allergies" ColumnName="Allergies" />
+                <ScalarProperty Name="HealthInsNo" ColumnName="HealthInsNo" />
+                <ScalarProperty Name="TaxCountry" ColumnName="TaxCountry" />
+                <ScalarProperty Name="TaxFileNo" ColumnName="TaxFileNo" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ProfilePicPath" ColumnName="ProfilePicPath" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="University" ColumnName="University" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="ReportingTo" ColumnName="ReportingTo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vPersonnels">
+            <EntityTypeMapping TypeName="eMedicalModel.vPersonnel">
+              <MappingFragment StoreEntitySet="vPersonnel">
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ProfilePicPath" ColumnName="ProfilePicPath" />
+                <ScalarProperty Name="PerBaseUpdatedBy" ColumnName="PerBaseUpdatedBy" />
+                <ScalarProperty Name="PerBaseLastUpdated" ColumnName="PerBaseLastUpdated" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="PerBaseNotes" ColumnName="PerBaseNotes" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="PerBaseStatus" ColumnName="PerBaseStatus" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="POCountry" ColumnName="POCountry" />
+                <ScalarProperty Name="POPostcode" ColumnName="POPostcode" />
+                <ScalarProperty Name="POState" ColumnName="POState" />
+                <ScalarProperty Name="POSuburb" ColumnName="POSuburb" />
+                <ScalarProperty Name="POAddr2" ColumnName="POAddr2" />
+                <ScalarProperty Name="POAddr1" ColumnName="POAddr1" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="Addr2" ColumnName="Addr2" />
+                <ScalarProperty Name="Addr1" ColumnName="Addr1" />
+                <ScalarProperty Name="EmployeeType" ColumnName="EmployeeType" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Citizenship" ColumnName="Citizenship" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthCountry" ColumnName="BirthCountry" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

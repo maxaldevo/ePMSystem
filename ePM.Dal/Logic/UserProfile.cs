@@ -11,36 +11,36 @@ namespace ePM_Dal.Logic
 {
     public static class UserProfile
     {
-        public static vPersonnel GetUserById(int personnelId)
+        public static vPersonnel GetUserById(int userid)
         {
-            using (var db =new ePMEntities())
+            using (var db =new eMedicalEntities())
             {
-                return db.vPersonnels.SingleOrDefault(x => x.PersonnelID == personnelId);
+                return db.vPersonnels.SingleOrDefault(x => x.ID == userid);
             }
         }
-        public static vPersonnel GetUserByPersonnelId(int personnelId)
+        public static vPersonnel GetUserByPersonnelId(int userid)
         {
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
-                return db.vPersonnels.SingleOrDefault(x => x.PersonnelID == personnelId);
+                return db.vPersonnels.SingleOrDefault(x => x.ID == userid);
             }
         }
 
-        public static List<PersonelDTO> GetPersonById(int userId)
-        {
-            using (var db = new ePMEntities())
-            {
-                return db.vPersonnels.Where(x => x.PersonnelID == userId)
-                  .Select(x => new PersonelDTO
-                  {
-                      BaseId = (int)x.BaseID,
-                      FName = x.FName,
-                      Department = x.Department,
-                      Position = x.Position,
-                      Email = x.Email
-                  }).ToList();
-            }
-        }
+        //public static List<PersonelDTO> GetPersonById(int userId)
+        //{
+        //    using (var db = new ePMEntities())
+        //    {
+        //        return db.vPersonnels.Where(x => x.PersonnelID == userId)
+        //          .Select(x => new PersonelDTO
+        //          {
+        //              BaseId = (int)x.BaseID,
+        //              FName = x.FName,
+        //              Department = x.Department,
+        //              Position = x.Position,
+        //              Email = x.Email
+        //          }).ToList();
+        //    }
+        //}
         //get personnel id by user id
         public static int GetPersonnelIdByuserId(int userId)
         {

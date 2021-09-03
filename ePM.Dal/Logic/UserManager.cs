@@ -24,19 +24,12 @@ namespace ePM_Dal.Logic
                 return db.vPersonnels.Where(x=>x.Active == true ).ToList();
             }
         }
-        public static List<vPersonnel> gettrainersList()
+        
+        public static eMedical_User getSingleUser(int userId)
         {
-            using (var db = new ePMEntities())
+            using (eMedicalEntities db = new eMedicalEntities())
             {
-                var data = db.vPersonnels.Where(x => x.Position == "Instructor" || x.Position == "Manager Training" || x.Position == "Training Co-ordinator" || x.Position == "Training Instructor").ToList();
-                return data;
-            }
-        }
-        public static LMS_User getSingleUser(int userId)
-        {
-            using (ePMEntities db = new ePMEntities())
-            {
-                return db.LMS_User.Where(x=>x.ID ==userId).FirstOrDefault();//in case that we have more than result
+                return db.eMedical_User.Where(x=>x.ID ==userId).FirstOrDefault();//in case that we have more than result
             }
         }
 
@@ -68,18 +61,18 @@ namespace ePM_Dal.Logic
         }
 
         public static string AddNewUser(string fname,string firstName, string lastName,string email, string mobile,
-            string empNo,  int roleId,int hrRoleId)
+            string empNo,  int roleId)
         {
             string friendlyMsg = "";
             try
             {
-                using (var db = new ePMEntities())
+                using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-                   // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
-                    db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, roleId, hrRoleId, outputMsgParameter);
+                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
+                    db.sp_eMedical_addNewUser(fname, firstName, lastName, email, mobile, empNo, roleId, outputMsgParameter);
                     friendlyMsg = outputMsgParameter.Value.ToString();
-                    //make default password Kipic123
+                    //make default password 111111
                 }
             }
             catch (Exception ex)
@@ -100,9 +93,9 @@ namespace ePM_Dal.Logic
         public static bool checkUserEmail(string email)
         {
             bool exists = false;
-            using (var db=new ePMEntities())
+            using (var db=new eMedicalEntities())
             {
-                var data = db.u_PERSBase.Where(x => x.Email == email).FirstOrDefault();
+                var data = db.eMedical_User.Where(x => x.Email == email).FirstOrDefault();
                 if (data != null)
                 {
                     exists = true;
@@ -113,9 +106,9 @@ namespace ePM_Dal.Logic
         public static bool checkUserEmpNo(string empNo)
         {
             bool exists = false;
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
-                var data = db.u_PERSBase.Where(x => x.EmployeeNo == empNo).FirstOrDefault();
+                var data = db.eMedical_User.Where(x => x.EmployeeNo == empNo).FirstOrDefault();
                 if (data !=null)
                 {
                     exists = true;
@@ -125,17 +118,17 @@ namespace ePM_Dal.Logic
         }
 
         //get personnel id from email  and validate the password
-        public static LMS_User validateUserByEmailReal(string useremail, string password)
+        public static eMedical_User validateUserByEmailReal(string useremail, string password)
         {
-            LMS_User user = null;
+            eMedical_User user = null;
             //get personell id
             if (!string.IsNullOrWhiteSpace(getPersonnelNo(useremail)))
             {
                 password = GetMD5HashData(password);
-                int personnelId = int.Parse(getPersonnelNo(useremail));
-                using (var db = new ePMEntities())
+                //int personnelId = int.Parse(getPersonnelNo(useremail));
+                using (var db = new eMedicalEntities())
                 {
-                    user = db.LMS_User.Where(x => x.PersonnelID == personnelId && x.Password == password && x.Active == true).FirstOrDefault();
+                    user = db.eMedical_User.Where(x => x.Email == useremail && x.Password == password && x.Active == true).FirstOrDefault();
                     return user;
                 }
             }
@@ -145,12 +138,12 @@ namespace ePM_Dal.Logic
         public static string getPersonnelNo(string email)
         {
             string personnelNo = "";
-            using (var db=new ePMEntities())
+            using (var db=new eMedicalEntities())
             {
-                var person = db.u_PERSBase.Where(x => x.Email == email).FirstOrDefault();
+                var person = db.eMedical_User.Where(x => x.Email == email).FirstOrDefault();
                 if (person != null)
                 {
-                    personnelNo = person.BaseID.ToString();
+                    personnelNo = person.ID.ToString();
                 }
             }
             return personnelNo;
@@ -218,11 +211,11 @@ namespace ePM_Dal.Logic
                 return db.v_userRoles.ToList();
             }
         }
-        public static List<LMS_Roles> GetRolesList()
+        public static List<eMedical_Roles> GetRolesList()
         {
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
-                return db.LMS_Roles.Where(x=>x.RoleName != "Admin").ToList();
+                return db.eMedical_Roles.Where(x=>x.RoleName != "SuperAdmin").ToList();
             }
         }
         //update only single field( working)
@@ -248,10 +241,10 @@ namespace ePM_Dal.Logic
             string newPassword = GetMD5HashData(password);
             try
             {
-                var user = new LMS_User() { ID = userId, Password = newPassword };
-                using (var db = new ePMEntities())
+                var user = new eMedical_User() { ID = userId, Password = newPassword };
+                using (var db = new eMedicalEntities())
                 {
-                    db.LMS_User.Attach(user);
+                    db.eMedical_User.Attach(user);
                     db.Entry(user).Property(x => x.Password).IsModified = true;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     if (db.Entry(user).Property(x => x.Password).GetValidationErrors().Count == 0)
@@ -299,10 +292,10 @@ namespace ePM_Dal.Logic
         //update only profile pic field( working)
         public static void UpdateProfilePic(int userId, string profilePicPath)
         {
-            var user = new LMS_User() { ID = userId, ProfilePicPath = profilePicPath };
-            using (var db = new ePMEntities())
+            var user = new eMedical_User() { ID = userId, ProfilePicPath = profilePicPath };
+            using (var db = new eMedicalEntities())
             {
-                db.LMS_User.Attach(user);
+                db.eMedical_User.Attach(user);
                 db.Entry(user).Property(x => x.ProfilePicPath).IsModified = true;
                 db.Configuration.ValidateOnSaveEnabled = false;
                 if (db.Entry(user).Property(x => x.ProfilePicPath).GetValidationErrors().Count == 0)

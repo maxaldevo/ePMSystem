@@ -50,7 +50,7 @@ namespace WebApplication1
                 #endregion Page Validation
                // BindDepartments();
                 BindRoles();
-                BindHRRoles();
+                //BindHRRoles();
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace WebApplication1
                     bool empoExist = UserManager.checkUserEmpNo(_empno);
                     if (!emailExist && !empoExist)
                     {
-                        string result = UserManager.AddNewUser(_fname, _firstName, _lastName, _email, _mobile, _empno,  _selectedRole,_selectedHRRole);
+                        string result = UserManager.AddNewUser(_fname, _firstName, _lastName, _email, _mobile, _empno,  _selectedRole);
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;
@@ -117,16 +117,16 @@ namespace WebApplication1
             txtMobile.Text = "";
            // lblResult.Visible = false;
         }
-        protected void DropDownHRRoles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedHRRole = int.Parse(DropDownHRRoles.SelectedItem.Value);
-        }
+        //protected void DropDownHRRoles_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _selectedHRRole = int.Parse(DropDownHRRoles.SelectedItem.Value);
+        //}
 
         private void BindRoles()
         {
             DropDownRoles.DataSource = null;
             DropDownRoles.ClearSelection();
-            List<LMS_Roles> groups = UserManager.GetRolesList();
+            List<eMedical_Roles> groups = UserManager.GetRolesList();
             DropDownRoles.DataSource = groups;
             DropDownRoles.DataValueField = "RoleId";
             DropDownRoles.DataTextField = "RoleName";
@@ -134,19 +134,19 @@ namespace WebApplication1
             DropDownRoles.Items[0].Selected = true;
             _selectedRole = int.Parse(DropDownRoles.SelectedItem.Value);
         }
-        private void BindHRRoles()
-        {
-            DropDownHRRoles.DataSource = null;
-            DropDownHRRoles.ClearSelection();
-            List<HR_RolesDTO> roles = UserManager.GetHR_Roles();
-            DropDownHRRoles.DataSource = roles;
-            DropDownHRRoles.DataValueField = "RoleId";
-            DropDownHRRoles.DataTextField = "RoleName";
-            DropDownHRRoles.DataBind();
-            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
-            DropDownHRRoles.Items[0].Selected = true;
-            _selectedHRRole =int.Parse( DropDownHRRoles.SelectedItem.Value);
-        }
+        //private void BindHRRoles()
+        //{
+        //    DropDownHRRoles.DataSource = null;
+        //    DropDownHRRoles.ClearSelection();
+        //    List<HR_RolesDTO> roles = UserManager.GetHR_Roles();
+        //    DropDownHRRoles.DataSource = roles;
+        //    DropDownHRRoles.DataValueField = "RoleId";
+        //    DropDownHRRoles.DataTextField = "RoleName";
+        //    DropDownHRRoles.DataBind();
+        //    //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+        //    DropDownHRRoles.Items[0].Selected = true;
+        //    _selectedHRRole =int.Parse( DropDownHRRoles.SelectedItem.Value);
+        //}
 
         protected void DropDownRoles_SelectedIndexChanged(object sender, EventArgs e)
         {

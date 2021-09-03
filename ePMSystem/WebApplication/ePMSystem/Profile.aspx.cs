@@ -40,12 +40,12 @@ namespace WebApplication1
             if (user.ID <= 0) return;
            // lblUserName.Text = user.FName;//full name
             lblFName.Text = user.FName;//full name
-            lblTitle.Text = user.Position;
+            //lblTitle.Text = user.Position;
 
             image1.ImageUrl = File.Exists(HttpContext.Current.Server.MapPath(user.ProfilePicPath))
                          ? user.ProfilePicPath : defaultImagePath;
             lblempNo.Text = user.EmployeeNo.ToString();
-            lblJoiningDate.Text = user.StartDate.ToString();
+            //lblJoiningDate.Text = user.StartDate.ToString();
             //lblGrade.Text = user.Grade;
             //lblProject.Text = user.Project;
             //if (user.Department.Contains("->") && user.Department.Contains("Area"))
@@ -67,11 +67,11 @@ namespace WebApplication1
             //    lblSection.Text = user.Department;
             //}
             lblEmail.Text = user.Email;
-            lblMobile.Text = user.MobileWork;
+            //lblMobile.Text = user.MobileWork;
             lblAddressDetails.Text = user.Addr1;
             lblPinCode.Text = user.POPostcode;
             lblExperience.Text = user.Experience;
-            lblGroup.Text = user.Department;
+            //lblGroup.Text = user.Department;
             
         }
     }

@@ -23,7 +23,7 @@ namespace ePM_Dal.Logic
         }
         public static vPersonnel GetSingleByUserId(int userId)
         {
-            using (ePMEntities db = new ePMEntities())
+            using (eMedicalEntities db = new eMedicalEntities())
             {
                 return db.vPersonnels.Where(x => x.ID == userId).SingleOrDefault();
             }

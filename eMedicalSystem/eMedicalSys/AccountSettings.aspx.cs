@@ -44,7 +44,7 @@ namespace WebApplication1
         }
         private void BindUser()
         {
-            var user = UserProfile.GetUserById(int.Parse(Session["PersonnelId"].ToString()));
+            var user = UserProfile.GetUserById(int.Parse(Session["UserId"].ToString()));
            
             if (user.PersonnelID <= 0) return;
             // lblUserName.Text = user.FName;//full name
@@ -54,16 +54,16 @@ namespace WebApplication1
 
             image1.ImageUrl = defaultImagePath;
             lblFName.Text = user.FName;
-            if (user.Department.Contains("->") && user.Department.Contains("Area"))
-            {
-                lblArea.Text = user.Department.Substring(user.Department.IndexOf("->") + 3, 6);
-            }
-            else
-            {
-                lblArea.Text = user.Department;
-            }
+            //if (user.Department.Contains("->") && user.Department.Contains("Area"))
+            //{
+            //    lblArea.Text = user.Department.Substring(user.Department.IndexOf("->") + 3, 6);
+            //}
+            //else
+            //{
+            //    lblArea.Text = user.Department;
+            //}
             lblEmail.Text = user.Email;
-            lblPosition.Text = user.Position;
+            //lblPosition.Text = user.Position;
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

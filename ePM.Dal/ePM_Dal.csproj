@@ -164,6 +164,39 @@
     <Compile Include="Contract_RA257_L01A.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="eMedical_Clinic.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Hospital.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eMedical_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eMedical_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Pages.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Roles.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_RolesRights.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_User.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\EnumerationManager.cs" />
     <Compile Include="Enums\PublicEnums.cs" />
     <Compile Include="ePMSystem.Context.cs">
@@ -253,7 +286,7 @@
     <Compile Include="ViewModels\RolesDto.cs" />
     <Compile Include="ViewModels\TraineeDTO.cs" />
     <Compile Include="vPersonnel.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="v_GroupsPersonnel.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
@@ -274,6 +307,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ePMSystem.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="eMedical_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>eMedical_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="eMedical_Model.edmx.diagram">
+      <DependentUpon>eMedical_Model.edmx</DependentUpon>
+    </None>
     <None Include="ePMSystem.edmx.diagram">
       <DependentUpon>ePMSystem.edmx</DependentUpon>
     </None>
@@ -283,6 +323,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="eMedical_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eMedical_Model.edmx</DependentUpon>
+      <LastGenOutput>eMedical_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="eMedical_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eMedical_Model.edmx</DependentUpon>
+      <LastGenOutput>eMedical_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="ePMSystem.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ePMSystem.edmx</DependentUpon>

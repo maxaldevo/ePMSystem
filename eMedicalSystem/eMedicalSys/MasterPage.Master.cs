@@ -38,7 +38,7 @@ namespace eMedicalSystem
                     }
                     RoleId = int.Parse(Session["RoleId"].ToString());
                     BindRepeater(int.Parse(Session["RoleId"].ToString()));
-                    var u = UserProfile.GetUserByPersonnelId(int.Parse(Session["PersonnelId"].ToString()));
+                    var u = UserProfile.GetUserByPersonnelId(int.Parse(Session["UserId"].ToString()));
                     lblUserEmail.Text = u.Email;
                     lblUserName.Text = u.FName;
                     ImagePopup.ImageUrl = File.Exists(HttpContext.Current.Server.MapPath(u.ProfilePicPath))

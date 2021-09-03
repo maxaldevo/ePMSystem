@@ -177,12 +177,12 @@
                             <asp:DropDownList ID="DropDownRoles" OnSelectedIndexChanged="DropDownRoles_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <%--<div class="col-md-3">
                         <div class="controls">
                             <span>Select Position :</span>
                             <asp:DropDownList ID="DropDownHRRoles" AutoPostBack="true" OnSelectedIndexChanged="DropDownHRRoles_SelectedIndexChanged" runat="server"></asp:DropDownList>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
                 <br />
@@ -199,7 +199,7 @@
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="DropDownRoles" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="DropDownHRRoles" EventName="SelectedIndexChanged" />
+                <%--<asp:AsyncPostBackTrigger ControlID="DropDownHRRoles" EventName="SelectedIndexChanged" />--%>
 
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
@@ -215,10 +215,10 @@
 
             fixDropWidth();
             BinddropdownRoles();
-            BinddropdownHRRoles();
+            //BinddropdownHRRoles();
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRoles);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRRoles);
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRRoles);
 
         });
         function BinddropdownRoles() {
@@ -229,14 +229,16 @@
                 });
             });
         };
-        function BinddropdownHRRoles() {
+        <%--function BinddropdownHRRoles() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=DropDownHRRoles.ClientID%>').select2({
                     placeholder: "Select an option",
                     allowClear: true
                 });
             });
-        };
+        };--%>
+
+
 <%--        function BinddropdownDepts() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=DropDownDepartment.ClientID%>').select2({

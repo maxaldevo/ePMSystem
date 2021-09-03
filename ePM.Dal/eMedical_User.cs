@@ -12,8 +12,20 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class vPersonnel
+    public partial class eMedical_User
     {
+        public int ID { get; set; }
+        public Nullable<int> PersonnelID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> ReportingTo { get; set; }
+        public string Qualification { get; set; }
+        public string Major { get; set; }
+        public string University { get; set; }
+        public Nullable<int> ManagerID { get; set; }
+        public string ProfilePicPath { get; set; }
+        public Nullable<int> RoleId { get; set; }
+        public Nullable<bool> Active { get; set; }
         public string FName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -26,8 +38,19 @@ namespace ePM.Dal
         public string Citizenship { get; set; }
         public string Nationality { get; set; }
         public string MaritalStatus { get; set; }
+        public string TaxFileNo { get; set; }
+        public string TaxCountry { get; set; }
+        public string HealthInsNo { get; set; }
+        public string Allergies { get; set; }
+        public string USINo { get; set; }
         public string Experience { get; set; }
         public string EmployeeType { get; set; }
+        public string HomePort { get; set; }
+        public string PointofHire { get; set; }
+        public string PointofHireAlt { get; set; }
+        public string AirportDistance { get; set; }
+        public string MainLanguage { get; set; }
+        public string OtherLanguage { get; set; }
         public string Addr1 { get; set; }
         public string Addr2 { get; set; }
         public string Suburb { get; set; }
@@ -43,18 +66,14 @@ namespace ePM.Dal
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public string Mobile { get; set; }
-        public string PerBaseStatus { get; set; }
+        public string Status { get; set; }
         public string EmployeeNo { get; set; }
         public string Company { get; set; }
-        public string PerBaseNotes { get; set; }
+        public string Notes { get; set; }
         public string Photo { get; set; }
-        public Nullable<System.DateTime> PerBaseLastUpdated { get; set; }
-        public string PerBaseUpdatedBy { get; set; }
-        public string ProfilePicPath { get; set; }
-        public Nullable<int> RoleId { get; set; }
-        public string RoleName { get; set; }
-        public int ID { get; set; }
-        public Nullable<bool> Active { get; set; }
-        public Nullable<int> PersonnelID { get; set; }
+        public Nullable<System.DateTime> LastUpdated { get; set; }
+        public string UpdatedBy { get; set; }
+    
+        public virtual eMedical_Roles eMedical_Roles { get; set; }
     }
 }
