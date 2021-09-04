@@ -65,7 +65,7 @@ namespace ePMSystem
 
         //protected void ImageButtonAssessment_Click(object sender, ImageClickEventArgs e)
         //{
-        //    // Response.Redirect("https://kipiclms.azurewebsites.net/", false);
+        //    // Response.Redirect("", false);
         //    Response.Redirect("ClassroomAssessmentByUser.aspx",false);
         //}
 

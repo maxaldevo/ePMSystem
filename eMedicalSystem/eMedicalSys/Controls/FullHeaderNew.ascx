@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FullHeaderNew.ascx.cs" Inherits="WebApplication1.Controls.FullHeaderNew" %>
 
-<li class="header nav-small-cap">KIPIC LMS System</li>
+<li class="header nav-small-cap">The Hospital System</li>
 <%-- <li <a href="Default.aspx"><i class="ti-more"></i>Home</a></li>--%>
 <li id="Home">
     <a href="Default.aspx">

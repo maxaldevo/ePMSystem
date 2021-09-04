@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LimitedHeader.ascx.cs" Inherits="WebApplication1.Controls.LimitedHeader" %>
 
-<li class="header nav-small-cap">KIPIC LMS System</li>
+<li class="header nav-small-cap">The Hospital System</li>
 <li id="Home">
     <a href="Default.aspx">
        <i class="ti-home"></i><span>Home</span>

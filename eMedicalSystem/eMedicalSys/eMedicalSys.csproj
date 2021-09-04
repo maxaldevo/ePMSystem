@@ -6876,6 +6876,7 @@
     <Content Include="images\bg-1.jpg" />
     <Content Include="images\bg-2.jpg" />
     <Content Include="images\BG2.jpg" />
+    <Content Include="images\BG2.jpg.png" />
     <Content Include="images\bmi.png" />
     <Content Include="images\boxed-bg.jpg" />
     <Content Include="images\boxed-bg.png" />

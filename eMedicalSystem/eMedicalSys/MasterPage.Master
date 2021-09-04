@@ -16,7 +16,7 @@
     <meta name="author" content="">
     <link href="https://fonts.cdnfonts.com/css/foco" rel="stylesheet">
     <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.css" />
-    <title>Kipic e-Learning System </title>
+    <title>The Hospital System </title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- Bootstrap 4.0-->
@@ -101,7 +101,7 @@
                         </a>
                        
                     </div>
-                     <div class="navbar-custom-menu l-side"> <h4 style="color:white;font-weight:600;font-size:23px;font-family:foco;">KIPIC E-Learning Management System</h4></div>
+                     <div class="navbar-custom-menu l-side"> <h4 style="color:white;font-weight:600;font-size:23px;font-family:foco;">Hospital Management System</h4></div>
                     <div class="navbar-custom-menu r-side">
                         <ul class="nav navbar-nav">
                           
@@ -166,7 +166,7 @@
                       <%--  <uc1:FullHeaderNew runat="server" id="FullHeaderNew" />
 
                         <uc1:LimitedHeader runat="server" ID="LimitedHeader" />--%>
-                        <li class="header nav-small-cap">KIPIC LMS System</li>
+                        <li class="header nav-small-cap">Hospital System</li>
                         <li id="Home"><a href="Default.aspx"><i class="ti-home"></i><span>Home</span></a> </li>
 
             <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="ItemBound">
@@ -335,10 +335,10 @@
             <div class="clear"></div>
             <footer class="main-footer">
      
-           <div class="row">  <div class="col-md-12 col-lg-6"> &copy; <asp:Label ID="LabelYear" runat="server" Text=""></asp:Label> <a href="https://kipic.com.kw" target="_blank">KIPIC LMS </a>. All Rights Reserved.
+           <div class="row">  <div class="col-md-12 col-lg-6"> &copy; <asp:Label ID="LabelYear" runat="server" Text=""></asp:Label> <a href="" target="_blank">Hospital System </a>. All Rights Reserved.
                </div>
                <div  class="col-md-12 col-lg-3"></div>
-               <div  class="col-md-12 col-lg-3"> Powered by  <a href="https://www.snclavalin.com/" target="_blank">SNC Lavalin </a>
+               <div  class="col-md-12 col-lg-3"> Powered by  <a href="https://www.snclavalin.com/" target="_blank">....... </a>
                
            </div>
                </div>

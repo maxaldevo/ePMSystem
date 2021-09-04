@@ -49,7 +49,7 @@
                 <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                     <div class="login100-form validate-form">
                         <img src="../images/logo.png" class="img-responsive">
-                        <span class="login100-form-title p-b-49" style="padding-top: 15px;padding-bottom: 15px;font-size:20px;color: #015d7d;">Welcome to KIPIC e-Learning Management System.</span>
+                        <span class="login100-form-title p-b-49" style="padding-top: 15px;padding-bottom: 15px;font-size:20px;color: #015d7d;">Welcome to the Hospital System</span>
                             <div class="wrap-input100 validate-input m-b-23" data-validate="Email is required">
                             <asp:TextBox ID="txtEmail" CssClass="input100" runat="server" placeholder="Email"></asp:TextBox>
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
