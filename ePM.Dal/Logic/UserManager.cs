@@ -264,7 +264,7 @@ namespace ePM_Dal.Logic
 
         public static List<v_userRoles> GetUserroles()
         {
-            using (var db=new  ePMEntities())
+            using (var db=new  eMedicalEntities())
             {
                 return db.v_userRoles.ToList();
             }
@@ -279,10 +279,10 @@ namespace ePM_Dal.Logic
         //update only single field( working)
         public static void ChangeRole(int userId, int roleId)
         {
-            var user = new LMS_User() { ID = userId, RoleId = roleId };
-            using (var db = new ePMEntities())
+            var user = new eMedical_User() { ID = userId, RoleId = roleId };
+            using (var db = new eMedicalEntities())
             {
-                db.LMS_User.Attach(user);
+                db.eMedical_User.Attach(user);
                 db.Entry(user).Property( x => x.RoleId).IsModified = true;
                 db.Configuration.ValidateOnSaveEnabled = false;
                 if (db.Entry(user).Property(x => x.RoleId).GetValidationErrors().Count == 0)
@@ -326,10 +326,10 @@ namespace ePM_Dal.Logic
             bool updated = false;
             try
             {
-                var user = new LMS_User() { ID = userId, Active = isActive };
-                using (var db = new ePMEntities())
+                var user = new eMedical_User() { ID = userId, Active = isActive };
+                using (var db = new eMedicalEntities())
                 {
-                    db.LMS_User.Attach(user);
+                    db.eMedical_User.Attach(user);
                     db.Entry(user).Property(x => x.Active).IsModified = true;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     if (db.Entry(user).Property(x => x.Active).GetValidationErrors().Count == 0)
@@ -461,10 +461,10 @@ namespace ePM_Dal.Logic
         //update Access Role and position
         public static void ChangeRoleAndPosition(int userId, int roleId,string position )
         {
-            var user = new LMS_User() { ID = userId, RoleId = roleId };
-            using (var db = new ePMEntities())
+            var user = new eMedical_User() { ID = userId, RoleId = roleId };
+            using (var db = new eMedicalEntities())
             {
-                db.LMS_User.Attach(user);
+                db.eMedical_User.Attach(user);
                 db.Entry(user).Property(x => x.RoleId).IsModified = true;
                 db.Configuration.ValidateOnSaveEnabled = false;
                 if (db.Entry(user).Property(x => x.RoleId).GetValidationErrors().Count == 0)

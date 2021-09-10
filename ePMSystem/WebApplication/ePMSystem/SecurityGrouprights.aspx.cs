@@ -17,8 +17,8 @@ namespace WebApplication1
         public static int pageId, _selectedGroupId = 0;
         public string trainer, comments = "";
         public string timein, timeout = null;
-        public static List<LMS_RolesRights> _DeleterolesRights;
-        public static List<LMS_RolesRights> _InsertRolesRights;
+        public static List<eMedical_RolesRights> _DeleterolesRights;
+        public static List<eMedical_RolesRights> _InsertRolesRights;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,8 +59,8 @@ namespace WebApplication1
                 Panel1.Visible = false;
                 lblResult.Visible = false;
                 this.BindDropGroups();
-                _DeleterolesRights = new List<LMS_RolesRights>();
-                _InsertRolesRights = new List<LMS_RolesRights>();
+                _DeleterolesRights = new List<eMedical_RolesRights>();
+                _InsertRolesRights = new List<eMedical_RolesRights>();
             }
         }
 
@@ -68,7 +68,7 @@ namespace WebApplication1
         {
             dropdownGroups.DataSource = null;
             dropdownGroups.ClearSelection();
-            List<LMS_Roles> groups = SecurityManager.Get_Roles();
+            List<eMedical_Roles> groups = SecurityManager.Get_Roles();
             dropdownGroups.DataSource = groups;
             dropdownGroups.DataValueField = "RoleId";
             dropdownGroups.DataTextField = "RoleName";
@@ -224,7 +224,7 @@ namespace WebApplication1
                         DateTime insertDate = DateTime.Now;
                         if ( RRId !=null & check.Checked ==false)//Delete Records
                         {
-                            LMS_RolesRights newRecord = new LMS_RolesRights()
+                            eMedical_RolesRights newRecord = new eMedical_RolesRights()
                             {
                                 MenuItemId = pageId,
                                 Id = (int)RRId,
@@ -237,7 +237,7 @@ namespace WebApplication1
                         }
                         else if( RRId ==null & check.Checked ==true)
                         {
-                            LMS_RolesRights newRecord = new LMS_RolesRights()
+                            eMedical_RolesRights newRecord = new eMedical_RolesRights()
                             {
                                 MenuItemId = pageId,
                                 RoleId = _selectedGroupId,

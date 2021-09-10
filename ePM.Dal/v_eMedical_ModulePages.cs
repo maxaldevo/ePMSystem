@@ -12,16 +12,20 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class v_userRoles
+    public partial class v_eMedical_ModulePages
     {
-        public string FName { get; set; }
-        public Nullable<int> PersonnelID { get; set; }
-        public string Email { get; set; }
+        public long Id { get; set; }
+        public string ModuleName { get; set; }
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public string CssClass { get; set; }
+        public string IconUrl { get; set; }
+        public string CssIcon { get; set; }
+        public Nullable<long> ParentId { get; set; }
+        public Nullable<bool> IsVisible { get; set; }
+        public Nullable<int> Sort { get; set; }
+        public Nullable<int> ModuleId { get; set; }
         public Nullable<int> RoleId { get; set; }
         public string RoleName { get; set; }
-        public string Notes { get; set; }
-        public int ID { get; set; }
-        public Nullable<bool> Active { get; set; }
-        public string EmployeeNo { get; set; }
     }
 }

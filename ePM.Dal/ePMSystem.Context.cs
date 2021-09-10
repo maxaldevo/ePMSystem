@@ -91,13 +91,13 @@ namespace ePM.Dal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lms_GetPagesByRole_Result>("sp_lms_GetPagesByRole", roleIdParameter, levelParameter);
         }
     
-        public virtual ObjectResult<sp_lmsModulePagesByRole_Result> sp_lmsModulePagesByRole(Nullable<int> roleId)
+        public virtual ObjectResult<sp_eMedical_ModulePagesByRole_Result> sp_lmsModulePagesByRole(Nullable<int> roleId)
         {
             var roleIdParameter = roleId.HasValue ?
                 new ObjectParameter("RoleId", roleId) :
                 new ObjectParameter("RoleId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_lmsModulePagesByRole_Result>("sp_lmsModulePagesByRole", roleIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_ModulePagesByRole_Result>("sp_lmsModulePagesByRole", roleIdParameter);
         }
     
         public virtual int sp_lms_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, Nullable<int> hRRoleId, ObjectParameter msg)

@@ -134,6 +134,68 @@
           <Property Name="ClinicID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.v_eMedical_ModulePages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_eMedical_ModulePages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" />
+          <Property Name="Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssClass" Type="nvarchar" MaxLength="150" />
+          <Property Name="IconUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.v_eMedical_RolesCount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_eMedical_RolesCount">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="CountUsers" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.v_RoleGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_RoleGroups">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="CountPersonnel" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.v_userRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_userRoles">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vPersonnel">
           <Key>
@@ -293,6 +355,13 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eMedical_GetPagesByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+          <Parameter Name="Level" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_eMedical_ModulePagesByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RoleId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="eMedicalModelStoreContainer">
           <EntitySet Name="eMedical_Clinic" EntityType="Self.eMedical_Clinic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Hospital" EntityType="Self.eMedical_Hospital" Schema="dbo" store:Type="Tables" />
@@ -300,6 +369,53 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_eMedical_ModulePages" EntityType="Self.v_eMedical_ModulePages" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_eMedical_ModulePages].[Id] AS [Id], 
+    [v_eMedical_ModulePages].[ModuleName] AS [ModuleName], 
+    [v_eMedical_ModulePages].[Title] AS [Title], 
+    [v_eMedical_ModulePages].[Url] AS [Url], 
+    [v_eMedical_ModulePages].[CssClass] AS [CssClass], 
+    [v_eMedical_ModulePages].[IconUrl] AS [IconUrl], 
+    [v_eMedical_ModulePages].[CssIcon] AS [CssIcon], 
+    [v_eMedical_ModulePages].[ParentId] AS [ParentId], 
+    [v_eMedical_ModulePages].[IsVisible] AS [IsVisible], 
+    [v_eMedical_ModulePages].[Sort] AS [Sort], 
+    [v_eMedical_ModulePages].[ModuleId] AS [ModuleId], 
+    [v_eMedical_ModulePages].[RoleId] AS [RoleId], 
+    [v_eMedical_ModulePages].[RoleName] AS [RoleName]
+    FROM [dbo].[v_eMedical_ModulePages] AS [v_eMedical_ModulePages]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_eMedical_RolesCount" EntityType="Self.v_eMedical_RolesCount" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_eMedical_RolesCount].[RoleId] AS [RoleId], 
+    [v_eMedical_RolesCount].[RoleName] AS [RoleName], 
+    [v_eMedical_RolesCount].[Notes] AS [Notes], 
+    [v_eMedical_RolesCount].[DateAdded] AS [DateAdded], 
+    [v_eMedical_RolesCount].[CountUsers] AS [CountUsers]
+    FROM [dbo].[v_eMedical_RolesCount] AS [v_eMedical_RolesCount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_RoleGroups" EntityType="Self.v_RoleGroups" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_RoleGroups].[RoleID] AS [RoleID], 
+    [v_RoleGroups].[Group] AS [Group], 
+    [v_RoleGroups].[Name] AS [Name], 
+    [v_RoleGroups].[CountPersonnel] AS [CountPersonnel]
+    FROM [dbo].[v_RoleGroups] AS [v_RoleGroups]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_userRoles" EntityType="Self.v_userRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_userRoles].[FName] AS [FName], 
+    [v_userRoles].[PersonnelID] AS [PersonnelID], 
+    [v_userRoles].[Email] AS [Email], 
+    [v_userRoles].[RoleId] AS [RoleId], 
+    [v_userRoles].[RoleName] AS [RoleName], 
+    [v_userRoles].[Notes] AS [Notes], 
+    [v_userRoles].[ID] AS [ID], 
+    [v_userRoles].[Active] AS [Active], 
+    [v_userRoles].[EmployeeNo] AS [EmployeeNo]
+    FROM [dbo].[v_userRoles] AS [v_userRoles]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vPersonnel].[FName] AS [FName], 
@@ -514,6 +630,17 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             <Parameter Name="ClinicId" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_eMedical_ModulePagesByRole" ReturnType="Collection(eMedicalModel.sp_eMedical_ModulePagesByRole_Result)">
+          <Parameter Name="RoleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="v_RoleGroups" EntityType="eMedicalModel.v_RoleGroups" />
+          <EntitySet Name="v_userRoles" EntityType="eMedicalModel.v_userRoles" />
+          <EntitySet Name="v_eMedical_ModulePages" EntityType="eMedicalModel.v_eMedical_ModulePages" />
+          <EntitySet Name="v_eMedical_RolesCount" EntityType="eMedicalModel.v_eMedical_RolesCount" />
+          <FunctionImport Name="sp_eMedical_GetPagesByRole" ReturnType="Collection(eMedicalModel.sp_eMedical_GetPagesByRole_Result)">
+            <Parameter Name="RoleId" Mode="In" Type="Int32" />
+            <Parameter Name="Level" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -706,6 +833,87 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="sp_eMedical_ModulePagesByRole_Result">
+          <Property Type="Int64" Name="ModuleId" Nullable="true" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="150" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="true" />
+          <Property Type="Int32" Name="Sort" Nullable="true" />
+          <Property Type="Int32" Name="RoleId" Nullable="true" />
+          <Property Type="Int64" Name="RoleRightId" Nullable="true" />
+          <Property Type="Int64" Name="HasAccess" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="v_RoleGroups">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountPersonnel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_userRoles">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_eMedical_ModulePages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssClass" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IconUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CssIcon" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_eMedical_RolesCount">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="DateAdded" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CountUsers" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="sp_eMedical_GetPagesByRole_Result">
+          <Property Type="Int64" Name="Id" Nullable="false" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="SortM" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CssClass" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="IconUrl" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="CssIcon" Nullable="true" MaxLength="150" />
+          <Property Type="Int64" Name="ParentId" Nullable="true" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="true" />
+          <Property Type="Int32" Name="Sort" Nullable="true" />
+          <Property Type="Int32" Name="ModuleId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -898,6 +1106,96 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewHospital" FunctionName="eMedicalModel.Store.sp_eMedical_addNewHospital" />
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewClinic" FunctionName="eMedicalModel.Store.sp_eMedical_addNewClinic" />
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewUser_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewUser_ByHospitalID_ClinicID" />
+          <FunctionImportMapping FunctionImportName="sp_eMedical_ModulePagesByRole" FunctionName="eMedicalModel.Store.sp_eMedical_ModulePagesByRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eMedicalModel.sp_eMedical_ModulePagesByRole_Result">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleRightId" ColumnName="RoleRightId" />
+                <ScalarProperty Name="HasAccess" ColumnName="HasAccess" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_RoleGroups">
+            <EntityTypeMapping TypeName="eMedicalModel.v_RoleGroups">
+              <MappingFragment StoreEntitySet="v_RoleGroups">
+                <ScalarProperty Name="CountPersonnel" ColumnName="CountPersonnel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_userRoles">
+            <EntityTypeMapping TypeName="eMedicalModel.v_userRoles">
+              <MappingFragment StoreEntitySet="v_userRoles">
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_eMedical_ModulePages">
+            <EntityTypeMapping TypeName="eMedicalModel.v_eMedical_ModulePages">
+              <MappingFragment StoreEntitySet="v_eMedical_ModulePages">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_eMedical_RolesCount">
+            <EntityTypeMapping TypeName="eMedicalModel.v_eMedical_RolesCount">
+              <MappingFragment StoreEntitySet="v_eMedical_RolesCount">
+                <ScalarProperty Name="CountUsers" ColumnName="CountUsers" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_GetPagesByRole" FunctionName="eMedicalModel.Store.sp_eMedical_GetPagesByRole">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eMedicalModel.sp_eMedical_GetPagesByRole_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="SortM" ColumnName="SortM" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="CssClass" ColumnName="CssClass" />
+                <ScalarProperty Name="IconUrl" ColumnName="IconUrl" />
+                <ScalarProperty Name="CssIcon" ColumnName="CssIcon" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

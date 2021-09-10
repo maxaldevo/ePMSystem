@@ -34,6 +34,10 @@ namespace ePM.Dal
         public virtual DbSet<eMedical_Hospital> eMedical_Hospital { get; set; }
         public virtual DbSet<eMedical_User> eMedical_User { get; set; }
         public virtual DbSet<vPersonnel> vPersonnels { get; set; }
+        public virtual DbSet<v_RoleGroups> v_RoleGroups { get; set; }
+        public virtual DbSet<v_userRoles> v_userRoles { get; set; }
+        public virtual DbSet<v_eMedical_ModulePages> v_eMedical_ModulePages { get; set; }
+        public virtual DbSet<v_eMedical_RolesCount> v_eMedical_RolesCount { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {
@@ -141,6 +145,28 @@ namespace ePM.Dal
                 new ObjectParameter("ClinicId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewUser_ByHospitalID_ClinicID", fNameParameter, firstNameParameter, lastNameParameter, emailParameter, mobileParameter, empNoParameter, roleIdParameter, hospitalIdParameter, clinicIdParameter, msg);
+        }
+    
+        public virtual ObjectResult<sp_eMedical_ModulePagesByRole_Result> sp_eMedical_ModulePagesByRole(Nullable<int> roleId)
+        {
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_ModulePagesByRole_Result>("sp_eMedical_ModulePagesByRole", roleIdParameter);
+        }
+    
+        public virtual ObjectResult<sp_eMedical_GetPagesByRole_Result> sp_eMedical_GetPagesByRole(Nullable<int> roleId, Nullable<int> level)
+        {
+            var roleIdParameter = roleId.HasValue ?
+                new ObjectParameter("RoleId", roleId) :
+                new ObjectParameter("RoleId", typeof(int));
+    
+            var levelParameter = level.HasValue ?
+                new ObjectParameter("Level", level) :
+                new ObjectParameter("Level", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_GetPagesByRole_Result>("sp_eMedical_GetPagesByRole", roleIdParameter, levelParameter);
         }
     }
 }

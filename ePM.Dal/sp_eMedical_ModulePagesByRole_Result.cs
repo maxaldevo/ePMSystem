@@ -13,16 +13,16 @@ namespace ePM.Dal
     
     public partial class sp_eMedical_ModulePagesByRole_Result
     {
-        public Nullable<long> ModuleId1 { get; set; }
-        public string ModuleName1 { get; set; }
-        public long Id1 { get; set; }
-        public Nullable<long> ParentId1 { get; set; }
-        public string Url1 { get; set; }
-        public string Title1 { get; set; }
-        public Nullable<bool> IsVisible1 { get; set; }
-        public Nullable<int> Sort1 { get; set; }
-        public Nullable<int> RoleId1 { get; set; }
-        public Nullable<long> RoleRightId1 { get; set; }
-        public long HasAccess1 { get; set; }
+        public Nullable<long> ModuleId { get; set; }
+        public string ModuleName { get; set; }
+        public long Id { get; set; }
+        public Nullable<long> ParentId { get; set; }
+        public string Url { get; set; }
+        public string Title { get; set; }
+        public Nullable<bool> IsVisible { get; set; }
+        public Nullable<int> Sort { get; set; }
+        public Nullable<int> RoleId { get; set; }
+        public Nullable<long> RoleRightId { get; set; }
+        public long HasAccess { get; set; }
     }
 }

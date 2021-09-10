@@ -12,16 +12,12 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class v_userRoles
+    public partial class v_eMedical_RolesCount
     {
-        public string FName { get; set; }
-        public Nullable<int> PersonnelID { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> RoleId { get; set; }
+        public int RoleId { get; set; }
         public string RoleName { get; set; }
         public string Notes { get; set; }
-        public int ID { get; set; }
-        public Nullable<bool> Active { get; set; }
-        public string EmployeeNo { get; set; }
+        public System.DateTime DateAdded { get; set; }
+        public Nullable<int> CountUsers { get; set; }
     }
 }

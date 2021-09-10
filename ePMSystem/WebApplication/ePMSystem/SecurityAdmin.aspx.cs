@@ -210,7 +210,7 @@ namespace WebApplication1
             int roleId = Convert.ToInt32(gvGroups.DataKeys[e.RowIndex].Values[0]);
             string txtRoleName = (row.FindControl("txtRoleName") as TextBox).Text;
             string txtNotes = (row.FindControl("txtNotes") as TextBox).Text;
-            LMS_Roles role = new LMS_Roles()
+            eMedical_Roles role = new eMedical_Roles()
             {
                 RoleId = roleId,
                 RoleName = txtRoleName,
@@ -282,7 +282,7 @@ namespace WebApplication1
             {
                 #region Add Group in db
 
-                LMS_Roles newGroup = new LMS_Roles()
+                eMedical_Roles newGroup = new eMedical_Roles()
                 {
                     RoleName = txtGroupName.Text,
                     DateAdded = DateTime.Now,

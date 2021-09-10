@@ -18,6 +18,10 @@
         <EntityTypeShape EntityType="eMedicalModel.vPersonnel" Width="1.5" PointX="5.375" PointY="4.75" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_User_eMedical_Clinic" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_User_eMedical_Hospital" />
+        <EntityTypeShape EntityType="eMedicalModel.v_RoleGroups" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="eMedicalModel.v_userRoles" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="eMedicalModel.v_eMedical_ModulePages" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="eMedicalModel.v_eMedical_RolesCount" Width="1.5" PointX="8.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
