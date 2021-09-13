@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <%--<div class="col-md-4">
                 <div class="box box-solid bg-info">
                     <div class="box-header">
                         <h4 class="box-title"><strong>Professional Details</strong></h4>
@@ -61,7 +61,7 @@
                       <hr />
                     </div>
                 </div>
-            </div>
+            </div>--%>
             <div class="col-md-4 col-12">
 
                 <div class="box box-solid bg-success">

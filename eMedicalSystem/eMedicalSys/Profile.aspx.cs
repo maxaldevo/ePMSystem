@@ -44,7 +44,7 @@ namespace WebApplication1
 
             image1.ImageUrl = File.Exists(HttpContext.Current.Server.MapPath(user.ProfilePicPath))
                          ? user.ProfilePicPath : defaultImagePath;
-            lblempNo.Text = user.EmployeeNo.ToString();
+            //lblempNo.Text = user.EmployeeNo.ToString();
             //lblJoiningDate.Text = user.StartDate.ToString();
             //lblGrade.Text = user.Grade;
             //lblProject.Text = user.Project;
@@ -70,7 +70,7 @@ namespace WebApplication1
             //lblMobile.Text = user.MobileWork;
             lblAddressDetails.Text = user.Addr1;
             lblPinCode.Text = user.POPostcode;
-            lblExperience.Text = user.Experience;
+            //lblExperience.Text = user.Experience;
             //lblGroup.Text = user.Department;
             
         }
