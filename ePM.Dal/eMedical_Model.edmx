@@ -244,6 +244,10 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Active" Type="bit" />
           <Property Name="PersonnelID" Type="int" />
+          <Property Name="Clinicname" Type="nvarchar" MaxLength="500" />
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="ClinicID" Type="int" />
         </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
@@ -459,7 +463,11 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
     [vPersonnel].[RoleName] AS [RoleName], 
     [vPersonnel].[ID] AS [ID], 
     [vPersonnel].[Active] AS [Active], 
-    [vPersonnel].[PersonnelID] AS [PersonnelID]
+    [vPersonnel].[PersonnelID] AS [PersonnelID], 
+    [vPersonnel].[Clinicname] AS [Clinicname], 
+    [vPersonnel].[HospitalName] AS [HospitalName], 
+    [vPersonnel].[HospitalID] AS [HospitalID], 
+    [vPersonnel].[ClinicID] AS [ClinicID]
     FROM [dbo].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
@@ -808,6 +816,10 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Active" Type="Boolean" />
           <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="Clinicname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="ClinicID" Type="Int32" />
         </EntityType>
         <Association Name="FK_eMedical_User_eMedical_Clinic">
           <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
@@ -1058,6 +1070,10 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <EntitySetMapping Name="vPersonnels">
             <EntityTypeMapping TypeName="eMedicalModel.vPersonnel">
               <MappingFragment StoreEntitySet="vPersonnel">
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+                <ScalarProperty Name="Clinicname" ColumnName="Clinicname" />
                 <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

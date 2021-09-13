@@ -19,12 +19,19 @@ namespace ePM_Dal.Logic
     {
         public static List<vPersonnel> getUsersList()
         {
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
-                return db.vPersonnels.Where(x=>x.Active == true ).ToList();
+                return db.vPersonnels.Where(x => x.Active == true).ToList();
             }
         }
-        
+        public static List<vPersonnel> getUsersList(int clinicid)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vPersonnels.Where(x => x.Active == true && x.ClinicID == clinicid).ToList();
+            }
+        }
+
         public static eMedical_User getSingleUser(int userId)
         {
             using (eMedicalEntities db = new eMedicalEntities())

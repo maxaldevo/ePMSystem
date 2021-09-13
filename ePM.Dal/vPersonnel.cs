@@ -56,5 +56,9 @@ namespace ePM.Dal
         public int ID { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<int> PersonnelID { get; set; }
+        public string Clinicname { get; set; }
+        public string HospitalName { get; set; }
+        public Nullable<int> HospitalID { get; set; }
+        public Nullable<int> ClinicID { get; set; }
     }
 }

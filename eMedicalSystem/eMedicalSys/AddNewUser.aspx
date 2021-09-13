@@ -93,6 +93,30 @@
             position: relative;
         }
     </style>
+    <style>
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #23B3E8;
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            border: 1px solid lightblue;
+        }
+
+        table thead tr {
+            background-color: #23B3E8;
+            color: white;
+            font-weight: bold;
+        }
+
+        table {
+            text-align: center;
+        }
+
+        .row {
+            margin-top: -15px;
+        }
+    </style>
     <section class="content">
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
             ClientIDMode="Predictable" ViewStateMode="Inherit" DisplayAfter="1">
@@ -216,19 +240,75 @@
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
+        <!--User list belongs only this user's clinic-->
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                        <br />
+                        <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
+                           
+                            EmptyDataText="No records found.">
+                            <Columns>
+                                <asp:TemplateField HeaderText="User Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
+                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Hospital">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Clinic">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Role">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Email">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Employee No">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                            </Columns>
+                        </asp:GridView>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <script src="Scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
-    <script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
+    <script>
+        
         $(function () {
 
             fixDropWidth();
             BinddropdownHospitals();
             BinddropdownHRClinics();
             BinddropdownRoles();
+            bindDataTable(); // bind data table on first page load
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHospitals);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRClinics);
@@ -259,7 +339,18 @@
                 });
             });
         };
-
+        function bindDataTable() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=gvUsers.ClientID%>').dataTable({
+                    dom: 'Blfrtip',
+                    "bInfo": true,
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                });
+            });
+        };
 
 <%--        function BinddropdownDepts() {
             $(document).ready(function () {

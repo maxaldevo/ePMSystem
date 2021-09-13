@@ -25,7 +25,6 @@
             margin-top: -15px;
         }
     </style>
-
     <section class="content">
                      <div class="row">
             <div class="col-12 col-md-12">
@@ -51,14 +50,14 @@
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Position">
+                                <asp:TemplateField HeaderText="Hospital">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblPosition" runat="server" Text='<%# Eval("Position") %>'></asp:Label>
+                                        <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Department">
+                                <asp:TemplateField HeaderText="Clinic">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblDepartment" runat="server" Text='<%# Eval("Department") %>'></asp:Label>
+                                        <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Role">
@@ -66,16 +65,16 @@
                                         <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                      <asp:TemplateField HeaderText="Email">
+                                <%--<asp:TemplateField HeaderText="Email">
                                     <ItemTemplate>
                                         <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                                 <asp:TemplateField HeaderText="Employee No">
+                                <asp:TemplateField HeaderText="Employee No">
                                     <ItemTemplate>
                                         <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                             </Columns>
                         </asp:GridView>
                         </div>
