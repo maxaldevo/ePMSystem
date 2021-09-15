@@ -148,34 +148,31 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Product Name:</span>
-                            <asp:TextBox ID="txtFName" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFName"></asp:RequiredFieldValidator>
+                            <span style="font-weight:bold">Product Name:</span>
+                            <asp:TextBox ID="txtPName" CssClass="form-control" runat="server" placeholder="Product Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtPName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>First Name:</span>
-                            <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeholder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator>
+                            <span style="font-weight:bold">Quantity:</span>
+                            <asp:TextBox ID="txtqty" CssClass="form-control" runat="server" placeholder="Quantity"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtqty"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Last Name:</span>
-                            <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtLastName"></asp:RequiredFieldValidator>
+                            <span style="font-weight:bold">Cost Price:</span>
+                            <asp:TextBox ID="txtCPrice" CssClass="form-control" runat="server" placeholder="Cost Price"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtCPrice"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Email :</span>
-                            <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" placeholder="Email"></asp:TextBox>
+                            <span style="font-weight:bold">Profit Price:</span>
+                            <asp:TextBox ID="txtProfitPrice" CssClass="form-control" runat="server" placeholder="Profit Price"></asp:TextBox>
 
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
-                                ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                                Display="Dynamic" ErrorMessage="Invalid email address" ValidationGroup="A" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEmail" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtProfitPrice"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -183,43 +180,25 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Mobile No. :</span>
-                            <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile No"></asp:TextBox>
+                            <span style="font-weight:bold">Sale Price:</span>
+                            <asp:TextBox ID="txtSalePrice" runat="server" CssClass="form-control" placeholder="Sale Price"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtSalePrice"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Employee No. :</span>
-                            <asp:TextBox ID="txtEmpNo" runat="server" CssClass="form-control" placeholder="Employee No"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtEmpNo"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span>Security Access Group :</span>
-                            <asp:DropDownList ID="DropDownRoles" OnSelectedIndexChanged="DropDownRoles_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-
-                </div>
-                
-                <br />
-                <div class="row">
-
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span>Hospitals :</span>
+                            <span style="font-weight:bold">Hospitals :</span>
                             <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Clinic :</span>
+                            <span style="font-weight:bold">Clinic :</span>
                             <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
+                
                 <br />
                 <div class="row">
                     <div class="col-md-2">
@@ -235,26 +214,45 @@
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="DropDownHospitals" EventName="SelectedIndexChanged" />
                 <asp:AsyncPostBackTrigger ControlID="DropDownClinics" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="DropDownRoles" EventName="SelectedIndexChanged" />
 
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
-        <!--User list belongs only this user's clinic-->
+        <!--Products list belongs only this user's clinic-->
         <br />
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                         <br />
-                        <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
+                        <asp:GridView ID="gvProducts" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="PID" 
                            
                             EmptyDataText="No records found.">
                             <Columns>
-                                <asp:TemplateField HeaderText="User Name">
+                                <asp:TemplateField HeaderText="Product Name">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                        <asp:Label ID="lblId" runat="server" Text='<%# Eval("PID") %>' Visible="false"></asp:Label>
+                                        <asp:Label ID="lblPName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Quantity">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Cost Price">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Profit Price">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Sale Price">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Hospital">
@@ -267,21 +265,11 @@
                                         <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Role">
+                                <asp:TemplateField HeaderText="Added By">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
+                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <%--<asp:TemplateField HeaderText="Email">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Employee No">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
                             </Columns>
                         </asp:GridView>
                         </div>
@@ -303,16 +291,15 @@
         
         $(function () {
 
+            bindDataTable(); // bind data table on first page load
             fixDropWidth();
             BinddropdownHospitals();
             BinddropdownHRClinics();
-            BinddropdownRoles();
-            bindDataTable(); // bind data table on first page load
+
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHospitals);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRClinics);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRoles);
 
         });
         function BinddropdownHospitals() {
@@ -331,17 +318,9 @@
                 });
             });
         };
-        function BinddropdownRoles() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownRoles.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };
         function bindDataTable() {
             $(document).ready(function () {
-                var oTable = $('#' + '<%=gvUsers.ClientID%>').dataTable({
+                var oTable = $('#' + '<%=gvProducts.ClientID%>').dataTable({
                     dom: 'Blfrtip',
                     "bInfo": true,
                     buttons: [
@@ -351,15 +330,6 @@
                 });
             });
         };
-
-<%--        function BinddropdownDepts() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownDepartment.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };--%>
         function fixDropWidth() {
             $("select").width("100%");
         };

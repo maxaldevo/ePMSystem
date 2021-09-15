@@ -12,26 +12,21 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class eMedical_Clinic
+    public partial class eMedical_Product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public eMedical_Clinic()
-        {
-            this.eMedical_User = new HashSet<eMedical_User>();
-            this.eMedical_Product = new HashSet<eMedical_Product>();
-        }
-    
         public int ID { get; set; }
-        public string Clinicname { get; set; }
+        public string ProductName { get; set; }
+        public Nullable<int> Qty { get; set; }
+        public Nullable<int> CostPrice { get; set; }
+        public Nullable<int> ProfitPrice { get; set; }
+        public Nullable<int> SalePrice { get; set; }
         public Nullable<int> HospitalID { get; set; }
+        public Nullable<int> ClinicID { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
     
+        public virtual eMedical_Clinic eMedical_Clinic { get; set; }
         public virtual eMedical_Hospital eMedical_Hospital { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eMedical_User> eMedical_User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eMedical_Product> eMedical_Product { get; set; }
     }
 }

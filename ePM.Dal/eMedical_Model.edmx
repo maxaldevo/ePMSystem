@@ -46,6 +46,24 @@
           <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eMedical_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="CostPrice" Type="int" />
+          <Property Name="ProfitPrice" Type="int" />
+          <Property Name="SalePrice" Type="int" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="ClinicID" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
         <EntityType Name="eMedical_Roles">
           <Key>
             <PropertyRef Name="RoleId" />
@@ -249,6 +267,30 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="HospitalID" Type="int" />
           <Property Name="ClinicID" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vProductInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="CostPrice" Type="int" />
+          <Property Name="ProfitPrice" Type="int" />
+          <Property Name="SalePrice" Type="int" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClinicID" Type="int" />
+          <Property Name="Clinicname" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
           <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="*" />
@@ -257,6 +299,30 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="eMedical_Clinic">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Product_eMedical_Clinic">
+          <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="0..1" />
+          <End Role="eMedical_Product" Type="Self.eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Product_eMedical_Hospital">
+          <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
+          <End Role="eMedical_Product" Type="Self.eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
               <PropertyRef Name="HospitalID" />
             </Dependent>
           </ReferentialConstraint>
@@ -337,6 +403,17 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eMedical_addNewProduct_ByHospitalID_ClinicID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Qty" Type="int" Mode="In" />
+          <Parameter Name="CostPrice" Type="int" Mode="In" />
+          <Parameter Name="ProfitPrice" Type="int" Mode="In" />
+          <Parameter Name="SalePrice" Type="int" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="HospitalId" Type="int" Mode="In" />
+          <Parameter Name="ClinicId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_addNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FName" Type="nvarchar" Mode="In" />
           <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
@@ -373,6 +450,21 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eMedical_Product].[ID] AS [ID], 
+    [eMedical_Product].[ProductName] AS [ProductName], 
+    [eMedical_Product].[Qty] AS [Qty], 
+    [eMedical_Product].[CostPrice] AS [CostPrice], 
+    [eMedical_Product].[ProfitPrice] AS [ProfitPrice], 
+    [eMedical_Product].[SalePrice] AS [SalePrice], 
+    [eMedical_Product].[HospitalID] AS [HospitalID], 
+    [eMedical_Product].[ClinicID] AS [ClinicID], 
+    [eMedical_Product].[Status] AS [Status], 
+    [eMedical_Product].[LastUpdated] AS [LastUpdated], 
+    [eMedical_Product].[UpdatedByID] AS [UpdatedByID]
+    FROM [dbo].[eMedical_Product] AS [eMedical_Product]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_eMedical_ModulePages" EntityType="Self.v_eMedical_ModulePages" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_eMedical_ModulePages].[Id] AS [Id], 
@@ -470,9 +562,38 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
     [vPersonnel].[ClinicID] AS [ClinicID]
     FROM [dbo].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vProductInfo" EntityType="Self.vProductInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vProductInfo].[ID] AS [ID], 
+    [vProductInfo].[ProductName] AS [ProductName], 
+    [vProductInfo].[Qty] AS [Qty], 
+    [vProductInfo].[CostPrice] AS [CostPrice], 
+    [vProductInfo].[ProfitPrice] AS [ProfitPrice], 
+    [vProductInfo].[SalePrice] AS [SalePrice], 
+    [vProductInfo].[HospitalID] AS [HospitalID], 
+    [vProductInfo].[HospitalName] AS [HospitalName], 
+    [vProductInfo].[ClinicID] AS [ClinicID], 
+    [vProductInfo].[Clinicname] AS [Clinicname], 
+    [vProductInfo].[Status] AS [Status], 
+    [vProductInfo].[LastUpdated] AS [LastUpdated], 
+    [vProductInfo].[UpdatedByID] AS [UpdatedByID], 
+    [vProductInfo].[FName] AS [FName], 
+    [vProductInfo].[FirstName] AS [FirstName], 
+    [vProductInfo].[EmployeeNo] AS [EmployeeNo], 
+    [vProductInfo].[Email] AS [Email]
+    FROM [dbo].[vProductInfo] AS [vProductInfo]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Product_eMedical_Clinic" Association="Self.FK_eMedical_Product_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Product_eMedical_Hospital" Association="Self.FK_eMedical_Product_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_User_eMedical_Clinic" Association="Self.FK_eMedical_User_eMedical_Clinic">
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -649,6 +770,27 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
             <Parameter Name="RoleId" Mode="In" Type="Int32" />
             <Parameter Name="Level" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="eMedical_Product" EntityType="eMedicalModel.eMedical_Product" />
+          <EntitySet Name="vProductInfoes" EntityType="eMedicalModel.vProductInfo" />
+          <AssociationSet Name="FK_eMedical_Product_eMedical_Clinic" Association="eMedicalModel.FK_eMedical_Product_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Product_eMedical_Hospital" Association="eMedicalModel.FK_eMedical_Product_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewProduct_ByHospitalID_ClinicID">
+            <Parameter Name="PName" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Int32" />
+            <Parameter Name="CostPrice" Mode="In" Type="Int32" />
+            <Parameter Name="ProfitPrice" Mode="In" Type="Int32" />
+            <Parameter Name="SalePrice" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="HospitalId" Mode="In" Type="Int32" />
+            <Parameter Name="ClinicId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -662,6 +804,7 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Clinic" ToRole="eMedical_Hospital" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_User" />
+          <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_Product" />
         </EntityType>
         <EntityType Name="eMedical_Hospital">
           <Key>
@@ -675,6 +818,7 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Clinic" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_User" />
+          <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Product" />
         </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
@@ -926,6 +1070,70 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Type="Int32" Name="Sort" Nullable="true" />
           <Property Type="Int32" Name="ModuleId" Nullable="true" />
         </ComplexType>
+        <EntityType Name="eMedical_Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="CostPrice" Type="Int32" />
+          <Property Name="ProfitPrice" Type="Int32" />
+          <Property Name="SalePrice" Type="Int32" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="ClinicID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" FromRole="eMedical_Product" ToRole="eMedical_Clinic" />
+          <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" FromRole="eMedical_Product" ToRole="eMedical_Hospital" />
+        </EntityType>
+        <EntityType Name="vProductInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="CostPrice" Type="Int32" />
+          <Property Name="ProfitPrice" Type="Int32" />
+          <Property Name="SalePrice" Type="Int32" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicID" Type="Int32" />
+          <Property Name="Clinicname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_eMedical_Product_eMedical_Clinic">
+          <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Product" Role="eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Product_eMedical_Hospital">
+          <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Product" Role="eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1212,6 +1420,47 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="eMedical_Product">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Product">
+              <MappingFragment StoreEntitySet="eMedical_Product">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="ProfitPrice" ColumnName="ProfitPrice" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vProductInfoes">
+            <EntityTypeMapping TypeName="eMedicalModel.vProductInfo">
+              <MappingFragment StoreEntitySet="vProductInfo">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Clinicname" ColumnName="Clinicname" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="ProfitPrice" ColumnName="ProfitPrice" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewProduct_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewProduct_ByHospitalID_ClinicID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

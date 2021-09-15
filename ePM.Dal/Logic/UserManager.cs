@@ -96,8 +96,7 @@ namespace ePM_Dal.Logic
            
             return friendlyMsg;
         }
-        public static string AddNewUser_By_HospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile,
-            string empNo, int roleId, int hospitalID, int clinicID)
+        public static string AddNewUser_By_HospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile, string empNo, int roleId, int hospitalID, int clinicID)
         {
             string friendlyMsg = "";
             try

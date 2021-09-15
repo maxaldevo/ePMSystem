@@ -15,16 +15,16 @@ namespace WebApplication1
 {
     public partial class AddNewProduct : System.Web.UI.Page
     {
-        public static string _selectedDept , _fname, _firstName,_lastName,_empno,_email,_mobile = "";
-        public static int _selectedRole, _selectedHospital, _selectedClinic = 0;
-        public List<vPersonnel> usersList = new List<vPersonnel>();
+        public static string  _pName;
+        public static int _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic = 0;
+        public List<vProductInfo> ProductsList = new List<vProductInfo>();
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (gvUsers.Rows.Count > 0)
+            if (gvProducts.Rows.Count > 0)
             {
-                gvUsers.UseAccessibleHeader = true;
-                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
+                gvProducts.UseAccessibleHeader = true;
+                gvProducts.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace WebApplication1
             {
                 #region Page Validation
 
-                int userId, RoleId, ClinicId = 0;
+                int RoleId, ClinicId = 0;
                 if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/Login/Login.aspx", true);
@@ -42,16 +42,16 @@ namespace WebApplication1
                 {
                     if (int.Parse(Session["UserId"].ToString()) != 0)
                     {
-                        userId = int.Parse(Session["UserId"].ToString());
+                        _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
                         if (RoleId == 1)
                         {
-                            BindUsersGrid(0); // 0 means The SuperAdmin user.
+                            BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
                         }
                         else
                         {
                             ClinicId = int.Parse(Session["ClinicId"].ToString());
-                            BindUsersGrid(ClinicId);
+                            BindProductsGrid(ClinicId, _userID);
                         }
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
@@ -69,7 +69,6 @@ namespace WebApplication1
                 }
                 #endregion Page Validation
                 BindHospitals();
-                BindRoles();
                 BindClinics(); 
             }
         }
@@ -80,88 +79,66 @@ namespace WebApplication1
                 try
                 {
                     //Validate user name and emp No
-                  
-                    _fname = txtFName.Text;
-                    _firstName = txtFirstName.Text;
-                    _lastName = txtLastName.Text;
-                    _email = txtEmail.Text;
 
-                    _empno = txtEmpNo.Text;
-                    _mobile = !string.IsNullOrWhiteSpace(txtMobile.Text) ? txtMobile.Text : null;
-                    bool emailExist = UserManager.checkUserEmail(_email);
-                    bool empoExist = UserManager.checkUserEmpNo(_empno);
-                    if (!emailExist && !empoExist)
+                    _pName = txtPName.Text;
+                    _qty = int.Parse(txtqty.Text);
+                    _costPrice = int.Parse(txtCPrice.Text);
+                    _profitPrice = int.Parse(txtProfitPrice.Text);
+                    _salePrice = int.Parse(txtSalePrice.Text);
+
+                    string result = ProductManager.AddNewProduct_By_HospitalID_ClinicID(_pName, _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic);
+                    if (result != "inserted")
                     {
-                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_fname, _firstName, _lastName, _email, _mobile, _empno, _selectedRole, _selectedHospital, _selectedClinic);
-                        if (result != "inserted")
-                        {
-                            lblResult.Visible = true;
-                            lblResult.ForeColor = System.Drawing.Color.Red;
-                            lblResult.Text = result;
-                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
-                        }
-                        else
-                        {
-                            lblResult.Visible = true;
-                            lblResult.ForeColor = System.Drawing.Color.Green;
-                            lblResult.Text = result;
-                            clearControls();
-                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
-                            //Re-Bind the user grid based on the User's role.
-                            if (int.Parse(Session["RoleId"].ToString()) == 1) BindUsersGrid(0); else BindUsersGrid(int.Parse(Session["ClinicId"].ToString()));
-                        }
+                        lblResult.Visible = true;
+                        lblResult.ForeColor = System.Drawing.Color.Red;
+                        lblResult.Text = result;
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
                     }
                     else
                     {
                         lblResult.Visible = true;
-                        lblResult.ForeColor = System.Drawing.Color.Red;
-                        lblResult.Text = "User email or Employee No exists";
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Warning", "<script>showpopwarning('" + "User email or Employee No exists!" + "')</script>", false);
-                    } 
-                   
+                        lblResult.ForeColor = System.Drawing.Color.Green;
+                        lblResult.Text = result;
+                        clearControls();
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
+                        //Re-Bind the user grid based on the User's role.
+                        if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
+                    }
+
+
                 }
                 catch (Exception ex)
                 {
 
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" +  "Unexpected error, Please contact your Admin!" + ex.Message+  "')</script>", false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
                 }
-          
+
             }
 
         }
         private void clearControls()
         {
-            txtEmail.Text = "";
-            txtFName.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
-            txtEmpNo.Text = "";
-            txtMobile.Text = "";
+            txtPName.Text = "";
+            txtqty.Text = "";
+            txtCPrice.Text = "";
+            txtProfitPrice.Text = "";
+            txtSalePrice.Text = "";
             // lblResult.Visible = false;
         }
-        //protected void DropDownHRRoles_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _selectedHRRole = int.Parse(DropDownHRRoles.SelectedItem.Value);
-        //}
 
-        private void BindUsersGrid(int Clinic_ID)
+
+        private void BindProductsGrid(int Clinic_ID, int userID)
         {
             try
             {
-                if (Cache["UsersList"] == null)
+                if (Cache["ProductsList"] == null)
                 {
-                    if (Clinic_ID == 0) usersList = UserManager.getUsersList(); else usersList = UserManager.getUsersList(Clinic_ID);
-                    Cache["UsersList"] = usersList;
-                    Cache.Insert("UsersList", usersList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
-                    //  Response.Write("<script>alert('Its processing from Data hit');</script>");
+                    if (Clinic_ID == 0 && userID == 0) ProductsList = ProductManager.getProductsList(); else ProductsList = ProductManager.getProductsList(Clinic_ID, userID);
+                    Cache["ProductsList"] = ProductsList;
+                    Cache.Insert("ProductsList", ProductsList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
                 }
-                else
-                {
-                    //If cache has value, It retrive from cache memory and bind into the gridview
-                    //  Response.Write("<script>alert('Its processing from cache');</script>");
-                }
-                gvUsers.DataSource = (List<vPersonnel>)Cache["UsersList"];
-                gvUsers.DataBind();
+                gvProducts.DataSource = (List<vProductInfo>)Cache["ProductsList"];
+                gvProducts.DataBind();
             }
             catch (Exception ex)
             {
@@ -170,18 +147,7 @@ namespace WebApplication1
             }
         }
 
-        private void BindRoles()
-        {
-            DropDownRoles.DataSource = null;
-            DropDownRoles.ClearSelection();
-            List<eMedical_Roles> groups = UserManager.GetRolesList();
-            DropDownRoles.DataSource = groups;
-            DropDownRoles.DataValueField = "RoleId";
-            DropDownRoles.DataTextField = "RoleName";
-            DropDownRoles.DataBind();
-            DropDownRoles.Items[0].Selected = true;
-            _selectedRole = int.Parse(DropDownRoles.SelectedItem.Value);
-        }
+
         private void BindHospitals()
         {
             DropDownHospitals.DataSource = null;
@@ -213,10 +179,7 @@ namespace WebApplication1
         {
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
         }
-        protected void DropDownRoles_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedRole = int.Parse(DropDownRoles.SelectedItem.Value);
-        }
+
         protected void DropDownClinics_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);

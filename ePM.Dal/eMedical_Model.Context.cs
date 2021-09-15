@@ -38,6 +38,8 @@ namespace ePM.Dal
         public virtual DbSet<v_userRoles> v_userRoles { get; set; }
         public virtual DbSet<v_eMedical_ModulePages> v_eMedical_ModulePages { get; set; }
         public virtual DbSet<v_eMedical_RolesCount> v_eMedical_RolesCount { get; set; }
+        public virtual DbSet<eMedical_Product> eMedical_Product { get; set; }
+        public virtual DbSet<vProductInfo> vProductInfoes { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {
@@ -167,6 +169,43 @@ namespace ePM.Dal
                 new ObjectParameter("Level", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_GetPagesByRole_Result>("sp_eMedical_GetPagesByRole", roleIdParameter, levelParameter);
+        }
+    
+        public virtual int sp_eMedical_addNewProduct_ByHospitalID_ClinicID(string pName, Nullable<int> qty, Nullable<int> costPrice, Nullable<int> profitPrice, Nullable<int> salePrice, Nullable<int> userId, Nullable<int> hospitalId, Nullable<int> clinicId, ObjectParameter msg)
+        {
+            var pNameParameter = pName != null ?
+                new ObjectParameter("PName", pName) :
+                new ObjectParameter("PName", typeof(string));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("Qty", qty) :
+                new ObjectParameter("Qty", typeof(int));
+    
+            var costPriceParameter = costPrice.HasValue ?
+                new ObjectParameter("CostPrice", costPrice) :
+                new ObjectParameter("CostPrice", typeof(int));
+    
+            var profitPriceParameter = profitPrice.HasValue ?
+                new ObjectParameter("ProfitPrice", profitPrice) :
+                new ObjectParameter("ProfitPrice", typeof(int));
+    
+            var salePriceParameter = salePrice.HasValue ?
+                new ObjectParameter("SalePrice", salePrice) :
+                new ObjectParameter("SalePrice", typeof(int));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var hospitalIdParameter = hospitalId.HasValue ?
+                new ObjectParameter("HospitalId", hospitalId) :
+                new ObjectParameter("HospitalId", typeof(int));
+    
+            var clinicIdParameter = clinicId.HasValue ?
+                new ObjectParameter("ClinicId", clinicId) :
+                new ObjectParameter("ClinicId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewProduct_ByHospitalID_ClinicID", pNameParameter, qtyParameter, costPriceParameter, profitPriceParameter, salePriceParameter, userIdParameter, hospitalIdParameter, clinicIdParameter, msg);
         }
     }
 }

@@ -188,6 +188,9 @@
     <Compile Include="eMedical_Pages.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="eMedical_Product.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_Roles.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -237,6 +240,7 @@
     <Compile Include="Logic\ClinicManager.cs" />
     <Compile Include="Logic\HospitalManager.cs" />
     <Compile Include="Logic\PersonnelManager.cs" />
+    <Compile Include="Logic\ProductManager.cs" />
     <Compile Include="Logic\SecurityManager.cs" />
     <Compile Include="Logic\UserManager.cs" />
     <Compile Include="Logic\UserProfile.cs" />
@@ -294,6 +298,9 @@
     <Compile Include="ViewModels\RolesDto.cs" />
     <Compile Include="ViewModels\TraineeDTO.cs" />
     <Compile Include="vPersonnel.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vProductInfo.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="v_eMedical_ModulePages.cs">
