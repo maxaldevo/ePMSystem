@@ -86,6 +86,7 @@
     <Content Include="AccountSettings.aspx" />
     <Content Include="AddNewClinic.aspx" />
     <Content Include="AddNewHospital.aspx" />
+    <Content Include="AddNewProduct.aspx" />
     <Content Include="AddNewUser.aspx" />
     <Content Include="AddUsersBulk.aspx" />
     <Content Include="assets\vendor_components\animate\animate.css" />
@@ -7415,6 +7416,13 @@
     </Compile>
     <Compile Include="AddNewHospital.aspx.designer.cs">
       <DependentUpon>AddNewHospital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewProduct.aspx.cs">
+      <DependentUpon>AddNewProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewProduct.aspx.designer.cs">
+      <DependentUpon>AddNewProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewUser.aspx.cs">
       <DependentUpon>AddNewUser.aspx</DependentUpon>
