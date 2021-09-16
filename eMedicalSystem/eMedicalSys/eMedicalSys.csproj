@@ -7371,6 +7371,7 @@
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
     <Content Include="UserRoles.aspx" />
+    <Content Include="ProductsList.aspx" />
     <Content Include="UsersList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -7515,6 +7516,13 @@
     </Compile>
     <Compile Include="UserRoles.aspx.designer.cs">
       <DependentUpon>UserRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsList.aspx.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductsList.aspx.designer.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsersList.aspx.cs">
       <DependentUpon>UsersList.aspx</DependentUpon>

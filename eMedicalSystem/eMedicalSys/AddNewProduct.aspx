@@ -220,62 +220,7 @@
         </asp:UpdatePanel>
         <!--Products list belongs only this user's clinic-->
         <br />
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                        <br />
-                        <asp:GridView ID="gvProducts" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="PID" 
-                           
-                            EmptyDataText="No records found.">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Product Name">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblId" runat="server" Text='<%# Eval("PID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblPName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Quantity">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Cost Price">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Profit Price">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Sale Price">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hospital">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Clinic">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Added By">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
     </section>
 
     <script src="Scripts/jquery-3.3.1.js"></script>
@@ -291,12 +236,12 @@
         
         $(function () {
 
-            bindDataTable(); // bind data table on first page load
+            //bindDataTable(); // bind data table on first page load
             fixDropWidth();
             BinddropdownHospitals();
             BinddropdownHRClinics();
 
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHospitals);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRClinics);
@@ -318,7 +263,7 @@
                 });
             });
         };
-        function bindDataTable() {
+        <%--function bindDataTable() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=gvProducts.ClientID%>').dataTable({
                     dom: 'Blfrtip',
@@ -329,7 +274,7 @@
                     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
                 });
             });
-        };
+        };--%>
         function fixDropWidth() {
             $("select").width("100%");
         };

@@ -17,16 +17,16 @@ namespace WebApplication1
     {
         public static string  _pName;
         public static int _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic = 0;
-        public List<vProductInfo> ProductsList = new List<vProductInfo>();
+        //public List<vProductInfo> ProductsList = new List<vProductInfo>();
 
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            if (gvProducts.Rows.Count > 0)
-            {
-                gvProducts.UseAccessibleHeader = true;
-                gvProducts.HeaderRow.TableSection = TableRowSection.TableHeader;
-            }
-        }
+        //protected void Page_PreRender(object sender, EventArgs e)
+        //{
+        //    if (gvProducts.Rows.Count > 0)
+        //    {
+        //        gvProducts.UseAccessibleHeader = true;
+        //        gvProducts.HeaderRow.TableSection = TableRowSection.TableHeader;
+        //    }
+        //}
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -44,15 +44,15 @@ namespace WebApplication1
                     {
                         _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
-                        if (RoleId == 1)
-                        {
-                            BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
-                        }
-                        else
-                        {
-                            ClinicId = int.Parse(Session["ClinicId"].ToString());
-                            BindProductsGrid(ClinicId, _userID);
-                        }
+                        //if (RoleId == 1)
+                        //{
+                        //    BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
+                        //}
+                        //else
+                        //{
+                        //    ClinicId = int.Parse(Session["ClinicId"].ToString());
+                        //    BindProductsGrid(ClinicId, _userID);
+                        //}
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -102,7 +102,7 @@ namespace WebApplication1
                         clearControls();
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
                         //Re-Bind the user grid based on the User's role.
-                        if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
+                        //if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
                     }
 
 
@@ -127,25 +127,25 @@ namespace WebApplication1
         }
 
 
-        private void BindProductsGrid(int Clinic_ID, int userID)
-        {
-            try
-            {
-                if (Cache["ProductsList"] == null)
-                {
-                    if (Clinic_ID == 0 && userID == 0) ProductsList = ProductManager.getProductsList(); else ProductsList = ProductManager.getProductsList(Clinic_ID, userID);
-                    Cache["ProductsList"] = ProductsList;
-                    Cache.Insert("ProductsList", ProductsList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
-                }
-                gvProducts.DataSource = (List<vProductInfo>)Cache["ProductsList"];
-                gvProducts.DataBind();
-            }
-            catch (Exception ex)
-            {
-                ExceptionsManager.AddException(ex);
-                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
-            }
-        }
+        //private void BindProductsGrid(int Clinic_ID, int userID)
+        //{
+        //    try
+        //    {
+        //        if (Cache["ProductsList"] == null)
+        //        {
+        //            if (Clinic_ID == 0 && userID == 0) ProductsList = ProductManager.getProductsList(); else ProductsList = ProductManager.getProductsList(Clinic_ID, userID);
+        //            Cache["ProductsList"] = ProductsList;
+        //            Cache.Insert("ProductsList", ProductsList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
+        //        }
+        //        gvProducts.DataSource = (List<vProductInfo>)Cache["ProductsList"];
+        //        gvProducts.DataBind();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionsManager.AddException(ex);
+        //        SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
+        //    }
+        //}
 
 
         private void BindHospitals()
