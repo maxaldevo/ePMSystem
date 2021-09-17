@@ -14,6 +14,12 @@ namespace ePM.Dal
     
     public partial class eMedical_User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public eMedical_User()
+        {
+            this.eMedical_Service = new HashSet<eMedical_Service>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> PersonnelID { get; set; }
         public string Username { get; set; }
@@ -79,5 +85,7 @@ namespace ePM.Dal
         public virtual eMedical_Roles eMedical_Roles { get; set; }
         public virtual eMedical_Clinic eMedical_Clinic { get; set; }
         public virtual eMedical_Hospital eMedical_Hospital { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eMedical_Service> eMedical_Service { get; set; }
     }
 }

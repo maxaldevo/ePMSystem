@@ -13,27 +13,18 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class AddNewProduct : System.Web.UI.Page
+    public partial class AddNewService : System.Web.UI.Page
     {
-        public static string  _pName;
-        public static int _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic = 0;
-        //public List<vProductInfo> ProductsList = new List<vProductInfo>();
+        public static string  _sName;
+        public static int _noOfSessions, _price, _userID, _selectedHospital, _selectedClinic, _selectedServiceType = 0;
 
-        //protected void Page_PreRender(object sender, EventArgs e)
-        //{
-        //    if (gvProducts.Rows.Count > 0)
-        //    {
-        //        gvProducts.UseAccessibleHeader = true;
-        //        gvProducts.HeaderRow.TableSection = TableRowSection.TableHeader;
-        //    }
-        //}
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 #region Page Validation
 
-                int RoleId, ClinicId = 0;
+                int RoleId = 0;
                 if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/Login/Login.aspx", true);
@@ -44,15 +35,7 @@ namespace WebApplication1
                     {
                         _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
-                        //if (RoleId == 1)
-                        //{
-                        //    BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
-                        //}
-                        //else
-                        //{
-                        //    ClinicId = int.Parse(Session["ClinicId"].ToString());
-                        //    BindProductsGrid(ClinicId, _userID);
-                        //}
+
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -69,7 +52,8 @@ namespace WebApplication1
                 }
                 #endregion Page Validation
                 BindHospitals();
-                BindClinics(_selectedHospital); 
+                BindClinics(_selectedHospital);
+                BindServiceTypes();
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -80,13 +64,11 @@ namespace WebApplication1
                 {
                     //Validate user name and emp No
 
-                    _pName = txtPName.Text;
-                    _qty = int.Parse(txtqty.Text);
-                    _costPrice = int.Parse(txtCPrice.Text);
-                    _profitPrice = int.Parse(txtProfitPrice.Text);
-                    _salePrice = int.Parse(txtSalePrice.Text);
+                    _sName = txtSName.Text;
+                    _noOfSessions = int.Parse(txtnosessions.Text);
+                    _price = int.Parse(txtPrice.Text);
 
-                    string result = ProductManager.AddNewProduct_By_HospitalID_ClinicID(_pName, _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic);
+                    string result = ServiceManager.AddNewService(_sName, _selectedServiceType, _noOfSessions, _price, _selectedClinic, _selectedHospital, _userID);
                     if (result != "inserted")
                     {
                         lblResult.Visible = true;
@@ -118,34 +100,12 @@ namespace WebApplication1
         }
         private void clearControls()
         {
-            txtPName.Text = "";
-            txtqty.Text = "";
-            txtCPrice.Text = "";
-            txtProfitPrice.Text = "";
-            txtSalePrice.Text = "";
+            txtSName.Text = "";
+            txtnosessions.Text = "";
+            txtPrice.Text = "";
             // lblResult.Visible = false;
         }
 
-
-        //private void BindProductsGrid(int Clinic_ID, int userID)
-        //{
-        //    try
-        //    {
-        //        if (Cache["ProductsList"] == null)
-        //        {
-        //            if (Clinic_ID == 0 && userID == 0) ProductsList = ProductManager.getProductsList(); else ProductsList = ProductManager.getProductsList(Clinic_ID, userID);
-        //            Cache["ProductsList"] = ProductsList;
-        //            Cache.Insert("ProductsList", ProductsList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
-        //        }
-        //        gvProducts.DataSource = (List<vProductInfo>)Cache["ProductsList"];
-        //        gvProducts.DataBind();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ExceptionsManager.AddException(ex);
-        //        SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
-        //    }
-        //}
 
 
         private void BindHospitals()
@@ -174,6 +134,18 @@ namespace WebApplication1
             DropDownClinics.Items[0].Selected = true;
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
+        private void BindServiceTypes()
+        {
+            DropDownServiceTypes.DataSource = null;
+            DropDownServiceTypes.ClearSelection();
+            List<eMedical_ServiceType> ServicesTypes = ServiceManager.GetservicesTypeList();
+            DropDownServiceTypes.DataSource = ServicesTypes;
+            DropDownServiceTypes.DataValueField = "ID";
+            DropDownServiceTypes.DataTextField = "ServiceType";
+            DropDownServiceTypes.DataBind();
+            DropDownServiceTypes.Items[0].Selected = true;
+            _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
+        }
 
         protected void DropDownHospitals_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -186,5 +158,9 @@ namespace WebApplication1
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
 
+        protected void DropDownServiceTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
+        }
     }
 }

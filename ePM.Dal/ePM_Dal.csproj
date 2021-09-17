@@ -197,6 +197,12 @@
     <Compile Include="eMedical_RolesRights.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="eMedical_Service.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_ServiceType.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_User.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -242,6 +248,7 @@
     <Compile Include="Logic\PersonnelManager.cs" />
     <Compile Include="Logic\ProductManager.cs" />
     <Compile Include="Logic\SecurityManager.cs" />
+    <Compile Include="Logic\ServiceManager.cs" />
     <Compile Include="Logic\UserManager.cs" />
     <Compile Include="Logic\UserProfile.cs" />
     <Compile Include="Logic\UsersBulkManager.cs" />
@@ -301,6 +308,9 @@
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="vProductInfo.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vService.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="v_eMedical_ModulePages.cs">

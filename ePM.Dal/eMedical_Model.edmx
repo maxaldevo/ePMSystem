@@ -85,6 +85,31 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="LastUpdatedBy" Type="bigint" />
           <Property Name="LastUpdateDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="eMedical_Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServiceTypeID" Type="int" />
+          <Property Name="NoofSessions" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="ClinicID" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
+        <EntityType Name="eMedical_ServiceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceType" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
         <EntityType Name="eMedical_User">
           <Key>
             <PropertyRef Name="ID" />
@@ -291,6 +316,30 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vServices">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Clinicname" Type="nvarchar" MaxLength="500" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="SID" Type="int" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="500" />
+          <Property Name="NoofSessions" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="HospitalID" Type="int" />
+          <Property Name="ClinicID" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+          <Property Name="ServiceTypeID" Type="int" />
+          <Property Name="ServiceType" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
           <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="*" />
@@ -324,6 +373,54 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
             </Principal>
             <Dependent Role="eMedical_Product">
               <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_Clinic">
+          <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="0..1" />
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_Hospital">
+          <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_ServiceType">
+          <End Role="eMedical_ServiceType" Type="Self.eMedical_ServiceType" Multiplicity="0..1" />
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_ServiceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="ServiceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_User">
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="0..1" />
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="UpdatedByID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -414,6 +511,21 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eMedical_addNewSession_ByHospitalID_ClinicID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ServiceTypeID" Type="int" Mode="In" />
+          <Parameter Name="NoofSessions" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="int" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="HospitalId" Type="int" Mode="In" />
+          <Parameter Name="ClinicId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_eMedical_addNewSessionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ServiceType" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserId" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_addNewUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FName" Type="nvarchar" Mode="In" />
           <Parameter Name="FirstName" Type="nvarchar" Mode="In" />
@@ -449,6 +561,8 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Service" EntityType="Self.eMedical_Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_ServiceType" EntityType="Self.eMedical_ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -583,6 +697,27 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
     [vProductInfo].[Email] AS [Email]
     FROM [dbo].[vProductInfo] AS [vProductInfo]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vServices" EntityType="Self.vServices" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vServices].[HospitalName] AS [HospitalName], 
+    [vServices].[Clinicname] AS [Clinicname], 
+    [vServices].[FName] AS [FName], 
+    [vServices].[FirstName] AS [FirstName], 
+    [vServices].[EmployeeNo] AS [EmployeeNo], 
+    [vServices].[Email] AS [Email], 
+    [vServices].[SID] AS [SID], 
+    [vServices].[ServiceName] AS [ServiceName], 
+    [vServices].[NoofSessions] AS [NoofSessions], 
+    [vServices].[Price] AS [Price], 
+    [vServices].[HospitalID] AS [HospitalID], 
+    [vServices].[ClinicID] AS [ClinicID], 
+    [vServices].[Status] AS [Status], 
+    [vServices].[LastUpdated] AS [LastUpdated], 
+    [vServices].[UpdatedByID] AS [UpdatedByID], 
+    [vServices].[ServiceTypeID] AS [ServiceTypeID], 
+    [vServices].[ServiceType] AS [ServiceType]
+    FROM [dbo].[vServices] AS [vServices]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -594,6 +729,22 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <AssociationSet Name="FK_eMedical_Product_eMedical_Hospital" Association="Self.FK_eMedical_Product_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Clinic" Association="Self.FK_eMedical_Service_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Hospital" Association="Self.FK_eMedical_Service_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_ServiceType" Association="Self.FK_eMedical_Service_eMedical_ServiceType">
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_User" Association="Self.FK_eMedical_Service_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_User_eMedical_Clinic" Association="Self.FK_eMedical_User_eMedical_Clinic">
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -791,6 +942,40 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
             <Parameter Name="ClinicId" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <EntitySet Name="eMedical_Service" EntityType="eMedicalModel.eMedical_Service" />
+          <EntitySet Name="eMedical_ServiceType" EntityType="eMedicalModel.eMedical_ServiceType" />
+          <EntitySet Name="vServices" EntityType="eMedicalModel.vService" />
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Clinic" Association="eMedicalModel.FK_eMedical_Service_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Hospital" Association="eMedicalModel.FK_eMedical_Service_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_ServiceType" Association="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType">
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_User" Association="eMedicalModel.FK_eMedical_Service_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewSession_ByHospitalID_ClinicID">
+            <Parameter Name="SName" Mode="In" Type="String" />
+            <Parameter Name="ServiceTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="NoofSessions" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Int32" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="HospitalId" Mode="In" Type="Int32" />
+            <Parameter Name="ClinicId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_eMedical_addNewSessionType">
+            <Parameter Name="ServiceType" Mode="In" Type="String" />
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -805,6 +990,7 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Clinic" ToRole="eMedical_Hospital" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_User" />
           <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_Product" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_Service" />
         </EntityType>
         <EntityType Name="eMedical_Hospital">
           <Key>
@@ -819,6 +1005,7 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Clinic_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Clinic" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_User" />
           <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Product" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Service" />
         </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
@@ -900,6 +1087,7 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
           <Property Name="ClinicID" Type="Int32" />
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_User" ToRole="eMedical_Clinic" />
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_User" ToRole="eMedical_Hospital" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Service" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -1131,6 +1319,106 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
             </Principal>
             <Dependent Role="eMedical_Product">
               <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="eMedical_Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTypeID" Type="Int32" />
+          <Property Name="NoofSessions" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="ClinicID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Clinic" FromRole="eMedical_Service" ToRole="eMedical_Clinic" />
+          <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" FromRole="eMedical_Service" ToRole="eMedical_Hospital" />
+          <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" FromRole="eMedical_Service" ToRole="eMedical_ServiceType" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_Service" ToRole="eMedical_User" />
+        </EntityType>
+        <EntityType Name="eMedical_ServiceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" FromRole="eMedical_ServiceType" ToRole="eMedical_Service" />
+        </EntityType>
+        <EntityType Name="vService">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Clinicname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NoofSessions" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="HospitalID" Type="Int32" />
+          <Property Name="ClinicID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <Property Name="ServiceTypeID" Type="Int32" />
+          <Property Name="ServiceType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_eMedical_Service_eMedical_Clinic">
+          <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="ClinicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_Hospital">
+          <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="HospitalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_ServiceType">
+          <End Type="eMedicalModel.eMedical_ServiceType" Role="eMedical_ServiceType" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_ServiceType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="ServiceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_Service_eMedical_User">
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="UpdatedByID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1461,6 +1749,58 @@ warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewProduct_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewProduct_ByHospitalID_ClinicID" />
+          <EntitySetMapping Name="eMedical_Service">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Service">
+              <MappingFragment StoreEntitySet="eMedical_Service">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NoofSessions" ColumnName="NoofSessions" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_ServiceType">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_ServiceType">
+              <MappingFragment StoreEntitySet="eMedical_ServiceType">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vServices">
+            <EntityTypeMapping TypeName="eMedicalModel.vService">
+              <MappingFragment StoreEntitySet="vServices">
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NoofSessions" ColumnName="NoofSessions" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Clinicname" ColumnName="Clinicname" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewSession_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewSession_ByHospitalID_ClinicID" />
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewSessionType" FunctionName="eMedicalModel.Store.sp_eMedical_addNewSessionType" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

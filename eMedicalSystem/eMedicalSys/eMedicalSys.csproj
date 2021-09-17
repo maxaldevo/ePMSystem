@@ -86,6 +86,7 @@
     <Content Include="AccountSettings.aspx" />
     <Content Include="AddNewClinic.aspx" />
     <Content Include="AddNewHospital.aspx" />
+    <Content Include="AddNewService.aspx" />
     <Content Include="AddNewProduct.aspx" />
     <Content Include="AddNewUser.aspx" />
     <Content Include="AddUsersBulk.aspx" />
@@ -7417,6 +7418,13 @@
     </Compile>
     <Compile Include="AddNewHospital.aspx.designer.cs">
       <DependentUpon>AddNewHospital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewService.aspx.cs">
+      <DependentUpon>AddNewService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddNewService.aspx.designer.cs">
+      <DependentUpon>AddNewService.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewProduct.aspx.cs">
       <DependentUpon>AddNewProduct.aspx</DependentUpon>

@@ -26,6 +26,13 @@
         <EntityTypeShape EntityType="eMedicalModel.vProductInfo" Width="1.5" PointX="9.375" PointY="8.75" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" />
+        <EntityTypeShape EntityType="eMedicalModel.eMedical_Service" Width="1.5" PointX="11.875" PointY="8.25" />
+        <EntityTypeShape EntityType="eMedicalModel.eMedical_ServiceType" Width="1.5" PointX="9.625" PointY="14" />
+        <EntityTypeShape EntityType="eMedicalModel.vService" Width="1.5" PointX="12.375" PointY="0.75" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_Clinic" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

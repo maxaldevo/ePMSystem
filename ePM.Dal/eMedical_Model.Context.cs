@@ -40,6 +40,9 @@ namespace ePM.Dal
         public virtual DbSet<v_eMedical_RolesCount> v_eMedical_RolesCount { get; set; }
         public virtual DbSet<eMedical_Product> eMedical_Product { get; set; }
         public virtual DbSet<vProductInfo> vProductInfoes { get; set; }
+        public virtual DbSet<eMedical_Service> eMedical_Service { get; set; }
+        public virtual DbSet<eMedical_ServiceType> eMedical_ServiceType { get; set; }
+        public virtual DbSet<vService> vServices { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {
@@ -206,6 +209,52 @@ namespace ePM.Dal
                 new ObjectParameter("ClinicId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewProduct_ByHospitalID_ClinicID", pNameParameter, qtyParameter, costPriceParameter, profitPriceParameter, salePriceParameter, userIdParameter, hospitalIdParameter, clinicIdParameter, msg);
+        }
+    
+        public virtual int sp_eMedical_addNewSession_ByHospitalID_ClinicID(string sName, Nullable<int> serviceTypeID, Nullable<int> noofSessions, Nullable<int> price, Nullable<int> userId, Nullable<int> hospitalId, Nullable<int> clinicId, ObjectParameter msg)
+        {
+            var sNameParameter = sName != null ?
+                new ObjectParameter("SName", sName) :
+                new ObjectParameter("SName", typeof(string));
+    
+            var serviceTypeIDParameter = serviceTypeID.HasValue ?
+                new ObjectParameter("ServiceTypeID", serviceTypeID) :
+                new ObjectParameter("ServiceTypeID", typeof(int));
+    
+            var noofSessionsParameter = noofSessions.HasValue ?
+                new ObjectParameter("NoofSessions", noofSessions) :
+                new ObjectParameter("NoofSessions", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("Price", price) :
+                new ObjectParameter("Price", typeof(int));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            var hospitalIdParameter = hospitalId.HasValue ?
+                new ObjectParameter("HospitalId", hospitalId) :
+                new ObjectParameter("HospitalId", typeof(int));
+    
+            var clinicIdParameter = clinicId.HasValue ?
+                new ObjectParameter("ClinicId", clinicId) :
+                new ObjectParameter("ClinicId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewSession_ByHospitalID_ClinicID", sNameParameter, serviceTypeIDParameter, noofSessionsParameter, priceParameter, userIdParameter, hospitalIdParameter, clinicIdParameter, msg);
+        }
+    
+        public virtual int sp_eMedical_addNewSessionType(string serviceType, Nullable<int> userId, ObjectParameter msg)
+        {
+            var serviceTypeParameter = serviceType != null ?
+                new ObjectParameter("ServiceType", serviceType) :
+                new ObjectParameter("ServiceType", typeof(string));
+    
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("UserId", userId) :
+                new ObjectParameter("UserId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewSessionType", serviceTypeParameter, userIdParameter, msg);
         }
     }
 }

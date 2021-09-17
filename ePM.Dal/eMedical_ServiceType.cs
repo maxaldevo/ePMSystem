@@ -12,30 +12,20 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class eMedical_Hospital
+    public partial class eMedical_ServiceType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public eMedical_Hospital()
+        public eMedical_ServiceType()
         {
-            this.eMedical_Clinic = new HashSet<eMedical_Clinic>();
-            this.eMedical_User = new HashSet<eMedical_User>();
-            this.eMedical_Product = new HashSet<eMedical_Product>();
             this.eMedical_Service = new HashSet<eMedical_Service>();
         }
     
         public int ID { get; set; }
-        public string HospitalName { get; set; }
-        public string Description { get; set; }
+        public string ServiceType { get; set; }
         public Nullable<bool> Status { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eMedical_Clinic> eMedical_Clinic { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eMedical_User> eMedical_User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<eMedical_Product> eMedical_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_Service> eMedical_Service { get; set; }
     }

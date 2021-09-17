@@ -19,14 +19,6 @@ namespace WebApplication1
         public static int _selectedRole, _selectedHospital, _selectedClinic = 0;
         public List<vPersonnel> usersList = new List<vPersonnel>();
 
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            if (gvUsers.Rows.Count > 0)
-            {
-                gvUsers.UseAccessibleHeader = true;
-                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
-            }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -44,15 +36,7 @@ namespace WebApplication1
                     {
                         userId = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
-                        if (RoleId == 1)
-                        {
-                            BindUsersGrid(0); // 0 means The SuperAdmin user.
-                        }
-                        else
-                        {
-                            ClinicId = int.Parse(Session["ClinicId"].ToString());
-                            BindUsersGrid(ClinicId);
-                        }
+  
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -70,7 +54,7 @@ namespace WebApplication1
                 #endregion Page Validation
                 BindHospitals();
                 BindRoles();
-                BindClinics(); 
+                BindClinics(_selectedHospital); 
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -108,7 +92,7 @@ namespace WebApplication1
                             clearControls();
                             ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
                             //Re-Bind the user grid based on the User's role.
-                            if (int.Parse(Session["RoleId"].ToString()) == 1) BindUsersGrid(0); else BindUsersGrid(int.Parse(Session["ClinicId"].ToString()));
+                           
                         }
                     }
                     else
@@ -139,36 +123,7 @@ namespace WebApplication1
             txtMobile.Text = "";
             // lblResult.Visible = false;
         }
-        //protected void DropDownHRRoles_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    _selectedHRRole = int.Parse(DropDownHRRoles.SelectedItem.Value);
-        //}
 
-        private void BindUsersGrid(int Clinic_ID)
-        {
-            try
-            {
-                if (Cache["UsersList"] == null)
-                {
-                    if (Clinic_ID == 0) usersList = UserManager.getUsersList(); else usersList = UserManager.getUsersList(Clinic_ID);
-                    Cache["UsersList"] = usersList;
-                    Cache.Insert("UsersList", usersList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
-                    //  Response.Write("<script>alert('Its processing from Data hit');</script>");
-                }
-                else
-                {
-                    //If cache has value, It retrive from cache memory and bind into the gridview
-                    //  Response.Write("<script>alert('Its processing from cache');</script>");
-                }
-                gvUsers.DataSource = (List<vPersonnel>)Cache["UsersList"];
-                gvUsers.DataBind();
-            }
-            catch (Exception ex)
-            {
-                ExceptionsManager.AddException(ex);
-                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
-            }
-        }
 
         private void BindRoles()
         {
@@ -195,11 +150,11 @@ namespace WebApplication1
             DropDownHospitals.Items[0].Selected = true;
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
         }
-        private void BindClinics()
+        private void BindClinics(int selectedHospital)
         {
             DropDownClinics.DataSource = null;
             DropDownClinics.ClearSelection();
-            List<eMedical_Clinic> Clinics = ClinicManager.GetClinicsList(_selectedHospital);
+            List<eMedical_Clinic> Clinics = ClinicManager.GetClinicsList(selectedHospital);
             DropDownClinics.DataSource = Clinics;
             DropDownClinics.DataValueField = "ID";
             DropDownClinics.DataTextField = "ClinicName";
@@ -212,6 +167,7 @@ namespace WebApplication1
         protected void DropDownHospitals_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
+            BindClinics(_selectedHospital);
         }
         protected void DropDownRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
