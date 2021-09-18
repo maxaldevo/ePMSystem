@@ -33,6 +33,10 @@
         <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_Service_eMedical_User" />
+        <EntityTypeShape EntityType="eMedicalModel.vServiceType" Width="1.5" PointX="12.375" PointY="12.75" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Clinic" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Hospital" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

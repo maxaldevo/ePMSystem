@@ -43,6 +43,7 @@ namespace ePM.Dal
         public virtual DbSet<eMedical_Service> eMedical_Service { get; set; }
         public virtual DbSet<eMedical_ServiceType> eMedical_ServiceType { get; set; }
         public virtual DbSet<vService> vServices { get; set; }
+        public virtual DbSet<vServiceType> vServiceTypes { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {

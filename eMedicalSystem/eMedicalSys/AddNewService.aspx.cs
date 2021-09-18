@@ -138,7 +138,7 @@ namespace WebApplication1
         {
             DropDownServiceTypes.DataSource = null;
             DropDownServiceTypes.ClearSelection();
-            List<eMedical_ServiceType> ServicesTypes = ServiceManager.GetservicesTypeList();
+            List<vServiceType> ServicesTypes = ServiceManager.GetservicesTypeList();
             DropDownServiceTypes.DataSource = ServicesTypes;
             DropDownServiceTypes.DataValueField = "ID";
             DropDownServiceTypes.DataTextField = "ServiceType";

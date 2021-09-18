@@ -109,6 +109,8 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="Status" Type="bit" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedByID" Type="int" />
+          <Property Name="HospitalId" Type="int" />
+          <Property Name="ClinicId" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_User">
           <Key>
@@ -340,6 +342,25 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <Property Name="ServiceTypeID" Type="int" />
           <Property Name="ServiceType" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vServiceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Clinicname" Type="nvarchar" MaxLength="500" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="ServiceType" Type="nvarchar" MaxLength="500" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="HospitalId" Type="int" />
+          <Property Name="ClinicId" Type="int" />
+          <Property Name="UpdatedByID" Type="int" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
           <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="*" />
@@ -420,6 +441,42 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="eMedical_Service">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_ServiceType_eMedical_Clinic">
+          <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="0..1" />
+          <End Role="eMedical_ServiceType" Type="Self.eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
+              <PropertyRef Name="ClinicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_ServiceType_eMedical_Hospital">
+          <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
+          <End Role="eMedical_ServiceType" Type="Self.eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_ServiceType_eMedical_User">
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="0..1" />
+          <End Role="eMedical_ServiceType" Type="Self.eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
               <PropertyRef Name="UpdatedByID" />
             </Dependent>
           </ReferentialConstraint>
@@ -718,6 +775,22 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
     [vServices].[ServiceType] AS [ServiceType]
     FROM [dbo].[vServices] AS [vServices]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vServiceType" EntityType="Self.vServiceType" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vServiceType].[HospitalName] AS [HospitalName], 
+    [vServiceType].[Clinicname] AS [Clinicname], 
+    [vServiceType].[FName] AS [FName], 
+    [vServiceType].[FirstName] AS [FirstName], 
+    [vServiceType].[EmployeeNo] AS [EmployeeNo], 
+    [vServiceType].[Email] AS [Email], 
+    [vServiceType].[ServiceType] AS [ServiceType], 
+    [vServiceType].[ID] AS [ID], 
+    [vServiceType].[HospitalId] AS [HospitalId], 
+    [vServiceType].[ClinicId] AS [ClinicId], 
+    [vServiceType].[UpdatedByID] AS [UpdatedByID], 
+    [vServiceType].[Status] AS [Status]
+    FROM [dbo].[vServiceType] AS [vServiceType]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -745,6 +818,18 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <AssociationSet Name="FK_eMedical_Service_eMedical_User" Association="Self.FK_eMedical_Service_eMedical_User">
             <End Role="eMedical_User" EntitySet="eMedical_User" />
             <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_Clinic" Association="Self.FK_eMedical_ServiceType_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_Hospital" Association="Self.FK_eMedical_ServiceType_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_User" Association="Self.FK_eMedical_ServiceType_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_User_eMedical_Clinic" Association="Self.FK_eMedical_User_eMedical_Clinic">
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -976,6 +1061,19 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
             <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <EntitySet Name="vServiceTypes" EntityType="eMedicalModel.vServiceType" />
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_Clinic" Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Clinic">
+            <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_Hospital" Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Hospital">
+            <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_ServiceType_eMedical_User" Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -991,6 +1089,7 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_User" />
           <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_Product" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_Service" />
+          <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_Clinic" FromRole="eMedical_Clinic" ToRole="eMedical_ServiceType" />
         </EntityType>
         <EntityType Name="eMedical_Hospital">
           <Key>
@@ -1006,6 +1105,7 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_User" />
           <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Product" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_Service" />
+          <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_Hospital" FromRole="eMedical_Hospital" ToRole="eMedical_ServiceType" />
         </EntityType>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
@@ -1088,6 +1188,7 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Clinic" FromRole="eMedical_User" ToRole="eMedical_Clinic" />
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_User" ToRole="eMedical_Hospital" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Service" />
+          <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_ServiceType" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -1351,6 +1452,11 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <Property Name="LastUpdated" Type="DateTime" Precision="3" />
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" FromRole="eMedical_ServiceType" ToRole="eMedical_Service" />
+          <Property Name="HospitalId" Type="Int32" />
+          <Property Name="ClinicId" Type="Int32" />
+          <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_Clinic" FromRole="eMedical_ServiceType" ToRole="eMedical_Clinic" />
+          <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_Hospital" FromRole="eMedical_ServiceType" ToRole="eMedical_Hospital" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" FromRole="eMedical_ServiceType" ToRole="eMedical_User" />
         </EntityType>
         <EntityType Name="vService">
           <Key>
@@ -1418,6 +1524,59 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="eMedical_Service">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vServiceType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Clinicname" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="HospitalId" Type="Int32" />
+          <Property Name="ClinicId" Type="Int32" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_eMedical_ServiceType_eMedical_Clinic">
+          <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_ServiceType" Role="eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Clinic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
+              <PropertyRef Name="ClinicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_ServiceType_eMedical_Hospital">
+          <End Type="eMedicalModel.eMedical_Hospital" Role="eMedical_Hospital" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_ServiceType" Role="eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Hospital">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
+              <PropertyRef Name="HospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_ServiceType_eMedical_User">
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_ServiceType" Role="eMedical_ServiceType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_ServiceType">
               <PropertyRef Name="UpdatedByID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1768,6 +1927,8 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <EntitySetMapping Name="eMedical_ServiceType">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_ServiceType">
               <MappingFragment StoreEntitySet="eMedical_ServiceType">
+                <ScalarProperty Name="ClinicId" ColumnName="ClinicId" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1801,6 +1962,24 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewSession_ByHospitalID_ClinicID" FunctionName="eMedicalModel.Store.sp_eMedical_addNewSession_ByHospitalID_ClinicID" />
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewSessionType" FunctionName="eMedicalModel.Store.sp_eMedical_addNewSessionType" />
+          <EntitySetMapping Name="vServiceTypes">
+            <EntityTypeMapping TypeName="eMedicalModel.vServiceType">
+              <MappingFragment StoreEntitySet="vServiceType">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="ClinicId" ColumnName="ClinicId" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Clinicname" ColumnName="Clinicname" />
+                <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

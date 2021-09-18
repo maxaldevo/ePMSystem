@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="ProductsList.aspx.cs" Inherits="WebApplication1.ProductsList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="ServiceTypesList.aspx.cs" Inherits="WebApplication1.ServiceTypesList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
            <style>
@@ -31,7 +31,7 @@
 
                 <div class="progress" style='height: 30px; margin-top: -10px;'>
                     <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                        <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Admin | Products List</h3>
+                        <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Admin | Service Types List</h3>
                     </div>
                 </div>
             </div>
@@ -41,44 +41,24 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                         <br />
-                        <asp:GridView ID="gvProducts" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
+                        <asp:GridView ID="gvServiceTypes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
                            
                             EmptyDataText="No records found.">
                             <Columns>
-                                <asp:TemplateField HeaderText="Product Name">
+                                <asp:TemplateField HeaderText="Service Type">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblPName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
+                                        <asp:Label ID="lblServiceType" runat="server" Text='<%# Eval("ServiceType") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Quantity">
+                                <asp:TemplateField HeaderText="Hospital Name">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Cost Price">
+                                <asp:TemplateField HeaderText="Clinic Name">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Profit Price">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Sale Price">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hospital">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Clinic">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
+                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Added By">
@@ -106,7 +86,7 @@
         });
         function bindDataTable() {
             $(document).ready(function () {
-                var oTable = $('#' + '<%=gvProducts.ClientID%>').dataTable({
+                var oTable = $('#' + '<%=gvServiceTypes.ClientID%>').dataTable({
                     dom: 'Blfrtip',
                     "bInfo": true,
                     buttons: [

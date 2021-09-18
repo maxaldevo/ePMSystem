@@ -18,9 +18,15 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
-                    db.sp_eMedical_addNewSession_ByHospitalID_ClinicID(ServiceName, serviceType, noOfSession, price, userId, hospitalID, clinicId, outputMsgParameter);
-                    friendlyMsg = outputMsgParameter.Value.ToString();
+
+                    bool ExistServicename = checkServiceName(ServiceName, clinicId);
+                    if (!ExistServicename)
+                    {
+                        db.sp_eMedical_addNewSession_ByHospitalID_ClinicID(ServiceName, serviceType, noOfSession, price, userId, hospitalID, clinicId, outputMsgParameter);
+                        friendlyMsg = outputMsgParameter.Value.ToString();
+                    }
+                    else
+                        friendlyMsg = "This Service added before.";
                 }
             }
             catch (Exception ex)
@@ -63,12 +69,12 @@ namespace ePM.Dal.Logic
 
             return friendlyMsg;
         }
-        public static bool checkServiceName(string serviceName)
+        public static bool checkServiceName(string serviceName, int clinicId)
         {
             bool exists = false;
             using (var db = new eMedicalEntities())
             {
-                var data = db.eMedical_Service.Where(x => x.ServiceName == serviceName).FirstOrDefault();
+                var data = db.eMedical_Service.Where(x => x.ServiceName == serviceName && x.ClinicID == clinicId).FirstOrDefault();
                 if (data != null)
                 {
                     exists = true;
@@ -77,25 +83,32 @@ namespace ePM.Dal.Logic
             return exists;
         }
 
-        public static List<eMedical_Service> GetservicesList()
+        public static List<vService> GetservicesList()
         {
             using (var db = new eMedicalEntities())
             {
-                return db.eMedical_Service.ToList();
+                return db.vServices.Where(x => x.Status == true).ToList();
             }
         }
-        public static List<eMedical_Service> GetservicesList(int clinicID)
+        public static List<vService> GetservicesList(int clinicID, int userID)
         {
             using (var db = new eMedicalEntities())
             {
-                return db.eMedical_Service.Where(x=>x.ClinicID == clinicID).ToList();
+                return db.vServices.Where(x => x.Status == true && x.ClinicID == clinicID && x.UpdatedByID == userID).ToList();
             }
         }
-        public static List<eMedical_ServiceType> GetservicesTypeList()
+        public static List<vServiceType> GetservicesTypeList()
         {
             using (var db = new eMedicalEntities())
             {
-                return db.eMedical_ServiceType.ToList();
+                return db.vServiceTypes.Where(x => x.Status == true).ToList();
+            }
+        }
+        public static List<vServiceType> GetservicesTypeList(int userID, int clinicId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vServiceTypes.Where(x => x.Status == true && x.UpdatedByID == userID && x.ClinicId == clinicId).ToList();
             }
         }
     }

@@ -313,6 +313,9 @@
     <Compile Include="vService.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="vServiceType.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="v_eMedical_ModulePages.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
