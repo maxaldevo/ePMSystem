@@ -241,6 +241,7 @@
     <Compile Include="LMS_User.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="Logic\BookingManaer.cs" />
     <Compile Include="Logic\ContractManager.cs" />
     <Compile Include="Logic\ExceptionsManager.cs" />
     <Compile Include="Logic\ClinicManager.cs" />
