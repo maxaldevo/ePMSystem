@@ -37,6 +37,11 @@
         <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Clinic" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_Hospital" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" />
+        <EntityTypeShape EntityType="eMedicalModel.eMedical_BookingTiming" Width="1.5" PointX="15.5" PointY="12.125" />
+        <EntityTypeShape EntityType="eMedicalModel.eMedical_Timing" Width="1.5" PointX="0.75" PointY="13.75" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" />
+        <EntityTypeShape EntityType="eMedicalModel.vBookingTime" Width="1.5" PointX="14.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

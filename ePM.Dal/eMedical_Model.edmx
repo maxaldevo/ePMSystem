@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="eMedicalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="eMedical_BookingTiming">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingDate" Type="date" />
+          <Property Name="BookingTimeBegin" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingTimeEnd" Type="nvarchar" MaxLength="50" />
+          <Property Name="ServiceID" Type="int" />
+          <Property Name="IsBooked" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
         <EntityType Name="eMedical_Clinic">
           <Key>
             <PropertyRef Name="ID" />
@@ -112,6 +125,18 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="UpdatedByID" Type="int" />
           <Property Name="HospitalId" Type="int" />
           <Property Name="ClinicId" Type="int" />
+        </EntityType>
+        <EntityType Name="eMedical_Timing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimingNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimingBegin" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimingEnd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_User">
           <Key>
@@ -242,6 +267,23 @@ warning 6002: The table/view 'eMedical.dbo.v_userRoles' does not have a primary 
           <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vBookingTimes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BookingDate" Type="date" />
+          <Property Name="BookingTimeBegin" Type="nvarchar" MaxLength="50" />
+          <Property Name="BookingTimeEnd" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsBooked" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="ServiceID" Type="int" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedByID" Type="int" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vPersonnel">
           <Key>
@@ -362,6 +404,30 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="int" />
           <Property Name="Status" Type="bit" />
         </EntityType>
+        <Association Name="FK_eMedical_BookingTiming_eMedical_Service">
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="0..1" />
+          <End Role="eMedical_BookingTiming" Type="Self.eMedical_BookingTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_BookingTiming">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_BookingTiming_eMedical_User">
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="0..1" />
+          <End Role="eMedical_BookingTiming" Type="Self.eMedical_BookingTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_BookingTiming">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_eMedical_Clinic_eMedical_Hospital">
           <End Role="eMedical_Hospital" Type="Self.eMedical_Hospital" Multiplicity="0..1" />
           <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="*" />
@@ -622,6 +688,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="RoleId" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="eMedicalModelStoreContainer">
+          <EntitySet Name="eMedical_BookingTiming" EntityType="Self.eMedical_BookingTiming" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Clinic" EntityType="Self.eMedical_Clinic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Hospital" EntityType="Self.eMedical_Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" Schema="dbo" store:Type="Tables" />
@@ -629,6 +696,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Service" EntityType="Self.eMedical_Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_ServiceType" EntityType="Self.eMedical_ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Timing" EntityType="Self.eMedical_Timing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -691,6 +759,20 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [v_userRoles].[Active] AS [Active], 
     [v_userRoles].[EmployeeNo] AS [EmployeeNo]
     FROM [dbo].[v_userRoles] AS [v_userRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vBookingTimes" EntityType="Self.vBookingTimes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vBookingTimes].[ID] AS [ID], 
+    [vBookingTimes].[BookingDate] AS [BookingDate], 
+    [vBookingTimes].[BookingTimeBegin] AS [BookingTimeBegin], 
+    [vBookingTimes].[BookingTimeEnd] AS [BookingTimeEnd], 
+    [vBookingTimes].[IsBooked] AS [IsBooked], 
+    [vBookingTimes].[LastUpdated] AS [LastUpdated], 
+    [vBookingTimes].[ServiceID] AS [ServiceID], 
+    [vBookingTimes].[ServiceName] AS [ServiceName], 
+    [vBookingTimes].[UpdatedByID] AS [UpdatedByID], 
+    [vBookingTimes].[FName] AS [FName]
+    FROM [dbo].[vBookingTimes] AS [vBookingTimes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -800,6 +882,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vServiceType].[Status] AS [Status]
     FROM [dbo].[vServiceType] AS [vServiceType]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_eMedical_BookingTiming_eMedical_Service" Association="Self.FK_eMedical_BookingTiming_eMedical_Service">
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+            <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_BookingTiming_eMedical_User" Association="Self.FK_eMedical_BookingTiming_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
+          </AssociationSet>
           <AssociationSet Name="FK_eMedical_Clinic_eMedical_Hospital" Association="Self.FK_eMedical_Clinic_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
             <End Role="eMedical_Clinic" EntitySet="eMedical_Clinic" />
@@ -1091,6 +1181,17 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <EntitySet Name="eMedical_BookingTiming" EntityType="eMedicalModel.eMedical_BookingTiming" />
+          <EntitySet Name="eMedical_Timing" EntityType="eMedicalModel.eMedical_Timing" />
+          <AssociationSet Name="FK_eMedical_BookingTiming_eMedical_Service" Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service">
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+            <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_BookingTiming_eMedical_User" Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
+          </AssociationSet>
+          <EntitySet Name="vBookingTimes" EntityType="eMedicalModel.vBookingTime" />
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1206,6 +1307,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_User_eMedical_Hospital" FromRole="eMedical_User" ToRole="eMedical_Hospital" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Service" />
           <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_ServiceType" />
+          <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_BookingTiming" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -1459,6 +1561,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" FromRole="eMedical_Service" ToRole="eMedical_ServiceType" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_Service" ToRole="eMedical_User" />
           <Property Name="ShownFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service" FromRole="eMedical_Service" ToRole="eMedical_BookingTiming" />
         </EntityType>
         <EntityType Name="eMedical_ServiceType">
           <Key>
@@ -1599,6 +1702,72 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="eMedical_BookingTiming">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingDate" Type="DateTime" Precision="0" />
+          <Property Name="BookingTimeBegin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingTimeEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceID" Type="Int32" />
+          <Property Name="IsBooked" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service" FromRole="eMedical_BookingTiming" ToRole="eMedical_Service" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" FromRole="eMedical_BookingTiming" ToRole="eMedical_User" />
+        </EntityType>
+        <EntityType Name="eMedical_Timing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimingBegin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimingEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_eMedical_BookingTiming_eMedical_Service">
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_BookingTiming" Role="eMedical_BookingTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_BookingTiming">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eMedical_BookingTiming_eMedical_User">
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_BookingTiming" Role="eMedical_BookingTiming" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_BookingTiming">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vBookingTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BookingDate" Type="DateTime" Precision="0" />
+          <Property Name="BookingTimeBegin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BookingTimeEnd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBooked" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="ServiceID" Type="Int32" />
+          <Property Name="ServiceName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2000,6 +2169,49 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewBookingTiming" FunctionName="eMedicalModel.Store.sp_eMedical_addNewBookingTiming" />
+          <EntitySetMapping Name="eMedical_BookingTiming">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_BookingTiming">
+              <MappingFragment StoreEntitySet="eMedical_BookingTiming">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="BookingTimeEnd" ColumnName="BookingTimeEnd" />
+                <ScalarProperty Name="BookingTimeBegin" ColumnName="BookingTimeBegin" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_Timing">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Timing">
+              <MappingFragment StoreEntitySet="eMedical_Timing">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TimingEnd" ColumnName="TimingEnd" />
+                <ScalarProperty Name="TimingBegin" ColumnName="TimingBegin" />
+                <ScalarProperty Name="TimingNo" ColumnName="TimingNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vBookingTimes">
+            <EntityTypeMapping TypeName="eMedicalModel.vBookingTime">
+              <MappingFragment StoreEntitySet="vBookingTimes">
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+                <ScalarProperty Name="BookingTimeEnd" ColumnName="BookingTimeEnd" />
+                <ScalarProperty Name="BookingTimeBegin" ColumnName="BookingTimeBegin" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

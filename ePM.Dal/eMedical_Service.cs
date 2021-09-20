@@ -14,6 +14,12 @@ namespace ePM.Dal
     
     public partial class eMedical_Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public eMedical_Service()
+        {
+            this.eMedical_BookingTiming = new HashSet<eMedical_BookingTiming>();
+        }
+    
         public int ID { get; set; }
         public string ServiceName { get; set; }
         public Nullable<int> ServiceTypeID { get; set; }
@@ -30,5 +36,7 @@ namespace ePM.Dal
         public virtual eMedical_Hospital eMedical_Hospital { get; set; }
         public virtual eMedical_ServiceType eMedical_ServiceType { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eMedical_BookingTiming> eMedical_BookingTiming { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ePM_Dal.Logic;
+﻿using ePM.Dal.ViewModels;
+using ePM_Dal.Logic;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ePM.Dal.Logic
 {
-    public static class BookingManaer
+    public static class BookingManager
     {
-        public static string CreateSchedule(string clinicName, int hospitalID, int userid)
+        public static string CreateSchedule(int noofdays, DateTime Dutydate, int serviceID, int userid)
         {
             string friendlyMsg = "";
             try
@@ -18,10 +19,19 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
-                    db.sp_eMedical_addNewClinic(clinicName, hospitalID, userid, outputMsgParameter);
-                    friendlyMsg = outputMsgParameter.Value.ToString();
-                    //make default password 111111
+
+                    DateTime Dtt = Dutydate;
+                    for (int s = 1; s < noofdays; s++)
+                    {
+                        if ((Dtt.DayOfWeek != DayOfWeek.Friday))
+                        {
+                            for (int i = 0; i < GetTimingList().Count; i++)
+                            {
+                                db.sp_eMedical_addNewBookingTiming(Dtt.AddDays(s), GetTimingList()[i].TimingBegin, GetTimingList()[i].TimingEnd, serviceID, userid, outputMsgParameter);
+                            }
+                        }
+                    }
+                                friendlyMsg = outputMsgParameter.Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -35,8 +45,53 @@ namespace ePM.Dal.Logic
                 }
             }
 
-
             return friendlyMsg;
+        }
+        public static List<eMedical_Timing> GetTimingList()
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_Timing.Where(x => x.Status == true).ToList();
+            }
+        }
+        public static List<vBookingTime> GetBookingTimingList()
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vBookingTimes.ToList();
+            }
+        }
+        public static List<BookingDates> GetBookingTimingList_distinct()
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vBookingTimes.Select(m => m.BookingDate).Distinct()
+                    .Select(x => new BookingDates
+                    {
+                    bookingDate = x.Value
+                  }).ToList(); 
+            }
+        }
+        public static List<eMedical_BookingTiming> GetBookingTimingList_ByUserId(bool isBooked, int userid)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_BookingTiming.Where(x => x.IsBooked == isBooked && x.UpdatedByID == userid).ToList();
+            }
+        }
+        public static List<eMedical_BookingTiming> GetBookingTimingList_ByServiceID(bool isBooked, int servid)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_BookingTiming.Where(x => x.IsBooked == isBooked && x.ServiceID == servid).ToList();
+            }
+        }
+        public static List<eMedical_BookingTiming> GetBookingTimingList_ByDate(bool isBooked, DateTime Bdate)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_BookingTiming.Where(x => x.IsBooked == isBooked && x.BookingDate == Bdate).ToList();
+            }
         }
     }
 }

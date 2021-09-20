@@ -84,8 +84,10 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
+    <Content Include="BookAppointment.aspx" />
     <Content Include="AddNewClinic.aspx" />
     <Content Include="AddNewHospital.aspx" />
+    <Content Include="AddBookingTiming.aspx" />
     <Content Include="AddNewService.aspx" />
     <Content Include="AddNewProduct.aspx" />
     <Content Include="AddNewUser.aspx" />
@@ -7375,6 +7377,7 @@
     <Content Include="SecurityGrouprights.aspx" />
     <Content Include="UserRoles.aspx" />
     <Content Include="ProductsList.aspx" />
+    <Content Include="BookingTimesList.aspx" />
     <Content Include="UsersList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -7407,6 +7410,13 @@
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookAppointment.aspx.cs">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookAppointment.aspx.designer.cs">
+      <DependentUpon>BookAppointment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AddNewClinic.aspx.cs">
       <DependentUpon>AddNewClinic.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7420,6 +7430,13 @@
     </Compile>
     <Compile Include="AddNewHospital.aspx.designer.cs">
       <DependentUpon>AddNewHospital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddBookingTiming.aspx.cs">
+      <DependentUpon>AddBookingTiming.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddBookingTiming.aspx.designer.cs">
+      <DependentUpon>AddBookingTiming.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewService.aspx.cs">
       <DependentUpon>AddNewService.aspx</DependentUpon>
@@ -7547,6 +7564,13 @@
     </Compile>
     <Compile Include="ProductsList.aspx.designer.cs">
       <DependentUpon>ProductsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookingTimesList.aspx.cs">
+      <DependentUpon>BookingTimesList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookingTimesList.aspx.designer.cs">
+      <DependentUpon>BookingTimesList.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsersList.aspx.cs">
       <DependentUpon>UsersList.aspx</DependentUpon>

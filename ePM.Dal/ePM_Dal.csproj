@@ -164,6 +164,9 @@
     <Compile Include="Contract_RA257_L01A.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="eMedical_BookingTiming.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_Clinic.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -201,6 +204,9 @@
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="eMedical_ServiceType.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMedical_Timing.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="eMedical_User.cs">
@@ -297,6 +303,10 @@
     <Compile Include="u_TRRoom.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
+    <Compile Include="vBookingTime.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BookingDates.cs" />
     <Compile Include="ViewModels\ExcelValidationResult.cs" />
     <Compile Include="ViewModels\GroupList.cs" />
     <Compile Include="ViewModels\GroupsDTO.cs" />
