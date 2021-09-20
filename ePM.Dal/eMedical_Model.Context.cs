@@ -257,5 +257,30 @@ namespace ePM.Dal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewSessionType", serviceTypeParameter, userIdParameter, msg);
         }
+    
+        public virtual int sp_eMedical_addNewBookingTiming(Nullable<System.DateTime> bookingDate, string bookingTimeBegin, string bookingTimeEnd, Nullable<int> serviceID, Nullable<int> userID, ObjectParameter msg)
+        {
+            var bookingDateParameter = bookingDate.HasValue ?
+                new ObjectParameter("BookingDate", bookingDate) :
+                new ObjectParameter("BookingDate", typeof(System.DateTime));
+    
+            var bookingTimeBeginParameter = bookingTimeBegin != null ?
+                new ObjectParameter("BookingTimeBegin", bookingTimeBegin) :
+                new ObjectParameter("BookingTimeBegin", typeof(string));
+    
+            var bookingTimeEndParameter = bookingTimeEnd != null ?
+                new ObjectParameter("BookingTimeEnd", bookingTimeEnd) :
+                new ObjectParameter("BookingTimeEnd", typeof(string));
+    
+            var serviceIDParameter = serviceID.HasValue ?
+                new ObjectParameter("ServiceID", serviceID) :
+                new ObjectParameter("ServiceID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, serviceIDParameter, userIDParameter, msg);
+        }
     }
 }

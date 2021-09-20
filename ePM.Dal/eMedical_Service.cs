@@ -24,6 +24,7 @@ namespace ePM.Dal
         public Nullable<bool> Status { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
+        public string ShownFor { get; set; }
     
         public virtual eMedical_Clinic eMedical_Clinic { get; set; }
         public virtual eMedical_Hospital eMedical_Hospital { get; set; }

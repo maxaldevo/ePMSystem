@@ -99,6 +99,7 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="Status" Type="bit" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedByID" Type="int" />
+          <Property Name="ShownFor" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="eMedical_ServiceType">
           <Key>
@@ -545,6 +546,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_eMedical_addNewBookingTiming" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BookingDate" Type="date" Mode="In" />
+          <Parameter Name="BookingTimeBegin" Type="nvarchar" Mode="In" />
+          <Parameter Name="BookingTimeEnd" Type="nvarchar" Mode="In" />
+          <Parameter Name="ServiceID" Type="int" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_addNewClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="clinicName" Type="nvarchar" Mode="In" />
           <Parameter Name="hospitalID" Type="int" Mode="In" />
@@ -1074,6 +1083,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <End Role="eMedical_User" EntitySet="eMedical_User" />
             <End Role="eMedical_ServiceType" EntitySet="eMedical_ServiceType" />
           </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewBookingTiming">
+            <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BookingTimeBegin" Mode="In" Type="String" />
+            <Parameter Name="BookingTimeEnd" Mode="In" Type="String" />
+            <Parameter Name="ServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1441,6 +1458,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Hospital" FromRole="eMedical_Service" ToRole="eMedical_Hospital" />
           <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_ServiceType" FromRole="eMedical_Service" ToRole="eMedical_ServiceType" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_Service" ToRole="eMedical_User" />
+          <Property Name="ShownFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="eMedical_ServiceType">
           <Key>
@@ -1911,6 +1929,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_Service">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_Service">
               <MappingFragment StoreEntitySet="eMedical_Service">
+                <ScalarProperty Name="ShownFor" ColumnName="ShownFor" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1980,6 +1999,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewBookingTiming" FunctionName="eMedicalModel.Store.sp_eMedical_addNewBookingTiming" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
