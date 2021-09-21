@@ -16,7 +16,7 @@ namespace WebApplication1
     public partial class AddNewService : System.Web.UI.Page
     {
         public static string  _sName;
-        public static int _noOfSessions, _price, _userID, _selectedHospital, _selectedClinic, _selectedServiceType = 0;
+        public static int _noOfSessions, _price, _userID, _selectedHospital, _selectedClinic, _selectedServiceType, _selectedRoom = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,6 +52,7 @@ namespace WebApplication1
                 }
                 #endregion Page Validation
                 BindHospitals();
+                BindRooms();
                 BindClinics(_selectedHospital);
                 BindServiceTypes();
             }
@@ -68,7 +69,7 @@ namespace WebApplication1
                     _noOfSessions = int.Parse(txtnosessions.Text);
                     _price = int.Parse(txtPrice.Text);
 
-                    string result = ServiceManager.AddNewService(_sName, _selectedServiceType, _noOfSessions, _price, _selectedClinic, _selectedHospital, _userID);
+                    string result = ServiceManager.AddNewService(_sName, _selectedServiceType, _noOfSessions, _price, _selectedClinic, _selectedHospital, _selectedRoom, _userID);
                     if (result != "inserted")
                     {
                         lblResult.Visible = true;
@@ -121,6 +122,19 @@ namespace WebApplication1
             DropDownHospitals.Items[0].Selected = true;
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
         }
+        private void BindRooms()
+        {
+            DropDownRooms.DataSource = null;
+            DropDownRooms.ClearSelection();
+            List<eMedical_Room> Rooms = ServiceManager.GetRoomsList();
+            DropDownRooms.DataSource = Rooms;
+            DropDownRooms.DataValueField = "ID";
+            DropDownRooms.DataTextField = "RoomName";
+            DropDownRooms.DataBind();
+            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+            DropDownRooms.Items[0].Selected = true;
+            _selectedRoom = int.Parse(DropDownRooms.SelectedItem.Value);
+        }
         private void BindClinics(int selectedHospital)
         {
             DropDownClinics.DataSource = null;
@@ -161,6 +175,10 @@ namespace WebApplication1
         protected void DropDownServiceTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
+        }
+        protected void DropDownRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedRoom = int.Parse(DropDownRooms.SelectedItem.Value);
         }
     }
 }

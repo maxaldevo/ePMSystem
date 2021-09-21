@@ -98,6 +98,16 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="LastUpdatedBy" Type="bigint" />
           <Property Name="LastUpdateDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="eMedical_Room">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedByID" Type="int" />
+        </EntityType>
         <EntityType Name="eMedical_Service">
           <Key>
             <PropertyRef Name="ID" />
@@ -113,6 +123,7 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedByID" Type="int" />
           <Property Name="ShownFor" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomId" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_ServiceType">
           <Key>
@@ -488,6 +499,18 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_eMedical_Service_eMedical_Room">
+          <End Role="eMedical_Room" Type="Self.eMedical_Room" Multiplicity="0..1" />
+          <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Room">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_eMedical_Service_eMedical_ServiceType">
           <End Role="eMedical_ServiceType" Type="Self.eMedical_ServiceType" Multiplicity="0..1" />
           <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
@@ -643,6 +666,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eMedical_addNewRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="roomName" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_addNewSession_ByHospitalID_ClinicID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SName" Type="nvarchar" Mode="In" />
           <Parameter Name="ServiceTypeID" Type="int" Mode="In" />
@@ -651,6 +679,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="UserId" Type="int" Mode="In" />
           <Parameter Name="HospitalId" Type="int" Mode="In" />
           <Parameter Name="ClinicId" Type="int" Mode="In" />
+          <Parameter Name="roomId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="sp_eMedical_addNewSessionType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -694,6 +723,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Room" EntityType="Self.eMedical_Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Service" EntityType="Self.eMedical_Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_ServiceType" EntityType="Self.eMedical_ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Timing" EntityType="Self.eMedical_Timing" Schema="dbo" store:Type="Tables" />
@@ -908,6 +938,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_Service_eMedical_Hospital" Association="Self.FK_eMedical_Service_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Room" Association="Self.FK_eMedical_Service_eMedical_Room">
+            <End Role="eMedical_Room" EntitySet="eMedical_Room" />
             <End Role="eMedical_Service" EntitySet="eMedical_Service" />
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_Service_eMedical_ServiceType" Association="Self.FK_eMedical_Service_eMedical_ServiceType">
@@ -1153,6 +1187,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="UserId" Mode="In" Type="Int32" />
             <Parameter Name="HospitalId" Mode="In" Type="Int32" />
             <Parameter Name="ClinicId" Mode="In" Type="Int32" />
+            <Parameter Name="roomId" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_eMedical_addNewSessionType">
@@ -1192,6 +1227,16 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
           </AssociationSet>
           <EntitySet Name="vBookingTimes" EntityType="eMedicalModel.vBookingTime" />
+          <EntitySet Name="eMedical_Room" EntityType="eMedicalModel.eMedical_Room" />
+          <AssociationSet Name="FK_eMedical_Service_eMedical_Room" Association="eMedicalModel.FK_eMedical_Service_eMedical_Room">
+            <End Role="eMedical_Room" EntitySet="eMedical_Room" />
+            <End Role="eMedical_Service" EntitySet="eMedical_Service" />
+          </AssociationSet>
+          <FunctionImport Name="sp_eMedical_addNewRoom">
+            <Parameter Name="roomName" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1562,6 +1607,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_Service" ToRole="eMedical_User" />
           <Property Name="ShownFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service" FromRole="eMedical_Service" ToRole="eMedical_BookingTiming" />
+          <Property Name="RoomId" Type="Int32" />
+          <NavigationProperty Name="eMedical_Room" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Room" FromRole="eMedical_Service" ToRole="eMedical_Room" />
         </EntityType>
         <EntityType Name="eMedical_ServiceType">
           <Key>
@@ -1768,6 +1815,29 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="Int32" />
           <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="eMedical_Room">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedByID" Type="Int32" />
+          <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Room" FromRole="eMedical_Room" ToRole="eMedical_Service" />
+        </EntityType>
+        <Association Name="FK_eMedical_Service_eMedical_Room">
+          <End Type="eMedicalModel.eMedical_Room" Role="eMedical_Room" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Service" Role="eMedical_Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_Room">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Service">
+              <PropertyRef Name="RoomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2098,6 +2168,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_Service">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_Service">
               <MappingFragment StoreEntitySet="eMedical_Service">
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="ShownFor" ColumnName="ShownFor" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
@@ -2212,6 +2283,18 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="eMedical_Room">
+            <EntityTypeMapping TypeName="eMedicalModel.eMedical_Room">
+              <MappingFragment StoreEntitySet="eMedical_Room">
+                <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_addNewRoom" FunctionName="eMedicalModel.Store.sp_eMedical_addNewRoom" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

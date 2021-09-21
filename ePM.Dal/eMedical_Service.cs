@@ -31,6 +31,7 @@ namespace ePM.Dal
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
         public string ShownFor { get; set; }
+        public Nullable<int> RoomId { get; set; }
     
         public virtual eMedical_Clinic eMedical_Clinic { get; set; }
         public virtual eMedical_Hospital eMedical_Hospital { get; set; }
@@ -38,5 +39,6 @@ namespace ePM.Dal
         public virtual eMedical_User eMedical_User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_BookingTiming> eMedical_BookingTiming { get; set; }
+        public virtual eMedical_Room eMedical_Room { get; set; }
     }
 }

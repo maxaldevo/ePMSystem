@@ -149,7 +149,7 @@
                     <div class="col-md-3">
                         <div class="controls">
                             <span style="font-weight:bold">Date:</span>
-                            <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" ondayrender="Calendar1_DayRender"></asp:Calendar>
+                            <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" ondayrender="Calendar1_DayRender" ></asp:Calendar>
                             <asp:TextBox ID="txt_date" CssClass="form-control" runat="server" placeholder="Date"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_date"></asp:RequiredFieldValidator>
                         </div>
@@ -174,6 +174,8 @@
                 <div class="row">
                     <div class="col-md-2">
                         <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                            <asp:TextBox ID="TextBox1"  TextMode="MultiLine" Rows="10"  CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>
+                        
                     </div>
                     <div class="col-md-8">
                         <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>

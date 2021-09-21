@@ -200,6 +200,9 @@
     <Compile Include="eMedical_RolesRights.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="eMedical_Room.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_Service.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -247,7 +250,7 @@
     <Compile Include="LMS_User.cs">
       <DependentUpon>ePMSystem.tt</DependentUpon>
     </Compile>
-    <Compile Include="Logic\BookingManaer.cs" />
+    <Compile Include="Logic\BookingManager.cs" />
     <Compile Include="Logic\ContractManager.cs" />
     <Compile Include="Logic\ExceptionsManager.cs" />
     <Compile Include="Logic\ClinicManager.cs" />

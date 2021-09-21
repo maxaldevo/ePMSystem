@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="AddNewService.aspx.cs" Inherits="WebApplication1.AddNewService" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="AddNewRoom.aspx.cs" Inherits="WebApplication1.AddNewRoom" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -93,30 +93,6 @@
             position: relative;
         }
     </style>
-    <style>
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: #23B3E8;
-            color: white;
-        }
-
-        .table-striped tbody tr:nth-of-type(even) {
-            border: 1px solid lightblue;
-        }
-
-        table thead tr {
-            background-color: #23B3E8;
-            color: white;
-            font-weight: bold;
-        }
-
-        table {
-            text-align: center;
-        }
-
-        .row {
-            margin-top: -15px;
-        }
-    </style>
     <section class="content">
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
             ClientIDMode="Predictable" ViewStateMode="Inherit" DisplayAfter="1">
@@ -140,7 +116,7 @@
 
                         <div class="progress" style='height: 30px; margin-top: -10px;'>
                             <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                                <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Admin | Add New Service</h3>
+                                <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Admin | Add New Room</h3>
                             </div>
                         </div>
                     </div>
@@ -148,54 +124,15 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Service Name: </span>
-                            <asp:TextBox ID="txtSName" CssClass="form-control" runat="server" placeholder="Service Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtSName"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">Service Type: </span>
-                            <asp:DropDownList ID="DropDownServiceTypes" AutoPostBack="true" OnSelectedIndexChanged="DropDownServiceTypes_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">No. of Sessions: </span>
-                            <asp:TextBox ID="txtnosessions" CssClass="form-control" runat="server" placeholder="No. of Sessions"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtnosessions"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">Price: </span>
-                            <asp:TextBox ID="txtPrice" CssClass="form-control" runat="server" placeholder="Price"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>
+                            <span>Room Name:</span>
+                            <asp:TextBox ID="txtRoomName" CssClass="form-control" runat="server" placeholder="Room Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtRoomName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
                 <br />
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">Hospitals :</span>
-                            <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">Clinic :</span>
-                            <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span style="font-weight:bold">Room :</span>
-                            <asp:DropDownList ID="DropDownRooms" AutoPostBack="true" OnSelectedIndexChanged="DropDownRooms_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-                </div>
                 
+
                 <br />
                 <div class="row">
                     <div class="col-md-2">
@@ -209,80 +146,26 @@
                 <br />
             </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="DropDownHospitals" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="DropDownClinics" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="DropDownRooms" EventName="SelectedIndexChanged" />
-                <asp:AsyncPostBackTrigger ControlID="DropDownServiceTypes" EventName="SelectedIndexChanged" />
 
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>
-        <!--Products list belongs only this user's clinic-->
-        <br />
-        
     </section>
 
     <script src="Scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
     <script>
-        
+
         $(function () {
 
-            //bindDataTable(); // bind data table on first page load
             fixDropWidth();
-            BinddropdownHospitals();
-            BinddropdownHRClinics();
-            BinddropdownRooms();
-            BinddropdownServiceTypes();
-
-            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
+            //BinddropdownHRRoles();
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHospitals);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRClinics);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRooms);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownServiceTypes);
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRRoles);
 
         });
-        function BinddropdownHospitals() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownHospitals.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };
-        function BinddropdownHRClinics() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownClinics.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };
-        function BinddropdownRooms() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownRooms.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };
-        function BinddropdownServiceTypes() {
-            $(document).ready(function () {
-                var oTable = $('#' + '<%=DropDownServiceTypes.ClientID%>').select2({
-                    placeholder: "Select an option",
-                    allowClear: true
-                });
-            });
-        };
-
+ 
         function fixDropWidth() {
             $("select").width("100%");
         };

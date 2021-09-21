@@ -10,7 +10,7 @@ namespace ePM.Dal.Logic
 {
     public static class ServiceManager
     {
-        public static string AddNewService(string ServiceName, int serviceType, int noOfSession, int price, int clinicId, int hospitalID, int userId)
+        public static string AddNewService(string ServiceName, int serviceType, int noOfSession, int price, int clinicId, int hospitalID, int roomId, int userId)
         {
             string friendlyMsg = "";
             try
@@ -22,7 +22,7 @@ namespace ePM.Dal.Logic
                     bool ExistServicename = checkServiceName(ServiceName, clinicId);
                     if (!ExistServicename)
                     {
-                        db.sp_eMedical_addNewSession_ByHospitalID_ClinicID(ServiceName, serviceType, noOfSession, price, userId, hospitalID, clinicId, outputMsgParameter);
+                        db.sp_eMedical_addNewSession_ByHospitalID_ClinicID(ServiceName, serviceType, noOfSession, price, userId, hospitalID, clinicId,roomId, outputMsgParameter);
                         friendlyMsg = outputMsgParameter.Value.ToString();
                     }
                     else
@@ -42,6 +42,53 @@ namespace ePM.Dal.Logic
 
 
             return friendlyMsg;
+        }
+
+        public static string AddNewRoom(string RoomName, int userid)
+        {
+            string friendlyMsg = "";
+            try
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                    db.sp_eMedical_addNewRoom(RoomName, userid, outputMsgParameter);
+                    friendlyMsg = outputMsgParameter.Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                friendlyMsg = "Please contact your admin!. unexpected error";
+                ExceptionsManager.AddException(ex);
+                if (ex.InnerException != null)
+                {
+                    ExceptionsManager.AddException(ex.InnerException);
+                }
+            }
+
+
+            return friendlyMsg;
+        }
+        public static bool checkUserRoomName(string RoomName)
+        {
+            bool exists = false;
+            using (var db = new eMedicalEntities())
+            {
+                var data = db.eMedical_Room.Where(x => x.RoomName == RoomName).FirstOrDefault();
+                if (data != null)
+                {
+                    exists = true;
+                }
+            }
+            return exists;
+        }
+        public static List<eMedical_Room> GetRoomsList()
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_Room.Where(x => x.Status == true).ToList();
+            }
         }
         public static string AddNewServiceType(string ServiceType, int userId)
         {
