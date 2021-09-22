@@ -22,6 +22,7 @@ namespace ePM.Dal
         public Nullable<bool> IsBooked { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
+        public Nullable<int> TimingSerial { get; set; }
     
         public virtual eMedical_Service eMedical_Service { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }

@@ -73,6 +73,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TimePicker">
+      <HintPath>C:\Users\Administrator\Downloads\TimePicker\Bin\TimePicker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -6240,6 +6243,12 @@
     <Content Include="assets\vendor_plugins\weather-icons\license.txt" />
     <Content Include="assets\vendor_plugins\weather-icons\WeatherIcon.js" />
     <Content Include="assets\vendor_plugins\weather-icons\WeatherIcon.mini.js" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controls\FullHeaderNew.ascx" />
     <Content Include="Controls\FullUIHeader.ascx" />
     <Content Include="Controls\LimitedHeader.ascx" />
@@ -6829,6 +6838,7 @@
     <Content Include="css\skins\_all-skins.css" />
     <Content Include="css\slider-css.css" />
     <Content Include="Default.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1.jpg" />
     <Content Include="images\150x100.png" />
@@ -7260,6 +7270,23 @@
     <Content Include="Login\vendor\select2\select2.min.css" />
     <Content Include="Login\vendor\select2\select2.min.js" />
     <Content Include="RoomList.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="ServiceTypesList.aspx" />
     <Content Include="ServicesList.aspx" />
     <Content Include="Profile.aspx" />
@@ -7274,6 +7301,7 @@
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="MasterPage.Master" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

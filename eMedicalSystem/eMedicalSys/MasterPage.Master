@@ -44,6 +44,21 @@
     <!-- UltimatePro Admin skins -->
     <link rel="stylesheet" href="css/skins/_all-skins.css">
 
+    <!-- Time picker -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+
+          <!-- ... -->
+  <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
 
     <!-- daterange picker -->
@@ -396,7 +411,7 @@
 
    	<!-- This is data table -->
     <script src="assets/vendor_components/datatable/datatables.min.js"></script>
-
+<%--
 	<!-- UltimatePro Admin for Data Table -->
 	<script src="js/pages/data-table.js"></script>
 
@@ -504,7 +519,8 @@
 
 				 }
 			});
-		</script>
+		</script>--%>
+
 <%--The below section is to enable Javascript to work and bind their events after each postback --%> 
              <!-- Zomming image  -->
        

@@ -16,7 +16,7 @@ namespace WebApplication1
 {
     public partial class AddBookingTiming : System.Web.UI.Page
     {
-        public static int _userID, _DaysNumber, _selectedServiceId = 0;
+        public static int _userID, _DaysNumber, _selectedRoomId = 0;
         public static List<DateTime> selectedDateslist = new List<DateTime>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -65,29 +65,25 @@ namespace WebApplication1
                     foreach (DateTime dt in selectedDateslist)
                     {
                         Calendar1.SelectedDates.Add(dt);
-                        txt_date.Text = Calendar1.SelectedDate.ToShortDateString();
+                        string result = BookingManager.CreateSchedule(_DaysNumber, dt.Date, _selectedRoomId, _userID);
+                        if (result != "inserted")
+                        {
+                            lblResult.Visible = true;
+                            lblResult.ForeColor = System.Drawing.Color.Red;
+                            lblResult.Text = result;
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
+                        }
+                        else
+                        {
+                            lblResult.Visible = true;
+                            lblResult.ForeColor = System.Drawing.Color.Green;
+                            lblResult.Text = result;
+                            clearControls();
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
+                            //Re-Bind the user grid based on the User's role.
+                            //if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
+                        }
                     }
-                    //    _DaysNumber = int.Parse(txtDaysNumber.Text);
-
-                    //    string result = BookingManager.CreateSchedule(_DaysNumber, Convert.ToDateTime(txt_date.Text), _selectedServiceId, _userID);
-                    //    if (result != "inserted")
-                    //    {
-                    //        lblResult.Visible = true;
-                    //        lblResult.ForeColor = System.Drawing.Color.Red;
-                    //        lblResult.Text = result;
-                    //        ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
-                    //    }
-                    //    else
-                    //    {
-                    //        lblResult.Visible = true;
-                    //        lblResult.ForeColor = System.Drawing.Color.Green;
-                    //        lblResult.Text = result;
-                    //        clearControls();
-                    //        ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
-                    //        //Re-Bind the user grid based on the User's role.
-                    //        //if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
-                    //    }
-
 
                 }
                 catch (Exception ex)
@@ -101,7 +97,7 @@ namespace WebApplication1
         }
         private void clearControls()
         {
-            txtDaysNumber.Text = "";
+            //txtDaysNumber.Text = "";
             // lblResult.Visible = false;
         }
 
@@ -130,17 +126,14 @@ namespace WebApplication1
                 selectedDateslist.Add(e.Day.Date);
                 e.Cell.BackColor = Color.Orange;
             }
-            else
-            {
-                selectedDateslist.Remove(e.Day.Date);
-                e.Cell.BackColor = NormColor;
-            }
+            
             Session["SelectedDates"] = selectedDateslist;
         }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             if (Session["SelectedDates"] != null)
             {
+
                 List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
                 foreach (DateTime dt in newList)
                 {
@@ -152,25 +145,34 @@ namespace WebApplication1
             }
         }
 
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            selectedDateslist.Clear();
+            Calendar1.SelectedDates.Clear();
+        }
+
         private void bindServices()
         {
-            DropDownService.DataSource = null;
-            DropDownService.ClearSelection();
-            List<vService> Services = ServiceManager.GetservicesList();
-            DropDownService.DataSource = Services;
-            DropDownService.DataValueField = "SID";
-            DropDownService.DataTextField = "ServiceName";
-            DropDownService.DataBind();
+            DropDownRoom.DataSource = null;
+            DropDownRoom.ClearSelection();
+            List<eMedical_Room> Rooms = ServiceManager.GetRoomsList();
+            DropDownRoom.DataSource = Rooms;
+            DropDownRoom.DataValueField = "ID";
+            DropDownRoom.DataTextField = "RoomName";
+            DropDownRoom.DataBind();
             //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
-            DropDownService.Items[0].Selected = true;
-            _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
+            DropDownRoom.Items[0].Selected = true;
+            _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
         }
 
-        protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
+            _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
         }
 
-
+        //protected void Submit(object sender, EventArgs e)
+        //{
+        //    DateTime time = DateTime.Parse(Request.Form[txtTime.UniqueID]);
+        //}
     }
 }

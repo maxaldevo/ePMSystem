@@ -42,49 +42,40 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
 
         /// <summary>
-        /// txt_date control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_date;
+        protected global::System.Web.UI.WebControls.Button btnReset;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// txtTimefrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.TextBox txtTimefrom;
 
         /// <summary>
-        /// txtDaysNumber control.
+        /// txtTimeEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDaysNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtTimeEnd;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// DropDownRoom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-
-        /// <summary>
-        /// DropDownService control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownService;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownRoom;
 
         /// <summary>
         /// btnShowData control.

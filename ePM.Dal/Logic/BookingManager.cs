@@ -11,7 +11,43 @@ namespace ePM.Dal.Logic
 {
     public static class BookingManager
     {
-        public static string CreateSchedule(int noofdays, DateTime Dutydate, int serviceID, int userid)
+        //public static string CreateSchedule(int noofdays, DateTime Dutydate, int serviceID, int userid)
+        //{
+        //    string friendlyMsg = "";
+        //    try
+        //    {
+        //        using (var db = new eMedicalEntities())
+        //        {
+        //            var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+
+        //            DateTime Dtt = Dutydate;
+        //            for (int s = 1; s < noofdays; s++)
+        //            {
+        //                if ((Dtt.DayOfWeek != DayOfWeek.Friday))
+        //                {
+        //                    for (int i = 0; i < GetTimingList().Count; i++)
+        //                    {
+        //                        db.sp_eMedical_addNewBookingTiming(Dtt.AddDays(s), GetTimingList()[i].TimingBegin, GetTimingList()[i].TimingEnd, serviceID, userid, outputMsgParameter);
+        //                    }
+        //                }
+        //            }
+        //                        friendlyMsg = outputMsgParameter.Value.ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        friendlyMsg = "Please contact your admin!. unexpected error";
+        //        ExceptionsManager.AddException(ex);
+        //        if (ex.InnerException != null)
+        //        {
+        //            ExceptionsManager.AddException(ex.InnerException);
+        //        }
+        //    }
+
+        //    return friendlyMsg;
+        //}
+        public static string CreateSchedule(DateTime Dutydate, int timeFrom, int timeEnd, int roomID, int userid)
         {
             string friendlyMsg = "";
             try
@@ -19,24 +55,20 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-
-                    DateTime Dtt = Dutydate;
-                    for (int s = 1; s < noofdays; s++)
+                    int howManyHours = timeEnd - timeFrom;
+                    int howManyMinutes = howManyHours * 60;
+                    for (int i = 0; i < howManyMinutes; i = i + 15)
                     {
-                        if ((Dtt.DayOfWeek != DayOfWeek.Friday))
-                        {
-                            for (int i = 0; i < GetTimingList().Count; i++)
-                            {
-                                db.sp_eMedical_addNewBookingTiming(Dtt.AddDays(s), GetTimingList()[i].TimingBegin, GetTimingList()[i].TimingEnd, serviceID, userid, outputMsgParameter);
-                            }
-                        }
+                        timeFrom = timeFrom + i;
+                        timeEnd = timeEnd + i + 15;
+
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, timeFrom, timeEnd, roomID, userid, i, outputMsgParameter);
                     }
-                                friendlyMsg = outputMsgParameter.Value.ToString();
+                    friendlyMsg = outputMsgParameter.Value.ToString();
                 }
             }
             catch (Exception ex)
             {
-
                 friendlyMsg = "Please contact your admin!. unexpected error";
                 ExceptionsManager.AddException(ex);
                 if (ex.InnerException != null)

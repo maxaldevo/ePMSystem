@@ -31,5 +31,8 @@ namespace ePM.Dal
         public Nullable<int> UpdatedByID { get; set; }
         public Nullable<int> ServiceTypeID { get; set; }
         public string ServiceType { get; set; }
+        public string ShownFor { get; set; }
+        public Nullable<int> RoomId { get; set; }
+        public string RoomName { get; set; }
     }
 }

@@ -17,6 +17,7 @@
           <Property Name="IsBooked" Type="bit" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedByID" Type="int" />
+          <Property Name="TimingSerial" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -395,6 +396,9 @@ warning 6002: The table/view 'eMedical.dbo.vServices' does not have a primary ke
           <Property Name="UpdatedByID" Type="int" />
           <Property Name="ServiceTypeID" Type="int" />
           <Property Name="ServiceType" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShownFor" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -641,6 +645,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="BookingTimeEnd" Type="nvarchar" Mode="In" />
           <Parameter Name="ServiceID" Type="int" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="timingSerial" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="sp_eMedical_addNewClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -893,7 +898,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vServices].[LastUpdated] AS [LastUpdated], 
     [vServices].[UpdatedByID] AS [UpdatedByID], 
     [vServices].[ServiceTypeID] AS [ServiceTypeID], 
-    [vServices].[ServiceType] AS [ServiceType]
+    [vServices].[ServiceType] AS [ServiceType], 
+    [vServices].[ShownFor] AS [ShownFor], 
+    [vServices].[RoomId] AS [RoomId], 
+    [vServices].[RoomName] AS [RoomName]
     FROM [dbo].[vServices] AS [vServices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vServiceType" EntityType="Self.vServiceType" store:Type="Views" store:Schema="dbo">
@@ -1214,6 +1222,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="BookingTimeEnd" Mode="In" Type="String" />
             <Parameter Name="ServiceID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="timingSerial" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
           <EntitySet Name="eMedical_BookingTiming" EntityType="eMedicalModel.eMedical_BookingTiming" />
@@ -1647,6 +1656,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="Int32" />
           <Property Name="ServiceTypeID" Type="Int32" />
           <Property Name="ServiceType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShownFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomId" Type="Int32" />
+          <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_eMedical_Service_eMedical_Clinic">
           <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
@@ -1763,6 +1775,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Service" FromRole="eMedical_BookingTiming" ToRole="eMedical_Service" />
           <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" FromRole="eMedical_BookingTiming" ToRole="eMedical_User" />
+          <Property Name="TimingSerial" Type="Int32" />
         </EntityType>
         <EntityType Name="eMedical_Timing">
           <Key>
@@ -2199,6 +2212,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="vServices">
             <EntityTypeMapping TypeName="eMedicalModel.vService">
               <MappingFragment StoreEntitySet="vServices">
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+                <ScalarProperty Name="ShownFor" ColumnName="ShownFor" />
                 <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
                 <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
@@ -2243,6 +2259,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_BookingTiming">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_BookingTiming">
               <MappingFragment StoreEntitySet="eMedical_BookingTiming">
+                <ScalarProperty Name="TimingSerial" ColumnName="TimingSerial" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
