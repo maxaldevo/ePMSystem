@@ -65,7 +65,8 @@ namespace WebApplication1
                     foreach (DateTime dt in selectedDateslist)
                     {
                         Calendar1.SelectedDates.Add(dt);
-                        string result = BookingManager.CreateSchedule(_DaysNumber, dt.Date, _selectedRoomId, _userID);
+                        string result = BookingManager.CreateSchedule(dt.Date, int.Parse(txtTimefrom.Text), int.Parse(txtTimeEnd.Text), _selectedRoomId, _userID);
+                        //string result = "";
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;

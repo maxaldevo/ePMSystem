@@ -55,14 +55,16 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-                    int howManyHours = timeEnd - timeFrom;
-                    int howManyMinutes = howManyHours * 60;
-                    for (int i = 0; i < howManyMinutes; i = i + 15)
-                    {
-                        timeFrom = timeFrom + i;
-                        timeEnd = timeEnd + i + 15;
+                    int timeFrom_minutes = timeFrom * 60;
+                    int timeEnd_minutes = timeEnd * 60;
 
-                        db.sp_eMedical_addNewBookingTiming(Dutydate, timeFrom, timeEnd, roomID, userid, i, outputMsgParameter);
+                    int minutesinbetween = (timeEnd - timeFrom) * 60;
+                    for (int i = 0; i < minutesinbetween; i = i + 15)
+                    {
+                        //timeFrom_minutes = timeFrom_minutes + i;
+                        //timeFrom_minutes = timeFrom_minutes + i + 15;
+
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, outputMsgParameter);
                     }
                     friendlyMsg = outputMsgParameter.Value.ToString();
                 }
@@ -78,6 +80,11 @@ namespace ePM.Dal.Logic
             }
 
             return friendlyMsg;
+        }
+        public static String convert(int mins)
+        {
+            int hours = (mins - mins % 60) / 60;
+            return "" + hours + ":" + (mins - hours * 60);
         }
         public static List<eMedical_Timing> GetTimingList()
         {

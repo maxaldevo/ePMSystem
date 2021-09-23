@@ -63,7 +63,8 @@ namespace WebApplication1
 
                     _DaysNumber = int.Parse(txtDaysNumber.Text);
 
-                    string result = BookingManager.CreateSchedule(_DaysNumber, Convert.ToDateTime(txt_date.Text), _selectedServiceId, _userID);
+                    //string result = BookingManager.CreateSchedule(_DaysNumber, Convert.ToDateTime(txt_date.Text), _selectedServiceId, _userID);
+                    string result = "";
                     if (result != "inserted")
                     {
                         lblResult.Visible = true;
