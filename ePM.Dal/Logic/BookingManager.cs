@@ -64,7 +64,7 @@ namespace ePM.Dal.Logic
                         //timeFrom_minutes = timeFrom_minutes + i;
                         //timeFrom_minutes = timeFrom_minutes + i + 15;
 
-                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, outputMsgParameter);
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, timeFrom, timeEnd, roomID, userid, i, outputMsgParameter);
                     }
                     friendlyMsg = outputMsgParameter.Value.ToString();
                 }

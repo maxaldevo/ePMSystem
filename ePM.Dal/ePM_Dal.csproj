@@ -71,99 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppendixA.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppendixB.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppendixC.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppendixD.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppendixE.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppendixF.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contracttype.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01L15.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_09.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_10.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_11.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_12.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_E15.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L01C.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L03A.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L03B.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L09.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L10.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L12.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_01_L15.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_03_15.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_03_16.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_04_05.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_L01A.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_L01B.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_L01D.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_L02A.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_L02B.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_QDP510_QF11.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_QDP510_QF17.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contract_RA257_L01A.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
     <Compile Include="eMedical_BookingTiming.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -217,39 +124,6 @@
     </Compile>
     <Compile Include="Enums\EnumerationManager.cs" />
     <Compile Include="Enums\PublicEnums.cs" />
-    <Compile Include="ePMSystem.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ePMSystem.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ePMSystem.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ePMSystem.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ePMSystem.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_ExceptionLog.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_Modules.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_Pages.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_Roles.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_RolesRights.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LMS_User.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
     <Compile Include="Logic\BookingManager.cs" />
     <Compile Include="Logic\ContractManager.cs" />
     <Compile Include="Logic\ExceptionsManager.cs" />
@@ -269,12 +143,6 @@
     <Compile Include="sp_eMedical_ModulePagesByRole_Result.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_lmsModulePagesByRole_Result.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_lms_GetPagesByRole_Result.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
     <Compile Include="Utilities\BootstrapAlert.cs" />
     <Compile Include="Utilities\Calc.cs" />
     <Compile Include="Utilities\EmailManager.cs" />
@@ -282,30 +150,6 @@
     <Compile Include="Utilities\SqlBulkCopyHelper.cs" />
     <Compile Include="Utilities\SweetAlert.cs" />
     <Compile Include="Utilities\ValidateSession.cs" />
-    <Compile Include="u_HRGroup.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_HRPersonnel.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_HRRoles.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_HRRolesList.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_PERSBase.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_PERSContacts.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_TRGroups.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="u_TRRoom.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
     <Compile Include="vBookingTime.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -336,15 +180,6 @@
     <Compile Include="v_eMedical_RolesCount.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="v_GroupsPersonnel.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="v_lms_ModulePages.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
-    <Compile Include="v_lms_RolesCount.cs">
-      <DependentUpon>ePMSystem.tt</DependentUpon>
-    </Compile>
     <Compile Include="v_RoleGroups.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -354,19 +189,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="ePMSystem.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ePMSystem.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="eMedical_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>eMedical_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="eMedical_Model.edmx.diagram">
       <DependentUpon>eMedical_Model.edmx</DependentUpon>
-    </None>
-    <None Include="ePMSystem.edmx.diagram">
-      <DependentUpon>ePMSystem.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -383,16 +211,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>eMedical_Model.edmx</DependentUpon>
       <LastGenOutput>eMedical_Model.cs</LastGenOutput>
-    </Content>
-    <Content Include="ePMSystem.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ePMSystem.edmx</DependentUpon>
-      <LastGenOutput>ePMSystem.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ePMSystem.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ePMSystem.edmx</DependentUpon>
-      <LastGenOutput>ePMSystem.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
