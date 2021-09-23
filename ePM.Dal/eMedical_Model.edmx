@@ -216,6 +216,36 @@ warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a pri
           <Property Name="HospitalID" Type="int" />
           <Property Name="ClinicID" Type="int" />
         </EntityType>
+        <EntityType Name="LMS_ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueGUID" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ExceptionMsg" Type="varchar" MaxLength="250" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="250" />
+          <Property Name="ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExceptionURL" Type="varchar" MaxLength="150" />
+          <Property Name="Logdate" Type="datetime" />
+          <Property Name="Environment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="u_HRRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PositionCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadingOrder" Type="int" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.v_eMedical_ModulePages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_eMedical_ModulePages">
@@ -249,6 +279,27 @@ warning 6002: The table/view 'eMedical.dbo.v_eMedical_RolesCount' does not have 
           <Property Name="Notes" Type="nvarchar" MaxLength="250" />
           <Property Name="DateAdded" Type="datetime" Nullable="false" />
           <Property Name="CountUsers" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.v_GroupsPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_GroupsPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Group" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ParentGroup" Type="nvarchar" MaxLength="100" />
+          <Property Name="HeadingOrder" Type="int" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="255" />
+          <Property Name="Department" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersonnelID" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="100" />
+          <Property Name="FName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.v_RoleGroups' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -733,6 +784,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySet Name="eMedical_ServiceType" EntityType="Self.eMedical_ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Timing" EntityType="Self.eMedical_Timing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LMS_ExceptionLog" EntityType="Self.LMS_ExceptionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="u_HRRoles" EntityType="Self.u_HRRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [eMedical_Product].[ID] AS [ID], 
@@ -773,6 +826,23 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [v_eMedical_RolesCount].[DateAdded] AS [DateAdded], 
     [v_eMedical_RolesCount].[CountUsers] AS [CountUsers]
     FROM [dbo].[v_eMedical_RolesCount] AS [v_eMedical_RolesCount]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_GroupsPersonnel" EntityType="Self.v_GroupsPersonnel" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_GroupsPersonnel].[ID] AS [ID], 
+    [v_GroupsPersonnel].[Group] AS [Group], 
+    [v_GroupsPersonnel].[UserId] AS [UserId], 
+    [v_GroupsPersonnel].[ParentGroup] AS [ParentGroup], 
+    [v_GroupsPersonnel].[HeadingOrder] AS [HeadingOrder], 
+    [v_GroupsPersonnel].[ParentID] AS [ParentID], 
+    [v_GroupsPersonnel].[RoleID] AS [RoleID], 
+    [v_GroupsPersonnel].[Position] AS [Position], 
+    [v_GroupsPersonnel].[Department] AS [Department], 
+    [v_GroupsPersonnel].[PersonnelID] AS [PersonnelID], 
+    [v_GroupsPersonnel].[StartDate] AS [StartDate], 
+    [v_GroupsPersonnel].[Status] AS [Status], 
+    [v_GroupsPersonnel].[FName] AS [FName]
+    FROM [dbo].[v_GroupsPersonnel] AS [v_GroupsPersonnel]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_RoleGroups" EntityType="Self.v_RoleGroups" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1246,6 +1316,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <EntitySet Name="u_HRRoles" EntityType="eMedicalModel.u_HRRoles" />
+          <EntitySet Name="v_GroupsPersonnel" EntityType="eMedicalModel.v_GroupsPersonnel" />
+          <EntitySet Name="LMS_ExceptionLog" EntityType="eMedicalModel.LMS_ExceptionLog" />
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1851,6 +1924,55 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="u_HRRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PositionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingOrder" Type="Int32" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_GroupsPersonnel">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Group" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ParentGroup" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HeadingOrder" Type="Int32" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LMS_ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueGUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ExceptionMsg" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionURL" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Logdate" Type="DateTime" Precision="3" />
+          <Property Name="Environment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2312,6 +2434,57 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_eMedical_addNewRoom" FunctionName="eMedicalModel.Store.sp_eMedical_addNewRoom" />
+          <EntitySetMapping Name="u_HRRoles">
+            <EntityTypeMapping TypeName="eMedicalModel.u_HRRoles">
+              <MappingFragment StoreEntitySet="u_HRRoles">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="HeadingOrder" ColumnName="HeadingOrder" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="PositionCode" ColumnName="PositionCode" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_GroupsPersonnel">
+            <EntityTypeMapping TypeName="eMedicalModel.v_GroupsPersonnel">
+              <MappingFragment StoreEntitySet="v_GroupsPersonnel">
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="PersonnelID" ColumnName="PersonnelID" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="HeadingOrder" ColumnName="HeadingOrder" />
+                <ScalarProperty Name="ParentGroup" ColumnName="ParentGroup" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LMS_ExceptionLog">
+            <EntityTypeMapping TypeName="eMedicalModel.LMS_ExceptionLog">
+              <MappingFragment StoreEntitySet="LMS_ExceptionLog">
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="Logdate" ColumnName="Logdate" />
+                <ScalarProperty Name="ExceptionURL" ColumnName="ExceptionURL" />
+                <ScalarProperty Name="ExceptionSource" ColumnName="ExceptionSource" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UniqueGUID" ColumnName="UniqueGUID" />
+                <ScalarProperty Name="Logid" ColumnName="Logid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

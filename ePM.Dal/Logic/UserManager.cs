@@ -40,32 +40,33 @@ namespace ePM_Dal.Logic
             }
         }
 
-        public static vPersonnel TempValidateEmail(string email, string password)
-        {
-            using (var db=new ePMEntities())
-            {
-                if (email == "n.bradshaw@kipic.com.kw")
-                {
-                    var person = db.vPersonnels.SingleOrDefault(x => x.Email == email && password == "K@elM$#20psmm_00!");
-                    return person;
-                }
+        //public static vPersonnel TempValidateEmail(string email, string password)
+        //{
+        //    using (var db=new ePMEntities())
+        //    {
+        //        if (email == "n.bradshaw@kipic.com.kw")
+        //        {
+        //            var person = db.vPersonnels.SingleOrDefault(x => x.Email == email && password == "K@elM$#20psmm_00!");
+        //            return person;
+        //        }
 
-                else
-                {
-                    var person = db.vPersonnels.FirstOrDefault(x => x.Email == email && password == "Kipic123");
-                    return person;
-                }
-            }
-        }
+        //        else
+        //        {
+        //            var person = db.vPersonnels.FirstOrDefault(x => x.Email == email && password == "Kipic123");
+        //            return person;
+        //        }
+        //    }
+        //}
+
         //for adding new user which is not part of u_hrpersonel or perbase tables
-        public static List<u_HRGroup> GetHRGroups()
-        {
-            using (var db = new ePMEntities())
-            {
-                var groups = db.u_HRGroup.ToList();
-                return groups;
-            }
-        }
+        //public static List<u_HRGroup> GetHRGroups()
+        //{
+        //    using (var db = new ePMEntities())
+        //    {
+        //        var groups = db.u_HRGroup.ToList();
+        //        return groups;
+        //    }
+        //}
 
         public static string AddNewUser(string fname,string firstName, string lastName,string email, string mobile,
             string empNo,  int roleId)
@@ -373,7 +374,7 @@ namespace ePM_Dal.Logic
         public static List<HR_RolesDTO> GetHR_Roles()
         {
             List<HR_RolesDTO> myList = new List<HR_RolesDTO>();
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
                 var data = db.u_HRRoles.OrderBy(y => y.Name).Select(x => new { x.RoleID, x.Name ,x.Department  }).Distinct();
                 foreach (var item in data)
@@ -384,67 +385,42 @@ namespace ePM_Dal.Logic
             }
         }
 
-        public static bool EmailExists(string email)
-        {
-            bool result = false;
-            using (var db = new ePMEntities())
-            {
-                int data = db.u_HRPersonnel.Where(x => x.EmailWork == email).Count();
-                if (data > 0)
-                {
-                    result = true;
-                }
-                else
-                {
-                    int data2 = db.u_PERSBase.Where(x => x.Email == email).Count();
-                    if (data2 > 0)
-                    {
-                        result = true;
-                    }
-                }
-            }
-            return result;
-        }
-        public static bool EmployeeNoExists(string empNo)
-        {
-            bool result = false;
-            using (var db = new ePMEntities())
-            {
-                int data = db.u_PERSBase.Where(x => x.EmployeeNo == empNo).Count();
-                if (data > 0)
-                {
-                    result = true;
-                }
+        //public static bool EmailExists(string email)
+        //{
+        //    bool result = false;
+        //    using (var db = new eMedicalEntities())
+        //    {
+        //        int data = db.u_HRPersonnel.Where(x => x.EmailWork == email).Count();
+        //        if (data > 0)
+        //        {
+        //            result = true;
+        //        }
+        //        else
+        //        {
+        //            int data2 = db.u_PERSBase.Where(x => x.Email == email).Count();
+        //            if (data2 > 0)
+        //            {
+        //                result = true;
+        //            }
+        //        }
+        //    }
+        //    return result;
+        //}
+        //public static bool EmployeeNoExists(string empNo)
+        //{
+        //    bool result = false;
+        //    using (var db = new eMedicalEntities())
+        //    {
+        //        int data = db.u_PERSBase.Where(x => x.EmployeeNo == empNo).Count();
+        //        if (data > 0)
+        //        {
+        //            result = true;
+        //        }
 
-            }
-            return result;
-        }
-        public static bool AddUsersBulk(DataTable newUsersDT)
-        {
-            bool success = false;
-            try
-            {
-                var parameter = new SqlParameter("@NewUsers", SqlDbType.Structured);
-                parameter.Value = newUsersDT;
-                parameter.TypeName = "dbo.NewUsersUD";
-
-
-                using (var db = new ePMEntities())
-                {
-                    db.Database.ExecuteSqlCommand(" sp_lms_AddUsersBulk @NewUsers ", parameter);
-                }
-                success = true;
-            }
-            catch (Exception ex)
-            {
-                ExceptionsManager.AddException(ex);
-            }
-            return success;
-            //var res=  db.Database
-            //               .SqlQuery<string>(" sp_lms_AddUsersBulk @NewUsers ", parameter)
-            //               .FirstOrDefault();
-            // return res.ToString();
-        }
+        //    }
+        //    return result;
+        //}
+        
         public static bool IsValidEmailFormat(string email)
         {
             return new EmailAddressAttribute().IsValid(email);
@@ -453,7 +429,7 @@ namespace ePM_Dal.Logic
         public static int GetGroupIdByUserId(int userId)
         {
             int result = 0;
-            using (var db=new ePMEntities())
+            using (var db=new eMedicalEntities())
             {
                 var data = db.v_GroupsPersonnel.Where(x => x.UserId == userId).FirstOrDefault();
                 if (data !=null)
@@ -481,25 +457,25 @@ namespace ePM_Dal.Logic
         }
 
         //update Access Role and position
-        public static bool ChangePosition(int personelId, string position)
-        {
-            bool result = false;
-            try
-            {
-                using (var db = new ePMEntities())
-                {
-                    db.sp_updatePositionByPersonnelId(personelId, position);
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
+        //public static bool ChangePosition(int personelId, string position)
+        //{
+        //    bool result = false;
+        //    try
+        //    {
+        //        using (var db = new eMedicalEntities())
+        //        {
+        //            db.sp_updatePositionByPersonnelId(personelId, position);
+        //            result = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                result = false;
-                ExceptionsManager.AddException(ex);
-            }
-            return result;
-        }
+        //        result = false;
+        //        ExceptionsManager.AddException(ex);
+        //    }
+        //    return result;
+        //}
 
     }
 

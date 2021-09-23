@@ -48,6 +48,9 @@ namespace ePM.Dal
         public virtual DbSet<eMedical_Timing> eMedical_Timing { get; set; }
         public virtual DbSet<vBookingTime> vBookingTimes { get; set; }
         public virtual DbSet<eMedical_Room> eMedical_Room { get; set; }
+        public virtual DbSet<u_HRRoles> u_HRRoles { get; set; }
+        public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
+        public virtual DbSet<LMS_ExceptionLog> LMS_ExceptionLog { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {

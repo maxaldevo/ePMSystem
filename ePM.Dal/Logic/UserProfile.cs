@@ -45,7 +45,7 @@ namespace ePM_Dal.Logic
         public static int GetPersonnelIdByuserId(int userId)
         {
             int _personnelId = 0;
-            using (var db = new ePMEntities())
+            using (var db = new eMedicalEntities())
             {
                 var data = db.vPersonnels.Where(x => x.ID == userId).FirstOrDefault();
                 if (data!=null)

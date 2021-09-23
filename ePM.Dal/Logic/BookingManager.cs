@@ -57,14 +57,14 @@ namespace ePM.Dal.Logic
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
                     int timeFrom_minutes = timeFrom * 60;
                     int timeEnd_minutes = timeEnd * 60;
+                    
 
                     int minutesinbetween = (timeEnd - timeFrom) * 60;
                     for (int i = 0; i < minutesinbetween; i = i + 15)
                     {
-                        //timeFrom_minutes = timeFrom_minutes + i;
-                        //timeFrom_minutes = timeFrom_minutes + i + 15;
 
-                        db.sp_eMedical_addNewBookingTiming(Dutydate, timeFrom, timeEnd, roomID, userid, i, outputMsgParameter);
+
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, outputMsgParameter);
                     }
                     friendlyMsg = outputMsgParameter.Value.ToString();
                 }

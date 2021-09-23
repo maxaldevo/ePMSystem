@@ -95,7 +95,6 @@
     <Content Include="AddNewService.aspx" />
     <Content Include="AddNewProduct.aspx" />
     <Content Include="AddNewUser.aspx" />
-    <Content Include="AddUsersBulk.aspx" />
     <Content Include="assets\vendor_components\animate\animate.css" />
     <Content Include="assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="assets\vendor_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -7495,13 +7494,6 @@
     </Compile>
     <Compile Include="AddNewUser.aspx.designer.cs">
       <DependentUpon>AddNewUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AddUsersBulk.aspx.cs">
-      <DependentUpon>AddUsersBulk.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddUsersBulk.aspx.designer.cs">
-      <DependentUpon>AddUsersBulk.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\FullHeaderNew.ascx.cs">
       <DependentUpon>FullHeaderNew.ascx</DependentUpon>

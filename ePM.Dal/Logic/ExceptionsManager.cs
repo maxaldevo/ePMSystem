@@ -29,7 +29,7 @@ namespace ePM_Dal.Logic
                     ExceptionURL = exp.Source + " " + exp.HelpLink 
                    
                 };
-                using (var db = new ePMEntities())
+                using (var db = new eMedicalEntities())
                 {
                     //stop logging thread abort exception
                     if (newExp.ExceptionType != "ThreadAbortException")//Thread Abort Exception
@@ -69,7 +69,7 @@ namespace ePM_Dal.Logic
                     Logdate = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Arabic Standard Time")),
                     ExceptionURL = exp.Source + " " + exp.HelpLink
                 };
-                using (var db = new ePMEntities())
+                using (var db = new eMedicalEntities())
                 {
                     //stop logging thread abort exception
                     if (newExp.ExceptionType != "ThreadAbortException")//Thread Abort Exception
@@ -93,7 +93,7 @@ namespace ePM_Dal.Logic
                     Logdate = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Arabic Standard Time"))
                     //  ExceptionURL = exepurl
                 };
-                using (var db = new ePMEntities())
+                using (var db = new eMedicalEntities())
                 {
                     db.LMS_ExceptionLog.Add(newExp);
                     db.SaveChanges();

@@ -14,13 +14,6 @@ namespace ePM.Dal
     
     public partial class u_HRRoles
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public u_HRRoles()
-        {
-            this.u_HRPersonnel = new HashSet<u_HRPersonnel>();
-            this.u_HRRolesList = new HashSet<u_HRRolesList>();
-        }
-    
         public int RoleID { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
@@ -32,10 +25,5 @@ namespace ePM.Dal
         public Nullable<int> HeadingOrder { get; set; }
         public string Grade { get; set; }
         public Nullable<int> GroupId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<u_HRPersonnel> u_HRPersonnel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<u_HRRolesList> u_HRRolesList { get; set; }
     }
 }
