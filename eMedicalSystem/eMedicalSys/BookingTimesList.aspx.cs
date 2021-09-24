@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Web;
 using System.Web.Caching;
 using System.Web.UI;
@@ -89,6 +90,80 @@ namespace WebApplication1
         {
             int hours = (mins - mins % 60) / 60;
             return "" + hours + ":" + (mins - hours * 60);
+        }
+
+        protected void OnRowEditing(object sender, GridViewEditEventArgs e)
+        {
+            gvBookingTimes.EditIndex = e.NewEditIndex;
+            this.BindGrid();
+        }
+
+        protected void OnRowCancelingEdit(object sender, EventArgs e)
+        {
+            gvBookingTimes.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = gvBookingTimes.Rows[e.RowIndex];
+            int BookingTimeId = Convert.ToInt32(gvBookingTimes.DataKeys[e.RowIndex].Values[0]);
+            bool isAvaialbe = (row.FindControl("chk_IsAvailable") as CheckBox).Checked;
+            eMedical_BookingTiming bookingTimeRecord = new eMedical_BookingTiming()
+            {
+                ID = BookingTimeId,
+                IsAvailable = isAvaialbe
+            };
+            ////UPDATE user role
+            BookingManager.updateBookingTimeRecord(bookingTimeRecord);
+            gvBookingTimes.EditIndex = -1;
+            this.BindGrid();
+        }
+
+        protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                foreach (ImageButton button in e.Row.Cells[3].Controls.OfType<ImageButton>())
+                {
+                    if (button.CommandName == "Delete")
+                    {
+                        button.Attributes["onclick"] = "if(!confirm('Do you want to delete " + "?')){ return false; };";
+                    }
+                }
+            }
+        }
+
+        protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            var roleId = Convert.ToInt32(gvBookingTimes.DataKeys[e.RowIndex].Values[0]);
+            try
+            {
+                //make sure group does not have any users. RoleId not in LMS_user Table
+                int result = SecurityManager.DeleteRole(roleId);
+                if (result == 0)
+                {
+                    //SweetAlert.showToast(this.Page, SweetAlert.ToastType.Warning, "Can not delete this grop as it has users!", "Unable to delete", SweetAlert.ToasterPostion.TopCenter, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Unexpected error", "<script>showpoperror('" + "Can not delete this group as it has users!" + "')</script>", false);
+                }
+                else if (result == 1)
+                {
+                    // SweetAlert.showToast(this.Page, SweetAlert.ToastType.Success, "Group deleted successfully!", "Success", SweetAlert.ToasterPostion.TopCenter, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "Deleted successfully!" + "')</script>", false);
+                }
+                else
+                {
+                    // SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, "Unexpected error!", "Problem deleting", SweetAlert.ToasterPostion.TopCenter, false);
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "Unexpected error", "<script>showpoperror('" + "Unexpected error!" + "')</script>", false);
+                }
+            }
+            catch (Exception ex)
+            {
+                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Problem deleting", SweetAlert.ToasterPostion.TopCenter, false);
+            }
+            //Delete logic
+
+            this.BindGrid();
         }
         //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         //{

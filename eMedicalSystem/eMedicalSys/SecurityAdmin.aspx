@@ -4,9 +4,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <style>
-              * {
+        * {
             font-family: 'Foco', sans-serif;
         }
+
         table thead tr {
             background-color: #23B3E8;
             color: white;
@@ -18,9 +19,9 @@
             text-align: center;
         }
 
-        table tbody tr td {
-            text-align: center;
-        }
+            table tbody tr td {
+                text-align: center;
+            }
 
         .row {
             margin-top: -15px;
@@ -121,9 +122,9 @@
 					</ul>
                 <br />--%>
 
-                <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" AutoPostBack="true" OnActiveTabChanged="TabContainer1_ActiveTabChanged" >
+                <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" AutoPostBack="true" OnActiveTabChanged="TabContainer1_ActiveTabChanged">
 
-                    <ajaxToolkit:TabPanel ID="TabGroups" HeaderText="Manage Groups" runat="server" >
+                    <ajaxToolkit:TabPanel ID="TabGroups" HeaderText="Manage Groups" runat="server">
                         <ContentTemplate>
 
                             <div class="row">
@@ -141,7 +142,8 @@
                                                         </ItemTemplate>
                                                         <EditItemTemplate>
                                                             <div class="form-group">
-                                                                <asp:TextBox ID="txtRoleName" CssClass="form-control" runat="server" Text='<%# Eval("RoleName") %>'></asp:TextBox></div>
+                                                                <asp:TextBox ID="txtRoleName" CssClass="form-control" runat="server" Text='<%# Eval("RoleName") %>'></asp:TextBox>
+                                                            </div>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtRoleName" ValidationGroup="A" runat="server" ErrorMessage="Role Name is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
@@ -151,7 +153,8 @@
                                                         </ItemTemplate>
                                                         <EditItemTemplate>
                                                             <div class="form-group">
-                                                                <asp:TextBox ID="txtNotes" CssClass="form-control" runat="server" Text='<%# Eval("Notes") %>'></asp:TextBox></div>
+                                                                <asp:TextBox ID="txtNotes" CssClass="form-control" runat="server" Text='<%# Eval("Notes") %>'></asp:TextBox>
+                                                            </div>
                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="txtNotes" ValidationGroup="A" runat="server" ErrorMessage="Notes field is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
@@ -160,8 +163,7 @@
                                                             <asp:Label ID="lblCount" runat="server" Text='<%# Eval("CountUsers") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png"
-                                                        ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
+                                                    <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
                                                 </Columns>
                                             </asp:GridView>
                                             <br />
@@ -205,13 +207,13 @@
                                     <div class="card card-primary card-outline">
                                         <div class="card-body p-0">
                                             <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowEditing="OnRowEditing2"
-                                                OnRowCancelingEdit="OnRowCancelingEdit2" OnRowDataBound="gvUsers_RowDataBound2" OnRowUpdating="OnRowUpdating2" OnRowCommand="gvUsers_RowCommand" 
+                                                OnRowCancelingEdit="OnRowCancelingEdit2" OnRowDataBound="gvUsers_RowDataBound2" OnRowUpdating="OnRowUpdating2" OnRowCommand="gvUsers_RowCommand"
                                                 EmptyDataText="No records has been found.">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="User Name">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                                                     <asp:Label ID="lblActive" runat="server" Text='<%# Eval("Active") %>' Visible="false"></asp:Label>
+                                                            <asp:Label ID="lblActive" runat="server" Text='<%# Eval("Active") %>' Visible="false"></asp:Label>
                                                             <asp:Label ID="lblFName" Font-Size="Small" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
@@ -229,11 +231,11 @@
                                                             <asp:DropDownList ID="DropDownListRoles" CssClass="form-control" runat="server"></asp:DropDownList>
                                                         </EditItemTemplate>
                                                     </asp:TemplateField>
-                                                      <asp:TemplateField HeaderText="Active">
+                                                    <asp:TemplateField HeaderText="Active">
                                                         <ItemTemplate>
-                                                              <asp:CheckBox runat="server" Enabled="false" Text=" " Checked='<%#Convert.ToBoolean(Eval("Active"))%>'></asp:CheckBox>
-                                                            </ItemTemplate>
-                                                         </asp:TemplateField>
+                                                            <asp:CheckBox runat="server" Enabled="false" Text=" " Checked='<%#Convert.ToBoolean(Eval("Active"))%>'></asp:CheckBox>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Reset Password">
                                                         <ItemTemplate>
                                                             <asp:LinkButton ID="lnkReset" Font-Size="Smaller" CssClass="btn btn-block btn-info" Text="Reset password" CommandArgument='<%# Eval("ID") %>' CommandName="Reset" runat="server"></asp:LinkButton>
@@ -259,82 +261,83 @@
                     </ajaxToolkit:TabPanel>
                     <ajaxToolkit:TabPanel ID="TabAddUser" HeaderText="Add New User" runat="server">
                         <ContentTemplate>
-                              <div class="row">
-                    <div class="col-md-3">
-                        <div class="controls">
-                             <span>Full Name:</span>
-                            <asp:TextBox ID="txtFName" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFName"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                             <span>First Name:</span>
-                            <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeholder="First Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                              <span>Last Name:</span>
-                            <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtLastName"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                             <span>Email :</span>
-                            <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" placeholder="Email"></asp:TextBox>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Full Name:</span>
+                                        <asp:TextBox ID="txtFName" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFName"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>First Name:</span>
+                                        <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeholder="First Name"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Last Name:</span>
+                                        <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtLastName"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Email :</span>
+                                        <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" placeholder="Email"></asp:TextBox>
 
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
-                                ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                                Display="Dynamic" ErrorMessage="Invalid email address" ValidationGroup="A" />
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEmail" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    </div>
-                  <br />
-                                    <div class="row">
-                         <div class="col-md-3">
-                        <div class="controls">
-                             <span>Mobile No. :</span>
-                            <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile No"></asp:TextBox>
-                           
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                             <span>Employee No. :</span>
-                            <asp:TextBox ID="txtEmpNo" runat="server" CssClass="form-control" placeholder="Employee No"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtEmpNo"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-      
-                    <div class="col-md-3">
-                        <div class="controls">
-                             <span>Security Access Group :</span>
-                            <asp:DropDownList ID="DropDownRoles" OnSelectedIndexChanged="DropDownRoles_SelectedIndexChanged" AutoPostBack="true" runat="server" CssClass="form-control"></asp:DropDownList>
-                        </div>
-                    </div>
-                                     <div class="col-md-3">
-                        <div class="controls">
-                             <span>Select a Position :</span>
-                            <asp:DropDownList ID="DropDownHRRoles" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="DropDownHRRoles_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>                    
-                                     
-                </div>
-                <br />
-    
-                <div class="row">
-                    <div class="col-md-2">
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
+                                            ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                                            Display="Dynamic" ErrorMessage="Invalid email address" ValidationGroup="A" />
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEmail" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Mobile No. :</span>
+                                        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile No"></asp:TextBox>
 
-                        <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
-                    </div>
-                    <div class="col-md-8">
-                          <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>
-                    </div>                </div>
-                <br />
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Employee No. :</span>
+                                        <asp:TextBox ID="txtEmpNo" runat="server" CssClass="form-control" placeholder="Employee No"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtEmpNo"></asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Security Access Group :</span>
+                                        <asp:DropDownList ID="DropDownRoles" OnSelectedIndexChanged="DropDownRoles_SelectedIndexChanged" AutoPostBack="true" runat="server" CssClass="form-control"></asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="controls">
+                                        <span>Select a Position :</span>
+                                        <asp:DropDownList ID="DropDownHRRoles" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="DropDownHRRoles_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+
+                            <div class="row">
+                                <div class="col-md-2">
+
+                                    <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>
+                                </div>
+                            </div>
+                            <br />
                         </ContentTemplate>
                     </ajaxToolkit:TabPanel>
                 </ajaxToolkit:TabContainer>
@@ -342,8 +345,6 @@
             </ContentTemplate>
 
             <Triggers>
-
-        
             </Triggers>
         </asp:UpdatePanel>
     </section>
@@ -364,7 +365,7 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
     <script>
         $(function () {
@@ -374,10 +375,10 @@
             BinddropdownRoles();
             fixDropWidth();
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel 
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTableUsers); 
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRoles); 
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRRoles); 
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth); 
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTableUsers);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRoles);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownHRRoles);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(fixDropWidth);
         });
         function bindDataTable() {
             $(document).ready(function () {
@@ -415,7 +416,7 @@
                 });
             });
         };
-               function BinddropdownRoles() {
+        function BinddropdownRoles() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=DropDownRoles.ClientID%>').select2({
                     placeholder: "Select an option",
@@ -423,7 +424,7 @@
                 });
             });
         };
-                     function BinddropdownHRRoles() {
+        function BinddropdownHRRoles() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=DropDownHRRoles.ClientID%>').select2({
                     placeholder: "Select an option",

@@ -29,5 +29,6 @@ namespace ePM.Dal
         public string ServiceName { get; set; }
         public Nullable<int> NoofSessions { get; set; }
         public Nullable<int> Price { get; set; }
+        public Nullable<bool> IsAvailable { get; set; }
     }
 }

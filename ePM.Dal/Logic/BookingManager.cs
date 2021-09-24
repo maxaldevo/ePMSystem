@@ -132,5 +132,21 @@ namespace ePM.Dal.Logic
                 return db.eMedical_BookingTiming.Where(x => x.IsBooked == isBooked && x.BookingDate == Bdate).ToList();
             }
         }
+        public static bool updateBookingTimeRecord(eMedical_BookingTiming bookingTiming)
+        {
+            bool isUpdated = false;
+            if (bookingTiming != null)
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var bookingTimeRecord = db.eMedical_BookingTiming.Where(x => x.ID == bookingTiming.ID).FirstOrDefault();
+                    bookingTimeRecord.ID = bookingTiming.ID;
+                    bookingTimeRecord.IsAvailable = bookingTiming.IsAvailable;
+                    db.SaveChanges();
+                    isUpdated = true;
+                }
+            }
+            return isUpdated;
+        }
     }
 }

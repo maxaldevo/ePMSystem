@@ -41,9 +41,7 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                             <%--<asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
-                        <asp:GridView ID="gvBookingTimes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
-                          
-                            EmptyDataText="No records found.">
+                        <asp:GridView ID="gvBookingTimes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found." OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting">
                             <Columns>
                                 <asp:TemplateField HeaderText="Booking Date">
                                     <ItemTemplate>
@@ -66,6 +64,17 @@
                                         <asp:Label ID="lblIsBooked" runat="server" Font-Bold="true" Text='<%# Eval("IsBooked").ToString() == "true" ? "Booked": "Available" %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Is Available?">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIsAvailable" runat="server" Font-Bold="true" Text='<%# Eval("IsAvailable").ToString() == "true" ? "Available": "Not Available" %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text ="? Change Availability"
+                                                Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>'/>
+                                        </div>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Service Name">
                                     <ItemTemplate>
                                         <asp:Label ID="lblServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label>
@@ -76,6 +85,7 @@
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
                             </Columns>
                         </asp:GridView>
                         </div>
