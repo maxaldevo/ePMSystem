@@ -20,9 +20,14 @@ namespace ePM.Dal
         public string BookingTimeEnd { get; set; }
         public Nullable<bool> IsBooked { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
-        public Nullable<int> ServiceID { get; set; }
-        public string ServiceName { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
         public string FName { get; set; }
+        public Nullable<int> TimingSerial { get; set; }
+        public Nullable<int> RoomId { get; set; }
+        public string RoomName { get; set; }
+        public int ServiceId { get; set; }
+        public string ServiceName { get; set; }
+        public Nullable<int> NoofSessions { get; set; }
+        public Nullable<int> Price { get; set; }
     }
 }

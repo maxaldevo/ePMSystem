@@ -48,17 +48,17 @@
                                 <asp:TemplateField HeaderText="Booking Date">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblBookingDate" runat="server" Text='<%# Eval("BookingDate") %>'></asp:Label>
+                                        <asp:Label ID="lblBookingDate" runat="server" Text='<%# Convert.ToDateTime( Eval("BookingDate").ToString()).ToShortDateString() %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Time Begin">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# Eval("BookingTimeBegin") %>'></asp:Label>
+                                        <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# convert(int.Parse(Eval("BookingTimeBegin").ToString())) %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Time End">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# Eval("BookingTimeEnd") %>'></asp:Label>
+                                        <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# convert(int.Parse(Eval("BookingTimeEnd").ToString())) %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Has Booked?">

@@ -25,7 +25,7 @@ namespace WebApplication1
             {
                 #region Page Validation
 
-                int userId, RoleId, ClinicId = 0;
+                int userId, RoleId = 0;
                 if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/Login/Login.aspx", true);

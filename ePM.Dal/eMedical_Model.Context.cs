@@ -46,11 +46,11 @@ namespace ePM.Dal
         public virtual DbSet<vServiceType> vServiceTypes { get; set; }
         public virtual DbSet<eMedical_BookingTiming> eMedical_BookingTiming { get; set; }
         public virtual DbSet<eMedical_Timing> eMedical_Timing { get; set; }
-        public virtual DbSet<vBookingTime> vBookingTimes { get; set; }
         public virtual DbSet<eMedical_Room> eMedical_Room { get; set; }
         public virtual DbSet<u_HRRoles> u_HRRoles { get; set; }
         public virtual DbSet<v_GroupsPersonnel> v_GroupsPersonnel { get; set; }
         public virtual DbSet<LMS_ExceptionLog> LMS_ExceptionLog { get; set; }
+        public virtual DbSet<vBookingTime> vBookingTimes { get; set; }
     
         public virtual int sp_eMedical_addNewUser(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, ObjectParameter msg)
         {
@@ -269,7 +269,7 @@ namespace ePM.Dal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewSessionType", serviceTypeParameter, userIdParameter, msg);
         }
     
-        public virtual int sp_eMedical_addNewBookingTiming(Nullable<System.DateTime> bookingDate, string bookingTimeBegin, string bookingTimeEnd, Nullable<int> serviceID, Nullable<int> userID, Nullable<int> timingSerial, ObjectParameter msg)
+        public virtual int sp_eMedical_addNewBookingTiming(Nullable<System.DateTime> bookingDate, string bookingTimeBegin, string bookingTimeEnd, Nullable<int> roomID, Nullable<int> userID, Nullable<int> timingSerial, ObjectParameter msg)
         {
             var bookingDateParameter = bookingDate.HasValue ?
                 new ObjectParameter("BookingDate", bookingDate) :
@@ -283,9 +283,9 @@ namespace ePM.Dal
                 new ObjectParameter("BookingTimeEnd", bookingTimeEnd) :
                 new ObjectParameter("BookingTimeEnd", typeof(string));
     
-            var serviceIDParameter = serviceID.HasValue ?
-                new ObjectParameter("ServiceID", serviceID) :
-                new ObjectParameter("ServiceID", typeof(int));
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
     
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("UserID", userID) :
@@ -295,7 +295,7 @@ namespace ePM.Dal
                 new ObjectParameter("timingSerial", timingSerial) :
                 new ObjectParameter("timingSerial", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, serviceIDParameter, userIDParameter, timingSerialParameter, msg);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, roomIDParameter, userIDParameter, timingSerialParameter, msg);
         }
     
         public virtual int sp_eMedical_addNewRoom(string roomName, Nullable<int> userID, ObjectParameter msg)

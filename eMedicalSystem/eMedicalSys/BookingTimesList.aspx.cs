@@ -85,6 +85,11 @@ namespace WebApplication1
                 SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
             }
         }
+        public static String convert(int mins)
+        {
+            int hours = (mins - mins % 60) / 60;
+            return "" + hours + ":" + (mins - hours * 60);
+        }
         //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         //{
         //    gvBookingTimes.DataSource = "";
