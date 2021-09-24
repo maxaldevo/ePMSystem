@@ -188,7 +188,7 @@
                             <span style="font-weight:bold">Time End:</span>
                             <asp:TextBox ID="txtTimeEnd" runat="server" CssClass="form-control" />
 
-                            <div >
+                            <%--<div >
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -204,7 +204,7 @@
                                         });
                                     });
                                 </script>
-                            </div>
+                            </div>--%>
 
                             <%--<cc1:TimeSelector ID="TimeSelector5" runat="server" DisplaySeconds="false"></cc1:TimeSelector>
                             <asp:TextBox ID="txtDaysNumber" CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>
@@ -224,7 +224,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
-                            <asp:TextBox ID="TextBox1"  TextMode="MultiLine" Rows="10"  CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>
+                            <%--<asp:TextBox ID="TextBox1"  TextMode="MultiLine" Rows="10"  CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>--%>
                         
                     </div>
                     <div class="col-md-8">

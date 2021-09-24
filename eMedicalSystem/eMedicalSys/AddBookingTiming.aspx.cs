@@ -139,8 +139,8 @@ namespace WebApplication1
                 foreach (DateTime dt in newList)
                 {
                     Calendar1.SelectedDates.Add(dt);
-                    TextBox1.Text = Calendar1.SelectedDate.ToShortDateString();
-                    TextBox1.Text.Replace("\r\n", "<br />");
+                    //TextBox1.Text = Calendar1.SelectedDate.ToShortDateString();
+                    //TextBox1.Text.Replace("\r\n", "<br />");
                 }
                 selectedDateslist.Clear();
             }
