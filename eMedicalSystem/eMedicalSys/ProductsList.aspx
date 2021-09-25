@@ -40,36 +40,76 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
+                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Product" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
-                        <asp:GridView ID="gvProducts" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
-                           
-                            EmptyDataText="No records found.">
+                        <asp:GridView ID="gvProducts" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting" EmptyDataText="No records found.">
                             <Columns>
                                 <asp:TemplateField HeaderText="Product Name">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
                                         <asp:Label ID="lblPName" runat="server" Text='<%# Eval("ProductName") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtPName" CssClass="form-control" runat="server" Text='<%# Eval("ProductName") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorProductName" ControlToValidate="txtPName" ValidationGroup="A" runat="server" ErrorMessage="Product Name" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Quantity">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
+                                        <asp:Label ID="lblQty" runat="server" Text='<%# Eval("Qty") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtQty" CssClass="form-control" runat="server" Text='<%# Eval("Qty") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorQty" ControlToValidate="txtQty" ValidationGroup="A" runat="server" ErrorMessage="Qty" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Cost Price">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
+                                        <asp:Label ID="lblCostPrice" runat="server" Text='<%# Eval("CostPrice") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtCostPrice" CssClass="form-control" runat="server" Text='<%# Eval("CostPrice") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorCostPrice" ControlToValidate="txtCostPrice" ValidationGroup="A" runat="server" ErrorMessage="Cost Price" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Profit Price">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:Label>
+                                        <asp:Label ID="lblProfitPrice" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtProfitPrice" CssClass="form-control" runat="server" Text='<%# Eval("ProfitPrice") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorProfitPrice" ControlToValidate="txtProfitPrice" ValidationGroup="A" runat="server" ErrorMessage="Profit Price" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Sale Price">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
+                                        <asp:Label ID="lblSalePrice" runat="server" Text='<%# Eval("SalePrice") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtSalePrice" CssClass="form-control" runat="server" Text='<%# Eval("SalePrice") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorSalePrice" ControlToValidate="txtSalePrice" ValidationGroup="A" runat="server" ErrorMessage="Sale Price" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Status">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text ="? Change Availability"
+                                                Checked='<%# Eval("Status").ToString() == "false" ? false : true %>'/>
+                                        </div>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Hospital">
                                     <ItemTemplate>
@@ -86,6 +126,7 @@
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
                             </Columns>
                         </asp:GridView>
                         </div>

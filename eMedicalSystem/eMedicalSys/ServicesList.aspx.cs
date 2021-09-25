@@ -49,7 +49,7 @@ namespace WebApplication1
                                 Response.Redirect("~/Unauthorized.aspx", true);
                             }
                         }
-                        else if (RoleId == 1)
+                        if (RoleId == 1)
                         {
                             BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
                         }
@@ -88,6 +88,10 @@ namespace WebApplication1
                 ExceptionsManager.AddException(ex);
                 SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
             }
+        }
+        protected void btnAddNewRecord_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AddNewService.aspx", true);
         }
     }
 }

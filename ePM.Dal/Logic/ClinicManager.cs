@@ -59,7 +59,6 @@ namespace ePM.Dal.Logic
             }
             return exists;
         }
-
         public static List<eMedical_Hospital> GetHospitalsList()
         {
             using (var db = new eMedicalEntities())
@@ -73,6 +72,23 @@ namespace ePM.Dal.Logic
             {
                 return db.eMedical_Clinic.Where(x=>x.HospitalID == hospitalID).ToList();
             }
+        }
+        public static bool updateRoom(eMedical_Room updatedRoom)
+        {
+            bool isUpdated = false;
+            if (updatedRoom != null)
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var room = db.eMedical_Room.Where(x => x.ID == updatedRoom.ID).First();
+                    //product.ID = updatedProduct.ID;
+                    room.RoomName = updatedRoom.RoomName;
+                    room.Status = updatedRoom.Status;
+                    db.SaveChanges();
+                    isUpdated = true;
+                }
+            }
+            return isUpdated;
         }
     }
 }

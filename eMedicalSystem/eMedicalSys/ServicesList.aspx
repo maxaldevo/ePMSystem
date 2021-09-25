@@ -40,6 +40,7 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
+                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Service" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
                         <asp:GridView ID="gvServices" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="SID" 
                            

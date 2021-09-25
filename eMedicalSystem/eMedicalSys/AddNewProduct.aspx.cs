@@ -16,7 +16,7 @@ namespace WebApplication1
     public partial class AddNewProduct : System.Web.UI.Page
     {
         public static string  _pName;
-        public static int _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic = 0;
+        public static int _qty, _costPrice, _profitPrice, _salePrice, _clinicId, _hospitalID, _userID, _selectedHospital, _selectedClinic = 0;
         //public List<vProductInfo> ProductsList = new List<vProductInfo>();
 
         //protected void Page_PreRender(object sender, EventArgs e)
@@ -44,15 +44,15 @@ namespace WebApplication1
                     {
                         _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
-                        //if (RoleId == 1)
-                        //{
-                        //    BindProductsGrid(0, 0); // 0 means The SuperAdmin user.
-                        //}
-                        //else
-                        //{
-                        //    ClinicId = int.Parse(Session["ClinicId"].ToString());
-                        //    BindProductsGrid(ClinicId, _userID);
-                        //}
+                        _clinicId = int.Parse(Session["ClinicId"].ToString());
+                        _hospitalID = int.Parse(Session["HospitalID"].ToString());
+                        if (RoleId == 1)
+                        {
+                            BindHospitals();
+                            BindClinics(_selectedHospital);
+                            DropDownClinics.Visible = true;
+                            DropDownHospitals.Visible = true;
+                        }
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -68,8 +68,7 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                BindHospitals();
-                BindClinics(_selectedHospital); 
+                
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -78,15 +77,23 @@ namespace WebApplication1
             {
                 try
                 {
-                    //Validate user name and emp No
 
                     _pName = txtPName.Text;
                     _qty = int.Parse(txtqty.Text);
                     _costPrice = int.Parse(txtCPrice.Text);
                     _profitPrice = int.Parse(txtProfitPrice.Text);
                     _salePrice = int.Parse(txtSalePrice.Text);
+                    string result = "";
 
-                    string result = ProductManager.AddNewProduct_By_HospitalID_ClinicID(_pName, _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic);
+                    if (_selectedHospital > 0 && _selectedClinic > 0)
+                    {
+                        result = ProductManager.AddNewProduct_By_HospitalID_ClinicID(_pName, _qty, _costPrice, _profitPrice, _salePrice, _userID, _selectedHospital, _selectedClinic);
+                    }
+                    else
+                    {
+                        result = ProductManager.AddNewProduct_By_HospitalID_ClinicID(_pName, _qty, _costPrice, _profitPrice, _salePrice, _userID, _hospitalID, _clinicId);
+                    }
+                    
                     if (result != "inserted")
                     {
                         lblResult.Visible = true;

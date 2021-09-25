@@ -90,6 +90,13 @@ namespace ePM.Dal.Logic
                 return db.eMedical_Room.Where(x => x.Status == true).ToList();
             }
         }
+        public static List<eMedical_Room> GetRoomsList(int usrId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_Room.Where(x => x.Status == true && x.UpdatedByID == usrId).ToList();
+            }
+        }
         public static string AddNewServiceType(string ServiceType, int userId)
         {
             string friendlyMsg = "";

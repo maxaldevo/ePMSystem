@@ -89,5 +89,9 @@ namespace WebApplication1
                 SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
             }
         }
+        protected void btnAddNewRecord_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AddNewServiceType.aspx", true);
+        }
     }
 }

@@ -41,6 +41,10 @@ namespace WebApplication1
                                 Response.Redirect("~/Unauthorized.aspx", true);
                             }
                         }
+                        else if (RoleId == 1)
+                        {
+                            BindHospitals(); // 0 means The SuperAdmin user.
+                        }
                     }
                     else
                     {
@@ -49,8 +53,8 @@ namespace WebApplication1
                 }
 
                 #endregion Page Validation
-               // BindDepartments();
-                BindRoles();
+                // BindDepartments();
+                BindHospitals();
                 //BindHRRoles();
             }
         }
@@ -111,7 +115,8 @@ namespace WebApplication1
         }
 
 
-        private void BindRoles()
+        
+        private void BindHospitals()
         {
             DropDownHospitals.DataSource = null;
             DropDownHospitals.ClearSelection();

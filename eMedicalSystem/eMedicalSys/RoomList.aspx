@@ -40,16 +40,34 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
+                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Room" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
-                        <asp:GridView ID="gvRooms" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
-                            EmptyDataText="No records found.">
+                        <asp:GridView ID="gvRooms" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"  OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting" EmptyDataText="No records found.">
                             <Columns>
                                 <asp:TemplateField HeaderText="Room">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblServiceType" runat="server" Text='<%# Eval("RoomName") %>'></asp:Label>
+                                        <asp:Label ID="lblRoomname" runat="server" Text='<%# Eval("RoomName") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtRoomName" CssClass="form-control" runat="server" Text='<%# Eval("RoomName") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorRoomName" ControlToValidate="txtRoomName" ValidationGroup="A" runat="server" ErrorMessage="Room Name" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Status">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text ="? Change Availability"
+                                                Checked='<%# Eval("Status").ToString() == "false" ? false : true %>'/>
+                                        </div>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
                             </Columns>
                         </asp:GridView>
                         </div>

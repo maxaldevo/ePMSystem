@@ -21,6 +21,7 @@ namespace WebApplication1.Login
                 Session["UserId"] = 0;
                 Session["RoleId"] = 0;
                 Session["ClinicId"] = 0;
+                Session["HospitalID"] = 0;
             }
         }
 
@@ -35,6 +36,7 @@ namespace WebApplication1.Login
                     Session["UserId"] = user.ID.ToString();
                     Session["RoleId"] = user.RoleId.ToString();
                     Session["ClinicId"] = user.ClinicID.ToString();
+                    Session["HospitalID"] = user.HospitalID.ToString();
                     Response.Redirect("~/Default.aspx", true);
                 }
                 else

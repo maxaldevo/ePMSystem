@@ -188,13 +188,13 @@
                     <div class="col-md-3">
                         <div class="controls">
                             <span style="font-weight:bold">Hospitals :</span>
-                            <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
                             <span style="font-weight:bold">Clinic :</span>
-                            <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
                 </div>

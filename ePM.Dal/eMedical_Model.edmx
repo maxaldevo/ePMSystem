@@ -67,8 +67,6 @@
           <Property Name="CssIcon" Type="nvarchar" MaxLength="150" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'eMedical.dbo.eMedical_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="eMedical_Product">
           <Key>
             <PropertyRef Name="ID" />
@@ -555,6 +553,18 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_eMedical_Product_eMedical_User">
+          <End Role="eMedical_User" Type="Self.eMedical_User" Multiplicity="0..1" />
+          <End Role="eMedical_Product" Type="Self.eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_eMedical_Service_eMedical_Clinic">
           <End Role="eMedical_Clinic" Type="Self.eMedical_Clinic" Multiplicity="0..1" />
           <End Role="eMedical_Service" Type="Self.eMedical_Service" Multiplicity="*" />
@@ -810,6 +820,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySet Name="eMedical_Clinic" EntityType="Self.eMedical_Clinic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Hospital" EntityType="Self.eMedical_Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Pages" EntityType="Self.eMedical_Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Roles" EntityType="Self.eMedical_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_RolesRights" EntityType="Self.eMedical_RolesRights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eMedical_Room" EntityType="Self.eMedical_Room" Schema="dbo" store:Type="Tables" />
@@ -819,21 +830,6 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySet Name="eMedical_User" EntityType="Self.eMedical_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LMS_ExceptionLog" EntityType="Self.LMS_ExceptionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="u_HRRoles" EntityType="Self.u_HRRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="eMedical_Product" EntityType="Self.eMedical_Product" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [eMedical_Product].[ID] AS [ID], 
-    [eMedical_Product].[ProductName] AS [ProductName], 
-    [eMedical_Product].[Qty] AS [Qty], 
-    [eMedical_Product].[CostPrice] AS [CostPrice], 
-    [eMedical_Product].[ProfitPrice] AS [ProfitPrice], 
-    [eMedical_Product].[SalePrice] AS [SalePrice], 
-    [eMedical_Product].[HospitalID] AS [HospitalID], 
-    [eMedical_Product].[ClinicID] AS [ClinicID], 
-    [eMedical_Product].[Status] AS [Status], 
-    [eMedical_Product].[LastUpdated] AS [LastUpdated], 
-    [eMedical_Product].[UpdatedByID] AS [UpdatedByID]
-    FROM [dbo].[eMedical_Product] AS [eMedical_Product]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="v_eMedical_ModulePages" EntityType="Self.v_eMedical_ModulePages" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_eMedical_ModulePages].[Id] AS [Id], 
@@ -1051,6 +1047,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_Product_eMedical_Hospital" Association="Self.FK_eMedical_Product_eMedical_Hospital">
             <End Role="eMedical_Hospital" EntitySet="eMedical_Hospital" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eMedical_Product_eMedical_User" Association="Self.FK_eMedical_Product_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
             <End Role="eMedical_Product" EntitySet="eMedical_Product" />
           </AssociationSet>
           <AssociationSet Name="FK_eMedical_Service_eMedical_Clinic" Association="Self.FK_eMedical_Service_eMedical_Clinic">
@@ -1374,6 +1374,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
             <Parameter Name="RoomID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_eMedical_Product_eMedical_User" Association="eMedicalModel.FK_eMedical_Product_eMedical_User">
+            <End Role="eMedical_User" EntitySet="eMedical_User" />
+            <End Role="eMedical_Product" EntitySet="eMedical_Product" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1490,6 +1494,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Service" />
           <NavigationProperty Name="eMedical_ServiceType" Relationship="eMedicalModel.FK_eMedical_ServiceType_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_ServiceType" />
           <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_BookingTiming" />
+          <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Product" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -1677,6 +1682,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Clinic" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Clinic" FromRole="eMedical_Product" ToRole="eMedical_Clinic" />
           <NavigationProperty Name="eMedical_Hospital" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_Hospital" FromRole="eMedical_Product" ToRole="eMedical_Hospital" />
+          <NavigationProperty Name="eMedical_User" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_User" FromRole="eMedical_Product" ToRole="eMedical_User" />
         </EntityType>
         <EntityType Name="vProductInfo">
           <Key>
@@ -2055,6 +2061,18 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="TimeByHourBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TimeByHourEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_eMedical_Product_eMedical_User">
+          <End Type="eMedicalModel.eMedical_User" Role="eMedical_User" Multiplicity="0..1" />
+          <End Type="eMedicalModel.eMedical_Product" Role="eMedical_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMedical_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="eMedical_Product">
+              <PropertyRef Name="UpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

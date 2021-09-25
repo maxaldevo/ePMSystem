@@ -52,5 +52,26 @@ namespace ePM.Dal.Logic
                 return db.vProductInfoes.Where(x => x.Status == true && x.ClinicID == clinicid && x.UpdatedByID == userID).ToList();
             }
         }
+        public static bool updateProduct(eMedical_Product updatedProduct)
+        {
+            bool isUpdated = false;
+            if (updatedProduct != null)
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var product = db.eMedical_Product.Where(x => x.ID == updatedProduct.ID).First();
+                    //product.ID = updatedProduct.ID;
+                    product.ProductName = updatedProduct.ProductName;
+                    product.Qty = updatedProduct.Qty;
+                    product.CostPrice = updatedProduct.CostPrice;
+                    product.ProfitPrice = updatedProduct.ProfitPrice;
+                    product.SalePrice = updatedProduct.SalePrice;
+                    product.Status = updatedProduct.Status;
+                    db.SaveChanges();
+                    isUpdated = true;
+                }
+            }
+            return isUpdated;
+        }
     }
 }
