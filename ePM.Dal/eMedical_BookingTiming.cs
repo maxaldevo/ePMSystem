@@ -25,6 +25,11 @@ namespace ePM.Dal
         public Nullable<int> TimingSerial { get; set; }
         public Nullable<int> RoomId { get; set; }
         public Nullable<bool> IsAvailable { get; set; }
+        public string TimeBegins { get; set; }
+        public string TimeEnds { get; set; }
+        public string TimeByHourBegins { get; set; }
+        public string TimeByHourEnds { get; set; }
+        public Nullable<bool> DateAdded_flag { get; set; }
     
         public virtual eMedical_Service eMedical_Service { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }

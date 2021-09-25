@@ -29,7 +29,7 @@ namespace WebApplication1
             {
                 #region Page Validation
 
-                int userId, RoleId = 0;
+                int userId, RoleId, clinicID = 0;
                 if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/Login/Login.aspx", true);
@@ -40,6 +40,8 @@ namespace WebApplication1
                     {
                         userId = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
+                        clinicID = int.Parse(Session["ClinicId"].ToString());
+
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -57,18 +59,18 @@ namespace WebApplication1
 
                 #endregion Page Validation
 
-                this.BindGrid();
+                this.BindGrid(clinicID);
             }
         }
 
-        private void BindGrid()
+        private void BindGrid(int clinicId)
         {
             try
             {
                 if (Cache["UsersList"] == null)
 
                 {
-                    usersList = UserManager.getUsersList();
+                    usersList = UserManager.getUsersList(clinicId);
                     Cache["UsersList"] = usersList;
                     Cache.Insert("UsersList", usersList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
                     //  Response.Write("<script>alert('Its processing from Data hit');</script>");

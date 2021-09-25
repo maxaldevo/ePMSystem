@@ -25,10 +25,10 @@ namespace ePM.Dal
         public Nullable<int> TimingSerial { get; set; }
         public Nullable<int> RoomId { get; set; }
         public string RoomName { get; set; }
-        public int ServiceId { get; set; }
-        public string ServiceName { get; set; }
-        public Nullable<int> NoofSessions { get; set; }
-        public Nullable<int> Price { get; set; }
         public Nullable<bool> IsAvailable { get; set; }
+        public string TimeBegins { get; set; }
+        public string TimeEnds { get; set; }
+        public string TimeByHourBegins { get; set; }
+        public string TimeByHourEnds { get; set; }
     }
 }

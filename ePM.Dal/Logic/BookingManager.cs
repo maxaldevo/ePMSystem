@@ -62,10 +62,11 @@ namespace ePM.Dal.Logic
                     int minutesinbetween = (timeEnd - timeFrom) * 60;
                     for (int i = 0; i < minutesinbetween; i = i + 15)
                     {
+                        int hourInMinutes = checkAndReturnInteger(i);
 
-
-                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, outputMsgParameter);
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, timeFrom.ToString(), timeEnd.ToString(), (timeFrom_minutes + hourInMinutes).ToString(), (timeFrom_minutes + hourInMinutes + 60).ToString(), outputMsgParameter);
                     }
+                    db.sp_eMedical_FlagAllBookingTimesBy_Room(Dutydate, roomID);
                     friendlyMsg = outputMsgParameter.Value.ToString();
                 }
             }
@@ -80,6 +81,26 @@ namespace ePM.Dal.Logic
             }
 
             return friendlyMsg;
+        }
+        private static int checkAndReturnInteger(int numb)
+        {
+            int x = 0;
+            if (numb == 60) x = 60;
+            else if (numb == 120) x = 120;
+            else if (numb == 180) x = 180;
+            else if (numb == 240) x = 240;
+            else if (numb == 300) x = 300;
+            else if (numb == 360) x = 360;
+            else if (numb == 420) x = 420;
+            else if (numb == 480) x = 480;
+            else if (numb == 540) x = 540;
+            else if (numb == 600) x = 600;
+            else if (numb == 660) x = 660;
+            else if (numb == 720) x = 720;
+            else if (numb == 780) x = 780;
+            else if (numb == 840) x = 840;
+            else if (numb == 900) x = 900;
+            return x;
         }
         public static String convert(int mins)
         {

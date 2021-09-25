@@ -47,7 +47,7 @@
         <EntityTypeShape EntityType="eMedicalModel.v_GroupsPersonnel" Width="1.5" PointX="16.375" PointY="0.75" />
         <EntityTypeShape EntityType="eMedicalModel.LMS_ExceptionLog" Width="1.5" PointX="16.375" PointY="5.75" />
         <AssociationConnector Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Room" />
-        <EntityTypeShape EntityType="eMedicalModel.vBookingTime" Width="1.5" PointX="14.375" PointY="16.75" />
+        <EntityTypeShape EntityType="eMedicalModel.vBookingTime" Width="1.5" PointX="0.75" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

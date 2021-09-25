@@ -269,7 +269,7 @@ namespace ePM.Dal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewSessionType", serviceTypeParameter, userIdParameter, msg);
         }
     
-        public virtual int sp_eMedical_addNewBookingTiming(Nullable<System.DateTime> bookingDate, string bookingTimeBegin, string bookingTimeEnd, Nullable<int> roomID, Nullable<int> userID, Nullable<int> timingSerial, ObjectParameter msg)
+        public virtual int sp_eMedical_addNewBookingTiming(Nullable<System.DateTime> bookingDate, string bookingTimeBegin, string bookingTimeEnd, Nullable<int> roomID, Nullable<int> userID, Nullable<int> timingSerial, string timeBegins, string timeEnds, string timeByHourBegins, string timeByHourEnds, ObjectParameter msg)
         {
             var bookingDateParameter = bookingDate.HasValue ?
                 new ObjectParameter("BookingDate", bookingDate) :
@@ -295,7 +295,23 @@ namespace ePM.Dal
                 new ObjectParameter("timingSerial", timingSerial) :
                 new ObjectParameter("timingSerial", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, roomIDParameter, userIDParameter, timingSerialParameter, msg);
+            var timeBeginsParameter = timeBegins != null ?
+                new ObjectParameter("TimeBegins", timeBegins) :
+                new ObjectParameter("TimeBegins", typeof(string));
+    
+            var timeEndsParameter = timeEnds != null ?
+                new ObjectParameter("TimeEnds", timeEnds) :
+                new ObjectParameter("TimeEnds", typeof(string));
+    
+            var timeByHourBeginsParameter = timeByHourBegins != null ?
+                new ObjectParameter("TimeByHourBegins", timeByHourBegins) :
+                new ObjectParameter("TimeByHourBegins", typeof(string));
+    
+            var timeByHourEndsParameter = timeByHourEnds != null ?
+                new ObjectParameter("TimeByHourEnds", timeByHourEnds) :
+                new ObjectParameter("TimeByHourEnds", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, roomIDParameter, userIDParameter, timingSerialParameter, timeBeginsParameter, timeEndsParameter, timeByHourBeginsParameter, timeByHourEndsParameter, msg);
         }
     
         public virtual int sp_eMedical_addNewRoom(string roomName, Nullable<int> userID, ObjectParameter msg)
@@ -309,6 +325,19 @@ namespace ePM.Dal
                 new ObjectParameter("UserID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewRoom", roomNameParameter, userIDParameter, msg);
+        }
+    
+        public virtual int sp_eMedical_FlagAllBookingTimesBy_Room(Nullable<System.DateTime> bookingDate, Nullable<int> roomID)
+        {
+            var bookingDateParameter = bookingDate.HasValue ?
+                new ObjectParameter("BookingDate", bookingDate) :
+                new ObjectParameter("BookingDate", typeof(System.DateTime));
+    
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_FlagAllBookingTimesBy_Room", bookingDateParameter, roomIDParameter);
         }
     }
 }

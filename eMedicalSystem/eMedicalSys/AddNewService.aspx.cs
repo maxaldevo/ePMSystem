@@ -16,7 +16,7 @@ namespace WebApplication1
     public partial class AddNewService : System.Web.UI.Page
     {
         public static string  _sName;
-        public static int _noOfSessions, _price, _userID, _selectedHospital, _selectedClinic, _selectedServiceType, _selectedRoom = 0;
+        public static int _noOfSessions, _price, _clinicId, _userID, _selectedHospital, _selectedClinic, _selectedServiceType, _selectedRoom = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,6 +35,7 @@ namespace WebApplication1
                     {
                         _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
+                        _clinicId = int.Parse(Session["ClinicId"].ToString());
 
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
@@ -54,7 +55,7 @@ namespace WebApplication1
                 BindHospitals();
                 BindRooms();
                 BindClinics(_selectedHospital);
-                BindServiceTypes();
+                BindServiceTypes(_userID, _clinicId);
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -148,11 +149,11 @@ namespace WebApplication1
             DropDownClinics.Items[0].Selected = true;
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
-        private void BindServiceTypes()
+        private void BindServiceTypes(int usrID, int clinicId)
         {
             DropDownServiceTypes.DataSource = null;
             DropDownServiceTypes.ClearSelection();
-            List<vServiceType> ServicesTypes = ServiceManager.GetservicesTypeList();
+            List<vServiceType> ServicesTypes = ServiceManager.GetservicesTypeList(usrID, clinicId);
             DropDownServiceTypes.DataSource = ServicesTypes;
             DropDownServiceTypes.DataValueField = "ID";
             DropDownServiceTypes.DataTextField = "ServiceType";

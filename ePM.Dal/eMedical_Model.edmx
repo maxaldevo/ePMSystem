@@ -20,6 +20,11 @@
           <Property Name="TimingSerial" Type="int" />
           <Property Name="RoomId" Type="int" />
           <Property Name="IsAvailable" Type="bit" />
+          <Property Name="TimeBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeEnds" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeByHourBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeByHourEnds" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateAdded_flag" Type="bit" />
         </EntityType>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -336,7 +341,6 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
         <EntityType Name="vBookingTimes">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="ServiceId" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="BookingDate" Type="date" />
@@ -349,11 +353,11 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
           <Property Name="TimingSerial" Type="int" />
           <Property Name="RoomId" Type="int" />
           <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
-          <Property Name="ServiceId" Type="int" Nullable="false" />
-          <Property Name="ServiceName" Type="nvarchar" MaxLength="500" />
-          <Property Name="NoofSessions" Type="int" />
-          <Property Name="Price" Type="int" />
           <Property Name="IsAvailable" Type="bit" />
+          <Property Name="TimeBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeEnds" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeByHourBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeByHourEnds" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -718,6 +722,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="RoomID" Type="int" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="timingSerial" Type="int" Mode="In" />
+          <Parameter Name="TimeBegins" Type="nvarchar" Mode="In" />
+          <Parameter Name="TimeEnds" Type="nvarchar" Mode="In" />
+          <Parameter Name="TimeByHourBegins" Type="nvarchar" Mode="In" />
+          <Parameter Name="TimeByHourEnds" Type="nvarchar" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="sp_eMedical_addNewClinic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -785,6 +793,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="HospitalId" Type="int" Mode="In" />
           <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_eMedical_FlagAllBookingTimesBy_Room" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BookingDate" Type="date" Mode="In" />
+          <Parameter Name="RoomID" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_eMedical_GetPagesByRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="RoleId" Type="int" Mode="In" />
@@ -899,11 +911,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vBookingTimes].[TimingSerial] AS [TimingSerial], 
     [vBookingTimes].[RoomId] AS [RoomId], 
     [vBookingTimes].[RoomName] AS [RoomName], 
-    [vBookingTimes].[ServiceId] AS [ServiceId], 
-    [vBookingTimes].[ServiceName] AS [ServiceName], 
-    [vBookingTimes].[NoofSessions] AS [NoofSessions], 
-    [vBookingTimes].[Price] AS [Price], 
-    [vBookingTimes].[IsAvailable] AS [IsAvailable]
+    [vBookingTimes].[IsAvailable] AS [IsAvailable], 
+    [vBookingTimes].[TimeBegins] AS [TimeBegins], 
+    [vBookingTimes].[TimeEnds] AS [TimeEnds], 
+    [vBookingTimes].[TimeByHourBegins] AS [TimeByHourBegins], 
+    [vBookingTimes].[TimeByHourEnds] AS [TimeByHourEnds]
     FROM [dbo].[vBookingTimes] AS [vBookingTimes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
@@ -1324,6 +1336,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="RoomID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="timingSerial" Mode="In" Type="Int32" />
+            <Parameter Name="TimeBegins" Mode="In" Type="String" />
+            <Parameter Name="TimeEnds" Mode="In" Type="String" />
+            <Parameter Name="TimeByHourBegins" Mode="In" Type="String" />
+            <Parameter Name="TimeByHourEnds" Mode="In" Type="String" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
           <EntitySet Name="eMedical_BookingTiming" EntityType="eMedicalModel.eMedical_BookingTiming" />
@@ -1354,6 +1370,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <End Role="eMedical_BookingTiming" EntitySet="eMedical_BookingTiming" />
           </AssociationSet>
           <EntitySet Name="vBookingTimes" EntityType="eMedicalModel.vBookingTime" />
+          <FunctionImport Name="sp_eMedical_FlagAllBookingTimesBy_Room">
+            <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="RoomID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -1887,6 +1907,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="RoomId" Type="Int32" />
           <NavigationProperty Name="eMedical_Room" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Room" FromRole="eMedical_BookingTiming" ToRole="eMedical_Room" />
           <Property Name="IsAvailable" Type="Boolean" />
+          <Property Name="TimeBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeByHourBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeByHourEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded_flag" Type="Boolean" />
         </EntityType>
         <EntityType Name="eMedical_Timing">
           <Key>
@@ -2012,7 +2037,6 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
         <EntityType Name="vBookingTime">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="ServiceId" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="BookingDate" Type="DateTime" Precision="0" />
@@ -2025,11 +2049,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="TimingSerial" Type="Int32" />
           <Property Name="RoomId" Type="Int32" />
           <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ServiceId" Type="Int32" Nullable="false" />
-          <Property Name="ServiceName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="NoofSessions" Type="Int32" />
-          <Property Name="Price" Type="Int32" />
           <Property Name="IsAvailable" Type="Boolean" />
+          <Property Name="TimeBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeByHourBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeByHourEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2439,6 +2463,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_BookingTiming">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_BookingTiming">
               <MappingFragment StoreEntitySet="eMedical_BookingTiming">
+                <ScalarProperty Name="DateAdded_flag" ColumnName="DateAdded_flag" />
+                <ScalarProperty Name="TimeByHourEnds" ColumnName="TimeByHourEnds" />
+                <ScalarProperty Name="TimeByHourBegins" ColumnName="TimeByHourBegins" />
+                <ScalarProperty Name="TimeEnds" ColumnName="TimeEnds" />
+                <ScalarProperty Name="TimeBegins" ColumnName="TimeBegins" />
                 <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
                 <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="TimingSerial" ColumnName="TimingSerial" />
@@ -2532,11 +2561,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="vBookingTimes">
             <EntityTypeMapping TypeName="eMedicalModel.vBookingTime">
               <MappingFragment StoreEntitySet="vBookingTimes">
+                <ScalarProperty Name="TimeByHourEnds" ColumnName="TimeByHourEnds" />
+                <ScalarProperty Name="TimeByHourBegins" ColumnName="TimeByHourBegins" />
+                <ScalarProperty Name="TimeEnds" ColumnName="TimeEnds" />
+                <ScalarProperty Name="TimeBegins" ColumnName="TimeBegins" />
                 <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="NoofSessions" ColumnName="NoofSessions" />
-                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
-                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
                 <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="TimingSerial" ColumnName="TimingSerial" />
@@ -2551,6 +2580,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_FlagAllBookingTimesBy_Room" FunctionName="eMedicalModel.Store.sp_eMedical_FlagAllBookingTimesBy_Room" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
