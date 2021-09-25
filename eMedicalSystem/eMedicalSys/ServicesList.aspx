@@ -43,7 +43,7 @@
                         <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Service" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
                         <asp:GridView ID="gvServices" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="SID" 
-                           
+                           OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"
                             EmptyDataText="No records found.">
                             <Columns>
                                 <asp:TemplateField HeaderText="Service Name">
@@ -51,23 +51,56 @@
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("SID") %>' Visible="false"></asp:Label>
                                         <asp:Label ID="lblPName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtServiceName" CssClass="form-control" runat="server" Text='<%# Eval("ServiceName") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorServiceName" ControlToValidate="txtServiceName" ValidationGroup="A" runat="server" ErrorMessage="Service Name" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Service Type">
                                     <ItemTemplate>
                                         <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("ServiceType") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <%--<EditItemTemplate>
+                                        <asp:DropDownList ID="DropDownServiceTypes" AutoPostBack="true" OnSelectedIndexChanged="DropDownServiceTypes_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                                    </EditItemTemplate>--%>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="No of Sessions">
+                                <asp:TemplateField HeaderText="Duration of Session">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("NoofSessions") %>'></asp:Label>
+                                        <asp:Label ID="lblDurationofSession" runat="server" Text='<%# Eval("NoofSessions") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtDurationofSession" CssClass="form-control" runat="server" Text='<%# Eval("NoofSessions") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorDurationofSession" ControlToValidate="txtDurationofSession" ValidationGroup="A" runat="server" ErrorMessage="Duration of Session" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Price">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
+                                        <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtPrice" CssClass="form-control" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorPrice" ControlToValidate="txtPrice" ValidationGroup="A" runat="server" ErrorMessage="Price" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hospital Name">
+                                <asp:TemplateField HeaderText="Status">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text ="? Change Availability"
+                                                Checked='<%# Eval("Status").ToString() == "false" ? false : true %>'/>
+                                        </div>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
+                                <%--<asp:TemplateField HeaderText="Hospital Name">
                                     <ItemTemplate>
                                         <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
                                     </ItemTemplate>
@@ -81,7 +114,7 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                             </Columns>
                         </asp:GridView>
                         </div>

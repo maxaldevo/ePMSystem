@@ -161,8 +161,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">No. of Sessions: </span>
-                            <asp:TextBox ID="txtnosessions" CssClass="form-control" runat="server" placeholder="No. of Sessions"></asp:TextBox>
+                            <span style="font-weight:bold">Duration of Session: </span>
+                            <asp:TextBox ID="txtnosessions" CssClass="form-control" runat="server" placeholder="Duration of Session"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtnosessions"></asp:RequiredFieldValidator>
                         </div>
                     </div>

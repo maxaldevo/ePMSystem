@@ -81,7 +81,7 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var room = db.eMedical_Room.Where(x => x.ID == updatedRoom.ID).First();
-                    //product.ID = updatedProduct.ID;
+                    
                     room.RoomName = updatedRoom.RoomName;
                     room.Status = updatedRoom.Status;
                     db.SaveChanges();

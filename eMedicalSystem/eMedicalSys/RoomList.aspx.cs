@@ -170,7 +170,7 @@ namespace WebApplication1
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                foreach (ImageButton button in e.Row.Cells[3].Controls.OfType<ImageButton>())
+                foreach (ImageButton button in e.Row.Cells[2].Controls.OfType<ImageButton>())
                 {
                     if (button.CommandName == "Delete")
                     {

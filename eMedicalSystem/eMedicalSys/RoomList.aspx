@@ -42,7 +42,7 @@
                     <div class="card-body p-0">
                         <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Room" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
-                        <asp:GridView ID="gvRooms" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"  OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting" EmptyDataText="No records found.">
+                        <asp:GridView ID="gvRooms" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"  OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"  EmptyDataText="No records found.">
                             <Columns>
                                 <asp:TemplateField HeaderText="Room">
                                     <ItemTemplate>

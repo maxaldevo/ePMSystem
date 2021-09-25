@@ -165,5 +165,24 @@ namespace ePM.Dal.Logic
                 return db.vServiceTypes.Where(x => x.Status == true && x.UpdatedByID == userID && x.ClinicId == clinicId).ToList();
             }
         }
+        public static bool updateService(eMedical_Service updatedService)
+        {
+            bool isUpdated = false;
+            if (updatedService != null)
+            {
+                using (var db = new eMedicalEntities())
+                {
+                    var service = db.eMedical_Service.Where(x => x.ID == updatedService.ID).First();
+                    //product.ID = updatedProduct.ID;
+                    service.ServiceName = updatedService.ServiceName;
+                    service.NoofSessions = updatedService.NoofSessions;
+                    service.Price = updatedService.Price;
+                    service.Status = updatedService.Status;
+                    db.SaveChanges();
+                    isUpdated = true;
+                }
+            }
+            return isUpdated;
+        }
     }
 }
