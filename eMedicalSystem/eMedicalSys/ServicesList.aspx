@@ -31,7 +31,7 @@
 
                 <div class="progress" style='height: 30px; margin-top: -10px;'>
                     <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                        <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Admin | Services List</h3>
+                        <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight:bold;">Services List</h3>
                     </div>
                 </div>
             </div>

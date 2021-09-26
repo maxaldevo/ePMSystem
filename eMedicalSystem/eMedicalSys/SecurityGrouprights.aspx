@@ -132,7 +132,7 @@
 
                         <div class="progress" style='height: 30px; margin-top: -10px;'>
                             <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background: #23B3E8;" aria-valuemin="0" aria-valuemax="100">
-                                <h3 style="text-align: center; font-size: larger; margin-top: 10px;">Security | Group Rights</h3>
+                                <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight:bold;">Group Rights</h3>
                             </div>
                         </div>
                     </div>
