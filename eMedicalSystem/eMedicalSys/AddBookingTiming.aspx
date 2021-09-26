@@ -120,8 +120,6 @@
         }
     </style>
 
-
-
     <section class="content">
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
             ClientIDMode="Predictable" ViewStateMode="Inherit" DisplayAfter="1">
@@ -145,7 +143,7 @@
 
                         <div class="progress" style='height: 30px; margin-top: -10px;'>
                             <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                                <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight:bold;">Add New Booking Time</h3>
+                                <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight: bold;">Add New Booking Time</h3>
                             </div>
                         </div>
                     </div>
@@ -153,23 +151,23 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Date:</span>
-                            <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" ondayrender="Calendar1_DayRender"></asp:Calendar>
-                            <asp:Button ID="btnReset"  runat="server" Text="Reset Calendar" OnClick="btnReset_Click" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                            <span style="font-weight: bold">Date:</span>
+                            <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged" OnDayRender="Calendar1_DayRender"></asp:Calendar>
+                            <asp:Button ID="btnReset" runat="server" Text="Reset Calendar" OnClick="btnReset_Click" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                             <%--<asp:TextBox ID="txt_date" CssClass="form-control" runat="server" placeholder="Date"></asp:TextBox>--%>
                             <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txt_date"></asp:RequiredFieldValidator>--%>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Time from:</span>
-                                    <%--<asp:TextBox ID="txtTime" runat="server" CssClass="form-control" />
+                            <span style="font-weight: bold">Time from:</span>
+                            <%--<asp:TextBox ID="txtTime" runat="server" CssClass="form-control" />
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
 
                                 <asp:Button ID="btnSubmit" Text="Submit" runat="server" OnClick="Submit" />--%>
                             <asp:TextBox ID="txtTimefrom" runat="server" CssClass="form-control" />
                             <br />
-                            <span style="font-weight:bold">Time End:</span>
+                            <span style="font-weight: bold">Time End:</span>
                             <asp:TextBox ID="txtTimeEnd" runat="server" CssClass="form-control" />
 
                             <%--<div >
@@ -197,25 +195,78 @@
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Rooms :</span>
-                            <asp:DropDownList ID="DropDownRoom" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            <span style="font-weight: bold">Rooms :</span>
+                            <asp:DropDownList ID="DropDownRoom" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
                 <br />
-                
                 <br />
                 <div class="row">
                     <div class="col-md-2">
                         <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
-                            <%--<asp:TextBox ID="TextBox1"  TextMode="MultiLine" Rows="10"  CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>--%>
-                        
+                        <%--<asp:TextBox ID="TextBox1"  TextMode="MultiLine" Rows="10"  CssClass="form-control" runat="server" placeholder="No of Days"></asp:TextBox>--%>
                     </div>
                     <div class="col-md-8">
                         <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>
                     </div>
                 </div>
                 <br />
+                <div class="col-md-12">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body p-0">
+                            <%--<asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
+                            <asp:GridView ID="gvBookingTimes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found.">
+                                 <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Booking Date">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
+                                            <asp:Label ID="lblBookingDate" runat="server" Text='<%# Convert.ToDateTime( Eval("BookingDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Time Begin">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# convert(int.Parse(Eval("BookingTimeBegin").ToString())) %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Time End">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# convert(int.Parse(Eval("BookingTimeEnd").ToString())) %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Has Booked?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsBooked" runat="server" Font-Bold="true" Text='<%# Eval("IsBooked").ToString() == "true" ? "Booked": "Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <%--<asp:TemplateField HeaderText="Is Available?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsAvailable" runat="server" Font-Bold="true" Text='<%# Eval("IsAvailable").ToString() == "true" ? "Available": "Not Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <div class="form-group">
+                                                <asp:CheckBox ID="chk_IsAvailable" runat="server" Text="? Change Availability"
+                                                    Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>' />
+                                            </div>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>--%>
+                                    <%--<asp:TemplateField HeaderText="Service Name">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                    <%--<asp:TemplateField HeaderText="Added By">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                    <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                </div>
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
@@ -226,9 +277,9 @@
         </asp:UpdatePanel>
         <!--Products list belongs only this user's clinic-->
         <br />
-        
+
     </section>
-        <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="Scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -236,8 +287,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script>
-        
+    <script>
+
         $(function () {
 
             //bindDataTable(); // bind data table on first page load
@@ -338,5 +389,24 @@
             toastr.error(msg, title);
             return false;
         }
+    </script>
+
+    <script>
+        $(function () {
+            bindDataTable(); // bind data table on first page load
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
+        });
+        function bindDataTable() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=gvBookingTimes.ClientID%>').dataTable({
+                    dom: 'Blfrtip',
+                    "bInfo": true,
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+                });
+            });
+        };
     </script>
 </asp:Content>

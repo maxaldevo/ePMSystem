@@ -21,7 +21,6 @@ namespace ePM.Dal
         public Nullable<bool> IsBooked { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
-        public string FName { get; set; }
         public Nullable<int> TimingSerial { get; set; }
         public Nullable<int> RoomId { get; set; }
         public string RoomName { get; set; }
@@ -30,5 +29,7 @@ namespace ePM.Dal
         public string TimeEnds { get; set; }
         public string TimeByHourBegins { get; set; }
         public string TimeByHourEnds { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

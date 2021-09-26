@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="BookingTimesList.aspx.cs" Inherits="WebApplication1.BookingTimesList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-           <style>
+    <style>
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #23B3E8;
             color: white;
@@ -26,12 +26,12 @@
         }
     </style>
     <section class="content">
-                     <div class="row">
+        <div class="row">
             <div class="col-12 col-md-12">
 
                 <div class="progress" style='height: 30px; margin-top: -10px;'>
                     <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
-                        <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight:bold;">Booking Times List</h3>
+                        <h3 style="text-align: center; font-size: larger; margin-top: 10px; font-weight: bold;">Booking Times List</h3>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
-                            <%--<asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
+                        <%--<asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>--%>
                         <asp:GridView ID="gvBookingTimes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found." OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting">
                             <Columns>
                                 <asp:TemplateField HeaderText="Booking Date">
@@ -70,30 +70,30 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <div class="form-group">
-                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text ="? Change Availability"
-                                                Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>'/>
+                                            <asp:CheckBox ID="chk_IsAvailable" runat="server" Text="? Change Availability"
+                                                Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>' />
                                         </div>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Service Name">
+                                <%--<asp:TemplateField HeaderText="Service Name">
                                     <ItemTemplate>
                                         <asp:Label ID="lblServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="Added By">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
+                                <asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />
                             </Columns>
                         </asp:GridView>
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />

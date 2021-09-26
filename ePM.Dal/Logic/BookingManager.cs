@@ -85,21 +85,21 @@ namespace ePM.Dal.Logic
         private static int checkAndReturnInteger(int numb)
         {
             int x = 0;
-            if (numb == 60) x = 60;
-            else if (numb == 120) x = 120;
-            else if (numb == 180) x = 180;
-            else if (numb == 240) x = 240;
-            else if (numb == 300) x = 300;
-            else if (numb == 360) x = 360;
-            else if (numb == 420) x = 420;
-            else if (numb == 480) x = 480;
-            else if (numb == 540) x = 540;
-            else if (numb == 600) x = 600;
-            else if (numb == 660) x = 660;
-            else if (numb == 720) x = 720;
-            else if (numb == 780) x = 780;
-            else if (numb == 840) x = 840;
-            else if (numb == 900) x = 900;
+            if (numb >= 60 && numb < 120) x = 60;
+            else if (numb >= 120 && numb < 180) x = 120;
+            else if (numb >= 180 && numb < 240) x = 180;
+            else if (numb >= 240 && numb < 300) x = 240;
+            else if (numb >= 300 && numb < 360) x = 300;
+            else if (numb >= 360 && numb < 420) x = 360;
+            else if (numb >= 420 && numb < 480) x = 420;
+            else if (numb >= 480 && numb < 540) x = 480;
+            else if (numb >= 540 && numb < 600) x = 540;
+            else if (numb >= 600 && numb < 180) x = 600;
+            else if (numb >= 660 && numb < 660) x = 660;
+            else if (numb >= 720 && numb < 720) x = 720;
+            else if (numb >= 780 && numb < 780) x = 780;
+            else if (numb >= 840 && numb < 840) x = 840;
+            else if (numb >= 900) x = 900;
             return x;
         }
         public static String convert(int mins)

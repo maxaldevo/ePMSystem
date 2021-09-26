@@ -18,7 +18,6 @@ namespace WebApplication1
     {
         public static DateTime _selectedDate = DateTime.Now;
         public List<vBookingTime> bookingTimesList = new List<vBookingTime>();
-        
         protected void Page_PreRender(object sender, EventArgs e)
         {
             if (gvBookingTimes.Rows.Count > 0)
@@ -27,7 +26,6 @@ namespace WebApplication1
                 gvBookingTimes.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -65,7 +63,6 @@ namespace WebApplication1
                 this.BindGrid();
             }
         }
-
         private void BindGrid()
         {
             try
@@ -91,19 +88,16 @@ namespace WebApplication1
             int hours = (mins - mins % 60) / 60;
             return "" + hours + ":" + (mins - hours * 60);
         }
-
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
             gvBookingTimes.EditIndex = e.NewEditIndex;
             this.BindGrid();
         }
-
         protected void OnRowCancelingEdit(object sender, EventArgs e)
         {
             gvBookingTimes.EditIndex = -1;
             this.BindGrid();
         }
-
         protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = gvBookingTimes.Rows[e.RowIndex];
@@ -119,7 +113,6 @@ namespace WebApplication1
             gvBookingTimes.EditIndex = -1;
             this.BindGrid();
         }
-
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -133,7 +126,6 @@ namespace WebApplication1
                 }
             }
         }
-
         protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var roleId = Convert.ToInt32(gvBookingTimes.DataKeys[e.RowIndex].Values[0]);
@@ -165,6 +157,7 @@ namespace WebApplication1
 
             this.BindGrid();
         }
+
         //protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         //{
         //    gvBookingTimes.DataSource = "";

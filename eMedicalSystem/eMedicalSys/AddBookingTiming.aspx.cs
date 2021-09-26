@@ -16,9 +16,19 @@ namespace WebApplication1
 {
     public partial class AddBookingTiming : System.Web.UI.Page
     {
+        public static DateTime _selectedDate = DateTime.Now;
+        public List<vBookingTime> bookingTimesList = new List<vBookingTime>();
         public static int _userID, _DaysNumber, _selectedRoomId = 0;
         public static List<DateTime> selectedDateslist = new List<DateTime>();
 
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (gvBookingTimes.Rows.Count > 0)
+            {
+                gvBookingTimes.UseAccessibleHeader = true;
+                gvBookingTimes.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -52,16 +62,37 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                bindServices(); 
+                bindServices();
+                this.BindGrid();
+            }
+        }
+
+        private void BindGrid()
+        {
+            try
+            {
+                if (bookingTimesList.Count <= 0)
+                {
+                    bookingTimesList = BookingManager.GetBookingTimingList();
+                }
+                gvBookingTimes.DataSource = bookingTimesList;
+                gvBookingTimes.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ExceptionsManager.AddException(ex);
+                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
-        {
+         {
             if (Page.IsValid)
             {
                 try
                 {
                     //Validate user name and emp No
+                    
+                    Session["SelectedDates"] = selectedDateslist;
                     foreach (DateTime dt in selectedDateslist)
                     {
                         Calendar1.SelectedDates.Add(dt);
@@ -85,7 +116,6 @@ namespace WebApplication1
                             //if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -101,25 +131,8 @@ namespace WebApplication1
             //txtDaysNumber.Text = "";
             // lblResult.Visible = false;
         }
-
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            //try
-            //{
-            //    int cnt = BookingManager.GetBookingTimingList_distinct().Count;
-            //    for (int i = 0; i < cnt - 1; i++)
-            //    {
-            //        if (e.Day.Date.CompareTo(BookingManager.GetBookingTimingList_distinct()[i].bookingDate) < 0)
-            //        {
-            //            e.Day.IsSelectable = false;
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
-            //}
             Color NormColor = new Color();
             NormColor = e.Cell.BackColor;
             if (e.Day.IsSelected == true)
@@ -127,7 +140,6 @@ namespace WebApplication1
                 selectedDateslist.Add(e.Day.Date);
                 e.Cell.BackColor = Color.Orange;
             }
-            
             Session["SelectedDates"] = selectedDateslist;
         }
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
@@ -145,13 +157,11 @@ namespace WebApplication1
                 selectedDateslist.Clear();
             }
         }
-
         protected void btnReset_Click(object sender, EventArgs e)
         {
             selectedDateslist.Clear();
             Calendar1.SelectedDates.Clear();
         }
-
         private void bindServices()
         {
             DropDownRoom.DataSource = null;
@@ -165,15 +175,14 @@ namespace WebApplication1
             DropDownRoom.Items[0].Selected = true;
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
         }
-
+        public static String convert(int mins)
+        {
+            int hours = (mins - mins % 60) / 60;
+            return "" + hours + ":" + (mins - hours * 60);
+        }
         protected void DropDownRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
         }
-
-        //protected void Submit(object sender, EventArgs e)
-        //{
-        //    DateTime time = DateTime.Parse(Request.Form[txtTime.UniqueID]);
-        //}
     }
 }
