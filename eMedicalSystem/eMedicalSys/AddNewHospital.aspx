@@ -124,14 +124,14 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Hospital Name:</span>
+                            <span style="font-weight:bold">Hospital Name:</span>
                             <asp:TextBox ID="txtHName" CssClass="form-control" runat="server" placeholder="Hospital Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtHName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Description:</span>
+                            <span style="font-weight:bold">Description:</span>
                             <asp:TextBox ID="txtDescription" CssClass="form-control" runat="server" placeholder="txtDescription"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
                         </div>

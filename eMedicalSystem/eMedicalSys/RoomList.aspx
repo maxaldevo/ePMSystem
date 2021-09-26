@@ -42,6 +42,7 @@
                     <div class="card-body p-0">
                         <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Room" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
+                        <br />
                         <asp:GridView ID="gvRooms" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"  OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"  EmptyDataText="No records found.">
                             <Columns>
                                 <asp:TemplateField HeaderText="Room">
@@ -58,7 +59,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status").ToString() == "false" ? "InActive" : "Active" %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <div class="form-group">
@@ -67,7 +68,7 @@
                                         </div>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" DeleteImageUrl="~/Images/clear.png" ShowDeleteButton="True" />
+                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true"/>
                             </Columns>
                         </asp:GridView>
                         </div>

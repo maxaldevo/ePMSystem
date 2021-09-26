@@ -124,7 +124,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Room Name:</span>
+                            <span style="font-weight:bold">Room Name:</span>
                             <asp:TextBox ID="txtRoomName" CssClass="form-control" runat="server" placeholder="Room Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtRoomName"></asp:RequiredFieldValidator>
                         </div>

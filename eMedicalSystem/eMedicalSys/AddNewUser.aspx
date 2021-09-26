@@ -146,30 +146,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <%--<div class="col-md-3">
                         <div class="controls">
                             <span>Full Name:</span>
                             <asp:TextBox ID="txtFName" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFName"></asp:RequiredFieldValidator>
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>First Name:</span>
+                            <span style="font-weight:bold">First Name:</span>
                             <asp:TextBox ID="txtFirstName" CssClass="form-control" runat="server" placeholder="First Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtFirstName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Last Name:</span>
+                            <span style="font-weight:bold">Last Name:</span>
                             <asp:TextBox ID="txtLastName" CssClass="form-control" runat="server" placeholder="Last Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtLastName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Email :</span>
+                            <span style="font-weight:bold">Email :</span>
                             <asp:TextBox ID="txtEmail" CssClass="form-control" runat="server" placeholder="Email"></asp:TextBox>
 
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
@@ -178,26 +178,26 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="txtEmail" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true"></asp:RequiredFieldValidator>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Mobile No. :</span>
+                            <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile No"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Mobile No. :</span>
-                            <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Mobile No"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="controls">
-                            <span>Employee No. :</span>
-                            <asp:TextBox ID="txtEmpNo" runat="server" CssClass="form-control" placeholder="Employee No"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtEmpNo"></asp:RequiredFieldValidator>
+                            <span style="font-weight:bold">Civil No. :</span>
+                            <asp:TextBox ID="txtcivilNo" runat="server" CssClass="form-control" placeholder="Civil No."></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidatortxtcivilNo" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtcivilNo"></asp:RequiredFieldValidator>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Security Access Group :</span>
+                            <span style="font-weight:bold">Security Access Group :</span>
                             <asp:DropDownList ID="DropDownRoles" OnSelectedIndexChanged="DropDownRoles_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
                         </div>
                     </div>
@@ -209,14 +209,14 @@
 
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Hospitals :</span>
-                            <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            <%--<span>Hospitals :</span>--%>
+                            <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Clinic :</span>
-                            <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                            <%--<span>Clinic :</span>--%>
+                            <asp:DropDownList ID="DropDownClinics" AutoPostBack="true" OnSelectedIndexChanged="DropDownClinics_SelectedIndexChanged" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
                 </div>

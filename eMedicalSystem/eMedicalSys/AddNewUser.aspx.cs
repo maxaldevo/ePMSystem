@@ -15,7 +15,7 @@ namespace WebApplication1
 {
     public partial class AddNewUser : System.Web.UI.Page
     {
-        public static string _selectedDept , _fname, _firstName,_lastName,_empno,_email,_mobile = "";
+        public static string _selectedDept, _firstName, _lastName, _civilno, _email, _mobile = "";
         public static int _selectedRole, _selectedHospital, _selectedClinic = 0;
         public List<vPersonnel> usersList = new List<vPersonnel>();
 
@@ -36,7 +36,7 @@ namespace WebApplication1
                     {
                         userId = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
-  
+
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
                         {
@@ -45,6 +45,13 @@ namespace WebApplication1
                                 Response.Redirect("~/Unauthorized.aspx", true);
                             }
                         }
+                        else
+                        {
+                            BindHospitals();
+                            BindClinics(_selectedHospital);
+                            DropDownClinics.Visible = true;
+                            DropDownHospitals.Visible = true;
+                        }
                     }
                     else
                     {
@@ -52,9 +59,7 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                BindHospitals();
                 BindRoles();
-                BindClinics(_selectedHospital); 
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -65,18 +70,18 @@ namespace WebApplication1
                 {
                     //Validate user name and emp No
                   
-                    _fname = txtFName.Text;
+                    //_fname = txtFName.Text;
                     _firstName = txtFirstName.Text;
                     _lastName = txtLastName.Text;
                     _email = txtEmail.Text;
 
-                    _empno = txtEmpNo.Text;
+                    //_empno = txtEmpNo.Text;
                     _mobile = !string.IsNullOrWhiteSpace(txtMobile.Text) ? txtMobile.Text : null;
                     bool emailExist = UserManager.checkUserEmail(_email);
-                    bool empoExist = UserManager.checkUserEmpNo(_empno);
+                    bool empoExist = UserManager.checkUserEmpNo(_civilno);
                     if (!emailExist && !empoExist)
                     {
-                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_fname, _firstName, _lastName, _email, _mobile, _empno, _selectedRole, _selectedHospital, _selectedClinic);
+                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_firstName + " " + _lastName, _firstName, _lastName, _email, _mobile, _civilno, _selectedRole, _selectedHospital, _selectedClinic);
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;
@@ -116,10 +121,10 @@ namespace WebApplication1
         private void clearControls()
         {
             txtEmail.Text = "";
-            txtFName.Text = "";
+            //txtFName.Text = "";
             txtFirstName.Text = "";
             txtLastName.Text = "";
-            txtEmpNo.Text = "";
+            txtcivilNo.Text = "";
             txtMobile.Text = "";
             // lblResult.Visible = false;
         }

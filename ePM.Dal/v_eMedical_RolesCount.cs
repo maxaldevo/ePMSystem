@@ -19,5 +19,6 @@ namespace ePM.Dal
         public string Notes { get; set; }
         public System.DateTime DateAdded { get; set; }
         public Nullable<int> CountUsers { get; set; }
+        public Nullable<int> UsableBy { get; set; }
     }
 }

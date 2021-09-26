@@ -124,14 +124,14 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Full Name:</span>
+                            <span style="font-weight:bold">Full Name:</span>
                             <asp:TextBox ID="txtClinicName" CssClass="form-control" runat="server" placeholder="Clinic Name"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span>Choose Hospital :</span>
+                            <span style="font-weight:bold">Choose Hospital :</span>
                             <asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
                         </div>
                     </div>

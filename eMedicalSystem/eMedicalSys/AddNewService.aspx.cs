@@ -44,6 +44,17 @@ namespace WebApplication1
                             {
                                 Response.Redirect("~/Unauthorized.aspx", true);
                             }
+                            BindRooms(_userID);
+                            BindServiceTypes(_userID, _clinicId);
+                        }
+                        else
+                        {
+                            BindHospitals();
+                            BindClinics(_selectedHospital);
+                            BindRooms(_userID);
+                            BindServiceTypes(_userID, _clinicId);
+                            DropDownClinics.Visible = true;
+                            DropDownHospitals.Visible = true;
                         }
                     }
                     else
@@ -52,10 +63,6 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                BindHospitals();
-                BindRooms();
-                BindClinics(_selectedHospital);
-                BindServiceTypes(_userID, _clinicId);
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
@@ -122,6 +129,19 @@ namespace WebApplication1
             //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
             DropDownHospitals.Items[0].Selected = true;
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
+        }
+        private void BindRooms(int usrId)
+        {
+            DropDownRooms.DataSource = null;
+            DropDownRooms.ClearSelection();
+            List<eMedical_Room> Rooms = ServiceManager.GetRoomsList(usrId);
+            DropDownRooms.DataSource = Rooms;
+            DropDownRooms.DataValueField = "ID";
+            DropDownRooms.DataTextField = "RoomName";
+            DropDownRooms.DataBind();
+            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+            DropDownRooms.Items[0].Selected = true;
+            _selectedRoom = int.Parse(DropDownRooms.SelectedItem.Value);
         }
         private void BindRooms()
         {

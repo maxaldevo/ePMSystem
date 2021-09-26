@@ -42,6 +42,7 @@
                     <div class="card-body p-0">
                         <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Service Type" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
+                        <br />
                         <asp:GridView ID="gvServiceTypes" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
                            
                             EmptyDataText="No records found.">

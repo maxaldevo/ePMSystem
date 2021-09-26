@@ -119,7 +119,7 @@ namespace ePM.Dal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewClinic", clinicNameParameter, hospitalIDParameter, userIDParameter, msg);
         }
     
-        public virtual int sp_eMedical_addNewUser_ByHospitalID_ClinicID(string fName, string firstName, string lastName, string email, string mobile, string empNo, Nullable<int> roleId, Nullable<int> hospitalId, Nullable<int> clinicId, ObjectParameter msg)
+        public virtual int sp_eMedical_addNewUser_ByHospitalID_ClinicID(string fName, string firstName, string lastName, string email, string mobile, string civilNo, Nullable<int> roleId, Nullable<int> hospitalId, Nullable<int> clinicId, ObjectParameter msg)
         {
             var fNameParameter = fName != null ?
                 new ObjectParameter("FName", fName) :
@@ -141,9 +141,9 @@ namespace ePM.Dal
                 new ObjectParameter("Mobile", mobile) :
                 new ObjectParameter("Mobile", typeof(string));
     
-            var empNoParameter = empNo != null ?
-                new ObjectParameter("EmpNo", empNo) :
-                new ObjectParameter("EmpNo", typeof(string));
+            var civilNoParameter = civilNo != null ?
+                new ObjectParameter("CivilNo", civilNo) :
+                new ObjectParameter("CivilNo", typeof(string));
     
             var roleIdParameter = roleId.HasValue ?
                 new ObjectParameter("RoleId", roleId) :
@@ -157,7 +157,7 @@ namespace ePM.Dal
                 new ObjectParameter("ClinicId", clinicId) :
                 new ObjectParameter("ClinicId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewUser_ByHospitalID_ClinicID", fNameParameter, firstNameParameter, lastNameParameter, emailParameter, mobileParameter, empNoParameter, roleIdParameter, hospitalIdParameter, clinicIdParameter, msg);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewUser_ByHospitalID_ClinicID", fNameParameter, firstNameParameter, lastNameParameter, emailParameter, mobileParameter, civilNoParameter, roleIdParameter, hospitalIdParameter, clinicIdParameter, msg);
         }
     
         public virtual ObjectResult<sp_eMedical_ModulePagesByRole_Result> sp_eMedical_ModulePagesByRole(Nullable<int> roleId)

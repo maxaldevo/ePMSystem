@@ -75,10 +75,10 @@ namespace WebApplication1
         {
             try
             {
-                if (ServiceList.Count<=0)
+                if (ServiceList.Count <= 0)
                 {
                     if (Clinic_ID == 0 && userID == 0) ServiceList = ServiceManager.GetservicesList(); else ServiceList = ServiceManager.GetservicesList(Clinic_ID, userID);
-                    
+
                 }
                 gvServices.DataSource = ServiceList;
                 gvServices.DataBind();

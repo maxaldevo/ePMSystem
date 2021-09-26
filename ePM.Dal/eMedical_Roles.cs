@@ -25,10 +25,12 @@ namespace ePM.Dal
         public string RoleName { get; set; }
         public string Notes { get; set; }
         public System.DateTime DateAdded { get; set; }
+        public Nullable<int> UsableBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_RolesRights> eMedical_RolesRights { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_User> eMedical_User { get; set; }
+        public virtual eMedical_User eMedical_User1 { get; set; }
     }
 }
