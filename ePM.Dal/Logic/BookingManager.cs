@@ -121,15 +121,41 @@ namespace ePM.Dal.Logic
                 return db.vBookingTimes.ToList();
             }
         }
+        //public static List<BookingDates> GetBookingTimingList_Distinct()
+        //{
+        //    using (var db = new eMedicalEntities())
+        //    {
+        //        //List<vBookingTime> bbb = new List<vBookingTime>();
+        //        return db.vBookingTimes.Select(i => new { i.TimeBegins, i.TimeEnds, i.BookingDate, i.IsBooked, i.IsAvailable, i.RoomId, i.RoomName }).Distinct()
+        //        .Select(x => new vBookingTime
+        //        {
+        //            TimeBegins = x.TimeBegins,
+        //            TimeEnds = x.TimeEnds,
+        //            BookingDate = x.BookingDate.Value,
+        //            IsBooked = x.IsBooked.Value,
+        //            IsAvailable = x.IsAvailable.Value,
+        //            RoomId = x.RoomId.Value,
+        //            RoomName = x.RoomName
+        //        }).ToList();
+        //        //bbb = db.vBookingTimes.Select(x => new vBookingTime { TimeBegins = x.TimeBegins, TimeEnds = x.TimeEnds }).Distinct().ToList();
+        //        //return bbb;
+        //    }
+        //}
         public static List<BookingDates> GetBookingTimingList_distinct()
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimes.Select(m => m.BookingDate).Distinct()
+                return db.vBookingTimesDistincts.Select(m => new { m.ID, m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName }).Distinct()
                     .Select(x => new BookingDates
                     {
-                    bookingDate = x.Value
-                  }).ToList(); 
+                        ID = x.ID,
+                        bookingDate = x.BookingDate.Value,
+                        TimeBegins = x.TimeBegins,
+                        TimeEnds = x.TimeEnds,
+                        IsBooked = x.IsBooked.Value,
+                        IsAvailable = x.IsAvailable.Value,
+                        RoomName = x.RoomName
+                    }).ToList();
             }
         }
         public static List<eMedical_BookingTiming> GetBookingTimingList_ByUserId(bool isBooked, int userid)

@@ -20,6 +20,7 @@ namespace WebApplication1
         public List<vBookingTime> bookingTimesList = new List<vBookingTime>();
         public static int _userID, _DaysNumber, _selectedRoomId = 0;
         public static List<DateTime> selectedDateslist = new List<DateTime>();
+        
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
@@ -71,11 +72,11 @@ namespace WebApplication1
         {
             try
             {
-                if (bookingTimesList.Count <= 0)
-                {
-                    bookingTimesList = BookingManager.GetBookingTimingList();
-                }
-                gvBookingTimes.DataSource = bookingTimesList;
+                //if (bookingTimesList.Count <= 0)
+                //{
+                //    bookingTimesList = BookingManager.GetBookingTimingList_distinct();
+                //}
+                gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct();
                 gvBookingTimes.DataBind();
             }
             catch (Exception ex)

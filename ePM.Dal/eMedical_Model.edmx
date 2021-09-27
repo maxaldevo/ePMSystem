@@ -361,6 +361,20 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
           <Property Name="LastName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vBookingTimesDistinct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vBookingTimesDistinct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookingDate" Type="date" />
+          <Property Name="TimeBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeEnds" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IsBooked" Type="bit" />
+          <Property Name="IsAvailable" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vPersonnel">
           <Key>
@@ -919,6 +933,17 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vBookingTimes].[LastName] AS [LastName]
     FROM [dbo].[vBookingTimes] AS [vBookingTimes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vBookingTimesDistinct" EntityType="Self.vBookingTimesDistinct" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vBookingTimesDistinct].[BookingDate] AS [BookingDate], 
+    [vBookingTimesDistinct].[TimeBegins] AS [TimeBegins], 
+    [vBookingTimesDistinct].[TimeEnds] AS [TimeEnds], 
+    [vBookingTimesDistinct].[RoomName] AS [RoomName], 
+    [vBookingTimesDistinct].[ID] AS [ID], 
+    [vBookingTimesDistinct].[IsBooked] AS [IsBooked], 
+    [vBookingTimesDistinct].[IsAvailable] AS [IsAvailable]
+    FROM [dbo].[vBookingTimesDistinct] AS [vBookingTimesDistinct]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vPersonnel" EntityType="Self.vPersonnel" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vPersonnel].[FName] AS [FName], 
@@ -1389,6 +1414,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
           </AssociationSet>
           <EntitySet Name="vBookingTimes" EntityType="eMedicalModel.vBookingTime" />
+          <EntitySet Name="vBookingTimesDistincts" EntityType="eMedicalModel.vBookingTimesDistinct" />
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -2099,6 +2125,18 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="vBookingTimesDistinct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BookingDate" Type="DateTime" Precision="0" />
+          <Property Name="TimeBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IsBooked" Type="Boolean" />
+          <Property Name="IsAvailable" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2625,6 +2663,19 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
                 <ScalarProperty Name="BookingTimeBegin" ColumnName="BookingTimeBegin" />
                 <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vBookingTimesDistincts">
+            <EntityTypeMapping TypeName="eMedicalModel.vBookingTimesDistinct">
+              <MappingFragment StoreEntitySet="vBookingTimesDistinct">
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="TimeEnds" ColumnName="TimeEnds" />
+                <ScalarProperty Name="TimeBegins" ColumnName="TimeBegins" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

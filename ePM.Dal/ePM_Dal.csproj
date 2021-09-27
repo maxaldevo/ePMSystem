@@ -156,6 +156,9 @@
     <Compile Include="vBookingTime.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="vBookingTimesDistinct.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BookingDates.cs" />
     <Compile Include="ViewModels\ExcelValidationResult.cs" />
     <Compile Include="ViewModels\GroupList.cs" />
