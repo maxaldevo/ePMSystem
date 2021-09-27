@@ -21,5 +21,6 @@ namespace ePM.Dal
         public int ID { get; set; }
         public Nullable<bool> IsBooked { get; set; }
         public Nullable<bool> IsAvailable { get; set; }
+        public Nullable<int> UpdatedByID { get; set; }
     }
 }

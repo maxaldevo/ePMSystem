@@ -125,6 +125,7 @@ namespace WebApplication1
                 }
 
             }
+            this.BindGrid();
 
         }
         private void clearControls()

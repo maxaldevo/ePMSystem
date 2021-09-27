@@ -340,5 +340,22 @@ namespace ePM.Dal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_FlagAllBookingTimesBy_Room", bookingDateParameter, roomIDParameter);
         }
+    
+        public virtual int sp_eMedical_DeleteBookingTiming(Nullable<System.DateTime> bookingDate, Nullable<int> roomID, Nullable<int> userID)
+        {
+            var bookingDateParameter = bookingDate.HasValue ?
+                new ObjectParameter("BookingDate", bookingDate) :
+                new ObjectParameter("BookingDate", typeof(System.DateTime));
+    
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_DeleteBookingTiming", bookingDateParameter, roomIDParameter, userIDParameter);
+        }
     }
 }

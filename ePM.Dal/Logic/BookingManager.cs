@@ -47,6 +47,15 @@ namespace ePM.Dal.Logic
 
         //    return friendlyMsg;
         //}
+        public static int CheckTo_DeleteBookingday(DateTime Dutydate, int roomID, int userid)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                int chkMoreThanZero = db.vBookingTimesDistincts.Where(x => x.BookingDate == Dutydate && x.ID == roomID && x.UpdatedByID == userid).Count();
+                return chkMoreThanZero;
+            }
+
+        }
         public static string CreateSchedule(DateTime Dutydate, int timeFrom, int timeEnd, int roomID, int userid)
         {
             string friendlyMsg = "";
@@ -54,10 +63,14 @@ namespace ePM.Dal.Logic
             {
                 using (var db = new eMedicalEntities())
                 {
+                    if (CheckTo_DeleteBookingday(Dutydate, roomID, userid) > 0)
+                    {
+                        db.sp_eMedical_DeleteBookingTiming(Dutydate, roomID, userid);
+                    }
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
                     int timeFrom_minutes = timeFrom * 60;
                     int timeEnd_minutes = timeEnd * 60;
-                    
+
 
                     int minutesinbetween = (timeEnd - timeFrom) * 60;
                     for (int i = 0; i < minutesinbetween; i = i + 15)
@@ -94,12 +107,21 @@ namespace ePM.Dal.Logic
             else if (numb >= 420 && numb < 480) x = 420;
             else if (numb >= 480 && numb < 540) x = 480;
             else if (numb >= 540 && numb < 600) x = 540;
-            else if (numb >= 600 && numb < 180) x = 600;
-            else if (numb >= 660 && numb < 660) x = 660;
-            else if (numb >= 720 && numb < 720) x = 720;
-            else if (numb >= 780 && numb < 780) x = 780;
-            else if (numb >= 840 && numb < 840) x = 840;
-            else if (numb >= 900) x = 900;
+            else if (numb >= 600 && numb < 660) x = 600;
+            else if (numb >= 660 && numb < 720) x = 660;
+            else if (numb >= 720 && numb < 780) x = 720;
+            else if (numb >= 780 && numb < 840) x = 780;
+            else if (numb >= 840 && numb < 900) x = 840;
+            else if (numb >= 900 && numb < 960) x = 900;
+            else if (numb >= 960 && numb < 1020) x = 960;
+            else if (numb >= 1020 && numb < 1080) x = 1020;
+            else if (numb >= 1080 && numb < 1140) x = 1080;
+            else if (numb >= 1140 && numb < 1200) x = 1140;
+            else if (numb >= 1200 && numb < 1260) x = 1200;
+            else if (numb >= 1260 && numb < 1320) x = 1260;
+            else if (numb >= 1320 && numb < 1380) x = 1320;
+            else if (numb >= 1380 && numb < 1440) x = 1380;
+            else if (numb >= 1440) x = 1440;
             return x;
         }
         public static String convert(int mins)

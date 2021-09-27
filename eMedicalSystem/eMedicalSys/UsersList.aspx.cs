@@ -29,7 +29,7 @@ namespace WebApplication1
             {
                 #region Page Validation
 
-                int userId, RoleId, clinicID = 0;
+                int usrId, RoleId, clinicID = 0;
                 if (Session["UserId"] == null)
                 {
                     Response.Redirect("~/Login/Login.aspx", true);
@@ -38,7 +38,7 @@ namespace WebApplication1
                 {
                     if (int.Parse(Session["UserId"].ToString()) != 0)
                     {
-                        userId = int.Parse(Session["UserId"].ToString());
+                        usrId = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
                         clinicID = int.Parse(Session["ClinicId"].ToString());
 
@@ -59,21 +59,22 @@ namespace WebApplication1
 
                 #endregion Page Validation
 
-                this.BindGrid(clinicID);
+                BindGrid(int.Parse(Session["RoleId"].ToString()), clinicID);
             }
         }
 
-        private void BindGrid(int clinicId)
+        private void BindGrid(int roleId, int clinicId)
         {
             try
             {
-                if (Cache["UsersList"] == null)
+                if (usersList.Count <= 0)
 
                 {
-                    usersList = UserManager.getUsersList(clinicId);
-                    Cache["UsersList"] = usersList;
-                    Cache.Insert("UsersList", usersList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
-                    //  Response.Write("<script>alert('Its processing from Data hit');</script>");
+                    //usersList = UserManager.getUsersList(clinicId);
+                    //Cache["UsersList"] = usersList;
+                    //Cache.Insert("UsersList", usersList, null, DateTime.MaxValue, TimeSpan.FromMinutes(5));
+                    ////  Response.Write("<script>alert('Its processing from Data hit');</script>");
+                    if (roleId == 1) usersList = UserManager.getUsersList(); else usersList = UserManager.getUsersList(clinicId);
                 }
                 else
 
@@ -82,7 +83,7 @@ namespace WebApplication1
                     //  Response.Write("<script>alert('Its processing from cache');</script>");
                 }
 
-                gvUsers.DataSource = (List<vPersonnel>)Cache["UsersList"];
+                gvUsers.DataSource = usersList;
                 gvUsers.DataBind();
             }
             catch (Exception ex)
