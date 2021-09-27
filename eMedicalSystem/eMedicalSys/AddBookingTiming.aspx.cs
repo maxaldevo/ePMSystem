@@ -63,21 +63,25 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                bindServices();
-                this.BindGrid();
+                bindRooms(RoleId,_userID);
+                this.BindGrid(RoleId, _userID);
             }
         }
 
-        private void BindGrid()
+        private void BindGrid(int roleId, int usrId)
         {
             try
             {
-                //if (bookingTimesList.Count <= 0)
-                //{
-                //    bookingTimesList = BookingManager.GetBookingTimingList_distinct();
-                //}
-                gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct();
-                gvBookingTimes.DataBind();
+                if (roleId != 1)
+                {
+                    gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct(usrId);
+                    gvBookingTimes.DataBind();
+                }
+                else
+                {
+                    gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct();
+                    gvBookingTimes.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -125,7 +129,7 @@ namespace WebApplication1
                 }
 
             }
-            this.BindGrid();
+            this.BindGrid(int.Parse(Session["RoleId"].ToString()), _userID);
 
         }
         private void clearControls()
@@ -164,18 +168,34 @@ namespace WebApplication1
             selectedDateslist.Clear();
             Calendar1.SelectedDates.Clear();
         }
-        private void bindServices()
+        private void bindRooms(int roleId, int usrId)
         {
-            DropDownRoom.DataSource = null;
-            DropDownRoom.ClearSelection();
-            List<eMedical_Room> Rooms = ServiceManager.GetRoomsList();
-            DropDownRoom.DataSource = Rooms;
-            DropDownRoom.DataValueField = "ID";
-            DropDownRoom.DataTextField = "RoomName";
-            DropDownRoom.DataBind();
-            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
-            DropDownRoom.Items[0].Selected = true;
-            _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
+            if (roleId != 1)
+            {
+                DropDownRoom.DataSource = null;
+                DropDownRoom.ClearSelection();
+                List<eMedical_Room> Rooms = ServiceManager.GetRoomsList(usrId);
+                DropDownRoom.DataSource = Rooms;
+                DropDownRoom.DataValueField = "ID";
+                DropDownRoom.DataTextField = "RoomName";
+                DropDownRoom.DataBind();
+                //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+                DropDownRoom.Items[0].Selected = true;
+                _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
+            }
+            else
+            {
+                DropDownRoom.DataSource = null;
+                DropDownRoom.ClearSelection();
+                List<eMedical_Room> Rooms = ServiceManager.GetRoomsList();
+                DropDownRoom.DataSource = Rooms;
+                DropDownRoom.DataValueField = "ID";
+                DropDownRoom.DataTextField = "RoomName";
+                DropDownRoom.DataBind();
+                //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+                DropDownRoom.Items[0].Selected = true;
+                _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
+            }
         }
         public static String convert(int mins)
         {

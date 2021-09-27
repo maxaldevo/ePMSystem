@@ -180,6 +180,24 @@ namespace ePM.Dal.Logic
                     }).ToList();
             }
         }
+        public static List<BookingDates> GetBookingTimingList_distinct(int usrId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vBookingTimesDistincts.Select(m => new { m.ID, m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName, m.UpdatedByID }).Distinct()
+                    .Select(x => new BookingDates
+                    {
+                        ID = x.ID,
+                        bookingDate = x.BookingDate.Value,
+                        TimeBegins = x.TimeBegins,
+                        TimeEnds = x.TimeEnds,
+                        IsBooked = x.IsBooked.Value,
+                        IsAvailable = x.IsAvailable.Value,
+                        RoomName = x.RoomName,
+                        UserID = x.UpdatedByID.Value
+                    }).Where(k => k.UserID == usrId).ToList();
+            }
+        }
         public static List<eMedical_BookingTiming> GetBookingTimingList_ByUserId(bool isBooked, int userid)
         {
             using (var db = new eMedicalEntities())

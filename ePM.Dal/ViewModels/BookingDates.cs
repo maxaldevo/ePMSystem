@@ -16,5 +16,6 @@ namespace ePM.Dal.ViewModels
         public bool IsAvailable { get; set; }
         public int RoomId { get; set; }
         public string RoomName { get; set; }
+        public int UserID { get; set; }
     }
 }
