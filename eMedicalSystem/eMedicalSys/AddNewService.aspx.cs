@@ -1,14 +1,14 @@
 ﻿using ePM.Dal;
 using ePM.Dal.Logic;
 using ePM_Dal.Logic;
-using ePM_Dal.Utilities;
-using ePM_Dal.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.Caching;
 using System.Web.UI;
+using ePM_Dal.Utilities;
+using ePM_Dal.ViewModels;
+using System.Linq;
+using System.Web.Caching;
 using System.Web.UI.WebControls;
 
 namespace WebApplication1
@@ -16,8 +16,7 @@ namespace WebApplication1
     public partial class AddNewService : System.Web.UI.Page
     {
         public static string  _sName;
-        public static int _noOfSessions, _price, _clinicId, _userID, _selectedHospital, _selectedClinic, _selectedServiceType, _selectedRoom = 0;
-
+        public static int _noOfSessions, _price, _clinicId, _hospitalId, _userID, _selectedHospital, _selectedClinic, _selectedServiceType, _selectedRoom = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -36,6 +35,7 @@ namespace WebApplication1
                         _userID = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
                         _clinicId = int.Parse(Session["ClinicId"].ToString());
+                        _hospitalId = int.Parse(Session["HospitalID"].ToString());
 
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
@@ -46,15 +46,17 @@ namespace WebApplication1
                             }
                             BindRooms(_userID);
                             BindServiceTypes(_userID, _clinicId);
+                            _selectedClinic = _clinicId;
+                            _selectedHospital = _hospitalId;
                         }
                         else
                         {
                             BindHospitals();
                             BindClinics(_selectedHospital);
-                            BindRooms(_userID);
-                            BindServiceTypes(_userID, _clinicId);
                             DropDownClinics.Visible = true;
                             DropDownHospitals.Visible = true;
+                            BindRooms(_userID);
+                            BindServiceTypes();
                         }
                     }
                     else
@@ -76,7 +78,7 @@ namespace WebApplication1
                     _sName = txtSName.Text;
                     _noOfSessions = int.Parse(txtnosessions.Text);
                     _price = int.Parse(txtPrice.Text);
-
+                    
                     string result = ServiceManager.AddNewService(_sName, _selectedServiceType, _noOfSessions, _price, _selectedClinic, _selectedHospital, _selectedRoom, _userID);
                     if (result != "inserted")
                     {
@@ -95,17 +97,13 @@ namespace WebApplication1
                         //Re-Bind the user grid based on the User's role.
                         //if (int.Parse(Session["RoleId"].ToString()) == 1) BindProductsGrid(0, 0); else BindProductsGrid(int.Parse(Session["ClinicId"].ToString()), int.Parse(Session["UserId"].ToString()));
                     }
-
-
                 }
                 catch (Exception ex)
                 {
 
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
                 }
-
             }
-
         }
         private void clearControls()
         {
@@ -114,9 +112,6 @@ namespace WebApplication1
             txtPrice.Text = "";
             // lblResult.Visible = false;
         }
-
-
-
         private void BindHospitals()
         {
             DropDownHospitals.DataSource = null;
@@ -181,18 +176,27 @@ namespace WebApplication1
             DropDownServiceTypes.Items[0].Selected = true;
             _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
         }
-
+        private void BindServiceTypes()
+        {
+            DropDownServiceTypes.DataSource = null;
+            DropDownServiceTypes.ClearSelection();
+            List<vServiceType> ServicesTypes = ServiceManager.GetservicesTypeList();
+            DropDownServiceTypes.DataSource = ServicesTypes;
+            DropDownServiceTypes.DataValueField = "ID";
+            DropDownServiceTypes.DataTextField = "ServiceType";
+            DropDownServiceTypes.DataBind();
+            DropDownServiceTypes.Items[0].Selected = true;
+            _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
+        }
         protected void DropDownHospitals_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
             BindClinics(_selectedHospital);
         }
-
         protected void DropDownClinics_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
-
         protected void DropDownServiceTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceType = int.Parse(DropDownServiceTypes.SelectedItem.Value);
