@@ -99,12 +99,10 @@ namespace WebApplication1
             txtDaysNumber.Text = "";
             // lblResult.Visible = false;
         }
-
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             txt_date.Text = Calendar1.SelectedDate.ToShortDateString();
         }
-
         private void bindServices()
         {
             DropDownService.DataSource = null;
@@ -118,12 +116,9 @@ namespace WebApplication1
             DropDownService.Items[0].Selected = true;
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-
-
     }
 }
