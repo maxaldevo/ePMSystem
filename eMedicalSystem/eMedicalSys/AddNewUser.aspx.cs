@@ -16,7 +16,7 @@ namespace WebApplication1
     public partial class AddNewUser : System.Web.UI.Page
     {
         public static string _selectedDept, _firstName, _lastName, _civilno, _email, _mobile = "";
-        public static int _selectedRole, _selectedHospital, _selectedClinic = 0;
+        public static int _selectedRole, _selectedHospital, _selectedClinic, _clinicId, _hospitalId = 0;
         public List<vPersonnel> usersList = new List<vPersonnel>();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -36,6 +36,8 @@ namespace WebApplication1
                     {
                         userId = int.Parse(Session["UserId"].ToString());
                         RoleId = int.Parse(Session["RoleId"].ToString());
+                        _clinicId = int.Parse(Session["ClinicId"].ToString());
+                        _hospitalId = int.Parse(Session["HospitalID"].ToString());
 
                         string currentPage = HttpContext.Current.Request.Url.LocalPath;
                         if (RoleId != 1)
@@ -44,6 +46,9 @@ namespace WebApplication1
                             {
                                 Response.Redirect("~/Unauthorized.aspx", true);
                             }
+                            BindRoles();
+                            _selectedClinic = _clinicId;
+                            _selectedHospital = _hospitalId;
                         }
                         else
                         {
@@ -59,7 +64,6 @@ namespace WebApplication1
                     }
                 }
                 #endregion Page Validation
-                BindRoles();
             }
         }
         protected void btnShowData_Click(object sender, EventArgs e)
