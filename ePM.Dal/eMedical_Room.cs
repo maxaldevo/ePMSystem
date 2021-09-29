@@ -26,6 +26,7 @@ namespace ePM.Dal
         public Nullable<bool> Status { get; set; }
         public Nullable<System.DateTime> LastUpdated { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
+        public Nullable<int> SessionDuration { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_Service> eMedical_Service { get; set; }

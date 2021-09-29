@@ -13,7 +13,7 @@ namespace WebApplication1
 {
     public partial class AddNewRoom : System.Web.UI.Page
     {
-        public static string _Roomname;
+        public static string _Roomname, _SessionDuration;
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,11 +59,12 @@ namespace WebApplication1
                     //Validate user name and emp No
 
                     _Roomname = txtRoomName.Text;
+                    _SessionDuration = txtSessionDuration.Text;
 
                     bool RoomExist = ServiceManager.checkUserRoomName(_Roomname);
                     if (!RoomExist)
                     {
-                        string result = ServiceManager.AddNewRoom(_Roomname, int.Parse(Session["UserId"].ToString()));
+                        string result = ServiceManager.AddNewRoom(_Roomname, int.Parse(Session["UserId"].ToString()), _SessionDuration);
                         if (result != "inserted")
                         {
 
@@ -103,7 +104,8 @@ namespace WebApplication1
         private void clearControls()
         {
             txtRoomName.Text = "";
-           // lblResult.Visible = false;
+            txtSessionDuration.Text = "";
+            // lblResult.Visible = false;
         }
     }
 }

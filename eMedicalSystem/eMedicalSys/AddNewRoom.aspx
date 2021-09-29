@@ -129,6 +129,13 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtRoomName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Session Duration:</span>
+                            <asp:TextBox ID="txtSessionDuration" CssClass="form-control" runat="server" placeholder="Session Duration"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtSessionDuration"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
                 </div>
                 <br />
                 

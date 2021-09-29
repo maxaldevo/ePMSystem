@@ -57,6 +57,17 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorRoomName" ControlToValidate="txtRoomName" ValidationGroup="A" runat="server" ErrorMessage="Room Name" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Session Duration">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblSessionDuration" runat="server" Text='<%# Eval("SessionDuration") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtSessionDuration" CssClass="form-control" runat="server" Text='<%# Eval("SessionDuration") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorSessionDuration" ControlToValidate="txtSessionDuration" ValidationGroup="A" runat="server" ErrorMessage="Session Duration" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Status">
                                     <ItemTemplate>
                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status").ToString() == "false" ? "InActive" : "Active" %>'></asp:Label>

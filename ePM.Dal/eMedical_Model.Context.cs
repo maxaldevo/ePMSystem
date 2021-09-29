@@ -315,7 +315,7 @@ namespace ePM.Dal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewBookingTiming", bookingDateParameter, bookingTimeBeginParameter, bookingTimeEndParameter, roomIDParameter, userIDParameter, timingSerialParameter, timeBeginsParameter, timeEndsParameter, timeByHourBeginsParameter, timeByHourEndsParameter, msg);
         }
     
-        public virtual int sp_eMedical_addNewRoom(string roomName, Nullable<int> userID, ObjectParameter msg)
+        public virtual int sp_eMedical_addNewRoom(string roomName, Nullable<int> userID, string sessionDuration, ObjectParameter msg)
         {
             var roomNameParameter = roomName != null ?
                 new ObjectParameter("roomName", roomName) :
@@ -325,7 +325,11 @@ namespace ePM.Dal
                 new ObjectParameter("UserID", userID) :
                 new ObjectParameter("UserID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewRoom", roomNameParameter, userIDParameter, msg);
+            var sessionDurationParameter = sessionDuration != null ?
+                new ObjectParameter("SessionDuration", sessionDuration) :
+                new ObjectParameter("SessionDuration", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_addNewRoom", roomNameParameter, userIDParameter, sessionDurationParameter, msg);
         }
     
         public virtual int sp_eMedical_FlagAllBookingTimesBy_Room(Nullable<System.DateTime> bookingDate, Nullable<int> roomID)

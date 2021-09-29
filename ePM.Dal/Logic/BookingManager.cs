@@ -71,13 +71,13 @@ namespace ePM.Dal.Logic
                     int timeFrom_minutes = timeFrom * 60;
                     int timeEnd_minutes = timeEnd * 60;
 
-
+                    int roomSessionDuration = db.eMedical_Room.Where(x => x.ID == roomID).FirstOrDefault().SessionDuration.Value;
                     int minutesinbetween = (timeEnd - timeFrom) * 60;
-                    for (int i = 0; i < minutesinbetween; i = i + 15)
+                    for (int i = 0; i < minutesinbetween; i = i + roomSessionDuration)
                     {
                         int hourInMinutes = checkAndReturnInteger(i);
 
-                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + 15).ToString(), roomID, userid, i, timeFrom.ToString(), timeEnd.ToString(), (timeFrom_minutes + hourInMinutes).ToString(), (timeFrom_minutes + hourInMinutes + 60).ToString(), outputMsgParameter);
+                        db.sp_eMedical_addNewBookingTiming(Dutydate, (timeFrom_minutes + i).ToString(), (timeFrom_minutes + i + roomSessionDuration).ToString(), roomID, userid, i, timeFrom.ToString(), timeEnd.ToString(), (timeFrom_minutes + hourInMinutes).ToString(), (timeFrom_minutes + hourInMinutes + 60).ToString(), outputMsgParameter);
                     }
                     db.sp_eMedical_FlagAllBookingTimesBy_Room(Dutydate, roomID);
                     friendlyMsg = outputMsgParameter.Value.ToString();

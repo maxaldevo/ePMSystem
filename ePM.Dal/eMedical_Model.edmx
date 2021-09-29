@@ -114,6 +114,7 @@
           <Property Name="Status" Type="bit" />
           <Property Name="LastUpdated" Type="datetime" />
           <Property Name="UpdatedByID" Type="int" />
+          <Property Name="SessionDuration" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_Service">
           <Key>
@@ -782,6 +783,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
         <Function Name="sp_eMedical_addNewRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="roomName" Type="nvarchar" Mode="In" />
           <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="SessionDuration" Type="nvarchar" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="sp_eMedical_addNewSession_ByHospitalID_ClinicID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1399,6 +1401,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <FunctionImport Name="sp_eMedical_addNewRoom">
             <Parameter Name="roomName" Mode="In" Type="String" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SessionDuration" Mode="In" Type="String" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
           <EntitySet Name="u_HRRoles" EntityType="eMedicalModel.u_HRRoles" />
@@ -2017,6 +2020,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="UpdatedByID" Type="Int32" />
           <NavigationProperty Name="eMedical_Service" Relationship="eMedicalModel.FK_eMedical_Service_eMedical_Room" FromRole="eMedical_Room" ToRole="eMedical_Service" />
           <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_Room" FromRole="eMedical_Room" ToRole="eMedical_BookingTiming" />
+          <Property Name="SessionDuration" Type="Int32" />
         </EntityType>
         <Association Name="FK_eMedical_Service_eMedical_Room">
           <End Type="eMedicalModel.eMedical_Room" Role="eMedical_Room" Multiplicity="0..1" />
@@ -2595,6 +2599,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_Room">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_Room">
               <MappingFragment StoreEntitySet="eMedical_Room">
+                <ScalarProperty Name="SessionDuration" ColumnName="SessionDuration" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

@@ -144,12 +144,14 @@ namespace WebApplication1
             GridViewRow row = gvRooms.Rows[e.RowIndex];
             int roomId = Convert.ToInt32(gvRooms.DataKeys[e.RowIndex].Values[0]);
             string txtroomName = (row.FindControl("txtRoomName") as TextBox).Text;
-            
+            string txtSessionDura = (row.FindControl("txtSessionDuration") as TextBox).Text;
+
             bool isAvaialbe = (row.FindControl("chk_IsAvailable") as CheckBox).Checked;
             eMedical_Room room = new eMedical_Room()
             {
                 ID = roomId,
                 RoomName = txtroomName,
+                SessionDuration = int.Parse(txtSessionDura),
                 Status = isAvaialbe
             };
             ////UPDATE user productrecord

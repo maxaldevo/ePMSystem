@@ -83,6 +83,7 @@ namespace ePM.Dal.Logic
                     var room = db.eMedical_Room.Where(x => x.ID == updatedRoom.ID).First();
                     
                     room.RoomName = updatedRoom.RoomName;
+                    room.SessionDuration = updatedRoom.SessionDuration;
                     room.Status = updatedRoom.Status;
                     db.SaveChanges();
                     isUpdated = true;

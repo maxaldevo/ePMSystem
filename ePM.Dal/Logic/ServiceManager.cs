@@ -44,7 +44,7 @@ namespace ePM.Dal.Logic
             return friendlyMsg;
         }
 
-        public static string AddNewRoom(string RoomName, int userid)
+        public static string AddNewRoom(string RoomName, int userid, string sessionDuration)
         {
             string friendlyMsg = "";
             try
@@ -52,7 +52,7 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
-                    db.sp_eMedical_addNewRoom(RoomName, userid, outputMsgParameter);
+                    db.sp_eMedical_addNewRoom(RoomName, userid, sessionDuration, outputMsgParameter);
                     friendlyMsg = outputMsgParameter.Value.ToString();
                 }
             }
