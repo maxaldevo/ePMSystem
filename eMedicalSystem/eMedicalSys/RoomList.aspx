@@ -11,7 +11,7 @@
             border: 1px solid lightblue;
         }
 
-        table thead tr {
+        table thead tr { 
             background-color: #23B3E8;
             color: white;
             font-weight: bold;

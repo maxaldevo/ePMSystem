@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
+
     public partial class RoomList : System.Web.UI.Page
     {
         public List<eMedical_Room> roomList = new List<eMedical_Room>();
