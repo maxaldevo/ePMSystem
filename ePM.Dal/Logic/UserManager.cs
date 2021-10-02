@@ -31,6 +31,13 @@ namespace ePM_Dal.Logic
                 return db.vPersonnels.Where(x => x.Active == true && x.ClinicID == clinicid).ToList();
             }
         }
+        public static List<vPersonnel> getUsersList_OnlyPatient(int clinicid)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vPersonnels.Where(x => x.Active == true && x.ClinicID == clinicid && x.RoleId == 7).ToList();
+            }
+        }
 
         public static eMedical_User getSingleUser(int userId)
         {
@@ -97,7 +104,7 @@ namespace ePM_Dal.Logic
            
             return friendlyMsg;
         }
-        public static string AddNewUser_By_HospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile, string empNo, int roleId, int hospitalID, int clinicID)
+        public static string AddNewUser_By_HospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile, string civilId, int roleId, int hospitalID, int clinicID)
         {
             string friendlyMsg = "";
             try
@@ -105,8 +112,10 @@ namespace ePM_Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                    string EmpNo = RandomNumber(7000, 1000000);
+                    
                     // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
-                    db.sp_eMedical_addNewUser_ByHospitalID_ClinicID(fname, firstName, lastName, email, mobile, empNo, roleId, hospitalID, clinicID, outputMsgParameter);
+                    db.sp_eMedical_addNewUser_ByHospitalID_ClinicID(fname, firstName, lastName, email, mobile, EmpNo, civilId, roleId, hospitalID, clinicID, outputMsgParameter);
                     friendlyMsg = outputMsgParameter.Value.ToString();
                     //make default password 111111
                 }
@@ -124,6 +133,14 @@ namespace ePM_Dal.Logic
 
 
             return friendlyMsg;
+        }
+        // Instantiate random number generator.  
+        private static readonly Random _random = new Random();
+
+        // Generates a random number within a range.      
+        public static string RandomNumber(int min, int max)
+        {
+            return _random.Next(min, max).ToString();
         }
         //public static string AddNewUser_byHospitalID_ClinicID(string fname, string firstName, string lastName, string email, string mobile,
         //   string empNo, int roleId)

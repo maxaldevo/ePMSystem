@@ -222,6 +222,7 @@
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
           <Property Name="HospitalID" Type="int" />
           <Property Name="ClinicID" Type="int" />
+          <Property Name="CivilID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LMS_ExceptionLog">
           <Key>
@@ -429,6 +430,7 @@ warning 6002: The table/view 'eMedical.dbo.vPersonnel' does not have a primary k
           <Property Name="HospitalName" Type="nvarchar" MaxLength="50" />
           <Property Name="HospitalID" Type="int" />
           <Property Name="ClinicID" Type="int" />
+          <Property Name="CivilID" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vProductInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -818,7 +820,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="LastName" Type="nvarchar" Mode="In" />
           <Parameter Name="Email" Type="nvarchar" Mode="In" />
           <Parameter Name="Mobile" Type="varchar" Mode="In" />
-          <Parameter Name="CivilNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmployeeNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="CivilID" Type="nvarchar" Mode="In" />
           <Parameter Name="RoleId" Type="int" Mode="In" />
           <Parameter Name="HospitalId" Type="int" Mode="In" />
           <Parameter Name="ClinicId" Type="int" Mode="In" />
@@ -1000,7 +1003,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vPersonnel].[Clinicname] AS [Clinicname], 
     [vPersonnel].[HospitalName] AS [HospitalName], 
     [vPersonnel].[HospitalID] AS [HospitalID], 
-    [vPersonnel].[ClinicID] AS [ClinicID]
+    [vPersonnel].[ClinicID] AS [ClinicID], 
+    [vPersonnel].[CivilID] AS [CivilID]
     FROM [dbo].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vProductInfo" EntityType="Self.vProductInfo" store:Type="Views" store:Schema="dbo">
@@ -1284,7 +1288,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="LastName" Mode="In" Type="String" />
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Mobile" Mode="In" Type="String" />
-            <Parameter Name="CivilNo" Mode="In" Type="String" />
+            <Parameter Name="EmployeeNo" Mode="In" Type="String" />
+            <Parameter Name="CivilID" Mode="In" Type="String" />
             <Parameter Name="RoleId" Mode="In" Type="Int32" />
             <Parameter Name="HospitalId" Mode="In" Type="Int32" />
             <Parameter Name="ClinicId" Mode="In" Type="Int32" />
@@ -1548,6 +1553,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <NavigationProperty Name="eMedical_BookingTiming" Relationship="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_BookingTiming" />
           <NavigationProperty Name="eMedical_Product" Relationship="eMedicalModel.FK_eMedical_Product_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Product" />
           <NavigationProperty Name="eMedical_Roles1" Relationship="eMedicalModel.FK_eMedical_Roles_eMedical_User" FromRole="eMedical_User" ToRole="eMedical_Roles" />
+          <Property Name="CivilID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_LMS_User_LMS_Roles">
           <End Type="eMedicalModel.eMedical_Roles" Role="eMedical_Roles" Multiplicity="0..1" />
@@ -1612,6 +1618,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="HospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HospitalID" Type="Int32" />
           <Property Name="ClinicID" Type="Int32" />
+          <Property Name="CivilID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_eMedical_User_eMedical_Clinic">
           <End Type="eMedicalModel.eMedical_Clinic" Role="eMedical_Clinic" Multiplicity="0..1" />
@@ -2232,6 +2239,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_User">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_User">
               <MappingFragment StoreEntitySet="eMedical_User">
+                <ScalarProperty Name="CivilID" ColumnName="CivilID" />
                 <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
                 <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -2299,6 +2307,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="vPersonnels">
             <EntityTypeMapping TypeName="eMedicalModel.vPersonnel">
               <MappingFragment StoreEntitySet="vPersonnel">
+                <ScalarProperty Name="CivilID" ColumnName="CivilID" />
                 <ScalarProperty Name="ClinicID" ColumnName="ClinicID" />
                 <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
                 <ScalarProperty Name="HospitalName" ColumnName="HospitalName" />

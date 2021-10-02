@@ -7399,6 +7399,7 @@
     <Content Include="UserRoles.aspx" />
     <Content Include="ProductsList.aspx" />
     <Content Include="BookingTimesList.aspx" />
+    <Content Include="BookApp.aspx" />
     <Content Include="UsersList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -7595,6 +7596,13 @@
     </Compile>
     <Compile Include="BookingTimesList.aspx.designer.cs">
       <DependentUpon>BookingTimesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookApp.aspx.cs">
+      <DependentUpon>BookApp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookApp.aspx.designer.cs">
+      <DependentUpon>BookApp.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsersList.aspx.cs">
       <DependentUpon>UsersList.aspx</DependentUpon>

@@ -60,5 +60,6 @@ namespace ePM.Dal
         public string HospitalName { get; set; }
         public Nullable<int> HospitalID { get; set; }
         public Nullable<int> ClinicID { get; set; }
+        public string CivilID { get; set; }
     }
 }

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="UsersList.aspx.cs" Inherits="WebApplication1.UsersList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="BookApp.aspx.cs" Inherits="WebApplication1.BookApp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-           <style>
+    <style>
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #23B3E8;
             color: white;
@@ -26,9 +26,8 @@
         }
     </style>
     <section class="content">
-                     <div class="row">
+        <div class="row">
             <div class="col-12 col-md-12">
-
                 <div class="progress" style='height: 30px; margin-top: -10px;'>
                     <div class="progress-bar" role="progressbar" style="width: 100%; height: 30px; background-color: #23B3e8" aria-valuemin="0" aria-valuemax="100">
                         <h3 style="text-align: center; font-size: larger; margin-top: 10px;">User List</h3>
@@ -40,12 +39,9 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
-                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New User" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
-                        <br />
-                        <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" 
-                           
-                            EmptyDataText="No records found.">
+                        <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
+                            EmptyDataText="NO PATIENTS FOUND">
                             <Columns>
                                 <asp:TemplateField HeaderText="User Name">
                                     <ItemTemplate>
@@ -53,7 +49,7 @@
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="File No.">
+                                <asp:TemplateField HeaderText="File No.">
                                     <ItemTemplate>
                                         <asp:Label ID="lblCivilId" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
                                     </ItemTemplate>
@@ -73,14 +69,10 @@
                                         <asp:Label ID="lblClinic" runat="server" Text='<%# Eval("Clinicname") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Role">
+                                <asp:CommandField ShowHeader="true" ButtonType="Image" HeaderText="Select" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true"/>
+                                <%--<asp:TemplateField HeaderText="Role">
                                     <ItemTemplate>
                                         <asp:Label ID="lblRoleName" runat="server" Text='<%# Eval("RoleName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <%--<asp:TemplateField HeaderText="Email">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Employee No">
@@ -90,17 +82,16 @@
                                 </asp:TemplateField>--%>
                             </Columns>
                         </asp:GridView>
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
     <script>
         $(function () {
             bindDataTable(); // bind data table on first page load

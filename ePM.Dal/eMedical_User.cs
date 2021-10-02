@@ -85,6 +85,7 @@ namespace ePM.Dal
         public string UpdatedBy { get; set; }
         public Nullable<int> HospitalID { get; set; }
         public Nullable<int> ClinicID { get; set; }
+        public string CivilID { get; set; }
     
         public virtual eMedical_Roles eMedical_Roles { get; set; }
         public virtual eMedical_Clinic eMedical_Clinic { get; set; }
