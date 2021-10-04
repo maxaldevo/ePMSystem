@@ -51,7 +51,7 @@ namespace ePM.Dal.Logic
         {
             using (var db = new eMedicalEntities())
             {
-                int chkMoreThanZero = db.vBookingTimesDistincts.Where(x => x.BookingDate == Dutydate && x.ID == roomID && x.UpdatedByID == userid).Count();
+                int chkMoreThanZero = db.vBookingTimesDistincts.Where(x => x.BookingDate == Dutydate && x.RoomID == roomID && x.UpdatedByID == userid).Count();
                 return chkMoreThanZero;
             }
 
@@ -167,10 +167,10 @@ namespace ePM.Dal.Logic
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimesDistincts.Select(m => new { m.ID, m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName }).Distinct()
+                return db.vBookingTimesDistincts.Select(m => new { m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName, m.RoomID }).Distinct()
                     .Select(x => new BookingDates
                     {
-                        ID = x.ID,
+                        RoomId =x.RoomID,
                         bookingDate = x.BookingDate.Value,
                         TimeBegins = x.TimeBegins,
                         TimeEnds = x.TimeEnds,
@@ -180,22 +180,22 @@ namespace ePM.Dal.Logic
                     }).ToList();
             }
         }
-        public static List<BookingDates> GetBookingTimingList_distinct(int usrId)
+        public static List<BookingDates> GetBookingTimingList_distinct(int usrId, int roomId)
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimesDistincts.Select(m => new { m.ID, m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName, m.UpdatedByID }).Distinct()
+                return db.vBookingTimesDistincts.Select(m => new { m.BookingDate, m.TimeBegins, m.TimeEnds, m.IsBooked, m.IsAvailable, m.RoomName, m.UpdatedByID, m.RoomID }).Distinct()
                     .Select(x => new BookingDates
                     {
-                        ID = x.ID,
                         bookingDate = x.BookingDate.Value,
                         TimeBegins = x.TimeBegins,
                         TimeEnds = x.TimeEnds,
                         IsBooked = x.IsBooked.Value,
                         IsAvailable = x.IsAvailable.Value,
                         RoomName = x.RoomName,
-                        UserID = x.UpdatedByID.Value
-                    }).Where(k => k.UserID == usrId).ToList();
+                        UserID = x.UpdatedByID.Value,
+                        RoomId = x.RoomID
+                    }).Where(k => k.UserID == usrId && k.RoomId == roomId).ToList();
             }
         }
         public static List<eMedical_BookingTiming> GetBookingTimingList_ByUserId(bool isBooked, int userid)

@@ -7404,7 +7404,6 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
-    <Content Include="TestDevexpressCalendarandschedule.aspx" />
     <Content Include="UserRoles.aspx" />
     <Content Include="ProductsList.aspx" />
     <Content Include="BookingTimesList.aspx" />
@@ -7584,13 +7583,6 @@
     </Compile>
     <Compile Include="SecurityGrouprights.aspx.designer.cs">
       <DependentUpon>SecurityGrouprights.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestDevexpressCalendarandschedule.aspx.cs">
-      <DependentUpon>TestDevexpressCalendarandschedule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestDevexpressCalendarandschedule.aspx.designer.cs">
-      <DependentUpon>TestDevexpressCalendarandschedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserRoles.aspx.cs">
       <DependentUpon>UserRoles.aspx</DependentUpon>

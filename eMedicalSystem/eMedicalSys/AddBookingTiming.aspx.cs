@@ -24,10 +24,20 @@ namespace WebApplication1
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
-            if (gvBookingTimes.Rows.Count > 0)
+            if (gvBookingTimes_Roomone.Rows.Count > 0)
             {
-                gvBookingTimes.UseAccessibleHeader = true;
-                gvBookingTimes.HeaderRow.TableSection = TableRowSection.TableHeader;
+                gvBookingTimes_Roomone.UseAccessibleHeader = true;
+                gvBookingTimes_Roomone.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gvBookingTimes_RoomTwo.Rows.Count > 0)
+            {
+                gvBookingTimes_RoomTwo.UseAccessibleHeader = true;
+                gvBookingTimes_RoomTwo.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gvBookingTimes_RoomThree.Rows.Count > 0)
+            {
+                gvBookingTimes_RoomThree.UseAccessibleHeader = true;
+                gvBookingTimes_RoomThree.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -74,13 +84,17 @@ namespace WebApplication1
             {
                 if (roleId != 1)
                 {
-                    gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct(usrId);
-                    gvBookingTimes.DataBind();
+                    gvBookingTimes_Roomone.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 4);
+                    gvBookingTimes_Roomone.DataBind();
+                    gvBookingTimes_RoomTwo.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 5);
+                    gvBookingTimes_RoomTwo.DataBind();
+                    gvBookingTimes_RoomThree.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 6);
+                    gvBookingTimes_RoomThree.DataBind();
                 }
                 else
                 {
-                    gvBookingTimes.DataSource = BookingManager.GetBookingTimingList_distinct();
-                    gvBookingTimes.DataBind();
+                    //gvBookingTimes_Roomone.DataSource = BookingManager.GetBookingTimingList_distinct();
+                    //gvBookingTimes_Roomone.DataBind();
                 }
             }
             catch (Exception ex)

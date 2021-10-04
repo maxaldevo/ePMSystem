@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace eMedicalSys
 {
-    public partial class TestDevexpressCalendarandschedule : System.Web.UI.Page
+    public partial class CalendarTimeTest : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

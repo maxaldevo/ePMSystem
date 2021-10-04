@@ -366,13 +366,13 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
 warning 6002: The table/view 'eMedical.dbo.vBookingTimesDistinct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBookingTimesDistinct">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoomID" />
           </Key>
           <Property Name="BookingDate" Type="date" />
           <Property Name="TimeBegins" Type="nvarchar" MaxLength="50" />
           <Property Name="TimeEnds" Type="nvarchar" MaxLength="50" />
           <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
           <Property Name="IsBooked" Type="bit" />
           <Property Name="IsAvailable" Type="bit" />
           <Property Name="UpdatedByID" Type="int" />
@@ -950,7 +950,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vBookingTimesDistinct].[TimeBegins] AS [TimeBegins], 
     [vBookingTimesDistinct].[TimeEnds] AS [TimeEnds], 
     [vBookingTimesDistinct].[RoomName] AS [RoomName], 
-    [vBookingTimesDistinct].[ID] AS [ID], 
+    [vBookingTimesDistinct].[RoomID] AS [RoomID], 
     [vBookingTimesDistinct].[IsBooked] AS [IsBooked], 
     [vBookingTimesDistinct].[IsAvailable] AS [IsAvailable], 
     [vBookingTimesDistinct].[UpdatedByID] AS [UpdatedByID]
@@ -1429,12 +1429,12 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <End Role="eMedical_Roles" EntitySet="eMedical_Roles" />
           </AssociationSet>
           <EntitySet Name="vBookingTimes" EntityType="eMedicalModel.vBookingTime" />
-          <EntitySet Name="vBookingTimesDistincts" EntityType="eMedicalModel.vBookingTimesDistinct" />
           <FunctionImport Name="sp_eMedical_DeleteBookingTiming">
             <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
             <Parameter Name="RoomID" Mode="In" Type="Int32" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vBookingTimesDistincts" EntityType="eMedicalModel.vBookingTimesDistinct" />
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -2150,13 +2150,13 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
         </EntityType>
         <EntityType Name="vBookingTimesDistinct">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoomID" />
           </Key>
           <Property Name="BookingDate" Type="DateTime" Precision="0" />
           <Property Name="TimeBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TimeEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RoomName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
           <Property Name="IsBooked" Type="Boolean" />
           <Property Name="IsAvailable" Type="Boolean" />
           <Property Name="UpdatedByID" Type="Int32" />
@@ -2693,13 +2693,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_DeleteBookingTiming" FunctionName="eMedicalModel.Store.sp_eMedical_DeleteBookingTiming" />
           <EntitySetMapping Name="vBookingTimesDistincts">
             <EntityTypeMapping TypeName="eMedicalModel.vBookingTimesDistinct">
               <MappingFragment StoreEntitySet="vBookingTimesDistinct">
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
                 <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
                 <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
                 <ScalarProperty Name="TimeEnds" ColumnName="TimeEnds" />
                 <ScalarProperty Name="TimeBegins" ColumnName="TimeBegins" />
@@ -2707,7 +2708,6 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_eMedical_DeleteBookingTiming" FunctionName="eMedicalModel.Store.sp_eMedical_DeleteBookingTiming" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

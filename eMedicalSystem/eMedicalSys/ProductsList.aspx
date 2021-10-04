@@ -112,7 +112,7 @@
                                         </div>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Hospital">
+                                <%--<asp:TemplateField HeaderText="Hospital">
                                     <ItemTemplate>
                                         <asp:Label ID="lblHospital" runat="server" Text='<%# Eval("HospitalName") %>'></asp:Label>
                                     </ItemTemplate>
@@ -126,7 +126,7 @@
                                     <ItemTemplate>
                                         <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                                 <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />
                             </Columns>
                         </asp:GridView>
