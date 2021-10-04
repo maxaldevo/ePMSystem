@@ -49,6 +49,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Export, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.Bootstrap.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\ePMSystem\WebApplication\ePMSystem\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -7396,6 +7404,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
+    <Content Include="TestDevexpressCalendarandschedule.aspx" />
     <Content Include="UserRoles.aspx" />
     <Content Include="ProductsList.aspx" />
     <Content Include="BookingTimesList.aspx" />
@@ -7575,6 +7584,13 @@
     </Compile>
     <Compile Include="SecurityGrouprights.aspx.designer.cs">
       <DependentUpon>SecurityGrouprights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestDevexpressCalendarandschedule.aspx.cs">
+      <DependentUpon>TestDevexpressCalendarandschedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestDevexpressCalendarandschedule.aspx.designer.cs">
+      <DependentUpon>TestDevexpressCalendarandschedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserRoles.aspx.cs">
       <DependentUpon>UserRoles.aspx</DependentUpon>
