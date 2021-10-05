@@ -166,7 +166,6 @@ namespace WebApplication1
         {
             if (Session["SelectedDates"] != null)
             {
-
                 List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
                 foreach (DateTime dt in newList)
                 {

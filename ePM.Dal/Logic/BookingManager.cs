@@ -195,7 +195,7 @@ namespace ePM.Dal.Logic
                         RoomName = x.RoomName,
                         UserID = x.UpdatedByID.Value,
                         RoomId = x.RoomID
-                    }).Where(k => k.UserID == usrId && k.RoomId == roomId).ToList();
+                    }).Where(k => k.UserID == usrId && k.RoomId == roomId && k.bookingDate >= DateTime.Now).ToList();
             }
         }
         public static List<eMedical_BookingTiming> GetBookingTimingList_ByUserId(bool isBooked, int userid)
