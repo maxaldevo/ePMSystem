@@ -56,12 +56,17 @@
     <Reference Include="DevExpress.Web.ASPxScheduler.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.ASPxThemes.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Web.Bootstrap.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.Resources.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\ePMSystem\WebApplication\ePMSystem\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\ePMSystem\WebApplication\ePMSystem\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.EntityDataSource">
+      <HintPath>C:\Users\Public\Documents\DevExpress Demos 18.2\Components\ASP.NET\CS\ASPxSchedulerDemos\Bin\Microsoft.AspNet.EntityDataSource.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -82,6 +87,10 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="TimePicker">
       <HintPath>C:\Users\Administrator\Downloads\TimePicker\Bin\TimePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Web.DemoData.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Public\Documents\DevExpress Demos 18.2\Components\ASP.NET\CS\ASPxSchedulerDemos\Bin\Web.DemoData.v18.2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -7404,6 +7413,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="SecurityAdmin.aspx" />
     <Content Include="SecurityGrouprights.aspx" />
+    <Content Include="testpage.aspx" />
     <Content Include="UserRoles.aspx" />
     <Content Include="ProductsList.aspx" />
     <Content Include="BookingTimesList.aspx" />
@@ -7583,6 +7593,13 @@
     </Compile>
     <Compile Include="SecurityGrouprights.aspx.designer.cs">
       <DependentUpon>SecurityGrouprights.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="testpage.aspx.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="testpage.aspx.designer.cs">
+      <DependentUpon>testpage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserRoles.aspx.cs">
       <DependentUpon>UserRoles.aspx</DependentUpon>
@@ -8854,6 +8871,9 @@
       <Project>{811b07f3-5724-45e2-a20e-cbc60f709af8}</Project>
       <Name>ePM_Dal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
