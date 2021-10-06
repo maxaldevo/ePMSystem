@@ -5,7 +5,7 @@
 <%@ Register assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraScheduler" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" Start="2021-10-06" OnActiveViewChanged="ASPxScheduler1_ActiveViewChanged" OnActiveViewChanging="ASPxScheduler1_ActiveViewChanging">
+    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID"  ResourceDataSourceID="SqlDataSource2" GroupType="Resource">
         <Views>
             <DayView ViewSelectorItemAdaptivePriority="2" Enabled="true">
                 
@@ -15,7 +15,6 @@
 
                 <AppointmentDisplayOptions ColumnPadding-Left="2" ColumnPadding-Right="4"></AppointmentDisplayOptions>
             </DayView>
-
             <WorkWeekView ViewSelectorItemAdaptivePriority="6" Enabled="true">
                 <TimeRulers>
                     <cc1:TimeRuler></cc1:TimeRuler>
@@ -23,13 +22,15 @@
 
                 <AppointmentDisplayOptions ColumnPadding-Left="2" ColumnPadding-Right="4"></AppointmentDisplayOptions>
             </WorkWeekView>
+            <WeekView Enabled="false">
 
-            <WeekView Enabled="false"></WeekView>
+            </WeekView>
+            <MonthView ViewSelectorItemAdaptivePriority="5" Enabled="true">
 
-            <MonthView ViewSelectorItemAdaptivePriority="5" Enabled="true"></MonthView>
+            </MonthView>
+            <TimelineView ViewSelectorItemAdaptivePriority="3" Enabled="true">
 
-            <TimelineView ViewSelectorItemAdaptivePriority="3" Enabled="true"></TimelineView>
-
+            </TimelineView>
             <FullWeekView Enabled="true">
                 <TimeRulers>
                     <cc1:TimeRuler></cc1:TimeRuler>
@@ -37,17 +38,26 @@
 
                 <AppointmentDisplayOptions ColumnPadding-Left="2" ColumnPadding-Right="4"></AppointmentDisplayOptions>
             </FullWeekView>
-
-            <AgendaView ViewSelectorItemAdaptivePriority="1" Enabled="true"></AgendaView>
+            <AgendaView ViewSelectorItemAdaptivePriority="1" Enabled="true">
+                
+            </AgendaView>
         </Views>
-
+        
         <Storage>
             <Appointments AutoRetrieveId="True">
                 <Mappings AllDay="AllDay" AppointmentId="UniqueID" Description="Description" End="EndDate" Label="Label" Location="Location" RecurrenceInfo="RecurrenceInfo" ReminderInfo="ReminderInfo" ResourceId="ResourceID" Start="StartDate" Status="Status" Subject="Subject" Type="Type" />
             </Appointments>
+            <Resources>
+                <Mappings Caption="RoomName" ResourceId="ID" />
+            </Resources>
         </Storage>
 
     </dxwschs:ASPxScheduler>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:eMedicalConnectionString %>" SelectCommand="SELECT * FROM [eMedical_Room] WHERE ([UpdatedByID] = @UpdatedByID)">
+        <SelectParameters>
+            <asp:Parameter DefaultValue="14" Name="UpdatedByID" Type="Int32" />
+        </SelectParameters>
+    </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:eMedicalConnectionString %>" DeleteCommand="DELETE FROM [Appointments] WHERE [UniqueID] = @UniqueID" InsertCommand="INSERT INTO [Appointments] ([Type], [StartDate], [EndDate], [AllDay], [Subject], [Location], [Description], [Status], [Label], [ResourceID], [ResourceIDs], [ReminderInfo], [RecurrenceInfo], [CustomField1]) VALUES (@Type, @StartDate, @EndDate, @AllDay, @Subject, @Location, @Description, @Status, @Label, @ResourceID, @ResourceIDs, @ReminderInfo, @RecurrenceInfo, @CustomField1)" SelectCommand="SELECT * FROM [Appointments]" UpdateCommand="UPDATE [Appointments] SET [Type] = @Type, [StartDate] = @StartDate, [EndDate] = @EndDate, [AllDay] = @AllDay, [Subject] = @Subject, [Location] = @Location, [Description] = @Description, [Status] = @Status, [Label] = @Label, [ResourceID] = @ResourceID, [ResourceIDs] = @ResourceIDs, [ReminderInfo] = @ReminderInfo, [RecurrenceInfo] = @RecurrenceInfo, [CustomField1] = @CustomField1 WHERE [UniqueID] = @UniqueID">
         <DeleteParameters>
             <asp:Parameter Name="UniqueID" Type="Int32" />
