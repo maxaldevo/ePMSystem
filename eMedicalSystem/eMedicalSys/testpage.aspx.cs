@@ -28,5 +28,17 @@ namespace eMedicalSys
             //}
             //ASPxScheduler1.DataBind();
         }
+
+        protected void ASPxScheduler1_ActiveViewChanged(object sender, EventArgs e)
+        {
+            ASPxScheduler1.DayView.WorkTime.Start = TimeSpan.FromHours(8);
+            ASPxScheduler1.DayView.WorkTime.End = TimeSpan.FromHours(20);
+        }
+
+        protected void ASPxScheduler1_ActiveViewChanging(object sender, DevExpress.Web.ASPxScheduler.ActiveViewChangingEventArgs e)
+        {
+            ASPxScheduler1.DayView.WorkTime.Start = TimeSpan.FromHours(8);
+            ASPxScheduler1.DayView.WorkTime.End = TimeSpan.FromHours(20);
+        }
     }
 }
