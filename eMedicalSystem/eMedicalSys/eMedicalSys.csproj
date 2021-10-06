@@ -99,6 +99,8 @@
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
     <Content Include="AddNewRoom.aspx" />
+    <Content Include="App_Code\MedicsScheduling.mdf" />
+    <Content Include="App_Code\MedicsScheduling_log.ldf" />
     <Content Include="BookAppointment.aspx" />
     <Content Include="AddNewClinic.aspx" />
     <Content Include="AddNewHospital.aspx" />
@@ -7457,6 +7459,28 @@
     <Compile Include="AddNewRoom.aspx.designer.cs">
       <DependentUpon>AddNewRoom.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\CustomAppointmentEditDialogViewModel.cs" />
+    <Content Include="App_Code\CustomAppointmentForm.cs" />
+    <Content Include="App_Code\CustomEvents.cs" />
+    <Content Include="App_Code\CustomInplaceEditor.cs" />
+    <Content Include="App_Code\CustomResources.cs" />
+    <Content Include="App_Code\DataHelper.cs" />
+    <Content Include="App_Code\PhotoUtils.cs" />
+    <Content Include="App_Code\SchedulerDemoUtils.cs" />
+    <Content Include="App_Code\TimeZoneEdit.cs" />
+    <Content Include="App_Code\XPOBoundMode.cs" />
+    <Content Include="App_Code\XpoHelper.cs" />
+    <Content Include="App_Code\CloudStoragesUtils.cs" />
+    <Content Include="App_Code\CodeFormatter.cs" />
+    <Content Include="App_Code\CodeViewerControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="App_Code\DemoHelper.cs" />
+    <Content Include="App_Code\DirectoryManagmentUtils.cs" />
+    <Content Include="App_Code\FullScreenModeUtils.cs" />
+    <Content Include="App_Code\HiddenHtmlFormAdapter.cs" />
+    <Content Include="App_Code\RichEditDemoUtils.cs" />
+    <Content Include="App_Code\UploadingUtils.cs" />
     <Compile Include="BookAppointment.aspx.cs">
       <DependentUpon>BookAppointment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
