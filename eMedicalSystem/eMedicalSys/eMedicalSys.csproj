@@ -6852,6 +6852,7 @@
     <Content Include="DevExpress\ASPxSchedulerForms\AppointmentFormEx.ascx" />
     <Content Include="DevExpress\ASPxSchedulerForms\AppointmentMobileToolTip.ascx" />
     <Content Include="DevExpress\ASPxSchedulerForms\AppointmentToolTip.ascx" />
+    <Content Include="DevExpress\ASPxSchedulerForms\Appointment_Form.ascx" />
     <Content Include="DevExpress\ASPxSchedulerForms\DetailedAppointmentToolTip.ascx" />
     <Content Include="DevExpress\ASPxSchedulerForms\GotoDateForm.ascx" />
     <Content Include="DevExpress\ASPxSchedulerForms\HorizontalAppointmentTemplate.ascx" />
@@ -7584,6 +7585,13 @@
     </Compile>
     <Compile Include="DevExpress\ASPxSchedulerForms\AppointmentToolTip.ascx.designer.cs">
       <DependentUpon>AppointmentToolTip.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DevExpress\ASPxSchedulerForms\Appointment_Form.ascx.cs">
+      <DependentUpon>Appointment_Form.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevExpress\ASPxSchedulerForms\Appointment_Form.ascx.designer.cs">
+      <DependentUpon>Appointment_Form.ascx</DependentUpon>
     </Compile>
     <Compile Include="DevExpress\ASPxSchedulerForms\DetailedAppointmentToolTip.ascx.cs">
       <DependentUpon>DetailedAppointmentToolTip.ascx</DependentUpon>

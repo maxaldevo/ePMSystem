@@ -31,5 +31,7 @@ namespace ePM.Dal
         public string TimeByHourEnds { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Nullable<int> hrstimebegin { get; set; }
+        public Nullable<int> hrstimeend { get; set; }
     }
 }

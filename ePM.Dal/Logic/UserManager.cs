@@ -46,6 +46,13 @@ namespace ePM_Dal.Logic
                 return db.eMedical_User.Where(x=>x.ID ==userId).FirstOrDefault();//in case that we have more than result
             }
         }
+        public static List<eMedical_User> getPatientsList(int clinicId, int roleId)
+        {
+            using (eMedicalEntities db = new eMedicalEntities())
+            {
+                return db.eMedical_User.Where(x => x.ClinicID == clinicId && x.RoleId == roleId).ToList();//in case that we have more than result
+            }
+        }
 
         //public static vPersonnel TempValidateEmail(string email, string password)
         //{

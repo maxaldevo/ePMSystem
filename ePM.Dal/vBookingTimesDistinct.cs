@@ -19,7 +19,6 @@ namespace ePM.Dal
         public string TimeEnds { get; set; }
         public string RoomName { get; set; }
         public int RoomID { get; set; }
-        public Nullable<bool> IsBooked { get; set; }
         public Nullable<bool> IsAvailable { get; set; }
         public Nullable<int> UpdatedByID { get; set; }
     }
