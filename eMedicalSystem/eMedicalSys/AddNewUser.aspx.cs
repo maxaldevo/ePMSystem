@@ -85,7 +85,7 @@ namespace WebApplication1
                     bool empoExist = UserManager.checkUserEmpNo(_civilno);
                     if (!emailExist && !empoExist)
                     {
-                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_firstName + " " + _lastName, _firstName, _lastName, _email, _mobile, _civilno, _selectedRole, _selectedHospital, _selectedClinic);
+                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_firstName, _firstName, _lastName, _email, _mobile, _civilno, _selectedRole, _selectedHospital, _selectedClinic);
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;
@@ -101,7 +101,6 @@ namespace WebApplication1
                             clearControls();
                             ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "User added successfully!" + "')</script>", false);
                             //Re-Bind the user grid based on the User's role.
-                           
                         }
                     }
                     else
@@ -110,17 +109,13 @@ namespace WebApplication1
                         lblResult.ForeColor = System.Drawing.Color.Red;
                         lblResult.Text = "User email or Employee No exists";
                         ScriptManager.RegisterStartupScript(this, typeof(Page), "Warning", "<script>showpopwarning('" + "User email or Employee No exists!" + "')</script>", false);
-                    } 
-                   
+                    }
                 }
                 catch (Exception ex)
                 {
-
                     ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" +  "Unexpected error, Please contact your Admin!" + ex.Message+  "')</script>", false);
                 }
-          
             }
-
         }
         private void clearControls()
         {
@@ -132,8 +127,6 @@ namespace WebApplication1
             txtMobile.Text = "";
             // lblResult.Visible = false;
         }
-
-
         private void BindRoles()
         {
             DropDownRoles.DataSource = null;
@@ -172,7 +165,6 @@ namespace WebApplication1
             DropDownClinics.Items[0].Selected = true;
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
-
         protected void DropDownHospitals_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedHospital = int.Parse(DropDownHospitals.SelectedItem.Value);
@@ -186,6 +178,5 @@ namespace WebApplication1
         {
             _selectedClinic = int.Parse(DropDownClinics.SelectedItem.Value);
         }
-
     }
 }

@@ -3,6 +3,7 @@ using ePM.Dal;
 using ePM.Dal.Logic;
 using ePM.Dal.ViewModels;
 using ePM_Dal.Logic;
+using ePM_Dal.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,16 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
     public partial class Appointment_Form : System.Web.UI.UserControl
     {
 
+        public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (gvUsers.Rows.Count > 0)
+            {
+                gvUsers.UseAccessibleHeader = true;
+                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
         public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +41,7 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
             bindtimebegins(_userID, _selectedRoomId);
             bindPatients(_clinicId);
             bindServices(_clinicId, _userID);
+            BindGrid(_clinicId);
             //bindTimes(_userID);
         }
         private void binddates(int usrId, int roomId)
@@ -136,6 +147,39 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
         }
+        protected void btnAddNewRecord_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AddNewUser.aspx", true);
+        }
+        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridViewRow row = gvUsers.Rows[e.RowIndex];
+            int userId = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Values[0]);
 
+            //string txtroomName = (row.FindControl("txtRoomName") as TextBox).Text;
+            //string txtSessionDura = (row.FindControl("txtSessionDuration") as TextBox).Text;
+            //bool isAvaialbe = (row.FindControl("chk_IsAvailable") as CheckBox).Checked;
+            //eMedical_Room room = new eMedical_Room()
+            //{
+            //    ID = roomId,
+            //    RoomName = txtroomName,
+            //    SessionDuration = int.Parse(txtSessionDura),
+            //    Status = isAvaialbe
+            //};
+        }
+        private void BindGrid( int clinicId)
+        {
+            List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
+            try
+            {
+                gvUsers.DataSource = Patients;
+                gvUsers.DataBind();
+            }
+            catch (Exception ex)
+            {
+                ExceptionsManager.AddException(ex);
+                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
+            }
+        }
     }
 }

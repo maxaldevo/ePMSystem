@@ -125,7 +125,6 @@ namespace WebApplication1
                 BindRoomsGrid(int.Parse(Session["UserId"].ToString()));
             }
         }
-
         protected void OnRowCancelingEdit(object sender, EventArgs e)
         {
             gvRooms.EditIndex = -1;
@@ -139,7 +138,6 @@ namespace WebApplication1
                 BindRoomsGrid(int.Parse(Session["UserId"].ToString()));
             }
         }
-
         protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = gvRooms.Rows[e.RowIndex];
@@ -168,7 +166,6 @@ namespace WebApplication1
                 BindRoomsGrid(int.Parse(Session["UserId"].ToString()));
             }
         }
-
         protected void OnRowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -182,7 +179,6 @@ namespace WebApplication1
                 }
             }
         }
-
         protected void OnRowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var roleId = Convert.ToInt32(gvRooms.DataKeys[e.RowIndex].Values[0]);
