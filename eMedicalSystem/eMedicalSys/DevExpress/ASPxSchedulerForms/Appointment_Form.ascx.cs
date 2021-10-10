@@ -18,14 +18,14 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
 
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
-        protected void Page_PreRender(object sender, EventArgs e)
-        {
-            if (gvUsers.Rows.Count > 0)
-            {
-                gvUsers.UseAccessibleHeader = true;
-                gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
-            }
-        }
+        //protected void Page_PreRender(object sender, EventArgs e)
+        //{
+        //    if (gvUsers.Rows.Count > 0)
+        //    {
+        //        gvUsers.UseAccessibleHeader = true;
+        //        gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
+        //    }
+        //}
         public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,14 +39,13 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
             bindRooms(_userID);
             binddates(_userID, _selectedRoomId);
             bindtimebegins(_userID, _selectedRoomId);
-            bindPatients(_clinicId);
+            //bindPatients(_clinicId);
             bindServices(_clinicId, _userID);
-            BindGrid(_clinicId);
+            //BindGrid(_clinicId);
             //bindTimes(_userID);
         }
         private void binddates(int usrId, int roomId)
         {
-
             DropDowndate.DataSource = null;
             DropDowndate.ClearSelection();
             List<BookingDates> dates = BookingManager.GetBookingTimingList_distinct_Nottoday(usrId, roomId);
@@ -98,19 +97,19 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
             DropDownService.Items[0].Selected = true;
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-        private void bindPatients(int clinicId)
-        {
-            DropDownPatient.DataSource = null;
-            DropDownPatient.ClearSelection();
-            List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
-            DropDownPatient.DataSource = Patients;
-            DropDownPatient.DataValueField = "ID";
-            DropDownPatient.DataTextField = "FName";
-            DropDownPatient.DataBind();
-            //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
-            DropDownPatient.Items[0].Selected = true;
-            _selectedPatientId = int.Parse(DropDownPatient.SelectedItem.Value);
-        }
+        //private void bindPatients(int clinicId)
+        //{
+        //    DropDownPatient.DataSource = null;
+        //    DropDownPatient.ClearSelection();
+        //    List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
+        //    DropDownPatient.DataSource = Patients;
+        //    DropDownPatient.DataValueField = "ID";
+        //    DropDownPatient.DataTextField = "FName";
+        //    DropDownPatient.DataBind();
+        //    //DropDownHRRoles.Items.Insert(0, new ListItem("All", "0"));
+        //    DropDownPatient.Items[0].Selected = true;
+        //    _selectedPatientId = int.Parse(DropDownPatient.SelectedItem.Value);
+        //}
         private void bindTimes(int usrId)
         {
             DropDownTime.DataSource = null;
@@ -147,39 +146,39 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
         }
-        protected void btnAddNewRecord_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/AddNewUser.aspx", true);
-        }
-        protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            GridViewRow row = gvUsers.Rows[e.RowIndex];
-            int userId = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Values[0]);
+        //protected void btnAddNewRecord_Click(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("~/AddNewUser.aspx", true);
+        //}
+        //protected void OnRowUpdating(object sender, GridViewUpdateEventArgs e)
+        //{
+        //    GridViewRow row = gvUsers.Rows[e.RowIndex];
+        //    int userId = Convert.ToInt32(gvUsers.DataKeys[e.RowIndex].Values[0]);
 
-            //string txtroomName = (row.FindControl("txtRoomName") as TextBox).Text;
-            //string txtSessionDura = (row.FindControl("txtSessionDuration") as TextBox).Text;
-            //bool isAvaialbe = (row.FindControl("chk_IsAvailable") as CheckBox).Checked;
-            //eMedical_Room room = new eMedical_Room()
-            //{
-            //    ID = roomId,
-            //    RoomName = txtroomName,
-            //    SessionDuration = int.Parse(txtSessionDura),
-            //    Status = isAvaialbe
-            //};
-        }
-        private void BindGrid( int clinicId)
-        {
-            List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
-            try
-            {
-                gvUsers.DataSource = Patients;
-                gvUsers.DataBind();
-            }
-            catch (Exception ex)
-            {
-                ExceptionsManager.AddException(ex);
-                SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
-            }
-        }
+        //    //string txtroomName = (row.FindControl("txtRoomName") as TextBox).Text;
+        //    //string txtSessionDura = (row.FindControl("txtSessionDuration") as TextBox).Text;
+        //    //bool isAvaialbe = (row.FindControl("chk_IsAvailable") as CheckBox).Checked;
+        //    //eMedical_Room room = new eMedical_Room()
+        //    //{
+        //    //    ID = roomId,
+        //    //    RoomName = txtroomName,
+        //    //    SessionDuration = int.Parse(txtSessionDura),
+        //    //    Status = isAvaialbe
+        //    //};
+        //}
+        //private void BindGrid( int clinicId)
+        //{
+        //    List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
+        //    try
+        //    {
+        //        gvUsers.DataSource = Patients;
+        //        gvUsers.DataBind();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionsManager.AddException(ex);
+        //        SweetAlert.showToast(this.Page, SweetAlert.ToastType.Error, ex.Message, "Unexpected error", SweetAlert.ToasterPostion.TopCenter, false);
+        //    }
+        //}
     }
 }

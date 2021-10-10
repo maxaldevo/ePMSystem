@@ -15,7 +15,7 @@ namespace WebApplication1
 {
     public partial class AddNewUser : System.Web.UI.Page
     {
-        public static string _selectedDept, _firstName, _lastName, _civilno, _email, _mobile = "";
+        public static string _selectedDept, _firstName, _lastName, _civilno, civilID, _email, _mobile = "";
         public static int _selectedRole, _selectedHospital, _selectedClinic, _clinicId, _hospitalId = 0;
         public List<vPersonnel> usersList = new List<vPersonnel>();
 
@@ -78,6 +78,8 @@ namespace WebApplication1
                     _firstName = txtFirstName.Text;
                     _lastName = txtLastName.Text;
                     _email = txtEmail.Text;
+                    civilID = txtcivilNo.Text;
+
 
                     //_empno = txtEmpNo.Text;
                     _mobile = !string.IsNullOrWhiteSpace(txtMobile.Text) ? txtMobile.Text : null;
@@ -85,7 +87,7 @@ namespace WebApplication1
                     bool empoExist = UserManager.checkUserEmpNo(_civilno);
                     if (!emailExist && !empoExist)
                     {
-                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_firstName, _firstName, _lastName, _email, _mobile, _civilno, _selectedRole, _selectedHospital, _selectedClinic);
+                        string result = UserManager.AddNewUser_By_HospitalID_ClinicID(_firstName, _firstName, _lastName, _email, _mobile, civilID, _selectedRole, _selectedHospital, _selectedClinic);
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;

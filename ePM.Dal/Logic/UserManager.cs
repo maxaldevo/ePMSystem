@@ -99,7 +99,6 @@ namespace ePM_Dal.Logic
             }
             catch (Exception ex)
             {
-
                 friendlyMsg = "Please contact your admin!. unexpected error";
                 ExceptionsManager.AddException(ex);
                 if (ex.InnerException !=null)
@@ -178,7 +177,6 @@ namespace ePM_Dal.Logic
 
         //    return friendlyMsg;
         //}
-
         public static bool checkUserEmail(string email)
         {
             bool exists = false;
