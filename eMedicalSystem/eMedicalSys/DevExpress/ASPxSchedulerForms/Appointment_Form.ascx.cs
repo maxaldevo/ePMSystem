@@ -130,10 +130,10 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-        protected void DropDownPatient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedPatientId = int.Parse(DropDownPatient.SelectedItem.Value);
-        }
+        //protected void DropDownPatient_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _selectedPatientId = int.Parse(DropDownPatient.SelectedItem.Value);
+        //}
         protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimeId = int.Parse(DropDownTime.SelectedItem.Value);

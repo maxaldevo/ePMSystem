@@ -62,5 +62,9 @@ namespace eMedicalSys
             GridViewRow row = gvUsers.Rows[e.NewEditIndex];
             Session["PatientId"] = Convert.ToInt32(gvUsers.DataKeys[e.NewEditIndex].Values[0]);
         }
+        protected void DropDownRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
+        }
     }
 }

@@ -33,6 +33,15 @@ namespace eMedicalSys
         protected global::System.Web.UI.WebControls.GridView gvUsers;
 
         /// <summary>
+        /// DropDownRoom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownRoom;
+
+        /// <summary>
         /// ASPxScheduler1 control.
         /// </summary>
         /// <remarks>

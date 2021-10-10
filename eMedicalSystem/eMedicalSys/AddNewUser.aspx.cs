@@ -72,17 +72,12 @@ namespace WebApplication1
             {
                 try
                 {
-                    //Validate user name and emp No
-                  
-                    //_fname = txtFName.Text;
                     _firstName = txtFirstName.Text;
                     _lastName = txtLastName.Text;
                     _email = txtEmail.Text;
                     civilID = txtcivilNo.Text;
-
-
-                    //_empno = txtEmpNo.Text;
                     _mobile = !string.IsNullOrWhiteSpace(txtMobile.Text) ? txtMobile.Text : null;
+
                     bool emailExist = UserManager.checkUserEmail(_email);
                     bool empoExist = UserManager.checkUserEmpNo(_civilno);
                     if (!emailExist && !empoExist)
