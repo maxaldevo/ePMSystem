@@ -65,16 +65,47 @@
                             </Columns>
                         </asp:GridView>
                     </div>
-
+                </div>
+        </div>
+        </div>
+        <div class="row">
+                    <div class="col-md-3">
                     <div class="controls">
                         <span style="font-weight: bold">Choose Room:</span>
-                        <asp:DropDownList ID="DropDownRoom" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownRoom" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>   
                     </div>
-                </div>
-
+                        </div>
+                    <div class="col-md-3">
+                    <div class="controls">
+                        <span style="font-weight: bold">Choose Date:</span>
+                        <asp:DropDownList ID="DropDowndate" OnSelectedIndexChanged="DropDowndate_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    </div>
+                        </div>
+                    <div class="col-md-3">
+                    <div class="controls">
+                        <span style="font-weight: bold">Choose Session Start:</span>
+                        <asp:DropDownList ID="DropDownTimebegin" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    </div>
+                        </div>
+                    <div class="col-md-3">
+                    <div class="controls">
+                        <span style="font-weight: bold">Choose Service:</span>
+                        <asp:DropDownList ID="DropDownService" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    </div>
+                        </div>
             </div>
-
+        <br />
+        <br />
+        <div class="row">
+                    <div class="col-md-3">
+                    <div class="controls">
+                        <span style="font-weight: bold">Choose Time:</span>
+                        <asp:DropDownList ID="DropDownTime" OnSelectedIndexChanged="DropDownTime_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    </div>
+                        </div>
         </div>
+
+
     </section>
     <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
         <Views>

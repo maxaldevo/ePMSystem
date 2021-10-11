@@ -18,6 +18,7 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
 
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
+        public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
         //protected void Page_PreRender(object sender, EventArgs e)
         //{
         //    if (gvUsers.Rows.Count > 0)
@@ -26,7 +27,6 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
         //        gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
         //    }
         //}
-        public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             //ASPxDateEdit edit = (ASPxDateEdit)this.FindControlByID("edtStartDate");

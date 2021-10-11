@@ -42,6 +42,42 @@ namespace eMedicalSys
         protected global::System.Web.UI.WebControls.DropDownList DropDownRoom;
 
         /// <summary>
+        /// DropDowndate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDowndate;
+
+        /// <summary>
+        /// DropDownTimebegin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTimebegin;
+
+        /// <summary>
+        /// DropDownService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownService;
+
+        /// <summary>
+        /// DropDownTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTime;
+
+        /// <summary>
         /// ASPxScheduler1 control.
         /// </summary>
         /// <remarks>
