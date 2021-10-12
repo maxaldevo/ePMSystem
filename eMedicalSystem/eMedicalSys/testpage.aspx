@@ -5,6 +5,98 @@
 <%@ Register Assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+        <style>
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        .table-striped tbody tr:nth-of-type(even) {
+            border: 1px solid lightblue;
+            background-color: #e6e9ee;
+        }
+
+        .table {
+            justify-content: center;
+            align-items: center;
+        }
+
+            .table tr {
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .table thead {
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .table tr td {
+                text-align: center;
+            }
+
+        #circle {
+            position: absolute;
+            top: 40%;
+            left: 55%;
+            transform: translate(-50%,-50%);
+            width: 150px;
+            height: 150px;
+        }
+
+        .loader {
+            position: fixed;
+            width: calc(100% - 0px);
+            height: calc(100% - 0px);
+            border: 8px solid #162534;
+            border-top: 8px solid #09f;
+            border-radius: 50%;
+            animation: rotate 5s linear infinite;
+            z-index: 999999;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #circle {
+            position: absolute;
+            top: 40%;
+            left: 55%;
+            transform: translate(-50%,-50%);
+            width: 150px;
+            height: 150px;
+            z-index: 9999;
+        }
+
+        .loader {
+            width: calc(100% - 0px);
+            height: calc(100% - 0px);
+            border: 8px solid #162534;
+            border-top: 8px solid #09f;
+            border-radius: 50%;
+            animation: rotate 5s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .row {
+            margin-top: -10px;
+        }
+
+        select:focus {
+            width: auto;
+            position: relative;
+        }
+    </style>
     <style>
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #23B3E8;
@@ -66,45 +158,62 @@
                         </asp:GridView>
                     </div>
                 </div>
-        </div>
-        </div>
-        <div class="row">
-                    <div class="col-md-3">
-                    <div class="controls">
-                        <span style="font-weight: bold">Choose Room:</span>
-                        <asp:DropDownList ID="DropDownRoom" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>   
-                    </div>
-                        </div>
-                    <div class="col-md-3">
-                    <div class="controls">
-                        <span style="font-weight: bold">Choose Date:</span>
-                        <asp:DropDownList ID="DropDowndate" OnSelectedIndexChanged="DropDowndate_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                    </div>
-                        </div>
-                    <div class="col-md-3">
-                    <div class="controls">
-                        <span style="font-weight: bold">Choose Session Start:</span>
-                        <asp:DropDownList ID="DropDownTimebegin" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                    </div>
-                        </div>
-                    <div class="col-md-3">
-                    <div class="controls">
-                        <span style="font-weight: bold">Choose Service:</span>
-                        <asp:DropDownList ID="DropDownService" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                    </div>
-                        </div>
             </div>
-        <br />
-        <br />
-        <div class="row">
-                    <div class="col-md-3">
-                    <div class="controls">
-                        <span style="font-weight: bold">Choose Time:</span>
-                        <asp:DropDownList ID="DropDownTime" OnSelectedIndexChanged="DropDownTime_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                    </div>
-                        </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Room:</span>
+                    <asp:DropDownList ID="DropDownRoom" Width="200px" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Date:</span>
+                    <asp:DropDownList ID="DropDowndate" Width="100px" OnSelectedIndexChanged="DropDowndate_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Session Start:</span>
+                    <asp:DropDownList ID="DropDownTimebegin" Width="100px" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Session End:</span>
+                    <asp:DropDownList ID="DropDownTimeEnd" Width="100px" OnSelectedIndexChanged="DropDownTimeEnd_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                </div>
+                    </div>
+            </div>
+            </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Service:</span>
+                    <asp:DropDownList ID="DropDownService" Width="200px" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Time:</span>
+                    <asp:DropDownList ID="DropDownTime" Width="200px" OnSelectedIndexChanged="DropDownTime_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+            </div>
+        
 
     </section>
     <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
@@ -217,11 +326,31 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <link href="css/select2.css" rel="stylesheet" />
+
+
     <script>
         $(function () {
             bindDataTable(); // bind data table on first page load
+            BinddropdownRooms();
+            BinddropdownTimes();
+            Binddropdowndates();
+            BinddropdownTimebegins();
+            BinddropdownTimeEnds();
+            BinddropdownServices();
+
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRooms);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimes);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Binddropdowndates);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimebegins);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimeEnds);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownServices);
+
         });
+
         function bindDataTable() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=gvUsers.ClientID%>').dataTable({
@@ -234,5 +363,61 @@
                 });
             });
         };
+
+        function BinddropdownRooms() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDownRoom.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
+        function BinddropdownTimes() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDownTime.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
+        function Binddropdowndates() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDowndate.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
+        function BinddropdownTimebegins() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDownTimebegin.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
+        function BinddropdownTimeEnds() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDownTimeEnd.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
+        function BinddropdownServices() {
+            $(document).ready(function () {
+                var oTable = $('#' + '<%=DropDownService.ClientID%>').select2({
+                    placeholder: "Select an option",
+                    allowClear: true
+                });
+            });
+        };
+
     </script>
 </asp:Content>
+

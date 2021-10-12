@@ -151,6 +151,13 @@ namespace ePM.Dal.Logic
                 return db.vServices.Where(x => x.Status == true && x.ClinicID == clinicID && x.UpdatedByID == userID).ToList();
             }
         }
+        public static List<vService> GetservicesList(int roomId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vServices.Where(x => x.Status == true && x.RoomId == roomId).ToList();
+            }
+        }
         public static List<vServiceType> GetservicesTypeList()
         {
             using (var db = new eMedicalEntities())

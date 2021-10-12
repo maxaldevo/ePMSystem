@@ -26,10 +26,6 @@ namespace eMedicalSys
                 gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
-        protected void Page_Init()
-        {
-            //DemoHelper.Instance.ControlAreaMaxWidth = Unit.Percentage(100);
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -74,11 +70,10 @@ namespace eMedicalSys
                 binddates(_userID, _selectedRoomId);
                 bindtimebegins(_userID, _selectedRoomId);
                 //bindPatients(_clinicId);
-                bindServices(_clinicId, _userID);
+                bindServices(_selectedRoomId);
 
             }
         }
-
         private void binddates(int usrId, int roomId)
         {
             DropDowndate.DataSource = null;
@@ -118,12 +113,12 @@ namespace eMedicalSys
             DropDownRoom.Items[0].Selected = true;
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
         }
-        private void bindServices(int clinicId, int userId)
+        private void bindServices(int roomID)
         {
 
             DropDownService.DataSource = null;
             DropDownService.ClearSelection();
-            List<vService> Services = ServiceManager.GetservicesList(clinicId, userId);
+            List<vService> Services = ServiceManager.GetservicesList(roomID);
             DropDownService.DataSource = Services;
             DropDownService.DataValueField = "SID";
             DropDownService.DataTextField = "ServiceName";
@@ -172,6 +167,10 @@ namespace eMedicalSys
             _selecteddate = DropDowndate.SelectedItem.Text;
         }
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
+        }
+        protected void DropDownTimeEnd_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
         }
