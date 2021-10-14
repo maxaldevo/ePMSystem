@@ -33,5 +33,10 @@ namespace ePM.Dal
         public string LastName { get; set; }
         public Nullable<int> hrstimebegin { get; set; }
         public Nullable<int> hrstimeend { get; set; }
+        public Nullable<int> DAY_DATE { get; set; }
+        public Nullable<int> MONTH_DATE { get; set; }
+        public Nullable<int> YEAR_DATE { get; set; }
+        public Nullable<System.DateTime> BookingDate_TimeBegin { get; set; }
+        public Nullable<System.DateTime> BookingDate_TimeEnd { get; set; }
     }
 }

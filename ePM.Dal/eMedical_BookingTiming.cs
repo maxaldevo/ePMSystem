@@ -30,6 +30,8 @@ namespace ePM.Dal
         public string TimeByHourBegins { get; set; }
         public string TimeByHourEnds { get; set; }
         public Nullable<bool> DateAdded_flag { get; set; }
+        public Nullable<System.DateTime> BookingDate_TimeBegin { get; set; }
+        public Nullable<System.DateTime> BookingDate_TimeEnd { get; set; }
     
         public virtual eMedical_Service eMedical_Service { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }

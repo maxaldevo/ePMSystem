@@ -11,6 +11,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BookingDate" Type="date" />
+          <Property Name="BookingDate_TimeBegin" Type="datetime" />
+          <Property Name="BookingDate_TimeEnd" Type="datetime" />
           <Property Name="BookingTimeBegin" Type="nvarchar" MaxLength="50" />
           <Property Name="BookingTimeEnd" Type="nvarchar" MaxLength="50" />
           <Property Name="ServiceID" Type="int" />
@@ -346,6 +348,9 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="BookingDate" Type="date" />
+          <Property Name="DAY_DATE" Type="int" />
+          <Property Name="MONTH_DATE" Type="int" />
+          <Property Name="YEAR_DATE" Type="int" />
           <Property Name="BookingTimeBegin" Type="nvarchar" MaxLength="50" />
           <Property Name="BookingTimeEnd" Type="nvarchar" MaxLength="50" />
           <Property Name="IsBooked" Type="bit" />
@@ -363,6 +368,8 @@ warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primar
           <Property Name="LastName" Type="nvarchar" MaxLength="100" />
           <Property Name="hrstimebegin" Type="int" />
           <Property Name="hrstimeend" Type="int" />
+          <Property Name="BookingDate_TimeBegin" Type="datetime" />
+          <Property Name="BookingDate_TimeEnd" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vBookingTimesDistinct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -749,6 +756,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
         </Association>
         <Function Name="sp_eMedical_addNewBookingTiming" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BookingDate" Type="date" Mode="In" />
+          <Parameter Name="BookingDate_TimeBegin" Type="datetime" Mode="In" />
+          <Parameter Name="BookingDate_TimeEnd" Type="datetime" Mode="In" />
           <Parameter Name="BookingTimeBegin" Type="nvarchar" Mode="In" />
           <Parameter Name="BookingTimeEnd" Type="nvarchar" Mode="In" />
           <Parameter Name="RoomID" Type="int" Mode="In" />
@@ -928,6 +937,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <DefiningQuery>SELECT 
     [vBookingTimes].[ID] AS [ID], 
     [vBookingTimes].[BookingDate] AS [BookingDate], 
+    [vBookingTimes].[DAY_DATE] AS [DAY_DATE], 
+    [vBookingTimes].[MONTH_DATE] AS [MONTH_DATE], 
+    [vBookingTimes].[YEAR_DATE] AS [YEAR_DATE], 
     [vBookingTimes].[BookingTimeBegin] AS [BookingTimeBegin], 
     [vBookingTimes].[BookingTimeEnd] AS [BookingTimeEnd], 
     [vBookingTimes].[IsBooked] AS [IsBooked], 
@@ -944,7 +956,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vBookingTimes].[FirstName] AS [FirstName], 
     [vBookingTimes].[LastName] AS [LastName], 
     [vBookingTimes].[hrstimebegin] AS [hrstimebegin], 
-    [vBookingTimes].[hrstimeend] AS [hrstimeend]
+    [vBookingTimes].[hrstimeend] AS [hrstimeend], 
+    [vBookingTimes].[BookingDate_TimeBegin] AS [BookingDate_TimeBegin], 
+    [vBookingTimes].[BookingDate_TimeEnd] AS [BookingDate_TimeEnd]
     FROM [dbo].[vBookingTimes] AS [vBookingTimes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vBookingTimesDistinct" EntityType="Self.vBookingTimesDistinct" store:Type="Views" store:Schema="dbo">
@@ -1379,6 +1393,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           </AssociationSet>
           <FunctionImport Name="sp_eMedical_addNewBookingTiming">
             <Parameter Name="BookingDate" Mode="In" Type="DateTime" />
+            <Parameter Name="BookingDate_TimeBegin" Mode="In" Type="DateTime" />
+            <Parameter Name="BookingDate_TimeEnd" Mode="In" Type="DateTime" />
             <Parameter Name="BookingTimeBegin" Mode="In" Type="String" />
             <Parameter Name="BookingTimeEnd" Mode="In" Type="String" />
             <Parameter Name="RoomID" Mode="In" Type="Int32" />
@@ -1981,6 +1997,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="TimeByHourBegins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TimeByHourEnds" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateAdded_flag" Type="Boolean" />
+          <Property Name="BookingDate_TimeBegin" Type="DateTime" Precision="3" />
+          <Property Name="BookingDate_TimeEnd" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="eMedical_Timing">
           <Key>
@@ -2151,6 +2169,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="hrstimebegin" Type="Int32" />
           <Property Name="hrstimeend" Type="Int32" />
+          <Property Name="DAY_DATE" Type="Int32" />
+          <Property Name="MONTH_DATE" Type="Int32" />
+          <Property Name="YEAR_DATE" Type="Int32" />
+          <Property Name="BookingDate_TimeBegin" Type="DateTime" Precision="3" />
+          <Property Name="BookingDate_TimeEnd" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="vBookingTimesDistinct">
           <Key>
@@ -2576,6 +2599,8 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_BookingTiming">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_BookingTiming">
               <MappingFragment StoreEntitySet="eMedical_BookingTiming">
+                <ScalarProperty Name="BookingDate_TimeEnd" ColumnName="BookingDate_TimeEnd" />
+                <ScalarProperty Name="BookingDate_TimeBegin" ColumnName="BookingDate_TimeBegin" />
                 <ScalarProperty Name="DateAdded_flag" ColumnName="DateAdded_flag" />
                 <ScalarProperty Name="TimeByHourEnds" ColumnName="TimeByHourEnds" />
                 <ScalarProperty Name="TimeByHourBegins" ColumnName="TimeByHourBegins" />
@@ -2676,6 +2701,11 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="vBookingTimes">
             <EntityTypeMapping TypeName="eMedicalModel.vBookingTime">
               <MappingFragment StoreEntitySet="vBookingTimes">
+                <ScalarProperty Name="BookingDate_TimeEnd" ColumnName="BookingDate_TimeEnd" />
+                <ScalarProperty Name="BookingDate_TimeBegin" ColumnName="BookingDate_TimeBegin" />
+                <ScalarProperty Name="YEAR_DATE" ColumnName="YEAR_DATE" />
+                <ScalarProperty Name="MONTH_DATE" ColumnName="MONTH_DATE" />
+                <ScalarProperty Name="DAY_DATE" ColumnName="DAY_DATE" />
                 <ScalarProperty Name="hrstimeend" ColumnName="hrstimeend" />
                 <ScalarProperty Name="hrstimebegin" ColumnName="hrstimebegin" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

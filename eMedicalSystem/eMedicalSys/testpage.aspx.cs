@@ -17,7 +17,9 @@ namespace eMedicalSys
     {
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
-        public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
+        public static string _selectedtime, _selectedtimebegin = "";
+        DateTime _selecteddate;
+        string day_date, month_date, year_date = "";
         protected void Page_PreRender(object sender, EventArgs e)
         {
             if (gvUsers.Rows.Count > 0)
@@ -30,74 +32,88 @@ namespace eMedicalSys
         {
             if (!Page.IsPostBack)
             {
-                //#region Page Validation
+                #region Page Validation
 
-                //int usrId, RoleId, clinicID = 0;
-                //if (Session["UserId"] == null)
-                //{
-                //    Response.Redirect("~/Login/Login.aspx", true);
-                //}
-                //else
-                //{
-                //    if (int.Parse(Session["UserId"].ToString()) != 0)
-                //    {
-                //        usrId = int.Parse(Session["UserId"].ToString());
-                //        RoleId = int.Parse(Session["RoleId"].ToString());
-                //        clinicID = int.Parse(Session["ClinicId"].ToString());
+                int usrId, RoleId, clinicID = 0;
+                if (Session["UserId"] == null)
+                {
+                    Response.Redirect("~/Login/Login.aspx", true);
+                }
+                else
+                {
+                    if (int.Parse(Session["UserId"].ToString()) != 0)
+                    {
+                        usrId = int.Parse(Session["UserId"].ToString());
+                        RoleId = int.Parse(Session["RoleId"].ToString());
+                        clinicID = int.Parse(Session["ClinicId"].ToString());
 
-                //        string currentPage = HttpContext.Current.Request.Url.LocalPath;
-                //        if (RoleId != 1)
-                //        {
-                //            if (!SecurityManager.isPageInRole(currentPage, RoleId))
-                //            {
-                //                Response.Redirect("~/Unauthorized.aspx", true);
-                //            }
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Response.Redirect("~/Login/Login.aspx", true);
-                //    }
-                //}
+                        string currentPage = HttpContext.Current.Request.Url.LocalPath;
+                        if (RoleId != 1)
+                        {
+                            if (!SecurityManager.isPageInRole(currentPage, RoleId))
+                            {
+                                Response.Redirect("~/Unauthorized.aspx", true);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Login/Login.aspx", true);
+                    }
+                }
 
-                //#endregion Page Validation
+                #endregion Page Validation
                 _userID = int.Parse(Session["UserId"].ToString());
                 _roleId = int.Parse(Session["RoleId"].ToString());
                 _clinicId = int.Parse(Session["ClinicId"].ToString());
 
                 BindGrid(_clinicId); 
                 bindRooms(_userID);
-                binddates(_userID, _selectedRoomId);
-                bindtimebegins(_userID, _selectedRoomId);
-                //bindPatients(_clinicId);
                 bindServices(_selectedRoomId);
-
+                //binddates(_userID, _selectedRoomId);
+                bindtimebegins(_userID, _selectedRoomId, day_date, month_date, year_date);
+                //bindPatients(_clinicId);
             }
         }
-        private void binddates(int usrId, int roomId)
+        //private void binddates(int usrId, int roomId)
+        //{
+        //    DropDowndate.DataSource = null;
+        //    DropDowndate.ClearSelection();
+        //    List<BookingDates> dates = BookingManager.GetBookingTimingList_distinct_Nottoday(usrId, roomId);
+        //    DropDowndate.DataSource = dates;
+        //    DropDowndate.DataValueField = "RoomID";
+        //    DropDowndate.DataTextField = "bookingDate";
+        //    DropDowndate.DataTextFormatString = "{0:dd-MM-yyyy}";
+        //    DropDowndate.DataBind();
+        //    if (DropDowndate.Items.Count > 0)
+        //    {
+        //        DropDowndate.Items[0].Selected = true;
+        //        _selecteddate = Convert.ToDateTime(DropDowndate.SelectedItem.Text);
+        //        day_date = _selecteddate.Day.ToString();
+        //        month_date = _selecteddate.Month.ToString();
+        //        year_date = _selecteddate.Year.ToString();
+        //    }
+        //}
+        private void bindtimebegins(int usrId, int roomId, string dd,string mm, string yyyy)
         {
-            DropDowndate.DataSource = null;
-            DropDowndate.ClearSelection();
-            List<BookingDates> dates = BookingManager.GetBookingTimingList_distinct_Nottoday(usrId, roomId);
-            DropDowndate.DataSource = dates;
-            DropDowndate.DataValueField = "RoomID";
-            DropDowndate.DataTextField = "bookingDate";
-            DropDowndate.DataBind();
-            DropDowndate.Items[0].Selected = true;
-            _selecteddate = DropDowndate.SelectedItem.Text;
-        }
-        private void bindtimebegins(int usrId, int roomId)
-        {
-
             DropDownTimebegin.DataSource = null;
             DropDownTimebegin.ClearSelection();
             List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId);
             DropDownTimebegin.DataSource = Timesbegin;
             DropDownTimebegin.DataValueField = "ID";
-            DropDownTimebegin.DataTextField = "hrstimebegin";
+            DropDownTimebegin.DataTextField = "BookingDate_TimeBegin";
             DropDownTimebegin.DataBind();
-            DropDownTimebegin.Items[0].Selected = true;
-            _selectedtimebegin = DropDownTimebegin.SelectedItem.Text;
+            if (DropDownTimebegin.Items.Count > 0)
+            {
+                DropDownTimebegin.Items[0].Selected = true;
+                _selectedtimebegin = DropDownTimebegin.SelectedItem.Text;
+            }
+            //for (int i = 0; i < DropDownTimebegin.Items.Count - 1; i++)
+            //{
+            //    TimeSpan spWorkMin = TimeSpan.FromMinutes(int.Parse(DropDownTimebegin.Items[i].Text));
+            //    DropDownTimebegin.Items[i].Text = string.Format("{0:00}:{1:00}", (int)spWorkMin.TotalHours, spWorkMin.Minutes);
+            //}
+
         }
         private void bindRooms(int usrId)
         {
@@ -143,7 +159,7 @@ namespace eMedicalSys
         }
         protected void btnAddNewRecord_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AddNewUser.aspx", true);
+            Response.Redirect("~/AddNewPatient.aspx", true);
         }
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -153,19 +169,24 @@ namespace eMedicalSys
         protected void DropDownRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
+            bindServices(_selectedRoomId);
+            //binddates(_userID, _selectedRoomId);
         }
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-        protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selectedtimeId = int.Parse(DropDownTime.SelectedItem.Value);
-        }
-        protected void DropDowndate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _selecteddate = DropDowndate.SelectedItem.Text;
-        }
+        //protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _selectedtimeId = int.Parse(DropDownTime.SelectedItem.Value);
+        //}
+        //protected void DropDowndate_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    _selecteddate = Convert.ToDateTime(DropDowndate.SelectedItem.Text);
+        //    day_date = _selecteddate.Day.ToString();
+        //    month_date = _selecteddate.Month.ToString();
+        //    year_date = _selecteddate.Year.ToString();
+        //}
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;

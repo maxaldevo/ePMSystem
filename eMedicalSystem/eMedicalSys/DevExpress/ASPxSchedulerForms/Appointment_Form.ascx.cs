@@ -18,7 +18,9 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
 
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
-        public static string _selectedtime, _selectedtimebegin, _selecteddate = "";
+        public static string _selectedtime, _selectedtimebegin = "";
+        DateTime _selecteddate;
+        string day_date, month_date, year_date = "";
         //protected void Page_PreRender(object sender, EventArgs e)
         //{
         //    if (gvUsers.Rows.Count > 0)
@@ -38,7 +40,7 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
 
             bindRooms(_userID);
             binddates(_userID, _selectedRoomId);
-            bindtimebegins(_userID, _selectedRoomId);
+            bindtimebegins(_userID, _selectedRoomId, day_date,month_date,year_date);
             //bindPatients(_clinicId);
             bindServices(_clinicId, _userID);
             //BindGrid(_clinicId);
@@ -54,9 +56,12 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
             DropDowndate.DataTextField = "bookingDate";
             DropDowndate.DataBind();
             DropDowndate.Items[0].Selected = true;
-            _selecteddate = DropDowndate.SelectedItem.Text;
+            _selecteddate = Convert.ToDateTime(DropDowndate.SelectedItem.Text);
+            day_date = _selecteddate.Day.ToString();
+            month_date = _selecteddate.Month.ToString();
+            year_date = _selecteddate.Year.ToString();
         }
-        private void bindtimebegins(int usrId, int roomId)
+        private void bindtimebegins(int usrId, int roomId, string dd, string mm, string yyyy)
         {
 
             DropDownTimebegin.DataSource = null;
@@ -140,7 +145,10 @@ namespace eMedicalSys.DevExpress.ASPxSchedulerForms
         }
         protected void DropDowndate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selecteddate = DropDowndate.SelectedItem.Text;
+            _selecteddate = Convert.ToDateTime(DropDowndate.SelectedItem.Text);
+            day_date = _selecteddate.Day.ToString();
+            month_date = _selecteddate.Month.ToString();
+            year_date = _selecteddate.Year.ToString();
         }
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
         {

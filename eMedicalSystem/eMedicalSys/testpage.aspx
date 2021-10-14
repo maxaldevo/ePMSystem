@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="testpage.aspx.cs" Inherits="eMedicalSys.testpage" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxScheduler.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
+<%--<%@ Register Assembly="DevExpress.Web.ASPxScheduler.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxScheduler" TagPrefix="dxwschs" %>
 
-<%@ Register Assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="cc1" %>
+<%@ Register Assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="cc1" %>--%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <style>
@@ -122,13 +122,32 @@
         }
     </style>
     <section class="content">
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
+            ClientIDMode="Predictable" ViewStateMode="Inherit" DisplayAfter="1">
+            <ProgressTemplate>
+                <div id="circle">
+                    <div class="loader">
+                        <div class="loader">
+                            <div class="loader">
+                                <div class="loader">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
-                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New User" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Patient" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                         <br />
                         <br />
+
+                        <asp:Label ID="lbltime" runat="server"></asp:Label>
                         <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
                             EmptyDataText="No records found." OnRowEditing="OnRowEditing">
                             <Columns>
@@ -172,16 +191,24 @@
             <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
+                    <span style="font-weight: bold">Choose Service:</span>
+                    <asp:DropDownList ID="DropDownService" Width="200px" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" AutoPostBack="true"  runat="server"></asp:DropDownList>
+                </div>
+            </div>
+        </div>
+<%--            <div class="col-md-3">
+                <div class="card card-primary card-outline">
+                    <div class="card-body p-0">
                     <span style="font-weight: bold">Choose Date:</span>
-                    <asp:DropDownList ID="DropDowndate" Width="100px" OnSelectedIndexChanged="DropDowndate_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDowndate" Width="200px" OnSelectedIndexChanged="DropDowndate_SelectedIndexChanged" AutoPostBack="true"  runat="server" ></asp:DropDownList>
                 </div>
                     </div>
-            </div>
+            </div>--%>
             <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                     <span style="font-weight: bold">Choose Session Start:</span>
-                    <asp:DropDownList ID="DropDownTimebegin" Width="100px" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownTimebegin" Width="200px" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
                 </div>
                     </div>
             </div>
@@ -189,21 +216,12 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                     <span style="font-weight: bold">Choose Session End:</span>
-                    <asp:DropDownList ID="DropDownTimeEnd" Width="100px" OnSelectedIndexChanged="DropDownTimeEnd_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownTimeEnd" Width="200px" OnSelectedIndexChanged="DropDownTimeEnd_SelectedIndexChanged" runat="server"></asp:DropDownList>
                 </div>
                     </div>
             </div>
             </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                    <span style="font-weight: bold">Choose Service:</span>
-                    <asp:DropDownList ID="DropDownService" Width="200px" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                </div>
-            </div>
-        </div>
+        <%--<div class="row">
             <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
@@ -212,11 +230,20 @@
                 </div>
             </div>
         </div>
-            </div>
-        
+            </div>--%>
+                
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="btnAddNewRecord" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
+                <asp:AsyncPostBackTrigger ControlID="DropDownService" EventName="SelectedIndexChanged" />
+<%--                <asp:AsyncPostBackTrigger ControlID="DropDowndate" EventName="SelectedIndexChanged" />--%>
+                <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
 
+            </Triggers>
+        </asp:UpdatePanel>
     </section>
-    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
+<%--    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
         <Views>
             <DayView ViewSelectorItemAdaptivePriority="2" Enabled="true">
 
@@ -318,7 +345,7 @@
             <asp:Parameter Name="CustomField1" Type="String" />
             <asp:Parameter Name="UniqueID" Type="Int32" />
         </UpdateParameters>
-    </asp:SqlDataSource>
+    </asp:SqlDataSource>--%>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -335,16 +362,16 @@
         $(function () {
             bindDataTable(); // bind data table on first page load
             BinddropdownRooms();
-            BinddropdownTimes();
-            Binddropdowndates();
+            //BinddropdownTimes();
+            //Binddropdowndates();
             BinddropdownTimebegins();
             BinddropdownTimeEnds();
             BinddropdownServices();
 
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRooms);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimes);
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Binddropdowndates);
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimes);
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Binddropdowndates);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimebegins);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimeEnds);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownServices);
@@ -373,7 +400,7 @@
             });
         };
 
-        function BinddropdownTimes() {
+<%--        function BinddropdownTimes() {
             $(document).ready(function () {
                 var oTable = $('#' + '<%=DropDownTime.ClientID%>').select2({
                     placeholder: "Select an option",
@@ -389,7 +416,7 @@
                     allowClear: true
                 });
             });
-        };
+        };--%>
 
         function BinddropdownTimebegins() {
             $(document).ready(function () {
