@@ -837,6 +837,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Parameter Name="ClinicId" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eMedical_BookAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="ResourceID" Type="int" Mode="In" />
+          <Parameter Name="PatientId" Type="int" Mode="In" />
+          <Parameter Name="ServiceID" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <Function Name="sp_eMedical_DeleteBookingTiming" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="BookingDate" Type="date" Mode="In" />
           <Parameter Name="RoomID" Type="int" Mode="In" />
@@ -1453,6 +1461,14 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="vBookingTimesDistincts" EntityType="eMedicalModel.vBookingTimesDistinct" />
+          <FunctionImport Name="sp_eMedical_BookAppointment" ReturnType="Collection(eMedicalModel.sp_eMedical_BookAppointment_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ResourceID" Mode="In" Type="Int32" />
+            <Parameter Name="PatientId" Mode="In" Type="Int32" />
+            <Parameter Name="ServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -2187,6 +2203,25 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="IsAvailable" Type="Boolean" />
           <Property Name="UpdatedByID" Type="Int32" />
         </EntityType>
+        <ComplexType Name="sp_eMedical_BookAppointment_Result">
+          <Property Type="Int32" Name="UniqueID" Nullable="false" />
+          <Property Type="Int32" Name="Type" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="AllDay" Nullable="true" />
+          <Property Type="String" Name="Subject" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="Label" Nullable="true" />
+          <Property Type="Int32" Name="ResourceID" Nullable="true" />
+          <Property Type="String" Name="ResourceIDs" Nullable="true" />
+          <Property Type="String" Name="ReminderInfo" Nullable="true" />
+          <Property Type="String" Name="RecurrenceInfo" Nullable="true" />
+          <Property Type="String" Name="CustomField1" Nullable="true" />
+          <Property Type="Int32" Name="PatientId" Nullable="true" />
+          <Property Type="Int32" Name="ServiceID" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2742,6 +2777,29 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eMedical_BookAppointment" FunctionName="eMedicalModel.Store.sp_eMedical_BookAppointment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eMedicalModel.sp_eMedical_BookAppointment_Result">
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="AllDay" ColumnName="AllDay" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="ResourceIDs" ColumnName="ResourceIDs" />
+                <ScalarProperty Name="ReminderInfo" ColumnName="ReminderInfo" />
+                <ScalarProperty Name="RecurrenceInfo" ColumnName="RecurrenceInfo" />
+                <ScalarProperty Name="CustomField1" ColumnName="CustomField1" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

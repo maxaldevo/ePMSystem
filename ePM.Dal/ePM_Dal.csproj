@@ -138,6 +138,9 @@
     <Compile Include="Logic\UserManager.cs" />
     <Compile Include="Logic\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_eMedical_BookAppointment_Result.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_eMedical_GetPagesByRole_Result.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>

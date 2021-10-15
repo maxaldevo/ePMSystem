@@ -17,9 +17,9 @@ namespace eMedicalSys
     {
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
-        public static string _selectedtime, _selectedtimebegin = "";
-        DateTime _selecteddate;
-        string day_date, month_date, year_date = "";
+        public static string _selectedtime, _selectedtimebegin, _selectedtimeEnd = "";
+        //DateTime _selecteddate;
+        //string day_date, month_date, year_date = "";
         protected void Page_PreRender(object sender, EventArgs e)
         {
             if (gvUsers.Rows.Count > 0)
@@ -70,8 +70,9 @@ namespace eMedicalSys
                 BindGrid(_clinicId); 
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
+                bindtimebegins(_userID, _selectedRoomId);
+                bindtimeEnd(_userID, _selectedRoomId);
                 //binddates(_userID, _selectedRoomId);
-                bindtimebegins(_userID, _selectedRoomId, day_date, month_date, year_date);
                 //bindPatients(_clinicId);
             }
         }
@@ -94,7 +95,7 @@ namespace eMedicalSys
         //        year_date = _selecteddate.Year.ToString();
         //    }
         //}
-        private void bindtimebegins(int usrId, int roomId, string dd,string mm, string yyyy)
+        private void bindtimebegins(int usrId, int roomId)
         {
             DropDownTimebegin.DataSource = null;
             DropDownTimebegin.ClearSelection();
@@ -114,6 +115,21 @@ namespace eMedicalSys
             //    DropDownTimebegin.Items[i].Text = string.Format("{0:00}:{1:00}", (int)spWorkMin.TotalHours, spWorkMin.Minutes);
             //}
 
+        }
+        private void bindtimeEnd(int usrId, int roomId)
+        {
+            DropDownTimeEnd.DataSource = null;
+            DropDownTimeEnd.ClearSelection();
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId);
+            DropDownTimeEnd.DataSource = Timesbegin;
+            DropDownTimeEnd.DataValueField = "ID";
+            DropDownTimeEnd.DataTextField = "BookingDate_TimeEnd";
+            DropDownTimeEnd.DataBind();
+            if (DropDownTimeEnd.Items.Count > 0)
+            {
+                DropDownTimeEnd.Items[0].Selected = true;
+                _selectedtimeEnd = DropDownTimeEnd.SelectedItem.Text;
+            }
         }
         private void bindRooms(int usrId)
         {
@@ -160,6 +176,41 @@ namespace eMedicalSys
         protected void btnAddNewRecord_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AddNewPatient.aspx", true);
+        }
+        protected void btnBookAppointment_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                try
+                {
+                    string result = BookingManager.AddNewAppointment(Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedtimeEnd), _selectedPatientId, _selectedRoomId, _selectedServiceId);
+                    if (result != "inserted")
+                    {
+                        lblResult.Visible = true;
+                        lblResult.ForeColor = System.Drawing.Color.Red;
+                        lblResult.Text = result;
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
+                    }
+                    else
+                    {
+                        lblResult.Visible = true;
+                        lblResult.ForeColor = System.Drawing.Color.Green;
+                        lblResult.Text = result;
+                        clearControls();
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "Clinic added successfully!" + "')</script>", false);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
+                }
+
+            }
+        }
+        private void clearControls()
+        {
+            
         }
         protected void OnRowEditing(object sender, GridViewEditEventArgs e)
         {

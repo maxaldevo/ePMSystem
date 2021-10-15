@@ -373,5 +373,30 @@ namespace ePM.Dal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_DeleteBookingTiming", bookingDateParameter, roomIDParameter, userIDParameter);
         }
+    
+        public virtual ObjectResult<sp_eMedical_BookAppointment_Result> sp_eMedical_BookAppointment(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate, Nullable<int> resourceID, Nullable<int> patientId, Nullable<int> serviceID, ObjectParameter msg)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            var resourceIDParameter = resourceID.HasValue ?
+                new ObjectParameter("ResourceID", resourceID) :
+                new ObjectParameter("ResourceID", typeof(int));
+    
+            var patientIdParameter = patientId.HasValue ?
+                new ObjectParameter("PatientId", patientId) :
+                new ObjectParameter("PatientId", typeof(int));
+    
+            var serviceIDParameter = serviceID.HasValue ?
+                new ObjectParameter("ServiceID", serviceID) :
+                new ObjectParameter("ServiceID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_BookAppointment_Result>("sp_eMedical_BookAppointment", startDateParameter, endDateParameter, resourceIDParameter, patientIdParameter, serviceIDParameter, msg);
+        }
     }
 }

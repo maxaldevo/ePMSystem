@@ -5,7 +5,7 @@
 <%@ Register Assembly="DevExpress.XtraScheduler.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.XtraScheduler" TagPrefix="cc1" %>--%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-        <style>
+    <style>
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: dodgerblue;
             color: white;
@@ -137,66 +137,66 @@
                 </div>
             </ProgressTemplate>
         </asp:UpdateProgress>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                        <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Patient" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
-                        <br />
-                        <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body p-0">
+                                <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Patient" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                                <br />
+                                <br />
 
-                        <asp:Label ID="lbltime" runat="server"></asp:Label>
-                        <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
-                            EmptyDataText="No records found." OnRowEditing="OnRowEditing">
-                            <Columns>
-                                <asp:TemplateField HeaderText="Full Name">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
-                                        <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="File No.">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblEmpno" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Civil ID">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblCivilId" runat="server" Text='<%# Eval("CivilID") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Mobile">
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblMobile" runat="server" Text='<%# Eval("Mobile") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/correct.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />
-                            </Columns>
-                        </asp:GridView>
+                                <asp:Label ID="lbltime" runat="server"></asp:Label>
+                                <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
+                                    EmptyDataText="No records found." OnRowEditing="OnRowEditing">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Full Name">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>
+                                                <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="File No.">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblEmpno" runat="server" Text='<%# Eval("EmployeeNo") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Civil ID">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCivilId" runat="server" Text='<%# Eval("CivilID") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Mobile">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblMobile" runat="server" Text='<%# Eval("Mobile") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:CommandField ShowHeader="true" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/correct.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                    <span style="font-weight: bold">Choose Room:</span>
-                    <asp:DropDownList ID="DropDownRoom" Width="200px" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
-                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body p-0">
+                                <span style="font-weight: bold">Choose Room:</span>
+                                <asp:DropDownList ID="DropDownRoom" Width="250px" OnSelectedIndexChanged="DropDownRoom_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                    <span style="font-weight: bold">Choose Service:</span>
-                    <asp:DropDownList ID="DropDownService" Width="200px" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" AutoPostBack="true"  runat="server"></asp:DropDownList>
-                </div>
-            </div>
-        </div>
-<%--            <div class="col-md-3">
+                    <div class="col-md-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body p-0">
+                                <span style="font-weight: bold">Choose Service:</span>
+                                <asp:DropDownList ID="DropDownService" Width="250px" OnSelectedIndexChanged="DropDownService_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <%--            <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
                     <span style="font-weight: bold">Choose Date:</span>
@@ -204,24 +204,33 @@
                 </div>
                     </div>
             </div>--%>
-            <div class="col-md-3">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                    <span style="font-weight: bold">Choose Session Start:</span>
-                    <asp:DropDownList ID="DropDownTimebegin" Width="200px" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                </div>
+                    <div class="col-md-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body p-0">
+                                <span style="font-weight: bold">Choose Session Start:</span>
+                                <asp:DropDownList ID="DropDownTimebegin" Width="250px" OnSelectedIndexChanged="DropDownTimebegin_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-primary card-outline">
-                    <div class="card-body p-0">
-                    <span style="font-weight: bold">Choose Session End:</span>
-                    <asp:DropDownList ID="DropDownTimeEnd" Width="200px" OnSelectedIndexChanged="DropDownTimeEnd_SelectedIndexChanged" runat="server"></asp:DropDownList>
-                </div>
+                    <div class="col-md-3">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body p-0">
+                                <span style="font-weight: bold">Choose Session End:</span>
+                                <asp:DropDownList ID="DropDownTimeEnd" Width="250px" OnSelectedIndexChanged="DropDownTimeEnd_SelectedIndexChanged" runat="server"></asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
-            </div>
-            </div>
-        <%--<div class="row">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <asp:Button ID="btn_BookAppointment" OnClick="btnBookAppointment_Click" runat="server" Text="Book Appointment" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                    </div>
+                    <div class="col-md-8">
+                        <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>
+                    </div>
+                </div>
+                <%--<div class="row">
             <div class="col-md-3">
                 <div class="card card-primary card-outline">
                     <div class="card-body p-0">
@@ -231,19 +240,18 @@
             </div>
         </div>
             </div>--%>
-                
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnAddNewRecord" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="btn_BookAppointment" EventName="Click" />
                 <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
                 <asp:AsyncPostBackTrigger ControlID="DropDownService" EventName="SelectedIndexChanged" />
-<%--                <asp:AsyncPostBackTrigger ControlID="DropDowndate" EventName="SelectedIndexChanged" />--%>
+                <%--            <asp:AsyncPostBackTrigger ControlID="DropDowndate" EventName="SelectedIndexChanged" />--%>
                 <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
-
             </Triggers>
         </asp:UpdatePanel>
     </section>
-<%--    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
+    <%--    <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS">
         <Views>
             <DayView ViewSelectorItemAdaptivePriority="2" Enabled="true">
 
@@ -356,7 +364,6 @@
     <script src="Scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
-
 
     <script>
         $(function () {
