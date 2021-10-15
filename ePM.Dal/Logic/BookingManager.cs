@@ -150,7 +150,7 @@ namespace ePM.Dal.Logic
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId).ToList();
+                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId && x.IsBooked == false && x.IsAvailable == true).ToList();
             }
         }
         //public static List<BookingDates> GetBookingTimingList_Distinct()
@@ -269,15 +269,25 @@ namespace ePM.Dal.Logic
                 using (var db = new eMedicalEntities())
                 {
                     bool booked = false;
+                    //int hasRecord = 0;
                     for (DateTime i = startTime; i < endTime; i = i.AddMinutes(15))
                     {
+                        //hasRecord = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).ToList().Count;
+                        //if (hasRecord > 0)
+                        //{
+
                         booked = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
                         if (booked) break;
+                        //}
                     }
 
                     if (!booked)
                     {
                         var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                        for (DateTime i = startTime; i < endTime; i = i.AddMinutes(15))
+                        {
+                            db.sp_eMedical_UpdateBookAppointment(i, roomId, outputMsgParameter);
+                        }
                         db.sp_eMedical_BookAppointment(startTime, endTime, roomId, patientId, serviceID, outputMsgParameter);
                         friendlyMsg = outputMsgParameter.Value.ToString();
                     }

@@ -398,5 +398,18 @@ namespace ePM.Dal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_eMedical_BookAppointment_Result>("sp_eMedical_BookAppointment", startDateParameter, endDateParameter, resourceIDParameter, patientIdParameter, serviceIDParameter, msg);
         }
+    
+        public virtual int sp_eMedical_UpdateBookAppointment(Nullable<System.DateTime> startDate, Nullable<int> roomID, ObjectParameter msg)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var roomIDParameter = roomID.HasValue ?
+                new ObjectParameter("RoomID", roomID) :
+                new ObjectParameter("RoomID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eMedical_UpdateBookAppointment", startDateParameter, roomIDParameter, msg);
+        }
     }
 }

@@ -67,7 +67,7 @@ namespace eMedicalSys
                 _roleId = int.Parse(Session["RoleId"].ToString());
                 _clinicId = int.Parse(Session["ClinicId"].ToString());
 
-                BindGrid(_clinicId); 
+                BindGrid(_clinicId);
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
                 bindtimebegins(_userID, _selectedRoomId);
@@ -181,31 +181,39 @@ namespace eMedicalSys
         {
             if (Page.IsValid)
             {
-                try
+                if (_selectedPatientId > 0)
                 {
-                    string result = BookingManager.AddNewAppointment(Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedtimeEnd), _selectedPatientId, _selectedRoomId, _selectedServiceId);
-                    if (result != "inserted")
+                    try
                     {
-                        lblResult.Visible = true;
-                        lblResult.ForeColor = System.Drawing.Color.Red;
-                        lblResult.Text = result;
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
+                        string result = BookingManager.AddNewAppointment(Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedtimeEnd), _selectedPatientId, _selectedRoomId, _selectedServiceId);
+                        if (result != "inserted")
+                        {
+                            lblResult.Visible = true;
+                            lblResult.ForeColor = System.Drawing.Color.Red;
+                            lblResult.Text = result;
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Error", "<script>showpoperror('" + result + " Please contact your Admin!" + "')</script>", false);
+                        }
+                        else
+                        {
+                            lblResult.Visible = true;
+                            lblResult.ForeColor = System.Drawing.Color.Green;
+                            lblResult.Text = result;
+                            clearControls();
+                            ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "Clinic added successfully!" + "')</script>", false);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        lblResult.Visible = true;
-                        lblResult.ForeColor = System.Drawing.Color.Green;
-                        lblResult.Text = result;
-                        clearControls();
-                        ScriptManager.RegisterStartupScript(this, typeof(Page), "Success", "<script>showpopsuccess('" + "Clinic added successfully!" + "')</script>", false);
+
+                        ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-
-                    ScriptManager.RegisterStartupScript(this, typeof(Page), "unexpected error", "<script>showpoperror('" + "Unexpected error, Please contact your Admin!" + ex.Message + "')</script>", false);
+                    lblResult.Visible = true;
+                    lblResult.ForeColor = System.Drawing.Color.Red;
+                    lblResult.Text = "Please choose The Patient.";
                 }
-
             }
         }
         private void clearControls()
@@ -216,12 +224,14 @@ namespace eMedicalSys
         {
             GridViewRow row = gvUsers.Rows[e.NewEditIndex];
             Session["PatientId"] = Convert.ToInt32(gvUsers.DataKeys[e.NewEditIndex].Values[0]);
+            _selectedPatientId = Convert.ToInt32(gvUsers.DataKeys[e.NewEditIndex].Values[0]);
         }
         protected void DropDownRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
             bindServices(_selectedRoomId);
-            //binddates(_userID, _selectedRoomId);
+            bindtimebegins(_userID, _selectedRoomId);
+            bindtimeEnd(_userID, _selectedRoomId);
         }
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -240,11 +250,11 @@ namespace eMedicalSys
         //}
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
+            _selectedtimebegin = DropDownTimebegin.SelectedItem.Text;
         }
         protected void DropDownTimeEnd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedtimebegin = DropDownTimebegin.SelectedItem.Value;
+            _selectedtimeEnd = DropDownTimeEnd.SelectedItem.Text;
         }
     }
 }
