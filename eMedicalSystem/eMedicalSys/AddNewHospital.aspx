@@ -139,7 +139,6 @@
                 </div>
                 <br />
                 
-
                 <br />
                 <div class="row">
                     <div class="col-md-2">
@@ -153,8 +152,6 @@
                 <br />
             </ContentTemplate>
             <Triggers>
-
-
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
         </asp:UpdatePanel>

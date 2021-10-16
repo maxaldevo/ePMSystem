@@ -14,7 +14,6 @@ namespace WebApplication1
         public static string defaultImagePath = "images/avatar1.png";
         public static  string profileImage = "";
         public static readonly List<string> ImageExtensions = new List<string> { ".JPG", ".JPE", ".BMP", ".GIF", ".PNG" };
-
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Form.Attributes.Add("enctype", "multipart/form-data");
@@ -54,18 +53,10 @@ namespace WebApplication1
 
             image1.ImageUrl = defaultImagePath;
             lblFName.Text = user.FName;
-            //if (user.Department.Contains("->") && user.Department.Contains("Area"))
-            //{
-            //    lblArea.Text = user.Department.Substring(user.Department.IndexOf("->") + 3, 6);
-            //}
-            //else
-            //{
-            //    lblArea.Text = user.Department;
-            //}
             lblEmail.Text = user.Email;
-            //lblPosition.Text = user.Position;
+            lblCivilID.Text = user.CivilID;
+            lblMobile.Text = user.Mobile;
         }
-
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             try
@@ -90,7 +81,6 @@ namespace WebApplication1
             }
             
         }
-
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
             UploadDiv.Visible = true;
@@ -167,12 +157,10 @@ namespace WebApplication1
                 Response.Redirect("~/Login/Login.aspx", false);
             }
         }
-
         protected void linkChangePassword_Click(object sender, EventArgs e)
         {
             Panel1.Visible = true;
         }
-
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Panel1.Visible = false;

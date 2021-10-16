@@ -76,6 +76,11 @@
                         </p>
                         <hr />
                         <p>
+                            <strong>Civil No. : </strong>
+                            <asp:Label ID="lblCivilId" Font-Bold="true" runat="server" Text=""></asp:Label>
+                        </p>
+                        <hr />
+                        <p>
                             <strong>Email : </strong>
                             <asp:Label ID="lblEmail" Font-Bold="true" runat="server" Text=""></asp:Label>
                         </p>

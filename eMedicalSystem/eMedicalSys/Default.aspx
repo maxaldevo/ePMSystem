@@ -13,6 +13,8 @@
             text-align:center;color:#2d5e7e;font-weight:bold;
         }
     </style>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <section class="content">
         <div class="row">
             <div class="col-12">

@@ -130,20 +130,20 @@
                                 </p>
                                 <hr />
                                 <p>
+                                    <strong>Civil ID : </strong>
+                                    <asp:Label ID="lblCivilID" Font-Bold="true" runat="server" Text=""></asp:Label>
+                                </p>
+                                <hr />
+                                <p>
                                     <strong>Email : </strong>
                                     <asp:Label ID="lblEmail" Font-Bold="true" runat="server" Text=""></asp:Label>
                                 </p>
                                 <hr />
                                 <p>
-                                    <strong>Position : </strong>
-                                    <asp:Label ID="lblPosition" Font-Bold="true" runat="server" Text=""></asp:Label>
+                                    <strong>Mobile : </strong>
+                                    <asp:Label ID="lblMobile" Font-Bold="true" runat="server" Text=""></asp:Label>
                                 </p>
                                 <hr />
-
-                                <p>
-                                    <strong>Area : </strong>
-                                    <asp:Label ID="lblArea" Font-Bold="true" runat="server" Text=""></asp:Label>
-                                </p>
                             </div>
                         </div>
                     </div>
