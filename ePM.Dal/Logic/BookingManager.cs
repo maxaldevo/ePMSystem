@@ -260,7 +260,13 @@ namespace ePM.Dal.Logic
             }
             return isUpdated;
         }
-
+        public static List<vAppointment> GetAppointmentList()
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vAppointments.Where(x => x.CheckIN == false).ToList();
+            }
+        }
         public static string AddNewAppointment(DateTime startTime, DateTime endTime, int patientId, int roomId, int serviceID)
         {
             string friendlyMsg = "";

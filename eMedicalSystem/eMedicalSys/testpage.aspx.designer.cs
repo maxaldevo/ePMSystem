@@ -42,6 +42,15 @@ namespace eMedicalSys
         protected global::System.Web.UI.WebControls.Button btnAddNewRecord;
 
         /// <summary>
+        /// btn_AppointmentCheckIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AppointmentCheckIn;
+
+        /// <summary>
         /// lbltime control.
         /// </summary>
         /// <remarks>

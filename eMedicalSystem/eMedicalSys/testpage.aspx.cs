@@ -177,6 +177,10 @@ namespace eMedicalSys
         {
             Response.Redirect("~/AddNewPatient.aspx", true);
         }
+        protected void btnAppointmentCheckIn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CheckinAppointment.aspx", true);
+        }
         protected void btnBookAppointment_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)

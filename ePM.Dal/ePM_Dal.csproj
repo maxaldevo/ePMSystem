@@ -71,6 +71,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointment.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_BookingTiming.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
     <Compile Include="Utilities\SweetAlert.cs" />
     <Compile Include="Utilities\ValidateSession.cs" />
     <Compile Include="u_HRRoles.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vAppointment.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="vBookingTime.cs">

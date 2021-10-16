@@ -144,6 +144,7 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body p-0">
                                 <asp:Button ID="btnAddNewRecord" OnClick="btnAddNewRecord_Click" runat="server" Text="Add New Patient" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                                <asp:Button ID="btn_AppointmentCheckIn" OnClick="btnAppointmentCheckIn_Click" runat="server" Text="Appointment CheckIn" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                                 <br />
                                 <br />
 
