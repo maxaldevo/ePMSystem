@@ -22,5 +22,8 @@ namespace ePM.Dal
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<bool> CheckIN { get; set; }
         public Nullable<bool> CheckOut { get; set; }
+        public int RoomId { get; set; }
+        public int ServiceId { get; set; }
+        public int UserId { get; set; }
     }
 }

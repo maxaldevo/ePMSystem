@@ -369,6 +369,9 @@ warning 6002: The table/view 'eMedical.dbo.vAppointment' does not have a primary
         <EntityType Name="vAppointment">
           <Key>
             <PropertyRef Name="UniqueID" />
+            <PropertyRef Name="RoomId" />
+            <PropertyRef Name="ServiceId" />
+            <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UniqueID" Type="int" Nullable="false" />
           <Property Name="FName" Type="nvarchar" MaxLength="500" />
@@ -378,6 +381,9 @@ warning 6002: The table/view 'eMedical.dbo.vAppointment' does not have a primary
           <Property Name="EndDate" Type="smalldatetime" />
           <Property Name="CheckIN" Type="bit" />
           <Property Name="CheckOut" Type="bit" />
+          <Property Name="RoomId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -995,7 +1001,10 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
     [vAppointment].[StartDate] AS [StartDate], 
     [vAppointment].[EndDate] AS [EndDate], 
     [vAppointment].[CheckIN] AS [CheckIN], 
-    [vAppointment].[CheckOut] AS [CheckOut]
+    [vAppointment].[CheckOut] AS [CheckOut], 
+    [vAppointment].[RoomId] AS [RoomId], 
+    [vAppointment].[ServiceId] AS [ServiceId], 
+    [vAppointment].[UserId] AS [UserId]
     FROM [dbo].[vAppointment] AS [vAppointment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vBookingTimes" EntityType="Self.vBookingTimes" store:Type="Views" store:Schema="dbo">
@@ -2313,6 +2322,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
         <EntityType Name="vAppointment">
           <Key>
             <PropertyRef Name="UniqueID" />
+            <PropertyRef Name="RoomId" />
+            <PropertyRef Name="ServiceId" />
+            <PropertyRef Name="UserId" />
           </Key>
           <Property Name="UniqueID" Type="Int32" Nullable="false" />
           <Property Name="FName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -2322,6 +2334,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="CheckIN" Type="Boolean" />
           <Property Name="CheckOut" Type="Boolean" />
+          <Property Name="RoomId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2930,6 +2945,9 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="vAppointments">
             <EntityTypeMapping TypeName="eMedicalModel.vAppointment">
               <MappingFragment StoreEntitySet="vAppointment">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="RoomId" ColumnName="RoomId" />
                 <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
                 <ScalarProperty Name="CheckIN" ColumnName="CheckIN" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
