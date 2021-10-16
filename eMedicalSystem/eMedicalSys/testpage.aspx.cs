@@ -71,7 +71,7 @@ namespace eMedicalSys
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
                 bindtimebegins(_userID, _selectedRoomId);
-                bindtimeEnd(_userID, _selectedRoomId);
+                bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
                 //binddates(_userID, _selectedRoomId);
                 //bindPatients(_clinicId);
             }
@@ -116,11 +116,11 @@ namespace eMedicalSys
             //}
 
         }
-        private void bindtimeEnd(int usrId, int roomId)
+        private void bindtimeEnd(int usrId, int roomId, DateTime timebagin)
         {
             DropDownTimeEnd.DataSource = null;
             DropDownTimeEnd.ClearSelection();
-            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId);
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId, timebagin);
             DropDownTimeEnd.DataSource = Timesbegin;
             DropDownTimeEnd.DataValueField = "ID";
             DropDownTimeEnd.DataTextField = "BookingDate_TimeEnd";
@@ -235,7 +235,7 @@ namespace eMedicalSys
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
             bindServices(_selectedRoomId);
             bindtimebegins(_userID, _selectedRoomId);
-            bindtimeEnd(_userID, _selectedRoomId);
+            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
         }
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -255,6 +255,7 @@ namespace eMedicalSys
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Text;
+            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
         }
         protected void DropDownTimeEnd_SelectedIndexChanged(object sender, EventArgs e)
         {
