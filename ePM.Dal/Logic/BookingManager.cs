@@ -274,6 +274,13 @@ namespace ePM.Dal.Logic
                 return db.vAppointments.Where(x => x.CheckIN == false).ToList();
             }
         }
+        public static List<vAppointment> GetDoctorAppointmentList(int doctorRoomId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vAppointments.Where(x => x.RoomId == doctorRoomId).ToList();
+            }
+        }
         public static string AddNewAppointment(DateTime startTime, DateTime endTime, int patientId, int roomId, int serviceID)
         {
             string friendlyMsg = "";
