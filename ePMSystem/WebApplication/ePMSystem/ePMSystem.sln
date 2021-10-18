@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePM_Dal", "..\..\..\ePM.Dal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eMedicalSys", "..\..\..\eMedicalSystem\eMedicalSys\eMedicalSys.csproj", "{9D572C26-1FFF-416B-884B-18E4F82470DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePMConsole", "..\..\..\ePMSystemConsole\ePMConsole\ePMConsole.csproj", "{CB3719BA-7337-446D-A81E-D18D84EF0E0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePMConsole", "..\..\..\ePMSystemConsole\ePMConsole\ePMConsole.csproj", "{CB3719BA-7337-446D-A81E-D18D84EF0E0E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ePMSystemAPI", "..\..\..\ePMSystemAPI\ePMSystemAPI\ePMSystemAPI.vbproj", "{3531F5B1-68E2-4252-ACE0-5415A139309A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CB3719BA-7337-446D-A81E-D18D84EF0E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB3719BA-7337-446D-A81E-D18D84EF0E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB3719BA-7337-446D-A81E-D18D84EF0E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3531F5B1-68E2-4252-ACE0-5415A139309A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3531F5B1-68E2-4252-ACE0-5415A139309A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3531F5B1-68E2-4252-ACE0-5415A139309A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3531F5B1-68E2-4252-ACE0-5415A139309A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
