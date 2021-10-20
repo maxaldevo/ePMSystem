@@ -149,6 +149,19 @@
                                 <br />
 
                                 <asp:Label ID="lbltime" runat="server"></asp:Label>
+<lord-icon
+    src="https://cdn.lordicon.com/zhxxdohn.json"
+    trigger="hover"
+    colors="primary:#121331,secondary:#08a88a"
+    style="width:100px;height:100px">
+</lord-icon>
+                                
+<lord-icon
+    src="https://cdn.lordicon.com/mdksbrtj.json"
+    trigger="loop"
+    colors="primary:#121331,secondary:#08a88a"
+    style="width:100px;height:100px">
+</lord-icon>
                                 <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
                                     EmptyDataText="No records found." OnRowEditing="OnRowEditing" >
                                     <Columns>
@@ -255,7 +268,7 @@
     <br />
     <br />
     <br />
-        <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource" Start="2021-10-07" Theme="iOS" AllowAppointmentDragBetweenResources="false">
+        <dxwschs:ASPxScheduler ID="ASPxScheduler1" runat="server" AppointmentDataSourceID="SqlDataSource1" ClientIDMode="AutoID" ResourceDataSourceID="SqlDataSource2" GroupType="Resource"  Theme="iOS" AllowAppointmentDragBetweenResources="false">
         <Views>
             <DayView ViewSelectorItemAdaptivePriority="2" Enabled="true">
 
@@ -366,7 +379,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
     <script src="Scripts/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
     <link href="css/select2.css" rel="stylesheet" />
@@ -374,6 +387,7 @@
     <script>
         $(function () {
             bindDataTable(); // bind data table on first page load
+            //SearchinGrid();
             BinddropdownRooms();
             //BinddropdownTimes();
             //Binddropdowndates();
@@ -382,6 +396,7 @@
             BinddropdownServices();
 
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(bindDataTable); // bind data table on every UpdatePanel refresh
+            //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(SearchinGrid);
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownRooms);
             //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(BinddropdownTimes);
             //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(Binddropdowndates);
@@ -402,7 +417,40 @@
                     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
                 });
             });
+
+            
         };
+
+
+        function SearchinGrid() {
+            $(document).ready(function () {
+                // Setup - add a text input to each footer cell
+                
+                $('#' + '<%=gvUsers.FooterRow%>').each(function () {
+                    var title = $(this).text();
+                    $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+                });
+
+                // DataTable
+                var table = $('#' + '<%=gvUsers.ClientID%>').DataTable({
+                    initComplete: function () {
+                        // Apply the search
+                        this.api().columns().every(function () {
+                            var that = this;
+
+                            $('input', this.footer()).on('keyup change clear', function () {
+                                if (that.search() !== this.value) {
+                                    that
+                                        .search(this.value)
+                                        .draw();
+                                }
+                            });
+                        });
+                    }
+                });
+
+            });
+        }
 
         function BinddropdownRooms() {
             $(document).ready(function () {
