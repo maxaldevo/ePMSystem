@@ -32,6 +32,7 @@ namespace ePM.Dal
         public Nullable<bool> DateAdded_flag { get; set; }
         public Nullable<System.DateTime> BookingDate_TimeBegin { get; set; }
         public Nullable<System.DateTime> BookingDate_TimeEnd { get; set; }
+        public Nullable<int> PatientID { get; set; }
     
         public virtual eMedical_Service eMedical_Service { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }

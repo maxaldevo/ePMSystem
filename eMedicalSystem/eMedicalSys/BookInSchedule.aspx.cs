@@ -27,6 +27,21 @@ namespace eMedicalSys
                 gvUsers.UseAccessibleHeader = true;
                 gvUsers.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
+            if (gvBookingTimes_Roomone.Rows.Count > 0)
+            {
+                gvBookingTimes_Roomone.UseAccessibleHeader = true;
+                gvBookingTimes_Roomone.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gvBookingTimes_RoomTwo.Rows.Count > 0)
+            {
+                gvBookingTimes_RoomTwo.UseAccessibleHeader = true;
+                gvBookingTimes_RoomTwo.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+            if (gvBookingTimes_RoomThree.Rows.Count > 0)
+            {
+                gvBookingTimes_RoomThree.UseAccessibleHeader = true;
+                gvBookingTimes_RoomThree.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -67,7 +82,7 @@ namespace eMedicalSys
                 _roleId = int.Parse(Session["RoleId"].ToString());
                 _clinicId = int.Parse(Session["ClinicId"].ToString());
 
-                BindGrid(_clinicId);
+                BindGrid(_clinicId, _userID);
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
                 bindtimebegins(_userID, _selectedRoomId);
@@ -159,13 +174,19 @@ namespace eMedicalSys
             DropDownService.Items[0].Selected = true;
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-        private void BindGrid(int clinicId)
+        private void BindGrid(int clinicId, int usrId)
         {
             List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
             try
             {
                 gvUsers.DataSource = Patients;
-                gvUsers.DataBind();
+                gvUsers.DataBind(); 
+                gvBookingTimes_Roomone.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 4);
+                gvBookingTimes_Roomone.DataBind();
+                gvBookingTimes_RoomTwo.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 5);
+                gvBookingTimes_RoomTwo.DataBind();
+                gvBookingTimes_RoomThree.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 6);
+                gvBookingTimes_RoomThree.DataBind();
             }
             catch (Exception ex)
             {

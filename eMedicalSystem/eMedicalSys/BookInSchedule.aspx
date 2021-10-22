@@ -144,7 +144,7 @@
                                 <br />
 
                                 <asp:Label ID="lbltime" runat="server"></asp:Label>
-<lord-icon
+<%--<lord-icon
     src="https://cdn.lordicon.com/zhxxdohn.json"
     trigger="hover"
     colors="primary:#121331,secondary:#08a88a"
@@ -156,7 +156,7 @@
     trigger="loop"
     colors="primary:#121331,secondary:#08a88a"
     style="width:100px;height:100px">
-</lord-icon>
+</lord-icon>--%>
                                 <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
                                     EmptyDataText="No records found." OnRowEditing="OnRowEditing" >
                                     <Columns>
@@ -249,6 +249,176 @@
             </div>
         </div>
             </div>--%>
+                <br />
+                <br />
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <asp:GridView ID="gvBookingTimes_Roomone" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found.">
+                            <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
+                            <Columns>
+                                <%--<asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chk_Cheackable" runat="server" Text="Select" AutoPostBack="true"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Booking Date">
+                                    <ItemTemplate>
+                                        <%--<asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>--%>
+                                        <asp:Label ID="lblBookingDate" runat="server" Text='<%# Convert.ToDateTime( Eval("BookingDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time Begin">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# Eval("TimeBegins") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time End">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# Eval("TimeEnds") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Has Booked?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsBooked" runat="server" Font-Bold="true" Text='<%# Eval("IsBooked").ToString() == "true" ? "Booked": "Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Is Available?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsAvailable" runat="server" Font-Bold="true" Text='<%# Eval("IsAvailable").ToString() == "true" ? "Available": "Not Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <div class="form-group">
+                                                <asp:CheckBox ID="chk_IsAvailable" runat="server" Text="? Change Availability"
+                                                    Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>' />
+                                            </div>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Room Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRoomName" runat="server" Text='<%# Eval("RoomName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Added By">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <%--<asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />--%>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:GridView ID="gvBookingTimes_RoomTwo" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found.">
+                            <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
+                            <Columns>
+                                <%--<asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chk_Cheackable" runat="server" Text="Select" AutoPostBack="true"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Booking Date">
+                                    <ItemTemplate>
+                                        <%--<asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>--%>
+                                        <asp:Label ID="lblBookingDate" runat="server" Text='<%# Convert.ToDateTime( Eval("BookingDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time Begin">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# Eval("TimeBegins") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time End">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# Eval("TimeEnds") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Has Booked?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsBooked" runat="server" Font-Bold="true" Text='<%# Eval("IsBooked").ToString() == "true" ? "Booked": "Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Is Available?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsAvailable" runat="server" Font-Bold="true" Text='<%# Eval("IsAvailable").ToString() == "true" ? "Available": "Not Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <div class="form-group">
+                                                <asp:CheckBox ID="chk_IsAvailable" runat="server" Text="? Change Availability"
+                                                    Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>' />
+                                            </div>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Room Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRoomName" runat="server" Text='<%# Eval("RoomName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Added By">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <%--<asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />--%>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:GridView ID="gvBookingTimes_RoomThree" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" EmptyDataText="No records found.">
+                            <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
+                            <Columns>
+                                <%--<asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chk_Cheackable" runat="server" Text="Select" AutoPostBack="true"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Booking Date">
+                                    <ItemTemplate>
+                                        <%--<asp:Label ID="lblId" runat="server" Text='<%# Eval("ID") %>' Visible="false"></asp:Label>--%>
+                                        <asp:Label ID="lblBookingDate" runat="server" Text='<%# Convert.ToDateTime( Eval("BookingDate").ToString()).ToShortDateString() %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time Begin">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeBegin" runat="server" Text='<%# Eval("TimeBegins") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Time End">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblBookingTimeEnd" runat="server" Text='<%# Eval("TimeEnds") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Has Booked?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsBooked" runat="server" Font-Bold="true" Text='<%# Eval("IsBooked").ToString() == "true" ? "Booked": "Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Is Available?">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblIsAvailable" runat="server" Font-Bold="true" Text='<%# Eval("IsAvailable").ToString() == "true" ? "Available": "Not Available" %>'></asp:Label>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <div class="form-group">
+                                                <asp:CheckBox ID="chk_IsAvailable" runat="server" Text="? Change Availability"
+                                                    Checked='<%# Eval("IsAvailable").ToString() == "false" ? false : true %>' />
+                                            </div>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="Room Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblRoomName" runat="server" Text='<%# Eval("RoomName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:TemplateField HeaderText="Added By">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFName" runat="server" Text='<%# Eval("FirstName") + " " + Eval("LastName") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>--%>
+                                <%--<asp:CommandField ShowHeader="true" HeaderText="Controls" ButtonType="Image" CancelImageUrl="~/Images/cancel.png" EditImageUrl="~/Images/pencil-edit-button.png" ShowEditButton="True" UpdateImageUrl="~/Images/correct.png" ValidationGroup="A" CausesValidation="true" />--%>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnAddNewRecord" EventName="Click" />

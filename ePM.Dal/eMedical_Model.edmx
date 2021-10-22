@@ -51,6 +51,7 @@
           <Property Name="TimeByHourBegins" Type="nvarchar" MaxLength="50" />
           <Property Name="TimeByHourEnds" Type="nvarchar" MaxLength="50" />
           <Property Name="DateAdded_flag" Type="bit" />
+          <Property Name="PatientID" Type="int" />
         </EntityType>
         <EntityType Name="eMedical_Clinic">
           <Key>
@@ -385,6 +386,24 @@ warning 6002: The table/view 'eMedical.dbo.vAppointment' does not have a primary
           <Property Name="ServiceId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'eMedical.dbo.vBookingAppointment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vBookingAppointment">
+          <Property Name="BookingDate" Type="date" />
+          <Property Name="TimeBegins" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeEnds" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsBooked" Type="bit" />
+          <Property Name="IsAvailable" Type="bit" />
+          <Property Name="UpdatedByID" Type="int" />
+          <Property Name="RoomId" Type="int" />
+          <Property Name="ServiceID" Type="int" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="BookingDate_TimeBegin" Type="datetime" />
+          <Property Name="BookingDate_TimeEnd" Type="datetime" />
+          <Property Name="FName" Type="nvarchar" MaxLength="500" />
+          <Property Name="RoomName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="500" />
+        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'eMedical.dbo.vBookingTimes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBookingTimes">
@@ -2088,6 +2107,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <Property Name="DateAdded_flag" Type="Boolean" />
           <Property Name="BookingDate_TimeBegin" Type="DateTime" Precision="3" />
           <Property Name="BookingDate_TimeEnd" Type="DateTime" Precision="3" />
+          <Property Name="PatientID" Type="Int32" />
         </EntityType>
         <EntityType Name="eMedical_Timing">
           <Key>
@@ -2750,6 +2770,7 @@ warning 6002: The table/view 'eMedical.dbo.vServiceType' does not have a primary
           <EntitySetMapping Name="eMedical_BookingTiming">
             <EntityTypeMapping TypeName="eMedicalModel.eMedical_BookingTiming">
               <MappingFragment StoreEntitySet="eMedical_BookingTiming">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="BookingDate_TimeEnd" ColumnName="BookingDate_TimeEnd" />
                 <ScalarProperty Name="BookingDate_TimeBegin" ColumnName="BookingDate_TimeBegin" />
                 <ScalarProperty Name="DateAdded_flag" ColumnName="DateAdded_flag" />
