@@ -98,6 +98,7 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
+    <Content Include="BookInSchedule.aspx" />
     <Content Include="DoctorFollowUp.aspx" />
     <Content Include="CheckinAppointment.aspx" />
     <Content Include="AddNewRoom.aspx" />
@@ -7469,6 +7470,13 @@
     </Compile>
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookInSchedule.aspx.cs">
+      <DependentUpon>BookInSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookInSchedule.aspx.designer.cs">
+      <DependentUpon>BookInSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="DoctorFollowUp.aspx.cs">
       <DependentUpon>DoctorFollowUp.aspx</DependentUpon>
