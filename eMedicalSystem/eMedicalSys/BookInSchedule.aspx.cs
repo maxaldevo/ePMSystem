@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -82,7 +84,7 @@ namespace eMedicalSys
                 _roleId = int.Parse(Session["RoleId"].ToString());
                 _clinicId = int.Parse(Session["ClinicId"].ToString());
 
-                BindGrid(_clinicId, _userID);
+                BindGrid(_clinicId, _userID, Convert.ToDateTime("2021-10-26"));
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
                 bindtimebegins(_userID, _selectedRoomId);
@@ -174,18 +176,18 @@ namespace eMedicalSys
             DropDownService.Items[0].Selected = true;
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
         }
-        private void BindGrid(int clinicId, int usrId)
+        private void BindGrid(int clinicId, int usrId, DateTime selectedDate)
         {
             List<eMedical_User> Patients = UserManager.getPatientsList(clinicId, 7);
             try
             {
                 gvUsers.DataSource = Patients;
-                gvUsers.DataBind(); 
-                gvBookingTimes_Roomone.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 4);
+                gvUsers.DataBind();
+                gvBookingTimes_Roomone.DataSource = BookingManager.GetBookingTimesList(selectedDate, 4);
                 gvBookingTimes_Roomone.DataBind();
-                gvBookingTimes_RoomTwo.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 5);
+                gvBookingTimes_RoomTwo.DataSource = BookingManager.GetBookingTimesList(selectedDate, 5);
                 gvBookingTimes_RoomTwo.DataBind();
-                gvBookingTimes_RoomThree.DataSource = BookingManager.GetBookingTimingList_distinct(usrId, 6);
+                gvBookingTimes_RoomThree.DataSource = BookingManager.GetBookingTimesList(selectedDate, 6);
                 gvBookingTimes_RoomThree.DataBind();
             }
             catch (Exception ex)
@@ -261,6 +263,17 @@ namespace eMedicalSys
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
+
+            //for (DateTime i = startTime; i < endTime; i = i.AddMinutes(15))
+            //{
+            //    //hasRecord = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).ToList().Count;
+            //    //if (hasRecord > 0)
+            //    //{
+
+            //    booked = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
+            //    if (booked) break;
+            //    //}
+            //}
         }
         //protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -281,6 +294,63 @@ namespace eMedicalSys
         protected void DropDownTimeEnd_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimeEnd = DropDownTimeEnd.SelectedItem.Text;
+        }
+        protected void gvBookingTimes_RoomOne_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblISBOOKED = e.Row.FindControl("lblIsBooked") as Label;
+                if (lblISBOOKED.Text == "Busy")
+                {
+                    e.Row.Cells[2].BackColor = Color.Red;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                    //e.Row.Cells[3].Enabled = false;
+                    //e.Row.Cells[3].Visible = false;
+                }
+                else
+                {
+                    e.Row.Cells[2].BackColor = Color.Green;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                }
+            }
+        }
+        protected void gvBookingTimes_RoomTwo_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblISBOOKED = e.Row.FindControl("lblIsBooked") as Label;
+                if (lblISBOOKED.Text == "Busy")
+                {
+                    e.Row.Cells[2].BackColor = Color.Red;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                    //e.Row.Cells[3].Enabled = false;
+                    //e.Row.Cells[3].Visible = false;
+                }
+                else
+                {
+                    e.Row.Cells[2].BackColor = Color.Green;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                }
+            }
+        }
+        protected void gvBookingTimes_RoomThree_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblISBOOKED = e.Row.FindControl("lblIsBooked") as Label;
+                if (lblISBOOKED.Text == "Busy")
+                {
+                    e.Row.Cells[2].BackColor = Color.Red;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                    //e.Row.Cells[3].Enabled = false;
+                    //e.Row.Cells[3].Visible = false;
+                }
+                else
+                {
+                    e.Row.Cells[2].BackColor = Color.Green;
+                    e.Row.Cells[2].ForeColor = Color.White;
+                }
+            }
         }
     }
 }

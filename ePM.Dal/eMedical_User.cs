@@ -22,6 +22,7 @@ namespace ePM.Dal
             this.eMedical_BookingTiming = new HashSet<eMedical_BookingTiming>();
             this.eMedical_Product = new HashSet<eMedical_Product>();
             this.eMedical_Roles1 = new HashSet<eMedical_Roles>();
+            this.eMedical_BookingTiming1 = new HashSet<eMedical_BookingTiming>();
         }
     
         public int ID { get; set; }
@@ -100,5 +101,7 @@ namespace ePM.Dal
         public virtual ICollection<eMedical_Product> eMedical_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<eMedical_Roles> eMedical_Roles1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<eMedical_BookingTiming> eMedical_BookingTiming1 { get; set; }
     }
 }

@@ -281,6 +281,13 @@ namespace ePM.Dal.Logic
                 return db.vAppointments.Where(x => x.CheckIN == false).ToList();
             }
         }
+        public static List<vBookingAppointment> GetBookingTimesList(DateTime bookingShortDate, int roomID)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vBookingAppointments.Where(x => x.BookingDate == bookingShortDate && x.RoomId == roomID).ToList();
+            }
+        }
         public static List<vAppointment> GetDoctorAppointmentList(int doctorRoomId)
         {
             using (var db = new eMedicalEntities())

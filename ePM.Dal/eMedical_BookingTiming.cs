@@ -37,5 +37,6 @@ namespace ePM.Dal
         public virtual eMedical_Service eMedical_Service { get; set; }
         public virtual eMedical_User eMedical_User { get; set; }
         public virtual eMedical_Room eMedical_Room { get; set; }
+        public virtual eMedical_User eMedical_User1 { get; set; }
     }
 }

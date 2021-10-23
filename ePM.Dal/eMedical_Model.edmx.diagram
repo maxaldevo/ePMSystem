@@ -53,6 +53,8 @@
         <EntityTypeShape EntityType="eMedicalModel.vBookingTimesDistinct" Width="1.5" PointX="12.375" PointY="17.75" />
         <EntityTypeShape EntityType="eMedicalModel.Appointment" Width="1.5" PointX="18.375" PointY="0.75" />
         <EntityTypeShape EntityType="eMedicalModel.vAppointment" Width="1.5" PointX="18.375" PointY="6.75" />
+        <EntityTypeShape EntityType="eMedicalModel.vBookingAppointment" Width="2" PointX="7.875" PointY="18.75" />
+        <AssociationConnector Association="eMedicalModel.FK_eMedical_BookingTiming_eMedical_User1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

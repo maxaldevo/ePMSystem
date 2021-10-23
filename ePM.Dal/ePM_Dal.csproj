@@ -162,6 +162,9 @@
     <Compile Include="vAppointment.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="vBookingAppointment.cs">
+      <DependentUpon>eMedical_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="vBookingTime.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
