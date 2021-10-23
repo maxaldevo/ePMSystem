@@ -81,12 +81,13 @@
                 <a href="javascript:window.location ='/Default.aspx'" class="logo">
                      <!-- mini logo -->
 	  <div class="logo-mini">
-          <lord-icon
-    src="https://cdn.lordicon.com/mdksbrtj.json"
-    trigger="loop"
-    colors="primary:#121331,secondary:#08a88a"
-    style="width:70px;height:70px">
-</lord-icon>
+        <lord-icon
+            src="https://cdn.lordicon.com/mdksbrtj.json"
+            trigger="loop"
+            colors="primary:#e8b730,secondary:#9cf4df"
+            stroke="59"
+            style="width:70px;height:70px">
+        </lord-icon>
 		  <%--<span class="light-logo"><img src="../images/logo-light.png" alt="logo"></span>--%>
 		  <%--<span class="dark-logo"><img src="../images/logo-light.png" alt="logo"></span>--%>
 	  </div>
