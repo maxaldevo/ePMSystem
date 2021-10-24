@@ -20,6 +20,7 @@ namespace eMedicalSys
         public List<vPersonnel> usersList = new List<vPersonnel>();
         public static int _TimeinHrs, _userID, _roleId, _clinicId, _DaysNumber, _selectedRoomId, _selectedPatientId, _selectedServiceId, _selectedtimeId = 0;
         public static string _selectedtime, _selectedtimebegin, _selectedtimeEnd = "";
+        public static DateTime _selectedDate = new DateTime();
         //DateTime _selecteddate;
         //string day_date, month_date, year_date = "";
         protected void Page_PreRender(object sender, EventArgs e)
@@ -84,11 +85,11 @@ namespace eMedicalSys
                 _roleId = int.Parse(Session["RoleId"].ToString());
                 _clinicId = int.Parse(Session["ClinicId"].ToString());
 
-                BindGrid(_clinicId, _userID, Convert.ToDateTime("2021-10-26"));
+                BindGrid(_clinicId, _userID, Convert.ToDateTime(_selectedDate));
                 bindRooms(_userID);
                 bindServices(_selectedRoomId);
-                bindtimebegins(_userID, _selectedRoomId);
-                bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
+                bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+                bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
                 //binddates(_userID, _selectedRoomId);
                 //bindPatients(_clinicId);
             }
@@ -112,11 +113,11 @@ namespace eMedicalSys
         //        year_date = _selecteddate.Year.ToString();
         //    }
         //}
-        private void bindtimebegins(int usrId, int roomId)
+        private void bindtimebegins(int usrId, int roomId, DateTime selectDate)
         {
             DropDownTimebegin.DataSource = null;
             DropDownTimebegin.ClearSelection();
-            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId);
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId, selectDate);
             DropDownTimebegin.DataSource = Timesbegin;
             DropDownTimebegin.DataValueField = "ID";
             DropDownTimebegin.DataTextField = "BookingDate_TimeBegin";
@@ -133,11 +134,11 @@ namespace eMedicalSys
             //}
 
         }
-        private void bindtimeEnd(int usrId, int roomId, DateTime timebagin)
+        private void bindtimeEnd(int usrId, int roomId, DateTime timebagin, DateTime selectDate)
         {
             DropDownTimeEnd.DataSource = null;
             DropDownTimeEnd.ClearSelection();
-            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId, timebagin);
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId, timebagin, selectDate);
             DropDownTimeEnd.DataSource = Timesbegin;
             DropDownTimeEnd.DataValueField = "ID";
             DropDownTimeEnd.DataTextField = "BookingDate_TimeEnd";
@@ -257,23 +258,53 @@ namespace eMedicalSys
         {
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
             bindServices(_selectedRoomId);
-            bindtimebegins(_userID, _selectedRoomId);
-            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
+            bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
         }
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
-
             //for (DateTime i = startTime; i < endTime; i = i.AddMinutes(15))
             //{
             //    //hasRecord = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).ToList().Count;
             //    //if (hasRecord > 0)
             //    //{
-
             //    booked = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
             //    if (booked) break;
             //    //}
             //}
+        }
+
+        //protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
+        //{
+        //    Color NormColor = new Color();
+        //    NormColor = e.Cell.BackColor;
+        //    if (e.Day.IsSelected == true)
+        //    {
+        //        _selectedDate.Add(e.Day.Date);
+        //        e.Cell.BackColor = Color.Orange;
+        //    }
+        //    Session["SelectedDate"] = _selectedDate;
+        //}
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            //if (Session["SelectedDates"] != null)
+            //{
+            //    List<DateTime> newList = (List<DateTime>)Session["SelectedDates"];
+            //    foreach (DateTime dt in newList)
+            //    {
+            //        Calendar1.SelectedDates.Add(dt);
+            //        //TextBox1.Text = Calendar1.SelectedDate.ToShortDateString();
+            //        //TextBox1.Text.Replace("\r\n", "<br />");
+            //    }
+            //    _selectedDate.Clear();
+            //}
+            _selectedDate = Calendar1.SelectedDate;
+            bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
+            BindGrid(_clinicId, _userID, Convert.ToDateTime(_selectedDate));
+
         }
         //protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -289,7 +320,7 @@ namespace eMedicalSys
         protected void DropDownTimebegin_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedtimebegin = DropDownTimebegin.SelectedItem.Text;
-            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
+            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
         }
         protected void DropDownTimeEnd_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -146,18 +146,18 @@ namespace ePM.Dal.Logic
                 return db.vBookingTimes.ToList();
             }
         }
-        public static List<vBookingTime> GetBookingTimingListbyroomid(int userId, int roomId)
+        public static List<vBookingTime> GetBookingTimingListbyroomid(int userId, int roomId, DateTime selectedDate)
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId && x.IsBooked == false && x.IsAvailable == true && x.BookingDate_TimeBegin >= DateTime.Now).ToList();
+                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId && x.IsBooked == false && x.IsAvailable == true && x.BookingDate_TimeBegin >= DateTime.Now && x.BookingDate == selectedDate).ToList();
             }
         }
-        public static List<vBookingTime> GetBookingTimingListbyroomid(int userId, int roomId, DateTime timeBegin)
+        public static List<vBookingTime> GetBookingTimingListbyroomid(int userId, int roomId, DateTime timeBegin, DateTime selectedDate)
         {
             using (var db = new eMedicalEntities())
             {
-                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId && x.IsBooked == false && x.IsAvailable == true && x.BookingDate_TimeBegin >= timeBegin).ToList();
+                return db.vBookingTimes.Where(x => x.UpdatedByID == userId && x.RoomId == roomId && x.IsBooked == false && x.IsAvailable == true && x.BookingDate_TimeBegin >= timeBegin && x.BookingDate == selectedDate).ToList();
             }
         }
         //public static List<BookingDates> GetBookingTimingList_Distinct()

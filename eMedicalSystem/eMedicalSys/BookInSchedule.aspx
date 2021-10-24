@@ -157,6 +157,8 @@
     colors="primary:#121331,secondary:#08a88a"
     style="width:100px;height:100px">
 </lord-icon>--%>
+                                <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="Calendar1_SelectionChanged"></asp:Calendar>
+                                <br />
                                 <asp:GridView ID="gvUsers" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="ID"
                                     EmptyDataText="No records found." OnRowEditing="OnRowEditing" >
                                     <Columns>

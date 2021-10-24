@@ -99,7 +99,7 @@ namespace eMedicalSys
         {
             DropDownTimebegin.DataSource = null;
             DropDownTimebegin.ClearSelection();
-            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId);
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(usrId, roomId, Convert.ToDateTime("26-10-2021"));
             DropDownTimebegin.DataSource = Timesbegin;
             DropDownTimebegin.DataValueField = "ID";
             DropDownTimebegin.DataTextField = "BookingDate_TimeBegin";
