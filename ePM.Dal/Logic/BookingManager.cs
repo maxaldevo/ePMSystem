@@ -295,6 +295,20 @@ namespace ePM.Dal.Logic
                 return db.vAppointments.Where(x => x.RoomId == doctorRoomId).ToList();
             }
         }
+        public static int GetServiceDuration(int serviceId)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.eMedical_Service.Where(x => x.ID == serviceId).FirstOrDefault().NoofSessions.Value;
+            }
+        }
+        public static bool SessionIsBooked(int serviceId, int roomId, DateTime timeStart)
+        {
+            using (var db = new eMedicalEntities())
+            {
+                return db.vBookingAppointments.Where(x => x.RoomId == roomId && x.ServiceID == serviceId && x.BookingDate_TimeBegin == timeStart).FirstOrDefault().IsBooked.Value;
+            }
+        }
         public static string AddNewAppointment(DateTime startTime, DateTime endTime, int patientId, int roomId, int serviceID)
         {
             string friendlyMsg = "";
@@ -310,7 +324,7 @@ namespace ePM.Dal.Logic
                         //if (hasRecord > 0)
                         //{
 
-                        booked = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
+                        booked = db.vBookingAppointments.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
                         if (booked) break;
                         //}
                     }

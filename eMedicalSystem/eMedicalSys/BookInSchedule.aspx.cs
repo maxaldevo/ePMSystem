@@ -258,21 +258,22 @@ namespace eMedicalSys
         {
             _selectedRoomId = int.Parse(DropDownRoom.SelectedItem.Value);
             bindServices(_selectedRoomId);
-            bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
-            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
+            //bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+            //bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
         }
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
-            //for (DateTime i = startTime; i < endTime; i = i.AddMinutes(15))
-            //{
-            //    //hasRecord = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).ToList().Count;
-            //    //if (hasRecord > 0)
-            //    //{
-            //    booked = db.vBookingTimes.Where(x => x.RoomId == roomId && x.BookingDate_TimeBegin == startTime).FirstOrDefault().IsBooked.Value;
-            //    if (booked) break;
-            //    //}
-            //}
+            int serviceDuration = BookingManager.GetServiceDuration(_selectedServiceId);
+            
+            for (DateTime i = Convert.ToDateTime(_selectedtimebegin); i < Convert.ToDateTime(_selectedtimebegin).AddMinutes(serviceDuration); i = i.AddMinutes(15))
+            {
+                bool isBooked = BookingManager.SessionIsBooked(_selectedServiceId, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
+                if (isBooked)
+                {
+
+                }
+            }
         }
 
         //protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
@@ -301,9 +302,9 @@ namespace eMedicalSys
             //    _selectedDate.Clear();
             //}
             _selectedDate = Calendar1.SelectedDate;
-            bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
-            bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
             BindGrid(_clinicId, _userID, Convert.ToDateTime(_selectedDate));
+            //bindtimebegins(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+            //bindtimeEnd(_userID, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedDate));
 
         }
         //protected void DropDownTime_SelectedIndexChanged(object sender, EventArgs e)
