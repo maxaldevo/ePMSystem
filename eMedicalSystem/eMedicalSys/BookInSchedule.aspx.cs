@@ -264,15 +264,28 @@ namespace eMedicalSys
         protected void DropDownService_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedServiceId = int.Parse(DropDownService.SelectedItem.Value);
-            int serviceDuration = BookingManager.GetServiceDuration(_selectedServiceId);
-            
-            for (DateTime i = Convert.ToDateTime(_selectedtimebegin); i < Convert.ToDateTime(_selectedtimebegin).AddMinutes(serviceDuration); i = i.AddMinutes(15))
+            List<vBookingTime> Timesbegin = BookingManager.GetBookingTimingListbyroomid(_userID, _selectedRoomId, Convert.ToDateTime(_selectedDate));
+            for (int j = 0; j < Timesbegin.Count - 1; j++)
             {
-                bool isBooked = BookingManager.SessionIsBooked(_selectedServiceId, _selectedRoomId, Convert.ToDateTime(_selectedtimebegin));
-                if (isBooked)
+                int serviceDuration = BookingManager.GetServiceDuration(_selectedServiceId);
+                int theActualCounter = serviceDuration / 15;
+                int countSessions = 0;
+
+                for (DateTime i = Convert.ToDateTime(Timesbegin.ToList()[j].BookingDate_TimeBegin); i < Convert.ToDateTime(Timesbegin.ToList()[j].BookingDate_TimeBegin).AddMinutes(serviceDuration); i = i.AddMinutes(15))
+                {
+                    bool isBooked = BookingManager.SessionIsBooked(_selectedServiceId, _selectedRoomId, Convert.ToDateTime(Timesbegin.ToList()[j].BookingDate_TimeBegin));
+                    if (isBooked)
+                    {
+                        countSessions++;
+                    }
+                }
+                if (theActualCounter == countSessions)
                 {
 
                 }
+                serviceDuration = 0;
+                theActualCounter = 0;
+                countSessions = 0;
             }
         }
 

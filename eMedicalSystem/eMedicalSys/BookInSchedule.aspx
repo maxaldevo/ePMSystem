@@ -260,6 +260,12 @@
                         <asp:GridView ID="gvBookingTimes_Roomone" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="BTID" EmptyDataText="No records found." OnRowDataBound="gvBookingTimes_RoomOne_RowDataBound">
                             <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
                             <Columns>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbLServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label><br />
+                                        <asp:Label ID="lblFullName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Time Begin">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("BTID") %>' Visible="false"></asp:Label>
@@ -285,6 +291,12 @@
                         <asp:GridView ID="gvBookingTimes_RoomTwo" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="BTID" EmptyDataText="No records found." OnRowDataBound="gvBookingTimes_RoomTwo_RowDataBound">
                             <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
                             <Columns>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbLServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label><br />
+                                        <asp:Label ID="lblFullName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Time Begin">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("BTID") %>' Visible="false"></asp:Label>
@@ -310,6 +322,12 @@
                         <asp:GridView ID="gvBookingTimes_RoomThree" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="BTID" EmptyDataText="No records found." OnRowDataBound="gvBookingTimes_RoomThree_RowDataBound">
                             <%--OnRowEditing="OnRowEditing" OnRowCancelingEdit="OnRowCancelingEdit" OnRowUpdating="OnRowUpdating" OnRowDataBound="OnRowDataBound" OnRowDeleting="OnRowDeleting"--%>
                             <Columns>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbLServiceName" runat="server" Text='<%# Eval("ServiceName") %>'></asp:Label><br />
+                                        <asp:Label ID="lblFullName" runat="server" Text='<%# Eval("FName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Time Begin">
                                     <ItemTemplate>
                                         <asp:Label ID="lblId" runat="server" Text='<%# Eval("BTID") %>' Visible="false"></asp:Label>
