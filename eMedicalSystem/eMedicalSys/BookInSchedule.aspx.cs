@@ -214,6 +214,9 @@ namespace eMedicalSys
                     try
                     {
                         string result = BookingManager.AddNewAppointment(Convert.ToDateTime(_selectedtimebegin), Convert.ToDateTime(_selectedtimeEnd), _selectedPatientId, _selectedRoomId, _selectedServiceId);
+
+                        BindGrid(_clinicId, _userID, Convert.ToDateTime(_selectedDate));
+
                         if (result != "inserted")
                         {
                             lblResult.Visible = true;
