@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="BookInSchedule.aspx.cs" Inherits="eMedicalSys.BookInSchedule" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <style>
         .table-striped tbody tr:nth-of-type(odd) {
@@ -116,6 +117,89 @@
             margin-top: -15px;
         }
     </style>
+    <%--<style type="text/css">
+    .modalBackground
+    {
+        background-color: Black;
+        filter: alpha(opacity=90);
+        opacity: 0.8;
+    }
+    .modalPopup
+    {
+        background-color: #FFFFFF;
+        border-width: 3px;
+        border-style: solid;
+        border-color: black;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        
+    }
+</style>--%>
+    <style type="text/css">
+    .modalBackground
+    {
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+    }
+    .modalPopup
+    {
+        background-color: #FFFFFF;
+        /*width: 300px;*/
+        border: 3px solid #0DA9D0;
+        border-radius: 12px;
+        /*padding:15px;*/
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 2px;
+      
+    }
+    .modalPopup .header
+    {
+        background-color: #2FBDF1;
+        height: 30px;
+        color: White;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .modalPopup .body
+    {
+        min-height: 50px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .modalPopup .footer
+    {
+        padding: 6px;
+    }
+    .modalPopup .yes, .modalPopup .no
+    {
+        height: 23px;
+        color: White;
+        line-height: 23px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    .modalPopup .yes
+    {
+        background-color: #2FBDF1;
+        border: 1px solid #0DA9D0;
+    }
+    .modalPopup .no
+    {
+        background-color: #9F9F9F;
+        border: 1px solid #5C5C5C;
+    }
+</style>
     <section class="content">
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1"
             ClientIDMode="Predictable" ViewStateMode="Inherit" DisplayAfter="1">
@@ -359,6 +443,58 @@
                 <asp:AsyncPostBackTrigger ControlID="DropDownRoom" EventName="SelectedIndexChanged" />
             </Triggers>
         </asp:UpdatePanel>
+        <asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" />
+        <!-- ModalPopupExtender -->
+<cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
+    CancelControlID="btnClose" BackgroundCssClass="modalBackground">
+</cc1:ModalPopupExtender>
+<asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="center" style = "display:none">
+    <asp:Label ID="lblprobability1" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability2" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability3" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability4" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability5" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability6" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability7" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability8" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability9" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability10" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability11" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability12" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability13" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability14" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability15" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability16" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability17" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability18" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability19" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability20" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability21" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability22" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability23" runat="server" Text="" Visible="false"></asp:Label><br />
+    <asp:Label ID="lblprobability24" runat="server" Text="" Visible="false"></asp:Label><br />
+    <br />
+    <asp:Button ID="btnClose" runat="server" Text="Close" OnClientClick="btnClose_Click" />
+</asp:Panel>
+<!-- ModalPopupExtender -->
+
+
+<%--<asp:Button ID="Button1" runat="server" Text="Show Modal Popup" />
+<cc1:ModalPopupExtender ID="mpe" runat="server" PopupControlID="pnlPopup" TargetControlID="btnShow"
+    OkControlID="btnYes" CancelControlID="btnNo" BackgroundCssClass="modalBackground">
+</cc1:ModalPopupExtender>
+<asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup" Style="display: none">
+    <div class="header">
+        Confirmation
+    </div>
+    <div class="body">
+        Do you want to delete this record?
+    </div>
+    <div class="footer" align="right">
+        <asp:Button ID="btnYes" runat="server" Text="Yes" CssClass="yes" />
+        <asp:Button ID="btnNo" runat="server" Text="No" CssClass="no" />
+    </div>
+</asp:Panel>--%>
     </section>
     <br />
     <br />

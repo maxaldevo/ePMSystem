@@ -247,6 +247,34 @@ namespace eMedicalSys
                 }
             }
         }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            lblprobability1.Text = "";
+            lblprobability2.Text = "";
+            lblprobability3.Text = "";
+            lblprobability4.Text = "";
+            lblprobability5.Text = "";
+            lblprobability6.Text = "";
+            lblprobability7.Text = "";
+            lblprobability8.Text = "";
+            lblprobability9.Text = "";
+            lblprobability10.Text = "";
+            lblprobability11.Text = "";
+            lblprobability12.Text = "";
+            lblprobability13.Text = "";
+            lblprobability14.Text = "";
+            lblprobability15.Text = "";
+            lblprobability16.Text = "";
+            lblprobability17.Text = "";
+            lblprobability18.Text = "";
+            lblprobability19.Text = "";
+            lblprobability20.Text = "";
+            lblprobability21.Text = "";
+            lblprobability22.Text = "";
+            lblprobability23.Text = "";
+            lblprobability24.Text = "";
+        }
         private void clearControls()
         {
 
