@@ -6857,6 +6857,7 @@
     <Content Include="css\select2.css" />
     <Content Include="css\skins\_all-skins.css" />
     <Content Include="css\slider-css.css" />
+    <Content Include="AddOptions.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -8561,6 +8562,13 @@
     </Compile>
     <Compile Include="Controls\WebUserControl1.ascx.designer.cs">
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AddOptions.aspx.cs">
+      <DependentUpon>AddOptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddOptions.aspx.designer.cs">
+      <DependentUpon>AddOptions.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
