@@ -121,29 +121,87 @@
                         </div>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Full Name:</span>
-                            <asp:TextBox ID="txtClinicName" CssClass="form-control" runat="server" placeholder="Clinic Name"></asp:TextBox>
+                            <span style="font-weight:bold">File No.:</span>
+                            <asp:TextBox ID="txtClinicName" CssClass="form-control" runat="server" placeholder="File No."></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="controls">
-                            <span style="font-weight:bold">Choose Hospital :</span>
+                            <span style="font-weight:bold">Employee ID:</span>
+                            <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" placeholder="Employee ID"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
                             <%--<asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>--%>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Full Name(ENGLISH):</span>
+                            <asp:TextBox ID="TextBox3" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Full Name(ARABIC):</span>
+                            <asp:TextBox ID="TextBox2" CssClass="form-control" runat="server" placeholder="Full Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
                 <br />
-                
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Passport No.:</span>
+                            <asp:TextBox ID="TextBox4" CssClass="form-control" runat="server" placeholder="Passport No."></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Passport Expired date:</span>
+                            <asp:TextBox ID="TextBox5" CssClass="form-control" runat="server" placeholder="Passport Expired date"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                            <%--<asp:DropDownList ID="DropDownHospitals" OnSelectedIndexChanged="DropDownHospitals_SelectedIndexChanged" AutoPostBack="true" runat="server"></asp:DropDownList>--%>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">STATUS:</span>
+                            <asp:TextBox ID="TextBox6" CssClass="form-control" runat="server" placeholder="STATUS "></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Joined date:</span>
+                            <asp:TextBox ID="TextBox7" CssClass="form-control" runat="server" placeholder="Joined date"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="controls">
+                            <span style="font-weight:bold">Notice:</span>
+                            <asp:TextBox ID="TextBox8" CssClass="form-control" runat="server" placeholder="Notice"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="*" Display="Dynamic" ForeColor="Red" ValidationGroup="A" SetFocusOnError="true" ControlToValidate="txtClinicName"></asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                </div>
 
+                <br />
                 <br />
                 <div class="row">
                     <div class="col-md-2">
 
-                        <asp:Button ID="btnShowData" OnClick="btnShowData_Click" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
+                        <asp:Button ID="btnShowData" runat="server" Text="Save Data" CssClass="btn btn-info btn-sm" ValidationGroup="A" />
                     </div>
                     <div class="col-md-8">
                         <asp:Label ID="lblResult" runat="server" Text="" Visible="true"></asp:Label>
@@ -152,7 +210,7 @@
                 <br />
             </ContentTemplate>
             <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="DropDownHospitals" EventName="SelectedIndexChanged" />
+                <%--<asp:AsyncPostBackTrigger ControlID="DropDownHospitals" EventName="SelectedIndexChanged" />--%>
 
                 <asp:AsyncPostBackTrigger ControlID="btnShowData" EventName="Click" />
             </Triggers>
