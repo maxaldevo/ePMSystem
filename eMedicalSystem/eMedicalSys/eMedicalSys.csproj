@@ -98,7 +98,8 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
-    <Content Include="AddOptions.aspx" />
+    <Content Include="HR_Sys\RegistNewUser.aspx" />
+    <Content Include="HR_Sys\AddOptions.aspx" />
     <Content Include="BookInSchedule.aspx" />
     <Content Include="DoctorFollowUp.aspx" />
     <Content Include="CheckinAppointment.aspx" />
@@ -7473,11 +7474,18 @@
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddOptions.aspx.cs">
+    <Compile Include="HR_Sys\RegistNewUser.aspx.cs">
+      <DependentUpon>RegistNewUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HR_Sys\RegistNewUser.aspx.designer.cs">
+      <DependentUpon>RegistNewUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HR_Sys\AddOptions.aspx.cs">
       <DependentUpon>AddOptions.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddOptions.aspx.designer.cs">
+    <Compile Include="HR_Sys\AddOptions.aspx.designer.cs">
       <DependentUpon>AddOptions.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookInSchedule.aspx.cs">

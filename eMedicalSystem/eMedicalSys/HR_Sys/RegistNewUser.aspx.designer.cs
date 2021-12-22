@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace eDailyReportSys
+namespace WebApplication1
 {
 
 
-    public partial class AddOptions
+    public partial class RegistNewUser
     {
 
         /// <summary>

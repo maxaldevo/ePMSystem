@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/HRMasterPage.Master" AutoEventWireup="true" CodeBehind="AddOptions.aspx.cs" Inherits="eDailyReportSys.AddOptions" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/HRMasterPage.Master" AutoEventWireup="true" CodeBehind="AddOptions.aspx.cs" Inherits="WebApplication1.AddOptions" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
