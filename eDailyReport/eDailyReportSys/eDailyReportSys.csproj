@@ -8631,18 +8631,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ePM.Dal\ePM_Dal.csproj">
-      <Project>{811b07f3-5724-45e2-a20e-cbc60f709af8}</Project>
-      <Name>ePM_Dal</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="assets\vendor_components\moment\moment.d.ts" />
     <TypeScriptCompile Include="assets\vendor_components\perfect-scrollbar-master\types\perfect-scrollbar.d.ts" />
     <TypeScriptCompile Include="assets\vendor_components\popper\packages\popper\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ePM.Dal\ePM_Dal.csproj">
+      <Project>{811b07f3-5724-45e2-a20e-cbc60f709af8}</Project>
+      <Name>ePM_Dal</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

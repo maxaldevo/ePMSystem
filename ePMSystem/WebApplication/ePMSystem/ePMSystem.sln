@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ePMConsole", "..\..\..\ePMS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ePMSysAPI", "..\..\..\ePMSystemAPI\ePMSystemAPI\ePMSysAPI\ePMSysAPI.csproj", "{8014BD82-1746-4217-B04F-BAB5FF362F18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eDailyReportSys", "..\..\..\eDailyReport\eDailyReportSys\eDailyReportSys.csproj", "{D850037F-098C-4CDF-B594-5D51B3DFF3BF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{8014BD82-1746-4217-B04F-BAB5FF362F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8014BD82-1746-4217-B04F-BAB5FF362F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8014BD82-1746-4217-B04F-BAB5FF362F18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D850037F-098C-4CDF-B594-5D51B3DFF3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D850037F-098C-4CDF-B594-5D51B3DFF3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D850037F-098C-4CDF-B594-5D51B3DFF3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D850037F-098C-4CDF-B594-5D51B3DFF3BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
