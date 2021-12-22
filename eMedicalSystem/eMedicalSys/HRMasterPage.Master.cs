@@ -7,7 +7,7 @@ using ePM_Dal.Logic;
 
 namespace eMedicalSystem
 {
-    public partial class HRMasterPage : System.Web.UI.MasterPage
+    public partial class MasterPage : System.Web.UI.MasterPage
     {
         public string defaultImagePath = "images/avatar1.png";
         //public static   int _personnelId=0;
