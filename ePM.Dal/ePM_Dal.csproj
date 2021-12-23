@@ -74,6 +74,21 @@
     <Compile Include="Appointment.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="eHR_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHR_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eHR_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHR_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eHR_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eHR_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_BookingTiming.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>
@@ -214,6 +229,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>eMedical_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="eHR_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>eHR_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="eHR_Model.edmx.diagram">
+      <DependentUpon>eHR_Model.edmx</DependentUpon>
+    </None>
     <None Include="eMedical_Model.edmx.diagram">
       <DependentUpon>eMedical_Model.edmx</DependentUpon>
     </None>
@@ -223,6 +245,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="eHR_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eHR_Model.edmx</DependentUpon>
+      <LastGenOutput>eHR_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="eHR_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eHR_Model.edmx</DependentUpon>
+      <LastGenOutput>eHR_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="eMedical_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>eMedical_Model.edmx</DependentUpon>
