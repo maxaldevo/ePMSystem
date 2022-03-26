@@ -4,20 +4,130 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="eHRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="eHRModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="eHRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="eHR_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpId" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullnameAr" Type="nvarchar" MaxLength="500" />
+          <Property Name="FullnameEn" Type="nvarchar" MaxLength="500" />
+          <Property Name="Designation" Type="int" />
+          <Property Name="Nationality" Type="int" />
+          <Property Name="CivilId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResidencyDate" Type="date" />
+          <Property Name="PassportNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassportExpDate" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="JoinedDate" Type="date" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1500" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="int" />
+        </EntityType>
+        <Function Name="sp_eHR_addNewEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmpId" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameAr" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameEn" Type="nvarchar" Mode="In" />
+          <Parameter Name="Designation" Type="int" Mode="In" />
+          <Parameter Name="Nationality" Type="int" Mode="In" />
+          <Parameter Name="CivilId" Type="nvarchar" Mode="In" />
+          <Parameter Name="ResidencyDate" Type="date" Mode="In" />
+          <Parameter Name="PassportNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassportExpDate" Type="date" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="JoinedDate" Type="date" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddedDate" Type="datetime" Mode="In" />
+          <Parameter Name="ModifiedDate" Type="datetime" Mode="In" />
+          <Parameter Name="AddedBy" Type="int" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="eHRModelStoreContainer">
+          <EntitySet Name="eHR_User" EntityType="Self.eHR_User" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eHRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="eHREntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="eHREntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="eHR_User" EntityType="eHRModel.eHR_User" />
+          <FunctionImport Name="sp_eHR_addNewEmployee">
+            <Parameter Name="FileNo" Mode="In" Type="String" />
+            <Parameter Name="EmpId" Mode="In" Type="String" />
+            <Parameter Name="FullnameAr" Mode="In" Type="String" />
+            <Parameter Name="FullnameEn" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="Int32" />
+            <Parameter Name="Nationality" Mode="In" Type="Int32" />
+            <Parameter Name="CivilId" Mode="In" Type="String" />
+            <Parameter Name="ResidencyDate" Mode="In" Type="DateTime" />
+            <Parameter Name="PassportNo" Mode="In" Type="String" />
+            <Parameter Name="PassportExpDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="JoinedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="AddedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ModifiedDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AddedBy" Mode="In" Type="Int32" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="eHR_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullnameAr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FullnameEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="Int32" />
+          <Property Name="Nationality" Type="Int32" />
+          <Property Name="CivilId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResidencyDate" Type="DateTime" Precision="0" />
+          <Property Name="PassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassportExpDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="JoinedDate" Type="DateTime" Precision="0" />
+          <Property Name="Remarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="eHRModelStoreContainer" CdmEntityContainer="eHREntities" />
+        <EntityContainerMapping StorageEntityContainer="eHRModelStoreContainer" CdmEntityContainer="eHREntities" >
+          <EntitySetMapping Name="eHR_User">
+            <EntityTypeMapping TypeName="eHRModel.eHR_User">
+              <MappingFragment StoreEntitySet="eHR_User">
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="JoinedDate" ColumnName="JoinedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PassportExpDate" ColumnName="PassportExpDate" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="ResidencyDate" ColumnName="ResidencyDate" />
+                <ScalarProperty Name="CivilId" ColumnName="CivilId" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="FullnameEn" ColumnName="FullnameEn" />
+                <ScalarProperty Name="FullnameAr" ColumnName="FullnameAr" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="FileNo" ColumnName="FileNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_eHR_addNewEmployee" FunctionName="eHRModel.Store.sp_eHR_addNewEmployee" />
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

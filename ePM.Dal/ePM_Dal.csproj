@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>eHR_Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="eHR_User.cs">
+      <DependentUpon>eHR_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="eMedical_BookingTiming.cs">
       <DependentUpon>eMedical_Model.tt</DependentUpon>
     </Compile>

@@ -12,6 +12,8 @@ namespace ePM.Dal
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class eHREntities : DbContext
     {
@@ -25,5 +27,75 @@ namespace ePM.Dal
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<eHR_User> eHR_User { get; set; }
+    
+        public virtual int sp_eHR_addNewEmployee(string fileNo, string empId, string fullnameAr, string fullnameEn, Nullable<int> designation, Nullable<int> nationality, string civilId, Nullable<System.DateTime> residencyDate, string passportNo, Nullable<System.DateTime> passportExpDate, string status, Nullable<System.DateTime> joinedDate, string remarks, Nullable<System.DateTime> addedDate, Nullable<System.DateTime> modifiedDate, Nullable<int> addedBy, ObjectParameter msg)
+        {
+            var fileNoParameter = fileNo != null ?
+                new ObjectParameter("FileNo", fileNo) :
+                new ObjectParameter("FileNo", typeof(string));
+    
+            var empIdParameter = empId != null ?
+                new ObjectParameter("EmpId", empId) :
+                new ObjectParameter("EmpId", typeof(string));
+    
+            var fullnameArParameter = fullnameAr != null ?
+                new ObjectParameter("FullnameAr", fullnameAr) :
+                new ObjectParameter("FullnameAr", typeof(string));
+    
+            var fullnameEnParameter = fullnameEn != null ?
+                new ObjectParameter("FullnameEn", fullnameEn) :
+                new ObjectParameter("FullnameEn", typeof(string));
+    
+            var designationParameter = designation.HasValue ?
+                new ObjectParameter("Designation", designation) :
+                new ObjectParameter("Designation", typeof(int));
+    
+            var nationalityParameter = nationality.HasValue ?
+                new ObjectParameter("Nationality", nationality) :
+                new ObjectParameter("Nationality", typeof(int));
+    
+            var civilIdParameter = civilId != null ?
+                new ObjectParameter("CivilId", civilId) :
+                new ObjectParameter("CivilId", typeof(string));
+    
+            var residencyDateParameter = residencyDate.HasValue ?
+                new ObjectParameter("ResidencyDate", residencyDate) :
+                new ObjectParameter("ResidencyDate", typeof(System.DateTime));
+    
+            var passportNoParameter = passportNo != null ?
+                new ObjectParameter("PassportNo", passportNo) :
+                new ObjectParameter("PassportNo", typeof(string));
+    
+            var passportExpDateParameter = passportExpDate.HasValue ?
+                new ObjectParameter("PassportExpDate", passportExpDate) :
+                new ObjectParameter("PassportExpDate", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var joinedDateParameter = joinedDate.HasValue ?
+                new ObjectParameter("JoinedDate", joinedDate) :
+                new ObjectParameter("JoinedDate", typeof(System.DateTime));
+    
+            var remarksParameter = remarks != null ?
+                new ObjectParameter("Remarks", remarks) :
+                new ObjectParameter("Remarks", typeof(string));
+    
+            var addedDateParameter = addedDate.HasValue ?
+                new ObjectParameter("AddedDate", addedDate) :
+                new ObjectParameter("AddedDate", typeof(System.DateTime));
+    
+            var modifiedDateParameter = modifiedDate.HasValue ?
+                new ObjectParameter("ModifiedDate", modifiedDate) :
+                new ObjectParameter("ModifiedDate", typeof(System.DateTime));
+    
+            var addedByParameter = addedBy.HasValue ?
+                new ObjectParameter("AddedBy", addedBy) :
+                new ObjectParameter("AddedBy", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eHR_addNewEmployee", fileNoParameter, empIdParameter, fullnameArParameter, fullnameEnParameter, designationParameter, nationalityParameter, civilIdParameter, residencyDateParameter, passportNoParameter, passportExpDateParameter, statusParameter, joinedDateParameter, remarksParameter, addedDateParameter, modifiedDateParameter, addedByParameter, msg);
+        }
     }
 }
