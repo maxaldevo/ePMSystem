@@ -1,4 +1,4 @@
-﻿<%@ Page  Title="Home Page" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ePMSystem.Default" %>
+﻿<%@ Page  Title="Home Page" Language="C#" MasterPageFile="~/HRMasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ePMSystem.Default" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 	    <style>
     

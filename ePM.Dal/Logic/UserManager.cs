@@ -140,6 +140,74 @@ namespace ePM_Dal.Logic
 
             return friendlyMsg;
         }
+        public static string AddNewEmpolyee(string FileNo, string EmpId, string FullnameAr, string FullnameEn, string Designation, string Nationality, string CivilId, string ResidencyDate, string PassportNo, string PassportExpDate, string Status, string JoinedDate, string Remarks, string AddedBy, string Salary, string TransferedFrom, string TransferedFromDate, string TransferedTo, string TransferedToDate, bool RTD, string VacationFrom, string VacationTo, string VacationFromDays, string VacationExt_1_From, string VacationExt_1_To, string VacationExt_2_From, string VacationExt_2_To, string VacationExt_3_From, string VacationExt_3_To)
+        {
+            string friendlyMsg = "";
+            try
+            {
+                using (var db = new eHREntities())
+                {
+                    var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                    string EmpNo = RandomNumber(7000, 1000000);
+
+                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
+                    db.sp_eHR_AddNewEmployeee(FileNo, EmpId, FullnameAr, FullnameEn, Designation, Nationality, CivilId, ResidencyDate, PassportNo, PassportExpDate, Status, JoinedDate, Remarks, AddedBy, Salary, TransferedFrom, TransferedFromDate, TransferedTo, TransferedToDate, RTD, VacationFrom, VacationTo, VacationFromDays, VacationExt_1_From, VacationExt_1_To, VacationExt_2_From, VacationExt_2_To, VacationExt_3_From, VacationExt_3_To, outputMsgParameter);
+                    friendlyMsg = outputMsgParameter.Value.ToString();
+                    //make default password 111111
+                }
+            }
+            catch (Exception ex)
+            {
+
+                friendlyMsg = "Please contact your admin!. unexpected error";
+                ExceptionsManager.AddException(ex);
+                if (ex.InnerException != null)
+                {
+                    ExceptionsManager.AddException(ex.InnerException);
+                }
+            }
+
+
+            return friendlyMsg;
+        }
+        public static string UpdateExistEmpolyee(string FileNo, string EmpId, string FullnameAr, string FullnameEn, string Designation, string Nationality, string CivilId, string ResidencyDate, string PassportNo, string PassportExpDate, string Status, string JoinedDate, string Remarks, string AddedBy, string Salary, string TransferedFrom, string TransferedFromDate, string TransferedTo, string TransferedToDate, bool RTD, string VacationFrom, string VacationTo, string VacationFromDays, string VacationExt_1_From, string VacationExt_1_To, string VacationExt_2_From, string VacationExt_2_To, string VacationExt_3_From, string VacationExt_3_To)
+        {
+            string friendlyMsg = "";
+            try
+            {
+                using (var db = new eHREntities())
+                {
+                    var outputMsgParameter = new ObjectParameter("msg", typeof(string));
+                    string EmpNo = RandomNumber(7000, 1000000);
+
+                    // db.sp_lms_addNewUser(fname, firstName, lastName, email, mobile, empNo, position, dept, roleId, hrRoleId, outputMsgParameter);
+                    db.sp_eHR_UpdateEmployeee(FileNo, EmpId, FullnameAr, FullnameEn, Designation, Nationality, CivilId, ResidencyDate, PassportNo, PassportExpDate, Status, JoinedDate, Remarks, AddedBy, Salary, TransferedFrom, TransferedFromDate, TransferedTo, TransferedToDate, RTD, VacationFrom, VacationTo, VacationFromDays, VacationExt_1_From, VacationExt_1_To, VacationExt_2_From, VacationExt_2_To, VacationExt_3_From, VacationExt_3_To, outputMsgParameter);
+                    friendlyMsg = outputMsgParameter.Value.ToString();
+                    //make default password 111111
+                }
+            }
+            catch (Exception ex)
+            {
+
+                friendlyMsg = "Please contact your admin!. unexpected error";
+                ExceptionsManager.AddException(ex);
+                if (ex.InnerException != null)
+                {
+                    ExceptionsManager.AddException(ex.InnerException);
+                }
+            }
+
+
+            return friendlyMsg;
+        }
+
+        public static List<vHREmployee> GetEmployeesList()
+        {
+            using (var db = new eHREntities())
+            {
+                return db.vHREmployees.ToList();
+            }
+        }
         // Instantiate random number generator.  
         private static readonly Random _random = new Random();
 
@@ -197,6 +265,19 @@ namespace ePM_Dal.Logic
             {
                 var data = db.eMedical_User.Where(x => x.EmployeeNo == empNo).FirstOrDefault();
                 if (data !=null)
+                {
+                    exists = true;
+                }
+            }
+            return exists;
+        }
+        public static bool checkEmpID(string empID)
+        {
+            bool exists = false;
+            using (var db = new eHREntities())
+            {
+                var data = db.eHR_User.Where(x => x.EmpId == empID).FirstOrDefault();
+                if (data != null)
                 {
                     exists = true;
                 }

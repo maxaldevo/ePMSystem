@@ -28,6 +28,7 @@ namespace ePM.Dal
         }
     
         public virtual DbSet<eHR_User> eHR_User { get; set; }
+        public virtual DbSet<vHREmployee> vHREmployees { get; set; }
     
         public virtual int sp_eHR_addNewEmployee(string fileNo, string empId, string fullnameAr, string fullnameEn, Nullable<int> designation, Nullable<int> nationality, string civilId, Nullable<System.DateTime> residencyDate, string passportNo, Nullable<System.DateTime> passportExpDate, string status, Nullable<System.DateTime> joinedDate, string remarks, Nullable<System.DateTime> addedDate, Nullable<System.DateTime> modifiedDate, Nullable<int> addedBy, ObjectParameter msg)
         {
@@ -96,6 +97,248 @@ namespace ePM.Dal
                 new ObjectParameter("AddedBy", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eHR_addNewEmployee", fileNoParameter, empIdParameter, fullnameArParameter, fullnameEnParameter, designationParameter, nationalityParameter, civilIdParameter, residencyDateParameter, passportNoParameter, passportExpDateParameter, statusParameter, joinedDateParameter, remarksParameter, addedDateParameter, modifiedDateParameter, addedByParameter, msg);
+        }
+    
+        public virtual int sp_eHR_AddNewEmployeee(string fileNo, string empId, string fullnameAr, string fullnameEn, string designation, string nationality, string civilId, string residencyDate, string passportNo, string passportExpDate, string status, string joinedDate, string remarks, string addedBy, string salary, string transferedFrom, string transferedFromDate, string transferedTo, string transferedToDate, Nullable<bool> rTD, string vacationFrom, string vacationTo, string vacationFromDays, string vacationExt_1_From, string vacationExt_1_To, string vacationExt_2_From, string vacationExt_2_To, string vacationExt_3_From, string vacationExt_3_To, ObjectParameter msg)
+        {
+            var fileNoParameter = fileNo != null ?
+                new ObjectParameter("FileNo", fileNo) :
+                new ObjectParameter("FileNo", typeof(string));
+    
+            var empIdParameter = empId != null ?
+                new ObjectParameter("EmpId", empId) :
+                new ObjectParameter("EmpId", typeof(string));
+    
+            var fullnameArParameter = fullnameAr != null ?
+                new ObjectParameter("FullnameAr", fullnameAr) :
+                new ObjectParameter("FullnameAr", typeof(string));
+    
+            var fullnameEnParameter = fullnameEn != null ?
+                new ObjectParameter("FullnameEn", fullnameEn) :
+                new ObjectParameter("FullnameEn", typeof(string));
+    
+            var designationParameter = designation != null ?
+                new ObjectParameter("Designation", designation) :
+                new ObjectParameter("Designation", typeof(string));
+    
+            var nationalityParameter = nationality != null ?
+                new ObjectParameter("Nationality", nationality) :
+                new ObjectParameter("Nationality", typeof(string));
+    
+            var civilIdParameter = civilId != null ?
+                new ObjectParameter("CivilId", civilId) :
+                new ObjectParameter("CivilId", typeof(string));
+    
+            var residencyDateParameter = residencyDate != null ?
+                new ObjectParameter("ResidencyDate", residencyDate) :
+                new ObjectParameter("ResidencyDate", typeof(string));
+    
+            var passportNoParameter = passportNo != null ?
+                new ObjectParameter("PassportNo", passportNo) :
+                new ObjectParameter("PassportNo", typeof(string));
+    
+            var passportExpDateParameter = passportExpDate != null ?
+                new ObjectParameter("PassportExpDate", passportExpDate) :
+                new ObjectParameter("PassportExpDate", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var joinedDateParameter = joinedDate != null ?
+                new ObjectParameter("JoinedDate", joinedDate) :
+                new ObjectParameter("JoinedDate", typeof(string));
+    
+            var remarksParameter = remarks != null ?
+                new ObjectParameter("Remarks", remarks) :
+                new ObjectParameter("Remarks", typeof(string));
+    
+            var addedByParameter = addedBy != null ?
+                new ObjectParameter("AddedBy", addedBy) :
+                new ObjectParameter("AddedBy", typeof(string));
+    
+            var salaryParameter = salary != null ?
+                new ObjectParameter("Salary", salary) :
+                new ObjectParameter("Salary", typeof(string));
+    
+            var transferedFromParameter = transferedFrom != null ?
+                new ObjectParameter("TransferedFrom", transferedFrom) :
+                new ObjectParameter("TransferedFrom", typeof(string));
+    
+            var transferedFromDateParameter = transferedFromDate != null ?
+                new ObjectParameter("TransferedFromDate", transferedFromDate) :
+                new ObjectParameter("TransferedFromDate", typeof(string));
+    
+            var transferedToParameter = transferedTo != null ?
+                new ObjectParameter("TransferedTo", transferedTo) :
+                new ObjectParameter("TransferedTo", typeof(string));
+    
+            var transferedToDateParameter = transferedToDate != null ?
+                new ObjectParameter("TransferedToDate", transferedToDate) :
+                new ObjectParameter("TransferedToDate", typeof(string));
+    
+            var rTDParameter = rTD.HasValue ?
+                new ObjectParameter("RTD", rTD) :
+                new ObjectParameter("RTD", typeof(bool));
+    
+            var vacationFromParameter = vacationFrom != null ?
+                new ObjectParameter("VacationFrom", vacationFrom) :
+                new ObjectParameter("VacationFrom", typeof(string));
+    
+            var vacationToParameter = vacationTo != null ?
+                new ObjectParameter("VacationTo", vacationTo) :
+                new ObjectParameter("VacationTo", typeof(string));
+    
+            var vacationFromDaysParameter = vacationFromDays != null ?
+                new ObjectParameter("VacationFromDays", vacationFromDays) :
+                new ObjectParameter("VacationFromDays", typeof(string));
+    
+            var vacationExt_1_FromParameter = vacationExt_1_From != null ?
+                new ObjectParameter("VacationExt_1_From", vacationExt_1_From) :
+                new ObjectParameter("VacationExt_1_From", typeof(string));
+    
+            var vacationExt_1_ToParameter = vacationExt_1_To != null ?
+                new ObjectParameter("VacationExt_1_To", vacationExt_1_To) :
+                new ObjectParameter("VacationExt_1_To", typeof(string));
+    
+            var vacationExt_2_FromParameter = vacationExt_2_From != null ?
+                new ObjectParameter("VacationExt_2_From", vacationExt_2_From) :
+                new ObjectParameter("VacationExt_2_From", typeof(string));
+    
+            var vacationExt_2_ToParameter = vacationExt_2_To != null ?
+                new ObjectParameter("VacationExt_2_To", vacationExt_2_To) :
+                new ObjectParameter("VacationExt_2_To", typeof(string));
+    
+            var vacationExt_3_FromParameter = vacationExt_3_From != null ?
+                new ObjectParameter("VacationExt_3_From", vacationExt_3_From) :
+                new ObjectParameter("VacationExt_3_From", typeof(string));
+    
+            var vacationExt_3_ToParameter = vacationExt_3_To != null ?
+                new ObjectParameter("VacationExt_3_To", vacationExt_3_To) :
+                new ObjectParameter("VacationExt_3_To", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eHR_AddNewEmployeee", fileNoParameter, empIdParameter, fullnameArParameter, fullnameEnParameter, designationParameter, nationalityParameter, civilIdParameter, residencyDateParameter, passportNoParameter, passportExpDateParameter, statusParameter, joinedDateParameter, remarksParameter, addedByParameter, salaryParameter, transferedFromParameter, transferedFromDateParameter, transferedToParameter, transferedToDateParameter, rTDParameter, vacationFromParameter, vacationToParameter, vacationFromDaysParameter, vacationExt_1_FromParameter, vacationExt_1_ToParameter, vacationExt_2_FromParameter, vacationExt_2_ToParameter, vacationExt_3_FromParameter, vacationExt_3_ToParameter, msg);
+        }
+    
+        public virtual int sp_eHR_UpdateEmployeee(string fileNo, string empId, string fullnameAr, string fullnameEn, string designation, string nationality, string civilId, string residencyDate, string passportNo, string passportExpDate, string status, string joinedDate, string remarks, string addedBy, string salary, string transferedFrom, string transferedFromDate, string transferedTo, string transferedToDate, Nullable<bool> rTD, string vacationFrom, string vacationTo, string vacationFromDays, string vacationExt_1_From, string vacationExt_1_To, string vacationExt_2_From, string vacationExt_2_To, string vacationExt_3_From, string vacationExt_3_To, ObjectParameter msg)
+        {
+            var fileNoParameter = fileNo != null ?
+                new ObjectParameter("FileNo", fileNo) :
+                new ObjectParameter("FileNo", typeof(string));
+    
+            var empIdParameter = empId != null ?
+                new ObjectParameter("EmpId", empId) :
+                new ObjectParameter("EmpId", typeof(string));
+    
+            var fullnameArParameter = fullnameAr != null ?
+                new ObjectParameter("FullnameAr", fullnameAr) :
+                new ObjectParameter("FullnameAr", typeof(string));
+    
+            var fullnameEnParameter = fullnameEn != null ?
+                new ObjectParameter("FullnameEn", fullnameEn) :
+                new ObjectParameter("FullnameEn", typeof(string));
+    
+            var designationParameter = designation != null ?
+                new ObjectParameter("Designation", designation) :
+                new ObjectParameter("Designation", typeof(string));
+    
+            var nationalityParameter = nationality != null ?
+                new ObjectParameter("Nationality", nationality) :
+                new ObjectParameter("Nationality", typeof(string));
+    
+            var civilIdParameter = civilId != null ?
+                new ObjectParameter("CivilId", civilId) :
+                new ObjectParameter("CivilId", typeof(string));
+    
+            var residencyDateParameter = residencyDate != null ?
+                new ObjectParameter("ResidencyDate", residencyDate) :
+                new ObjectParameter("ResidencyDate", typeof(string));
+    
+            var passportNoParameter = passportNo != null ?
+                new ObjectParameter("PassportNo", passportNo) :
+                new ObjectParameter("PassportNo", typeof(string));
+    
+            var passportExpDateParameter = passportExpDate != null ?
+                new ObjectParameter("PassportExpDate", passportExpDate) :
+                new ObjectParameter("PassportExpDate", typeof(string));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(string));
+    
+            var joinedDateParameter = joinedDate != null ?
+                new ObjectParameter("JoinedDate", joinedDate) :
+                new ObjectParameter("JoinedDate", typeof(string));
+    
+            var remarksParameter = remarks != null ?
+                new ObjectParameter("Remarks", remarks) :
+                new ObjectParameter("Remarks", typeof(string));
+    
+            var addedByParameter = addedBy != null ?
+                new ObjectParameter("AddedBy", addedBy) :
+                new ObjectParameter("AddedBy", typeof(string));
+    
+            var salaryParameter = salary != null ?
+                new ObjectParameter("Salary", salary) :
+                new ObjectParameter("Salary", typeof(string));
+    
+            var transferedFromParameter = transferedFrom != null ?
+                new ObjectParameter("TransferedFrom", transferedFrom) :
+                new ObjectParameter("TransferedFrom", typeof(string));
+    
+            var transferedFromDateParameter = transferedFromDate != null ?
+                new ObjectParameter("TransferedFromDate", transferedFromDate) :
+                new ObjectParameter("TransferedFromDate", typeof(string));
+    
+            var transferedToParameter = transferedTo != null ?
+                new ObjectParameter("TransferedTo", transferedTo) :
+                new ObjectParameter("TransferedTo", typeof(string));
+    
+            var transferedToDateParameter = transferedToDate != null ?
+                new ObjectParameter("TransferedToDate", transferedToDate) :
+                new ObjectParameter("TransferedToDate", typeof(string));
+    
+            var rTDParameter = rTD.HasValue ?
+                new ObjectParameter("RTD", rTD) :
+                new ObjectParameter("RTD", typeof(bool));
+    
+            var vacationFromParameter = vacationFrom != null ?
+                new ObjectParameter("VacationFrom", vacationFrom) :
+                new ObjectParameter("VacationFrom", typeof(string));
+    
+            var vacationToParameter = vacationTo != null ?
+                new ObjectParameter("VacationTo", vacationTo) :
+                new ObjectParameter("VacationTo", typeof(string));
+    
+            var vacationFromDaysParameter = vacationFromDays != null ?
+                new ObjectParameter("VacationFromDays", vacationFromDays) :
+                new ObjectParameter("VacationFromDays", typeof(string));
+    
+            var vacationExt_1_FromParameter = vacationExt_1_From != null ?
+                new ObjectParameter("VacationExt_1_From", vacationExt_1_From) :
+                new ObjectParameter("VacationExt_1_From", typeof(string));
+    
+            var vacationExt_1_ToParameter = vacationExt_1_To != null ?
+                new ObjectParameter("VacationExt_1_To", vacationExt_1_To) :
+                new ObjectParameter("VacationExt_1_To", typeof(string));
+    
+            var vacationExt_2_FromParameter = vacationExt_2_From != null ?
+                new ObjectParameter("VacationExt_2_From", vacationExt_2_From) :
+                new ObjectParameter("VacationExt_2_From", typeof(string));
+    
+            var vacationExt_2_ToParameter = vacationExt_2_To != null ?
+                new ObjectParameter("VacationExt_2_To", vacationExt_2_To) :
+                new ObjectParameter("VacationExt_2_To", typeof(string));
+    
+            var vacationExt_3_FromParameter = vacationExt_3_From != null ?
+                new ObjectParameter("VacationExt_3_From", vacationExt_3_From) :
+                new ObjectParameter("VacationExt_3_From", typeof(string));
+    
+            var vacationExt_3_ToParameter = vacationExt_3_To != null ?
+                new ObjectParameter("VacationExt_3_To", vacationExt_3_To) :
+                new ObjectParameter("VacationExt_3_To", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_eHR_UpdateEmployeee", fileNoParameter, empIdParameter, fullnameArParameter, fullnameEnParameter, designationParameter, nationalityParameter, civilIdParameter, residencyDateParameter, passportNoParameter, passportExpDateParameter, statusParameter, joinedDateParameter, remarksParameter, addedByParameter, salaryParameter, transferedFromParameter, transferedFromDateParameter, transferedToParameter, transferedToDateParameter, rTDParameter, vacationFromParameter, vacationToParameter, vacationFromDaysParameter, vacationExt_1_FromParameter, vacationExt_1_ToParameter, vacationExt_2_FromParameter, vacationExt_2_ToParameter, vacationExt_3_FromParameter, vacationExt_3_ToParameter, msg);
         }
     }
 }

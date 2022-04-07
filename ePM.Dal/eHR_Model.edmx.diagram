@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d981a2623f5b48599798133587dc76f4" Name="Diagram1" >
         <EntityTypeShape EntityType="eHRModel.eHR_User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="eHRModel.vHREmployee" Width="1.875" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

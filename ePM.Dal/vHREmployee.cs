@@ -12,7 +12,7 @@ namespace ePM.Dal
     using System;
     using System.Collections.Generic;
     
-    public partial class eHR_User
+    public partial class vHREmployee
     {
         public int ID { get; set; }
         public string FileNo { get; set; }
@@ -31,9 +31,9 @@ namespace ePM.Dal
         public Nullable<System.DateTime> AddedDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string AddedBy { get; set; }
-        public string Salary { get; set; }
         public string TransferedFrom { get; set; }
         public string TransferedFromDate { get; set; }
+        public string Salary { get; set; }
         public string TransferedTo { get; set; }
         public string TransferedToDate { get; set; }
         public bool RTD { get; set; }

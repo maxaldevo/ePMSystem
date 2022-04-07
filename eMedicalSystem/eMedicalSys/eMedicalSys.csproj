@@ -98,8 +98,7 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
-    <Content Include="HR_Sys\RegistNewUser.aspx" />
-    <Content Include="HR_Sys\AddOptions.aspx" />
+    <Content Include="AddNewEmployee.aspx" />
     <Content Include="BookInSchedule.aspx" />
     <Content Include="DoctorFollowUp.aspx" />
     <Content Include="CheckinAppointment.aspx" />
@@ -7318,6 +7317,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="EmployeesList.aspx" />
     <Content Include="ServiceTypesList.aspx" />
     <Content Include="ServicesList.aspx" />
     <Content Include="Profile.aspx" />
@@ -7474,19 +7474,12 @@
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="HR_Sys\RegistNewUser.aspx.cs">
-      <DependentUpon>RegistNewUser.aspx</DependentUpon>
+    <Compile Include="AddNewEmployee.aspx.cs">
+      <DependentUpon>AddNewEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="HR_Sys\RegistNewUser.aspx.designer.cs">
-      <DependentUpon>RegistNewUser.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HR_Sys\AddOptions.aspx.cs">
-      <DependentUpon>AddOptions.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="HR_Sys\AddOptions.aspx.designer.cs">
-      <DependentUpon>AddOptions.aspx</DependentUpon>
+    <Compile Include="AddNewEmployee.aspx.designer.cs">
+      <DependentUpon>AddNewEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="BookInSchedule.aspx.cs">
       <DependentUpon>BookInSchedule.aspx</DependentUpon>
@@ -7742,6 +7735,13 @@
     </Compile>
     <Compile Include="RoomList.aspx.designer.cs">
       <DependentUpon>RoomList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeesList.aspx.cs">
+      <DependentUpon>EmployeesList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeesList.aspx.designer.cs">
+      <DependentUpon>EmployeesList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ServiceTypesList.aspx.cs">
       <DependentUpon>ServiceTypesList.aspx</DependentUpon>

@@ -14,18 +14,73 @@
           <Property Name="EmpId" Type="nvarchar" MaxLength="50" />
           <Property Name="FullnameAr" Type="nvarchar" MaxLength="500" />
           <Property Name="FullnameEn" Type="nvarchar" MaxLength="500" />
-          <Property Name="Designation" Type="int" />
-          <Property Name="Nationality" Type="int" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
           <Property Name="CivilId" Type="nvarchar" MaxLength="50" />
-          <Property Name="ResidencyDate" Type="date" />
+          <Property Name="ResidencyDate" Type="nvarchar" MaxLength="50" />
           <Property Name="PassportNo" Type="nvarchar" MaxLength="50" />
-          <Property Name="PassportExpDate" Type="date" />
+          <Property Name="PassportExpDate" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nvarchar" MaxLength="500" />
-          <Property Name="JoinedDate" Type="date" />
+          <Property Name="JoinedDate" Type="nvarchar" MaxLength="50" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="1500" />
           <Property Name="AddedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
-          <Property Name="AddedBy" Type="int" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransferedFrom" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransferedFromDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransferedTo" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransferedToDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTD" Type="bit" Nullable="false" />
+          <Property Name="VacationFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationFromDays" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_1_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_1_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_2_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_2_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_3_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_3_To" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'eMedical.dbo.vHREmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vHREmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RTD" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpId" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullnameAr" Type="nvarchar" MaxLength="500" />
+          <Property Name="FullnameEn" Type="nvarchar" MaxLength="500" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="CivilId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResidencyDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassportNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassportExpDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="500" />
+          <Property Name="JoinedDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1500" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="AddedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransferedFrom" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransferedFromDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransferedTo" Type="nvarchar" MaxLength="500" />
+          <Property Name="TransferedToDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTD" Type="bit" Nullable="false" />
+          <Property Name="VacationFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationTo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationFromDays" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_1_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_1_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_2_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_2_To" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_3_From" Type="nvarchar" MaxLength="50" />
+          <Property Name="VacationExt_3_To" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Function Name="sp_eHR_addNewEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FileNo" Type="nvarchar" Mode="In" />
@@ -46,15 +101,114 @@
           <Parameter Name="AddedBy" Type="int" Mode="In" />
           <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
         </Function>
+        <Function Name="sp_eHR_AddNewEmployeee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmpId" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameAr" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameEn" Type="nvarchar" Mode="In" />
+          <Parameter Name="Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+          <Parameter Name="CivilId" Type="nvarchar" Mode="In" />
+          <Parameter Name="ResidencyDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassportNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassportExpDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="JoinedDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedFrom" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedFromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedTo" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedToDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="RTD" Type="bit" Mode="In" />
+          <Parameter Name="VacationFrom" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationTo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationFromDays" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_1_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_1_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_2_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_2_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_3_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_3_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_eHR_UpdateEmployeee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FileNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmpId" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameAr" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullnameEn" Type="nvarchar" Mode="In" />
+          <Parameter Name="Designation" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nationality" Type="nvarchar" Mode="In" />
+          <Parameter Name="CivilId" Type="nvarchar" Mode="In" />
+          <Parameter Name="ResidencyDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassportNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="PassportExpDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="JoinedDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+          <Parameter Name="AddedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="Salary" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedFrom" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedFromDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedTo" Type="nvarchar" Mode="In" />
+          <Parameter Name="TransferedToDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="RTD" Type="bit" Mode="In" />
+          <Parameter Name="VacationFrom" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationTo" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationFromDays" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_1_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_1_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_2_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_2_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_3_From" Type="nvarchar" Mode="In" />
+          <Parameter Name="VacationExt_3_To" Type="nvarchar" Mode="In" />
+          <Parameter Name="msg" Type="nvarchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="eHRModelStoreContainer">
           <EntitySet Name="eHR_User" EntityType="Self.eHR_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vHREmployee" EntityType="Self.vHREmployee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vHREmployee].[ID] AS [ID], 
+    [vHREmployee].[FileNo] AS [FileNo], 
+    [vHREmployee].[EmpId] AS [EmpId], 
+    [vHREmployee].[FullnameAr] AS [FullnameAr], 
+    [vHREmployee].[FullnameEn] AS [FullnameEn], 
+    [vHREmployee].[Designation] AS [Designation], 
+    [vHREmployee].[Nationality] AS [Nationality], 
+    [vHREmployee].[CivilId] AS [CivilId], 
+    [vHREmployee].[ResidencyDate] AS [ResidencyDate], 
+    [vHREmployee].[PassportNo] AS [PassportNo], 
+    [vHREmployee].[PassportExpDate] AS [PassportExpDate], 
+    [vHREmployee].[Status] AS [Status], 
+    [vHREmployee].[JoinedDate] AS [JoinedDate], 
+    [vHREmployee].[Remarks] AS [Remarks], 
+    [vHREmployee].[AddedDate] AS [AddedDate], 
+    [vHREmployee].[ModifiedDate] AS [ModifiedDate], 
+    [vHREmployee].[AddedBy] AS [AddedBy], 
+    [vHREmployee].[TransferedFrom] AS [TransferedFrom], 
+    [vHREmployee].[TransferedFromDate] AS [TransferedFromDate], 
+    [vHREmployee].[Salary] AS [Salary], 
+    [vHREmployee].[TransferedTo] AS [TransferedTo], 
+    [vHREmployee].[TransferedToDate] AS [TransferedToDate], 
+    [vHREmployee].[RTD] AS [RTD], 
+    [vHREmployee].[VacationFrom] AS [VacationFrom], 
+    [vHREmployee].[VacationTo] AS [VacationTo], 
+    [vHREmployee].[VacationFromDays] AS [VacationFromDays], 
+    [vHREmployee].[VacationExt_1_From] AS [VacationExt_1_From], 
+    [vHREmployee].[VacationExt_1_To] AS [VacationExt_1_To], 
+    [vHREmployee].[VacationExt_2_From] AS [VacationExt_2_From], 
+    [vHREmployee].[VacationExt_2_To] AS [VacationExt_2_To], 
+    [vHREmployee].[VacationExt_3_From] AS [VacationExt_3_From], 
+    [vHREmployee].[VacationExt_3_To] AS [VacationExt_3_To]
+    FROM [dbo].[vHREmployee] AS [vHREmployee]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eHRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="eHREntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="eHR_User" EntityType="eHRModel.eHR_User" />
           <FunctionImport Name="sp_eHR_addNewEmployee">
             <Parameter Name="FileNo" Mode="In" Type="String" />
             <Parameter Name="EmpId" Mode="In" Type="String" />
@@ -74,6 +228,72 @@
             <Parameter Name="AddedBy" Mode="In" Type="Int32" />
             <Parameter Name="msg" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_eHR_AddNewEmployeee">
+            <Parameter Name="FileNo" Mode="In" Type="String" />
+            <Parameter Name="EmpId" Mode="In" Type="String" />
+            <Parameter Name="FullnameAr" Mode="In" Type="String" />
+            <Parameter Name="FullnameEn" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="String" />
+            <Parameter Name="Nationality" Mode="In" Type="String" />
+            <Parameter Name="CivilId" Mode="In" Type="String" />
+            <Parameter Name="ResidencyDate" Mode="In" Type="String" />
+            <Parameter Name="PassportNo" Mode="In" Type="String" />
+            <Parameter Name="PassportExpDate" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="JoinedDate" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="AddedBy" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="String" />
+            <Parameter Name="TransferedFrom" Mode="In" Type="String" />
+            <Parameter Name="TransferedFromDate" Mode="In" Type="String" />
+            <Parameter Name="TransferedTo" Mode="In" Type="String" />
+            <Parameter Name="TransferedToDate" Mode="In" Type="String" />
+            <Parameter Name="RTD" Mode="In" Type="Boolean" />
+            <Parameter Name="VacationFrom" Mode="In" Type="String" />
+            <Parameter Name="VacationTo" Mode="In" Type="String" />
+            <Parameter Name="VacationFromDays" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_1_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_1_To" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_2_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_2_To" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_3_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_3_To" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="eHR_User" EntityType="eHRModel.eHR_User" />
+          <FunctionImport Name="sp_eHR_UpdateEmployeee">
+            <Parameter Name="FileNo" Mode="In" Type="String" />
+            <Parameter Name="EmpId" Mode="In" Type="String" />
+            <Parameter Name="FullnameAr" Mode="In" Type="String" />
+            <Parameter Name="FullnameEn" Mode="In" Type="String" />
+            <Parameter Name="Designation" Mode="In" Type="String" />
+            <Parameter Name="Nationality" Mode="In" Type="String" />
+            <Parameter Name="CivilId" Mode="In" Type="String" />
+            <Parameter Name="ResidencyDate" Mode="In" Type="String" />
+            <Parameter Name="PassportNo" Mode="In" Type="String" />
+            <Parameter Name="PassportExpDate" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="JoinedDate" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="AddedBy" Mode="In" Type="String" />
+            <Parameter Name="Salary" Mode="In" Type="String" />
+            <Parameter Name="TransferedFrom" Mode="In" Type="String" />
+            <Parameter Name="TransferedFromDate" Mode="In" Type="String" />
+            <Parameter Name="TransferedTo" Mode="In" Type="String" />
+            <Parameter Name="TransferedToDate" Mode="In" Type="String" />
+            <Parameter Name="RTD" Mode="In" Type="Boolean" />
+            <Parameter Name="VacationFrom" Mode="In" Type="String" />
+            <Parameter Name="VacationTo" Mode="In" Type="String" />
+            <Parameter Name="VacationFromDays" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_1_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_1_To" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_2_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_2_To" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_3_From" Mode="In" Type="String" />
+            <Parameter Name="VacationExt_3_To" Mode="In" Type="String" />
+            <Parameter Name="msg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="vHREmployees" EntityType="eHRModel.vHREmployee" />
         </EntityContainer>
         <EntityType Name="eHR_User">
           <Key>
@@ -84,18 +304,71 @@
           <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FullnameAr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="FullnameEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Designation" Type="Int32" />
-          <Property Name="Nationality" Type="Int32" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CivilId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ResidencyDate" Type="DateTime" Precision="0" />
+          <Property Name="ResidencyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PassportExpDate" Type="DateTime" Precision="0" />
+          <Property Name="PassportExpDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="JoinedDate" Type="DateTime" Precision="0" />
+          <Property Name="JoinedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Name="AddedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="AddedBy" Type="Int32" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedFrom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedFromDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedToDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RTD" Type="Boolean" Nullable="false" />
+          <Property Name="VacationFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationFromDays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_1_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_1_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_2_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_2_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_3_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_3_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vHREmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RTD" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullnameAr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FullnameEn" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CivilId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResidencyDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassportExpDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="JoinedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedFrom" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedFromDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TransferedToDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RTD" Type="Boolean" Nullable="false" />
+          <Property Name="VacationFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationFromDays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_1_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_1_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_2_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_2_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_3_From" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VacationExt_3_To" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -103,9 +376,26 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="eHRModelStoreContainer" CdmEntityContainer="eHREntities" >
+          <FunctionImportMapping FunctionImportName="sp_eHR_addNewEmployee" FunctionName="eHRModel.Store.sp_eHR_addNewEmployee" />
+          <FunctionImportMapping FunctionImportName="sp_eHR_AddNewEmployeee" FunctionName="eHRModel.Store.sp_eHR_AddNewEmployeee" />
           <EntitySetMapping Name="eHR_User">
             <EntityTypeMapping TypeName="eHRModel.eHR_User">
               <MappingFragment StoreEntitySet="eHR_User">
+                <ScalarProperty Name="VacationExt_3_To" ColumnName="VacationExt_3_To" />
+                <ScalarProperty Name="VacationExt_3_From" ColumnName="VacationExt_3_From" />
+                <ScalarProperty Name="VacationExt_2_To" ColumnName="VacationExt_2_To" />
+                <ScalarProperty Name="VacationExt_2_From" ColumnName="VacationExt_2_From" />
+                <ScalarProperty Name="VacationExt_1_To" ColumnName="VacationExt_1_To" />
+                <ScalarProperty Name="VacationExt_1_From" ColumnName="VacationExt_1_From" />
+                <ScalarProperty Name="VacationFromDays" ColumnName="VacationFromDays" />
+                <ScalarProperty Name="VacationTo" ColumnName="VacationTo" />
+                <ScalarProperty Name="VacationFrom" ColumnName="VacationFrom" />
+                <ScalarProperty Name="RTD" ColumnName="RTD" />
+                <ScalarProperty Name="TransferedToDate" ColumnName="TransferedToDate" />
+                <ScalarProperty Name="TransferedTo" ColumnName="TransferedTo" />
+                <ScalarProperty Name="TransferedFromDate" ColumnName="TransferedFromDate" />
+                <ScalarProperty Name="TransferedFrom" ColumnName="TransferedFrom" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
@@ -126,7 +416,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_eHR_addNewEmployee" FunctionName="eHRModel.Store.sp_eHR_addNewEmployee" />
+          <FunctionImportMapping FunctionImportName="sp_eHR_UpdateEmployeee" FunctionName="eHRModel.Store.sp_eHR_UpdateEmployeee" />
+          <EntitySetMapping Name="vHREmployees">
+            <EntityTypeMapping TypeName="eHRModel.vHREmployee">
+              <MappingFragment StoreEntitySet="vHREmployee">
+                <ScalarProperty Name="VacationExt_3_To" ColumnName="VacationExt_3_To" />
+                <ScalarProperty Name="VacationExt_3_From" ColumnName="VacationExt_3_From" />
+                <ScalarProperty Name="VacationExt_2_To" ColumnName="VacationExt_2_To" />
+                <ScalarProperty Name="VacationExt_2_From" ColumnName="VacationExt_2_From" />
+                <ScalarProperty Name="VacationExt_1_To" ColumnName="VacationExt_1_To" />
+                <ScalarProperty Name="VacationExt_1_From" ColumnName="VacationExt_1_From" />
+                <ScalarProperty Name="VacationFromDays" ColumnName="VacationFromDays" />
+                <ScalarProperty Name="VacationTo" ColumnName="VacationTo" />
+                <ScalarProperty Name="VacationFrom" ColumnName="VacationFrom" />
+                <ScalarProperty Name="RTD" ColumnName="RTD" />
+                <ScalarProperty Name="TransferedToDate" ColumnName="TransferedToDate" />
+                <ScalarProperty Name="TransferedTo" ColumnName="TransferedTo" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="TransferedFromDate" ColumnName="TransferedFromDate" />
+                <ScalarProperty Name="TransferedFrom" ColumnName="TransferedFrom" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="JoinedDate" ColumnName="JoinedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PassportExpDate" ColumnName="PassportExpDate" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="ResidencyDate" ColumnName="ResidencyDate" />
+                <ScalarProperty Name="CivilId" ColumnName="CivilId" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="FullnameEn" ColumnName="FullnameEn" />
+                <ScalarProperty Name="FullnameAr" ColumnName="FullnameAr" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="FileNo" ColumnName="FileNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
