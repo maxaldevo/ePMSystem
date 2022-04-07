@@ -54,34 +54,36 @@ namespace WebApplication1
                         {
                             if (_employeeId != 0 && _employeeNo != 0)
                             {
-                                txtempid.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).ToList()[0].EmpId.ToString();
-                                txtFileno.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().FileNo.ToString();
-                                txtFullNameAr.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().FullnameAr.ToString();
-                                txtFullNameEn.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().FullnameEn.ToString();
-                                txtDesignation.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().Designation.ToString();
-                                txtNationality.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().Nationality.ToString();
-                                txtcivilNo.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().CivilId.ToString();
-                                txtResidencyDate.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().ResidencyDate.ToString();
-                                txtPassportNo.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().PassportNo.ToString();
-                                txtPassportExpDate.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().PassportExpDate.ToString();
-                                txtStatus.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().Status.ToString();
-                                txtJoinedDate.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().JoinedDate.ToString();
-                                txtTransferedFrom.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().TransferedFrom.ToString();
-                                txtTransferedTo.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().TransferedTo.ToString();
-                                txtTransferedFromdate.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().TransferedFromDate.ToString();
-                                txtTransferedTodate.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().TransferedToDate.ToString();
-                                txtSalary.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().Salary.ToString();
-                                if (EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().RTD == true) chk_RTD.Checked = true; else chk_RTD.Checked = false;
-                                txtRemarks.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().Remarks.ToString();
-                                txtVacationFrom.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationFrom.ToString();
-                                txtVacationTo.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationTo.ToString();
-                                txtVacationDaysNo.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationFromDays.ToString();
-                                txtVacationExt_1_From.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_1_From.ToString();
-                                txtVacationExt_1_To.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_1_To.ToString();
-                                txtVacationExt_2_From.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_2_From.ToString();
-                                txtVacationExt_2_To.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_2_To.ToString();
-                                txtVacationExt_3_From.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_3_From.ToString();
-                                txtVacationExt_3_To.Text = EmployeeList.Where(x => x.ID == _employeeId & x.EmpId == _employeeNo.ToString()).FirstOrDefault().VacationExt_3_To.ToString();
+                                var employee = UserManager.GetEmployeesList(_employeeId, _employeeNo.ToString());
+
+                                txtempid.Text = employee.EmpId;
+                                txtFileno.Text = employee.FileNo;
+                                txtFullNameAr.Text = employee.FullnameAr;
+                                txtFullNameEn.Text = employee.FullnameEn;
+                                txtDesignation.Text = employee.Designation;
+                                txtNationality.Text = employee.Nationality;
+                                txtcivilNo.Text = employee.CivilId;
+                                txtResidencyDate.Text = employee.ResidencyDate;
+                                txtPassportNo.Text = employee.PassportNo;
+                                txtPassportExpDate.Text = employee.PassportExpDate;
+                                txtStatus.Text = employee.Status;
+                                txtJoinedDate.Text = employee.JoinedDate;
+                                txtTransferedFrom.Text = employee.TransferedFrom;
+                                txtTransferedTo.Text = employee.TransferedTo;
+                                txtTransferedFromdate.Text = employee.TransferedFromDate;
+                                txtTransferedTodate.Text = employee.TransferedToDate;
+                                txtSalary.Text = employee.Salary;
+                                if (employee.RTD == true) chk_RTD.Checked = true; else chk_RTD.Checked = false;
+                                txtRemarks.Text = employee.Remarks;
+                                txtVacationFrom.Text = employee.VacationFrom;
+                                txtVacationTo.Text = employee.VacationTo;
+                                txtVacationDaysNo.Text = employee.VacationFromDays;
+                                txtVacationExt_1_From.Text = employee.VacationExt_1_From;
+                                txtVacationExt_1_To.Text = employee.VacationExt_1_To;
+                                txtVacationExt_2_From.Text = employee.VacationExt_2_From;
+                                txtVacationExt_2_To.Text = employee.VacationExt_2_To;
+                                txtVacationExt_3_From.Text = employee.VacationExt_3_From;
+                                txtVacationExt_3_To.Text = employee.VacationExt_3_To;
                             }
 
                             //BindHospitals();

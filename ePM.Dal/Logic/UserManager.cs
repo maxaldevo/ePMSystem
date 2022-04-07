@@ -208,6 +208,13 @@ namespace ePM_Dal.Logic
                 return db.vHREmployees.ToList();
             }
         }
+        public static vHREmployee GetEmployeesList(int id, string empno)
+        {
+            using (var db = new eHREntities())
+            {
+                return db.vHREmployees.Where(x => x.ID == id & x.EmpId == empno.ToString()).SingleOrDefault();
+            }
+        }
         // Instantiate random number generator.  
         private static readonly Random _random = new Random();
 
