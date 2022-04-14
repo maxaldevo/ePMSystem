@@ -98,6 +98,7 @@
     <Content Include="403.aspx" />
     <Content Include="404.aspx" />
     <Content Include="AccountSettings.aspx" />
+    <Content Include="UpdateEmployee.aspx" />
     <Content Include="AddNewEmployee.aspx" />
     <Content Include="BookInSchedule.aspx" />
     <Content Include="DoctorFollowUp.aspx" />
@@ -7473,6 +7474,13 @@
     </Compile>
     <Compile Include="AccountSettings.aspx.designer.cs">
       <DependentUpon>AccountSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateEmployee.aspx.cs">
+      <DependentUpon>UpdateEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateEmployee.aspx.designer.cs">
+      <DependentUpon>UpdateEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="AddNewEmployee.aspx.cs">
       <DependentUpon>AddNewEmployee.aspx</DependentUpon>

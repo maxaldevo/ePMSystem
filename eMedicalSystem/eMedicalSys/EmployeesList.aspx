@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="EmployeesList.aspx.cs" Inherits="WebApplication1.EmployeesList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HRMasterPage.master" AutoEventWireup="true" CodeBehind="EmployeesList.aspx.cs" Inherits="WebApplication1.EmployeesList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
            <style>
@@ -57,6 +57,16 @@
                                             <asp:TextBox ID="txtFullnameEn" CssClass="form-control" runat="server" Text='<%# Eval("FullnameEn") %>'></asp:TextBox>
                                         </div>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorServiceName" ControlToValidate="txtFullnameEn" ValidationGroup="A" runat="server" ErrorMessage="Full Name" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    </EditItemTemplate>--%>
+                                </asp:TemplateField><asp:TemplateField HeaderText="Full Name">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblFullnameEn" runat="server" Text='<%# Eval("FullnameEn") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <%--<EditItemTemplate>
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtDesignation" CssClass="form-control" runat="server" Text='<%# Eval("Designation") %>'></asp:TextBox>
+                                        </div>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorServiceName" ControlToValidate="txtDesignation" ValidationGroup="A" runat="server" ErrorMessage="Designation" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                                     </EditItemTemplate>--%>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Designation">

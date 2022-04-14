@@ -31,7 +31,7 @@
           <Property Name="TransferedFromDate" Type="nvarchar" MaxLength="50" />
           <Property Name="TransferedTo" Type="nvarchar" MaxLength="500" />
           <Property Name="TransferedToDate" Type="nvarchar" MaxLength="50" />
-          <Property Name="RTD" Type="bit" Nullable="false" />
+          <Property Name="RTD" Type="bit" />
           <Property Name="VacationFrom" Type="nvarchar" MaxLength="50" />
           <Property Name="VacationTo" Type="nvarchar" MaxLength="50" />
           <Property Name="VacationFromDays" Type="nvarchar" MaxLength="50" />
@@ -321,7 +321,7 @@ warning 6002: The table/view 'eMedical.dbo.vHREmployee' does not have a primary 
           <Property Name="TransferedFromDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TransferedTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="TransferedToDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RTD" Type="Boolean" Nullable="false" />
+          <Property Name="RTD" Type="Boolean" />
           <Property Name="VacationFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VacationTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VacationFromDays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

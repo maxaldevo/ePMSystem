@@ -13,7 +13,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication1
 {
-    public partial class AddNewEmployee : System.Web.UI.Page
+    public partial class UpdateEmployee : System.Web.UI.Page
     {
         public bool _RTD;
         public static string _FileNo, _EmpId, _FullnameAr, _FullnameEn, _Designation, _Nationality, _CivilId, _ResidencyDate, _PassportNo, _PassportExpDate, _Status, _JoinedDate, _Remarks, _Salary, _TransferedFrom, _TransferedFromDate, _TransferedTo, _TransferedToDate, _VacationFrom, _VacationTo, _VacationFromDays, _VacationExt_1_From, _VacationExt_1_To, _VacationExt_2_From, _VacationExt_2_To, _VacationExt_3_From, _VacationExt_3_To = "";

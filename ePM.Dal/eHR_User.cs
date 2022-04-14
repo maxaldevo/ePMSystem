@@ -36,7 +36,7 @@ namespace ePM.Dal
         public string TransferedFromDate { get; set; }
         public string TransferedTo { get; set; }
         public string TransferedToDate { get; set; }
-        public bool RTD { get; set; }
+        public Nullable<bool> RTD { get; set; }
         public string VacationFrom { get; set; }
         public string VacationTo { get; set; }
         public string VacationFromDays { get; set; }

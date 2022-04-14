@@ -74,6 +74,7 @@ namespace WebApplication1
         {
             try
             {
+                
                 if (EmployeeList.Count <= 0)
                 {
                     EmployeeList = UserManager.GetEmployeesList(); 
